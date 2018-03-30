@@ -8,7 +8,8 @@ import java.awt.*;
  *
  * @author Abhishek
  */
-public class ClientFrame extends JFrame{
+public class ClientFrame extends JFrame {
+
     /**
      *
      */
@@ -18,8 +19,9 @@ public class ClientFrame extends JFrame{
         pack();
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800,800);
+        setSize(500,500);
         centerGUI(this);
+        setJMenuBar(new MenuBar());
         setVisible(true);
     }
 
@@ -35,4 +37,5 @@ public class ClientFrame extends JFrame{
     public static void main(String[] args) {
         JFrame client = new ClientFrame();
     }
+
 }
