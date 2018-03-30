@@ -13,7 +13,6 @@ public class ServerSocketMain {
         ServerConnector connector = new ServerConnector(server);
         connector.setPort(8080);
         server.addConnector(connector);
-
         // Setup the basic application "context" for this application at "/"
         // This is also known as the handler tree (in jetty speak)
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -25,7 +24,7 @@ public class ServerSocketMain {
             // Initialize javax.websocket layer
             ServerContainer wscontainer = WebSocketServerContainerInitializer.configureContext(context);
 
-            // Add WebSocket endpoint to javax.websocket layer
+            // Add server end point to the server
             wscontainer.addEndpoint(ServerSocketEndpoint.class);
 
             server.start();
