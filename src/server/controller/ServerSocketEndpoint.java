@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Queue;
+import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.websocket.CloseReason;
@@ -16,19 +17,20 @@ import javax.websocket.server.ServerEndpoint;
 
 @ServerEndpoint("/server")
 public class ServerSocketEndpoint {
+	
 
 	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
-	private static Thread rateThread; // rate publisher thread
+	private static Thread rateThread; // Child thread for sending random number
 
 	static {
-		// rate publisher thread, generates a new value for USD rate every 2 seconds.
+		// sends a random number to all clients after every 2 seconds
 		rateThread = new Thread() {
 			public void run() {
-				DecimalFormat df = new DecimalFormat("#.####");
+				Random rand = new Random();
 				while (true) {
-					double d = 2 + Math.random();
+					int  n = rand.nextInt(50) + 1;
 					if (queue != null)
-						sendAll("USD Rate: " + df.format(d));
+						sendAll("Message: " + n);
 					try {
 						sleep(2000);
 					} catch (InterruptedException e) {
@@ -69,7 +71,7 @@ public class ServerSocketEndpoint {
 
 	private static void sendAll(String msg) {
 		try {
-			/* Send the new rate to all open WebSocket sessions */
+			/* Sends a random number all open WebSocket sessions */
 			ArrayList<Session> closedSessions = new ArrayList<>();
 			for (Session session : queue) {
 				if (!session.isOpen()) {
