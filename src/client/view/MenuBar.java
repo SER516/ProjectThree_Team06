@@ -34,10 +34,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
             g2.drawImage(menuImage, 0, 0, 30, 24, null);
             g2.dispose();
         }catch (IOException e){
-            System.out.println("Exception caught");
             menuImage = null;
         }
-
         menu.setHorizontalTextPosition(SwingConstants.CENTER);
         menu.setVerticalTextPosition(SwingConstants.BOTTOM);
         menu.setIcon(new ImageIcon(resizeImg));
