@@ -23,14 +23,7 @@ public class ClientSocketEndpoint {
 		System.out.println("Received msg: " + message);
 	}
 
-	private static void wait4TerminateSignal() {
-		synchronized (waitLock) {
-			try {
-				waitLock.wait();
-			} catch (InterruptedException e) {
-			}
-		}
-	}
+	
 
 	
 }

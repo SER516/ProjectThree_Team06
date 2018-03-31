@@ -25,8 +25,10 @@ public class ServerSocketEndpoint {
 	private static Gson gson = new Gson();
 	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
 	private static Thread rateThread; // Child thread for sending random number
+	static boolean flag= true;
 
 	static {
+		flag = true;
 		// sends a random number to all clients after every 2 seconds
 		rateThread = new Thread() {
 			public void run() {
@@ -34,11 +36,23 @@ public class ServerSocketEndpoint {
 				while (true) {
 					if (queue != null)
 						if(ServerDataSingleton.getInstance().isAutoReset()) {
-							sendAll(gson.toJson(ServerDataSingleton.getInstance().getFaceData()));
+							try {
+								sendAll(gson.toJson(ServerDataSingleton.getInstance().getFaceData()));
+							}
+							catch(Exception e) {
+								break;
+							}
+							
 						}
 					try {
+						System.out.println(ServerDataSingleton.getInstance().getStateInterval());
 						sleep(ServerDataSingleton.getInstance().getStateInterval());
 					} catch (InterruptedException e) {
+						System.out.print("Inside exception");
+						
+					}
+					finally {
+						
 					}
 				}
 			};
@@ -74,8 +88,8 @@ public class ServerSocketEndpoint {
 		System.out.println("session closed: " + session.getId());
 	}
 
-	private static void sendAll(String msg) {
-		try {
+	private static void sendAll(String msg) throws IOException {
+	
 			/* Sends a random number all open WebSocket sessions */
 			ArrayList<Session> closedSessions = new ArrayList<>();
 			for (Session session : queue) {
@@ -88,9 +102,7 @@ public class ServerSocketEndpoint {
 			}
 			queue.removeAll(closedSessions);
 			System.out.println("Sending " + msg + " to " + queue.size() + " clients");
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 }

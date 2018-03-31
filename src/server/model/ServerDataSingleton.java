@@ -6,23 +6,23 @@ public class ServerDataSingleton {
 	private static volatile ServerDataSingleton serverDataSingleton;
 	private static Object mutex = new Object();
 	private static FaceData faceData = new FaceData();
-	private static boolean autoReset = ServerConstants.AUTO_RESET;
-	private static long stateInterval= ServerConstants.STATE_INTERVAL;
+	private  boolean autoReset = ServerConstants.AUTO_RESET;
+	private long stateInterval= ServerConstants.STATE_INTERVAL;
 	
-	public static long getStateInterval() {
+	public  long getStateInterval() {
 		return stateInterval;
 	}
 
-	public static void setStateInterval(long stateInterval) {
-		ServerDataSingleton.stateInterval = stateInterval;
+	public  void setStateInterval(long stateInterval) {
+		this.stateInterval = stateInterval;
 	}
 
-	public static boolean isAutoReset() {
+	public boolean isAutoReset() {
 		return autoReset;
 	}
 
-	public static void setAutoReset(boolean autoReset) {
-		ServerDataSingleton.autoReset = autoReset;
+	public  void setAutoReset(boolean autoReset) {
+		this.autoReset = autoReset;
 	}
 
 	public static ServerDataSingleton getInstance() {
@@ -38,12 +38,12 @@ public class ServerDataSingleton {
 		return result;
 	}
 
-	public static FaceData getFaceData() {
+	public  FaceData getFaceData() {
 		return faceData;
 	}
 
-	public static void setFaceData(FaceData faceData) {
-		ServerDataSingleton.faceData = faceData;
+	public  void setFaceData(FaceData faceData) {
+		this.faceData = faceData;
 	}
 
 
