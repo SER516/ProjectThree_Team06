@@ -33,12 +33,12 @@ public class ServerSocketEndpoint {
 			public void run() {
 				Random rand = new Random();
 				while (true) {
-					int  n = rand.nextInt(50) + 1;
 					if (queue != null)
-						
-						sendAll(gson.toJson(ServerDataSingleton.getInstance().getFaceData()));
+						if(ServerDataSingleton.getInstance().isAutoReset()) {
+							sendAll(gson.toJson(ServerDataSingleton.getInstance().getFaceData()));
+						}
 					try {
-						sleep(2000);
+						sleep(ServerDataSingleton.getInstance().getStateInterval());
 					} catch (InterruptedException e) {
 					}
 				}
