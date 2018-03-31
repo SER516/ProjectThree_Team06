@@ -1,16 +1,14 @@
-package client.controller.view;
+package client.controller;
 
-import client.controller.WebSocketClientMain;
+import client.view.ViewMain;
 import server.controller.ServerSocketMain;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ViewMain extends JFrame{
-
-    public ViewMain() {
+public class ClientController extends JFrame{
+    public ClientController() {
 
         setTitle("My Gui");
         setSize(400, 400);
@@ -46,7 +44,6 @@ public class ViewMain extends JFrame{
 
     public static void main(String[] args) {
 
-        ViewMain view = new ViewMain();
+        ClientController view = new ClientController();
     }
-
 }

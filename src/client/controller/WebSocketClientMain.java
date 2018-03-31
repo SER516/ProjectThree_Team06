@@ -1,5 +1,7 @@
 package client.controller;
 
+import client.controller.ClientSocketEndpoint;
+
 import java.net.URI;
 
 import javax.websocket.ContainerProvider;

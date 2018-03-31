@@ -15,9 +15,8 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import com.google.gson.Gson;
 
-import server.model.FaceData;
+import com.google.gson.Gson;
 import server.model.ServerDataSingleton;
 
 @ServerEndpoint("/server")
