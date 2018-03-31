@@ -9,6 +9,7 @@ import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainer
 public class ServerSocketMain {
 	
 	public static void main(String args[]) {
+		
 		Server server = new Server();
         ServerConnector connector = new ServerConnector(server);
         connector.setPort(8080);

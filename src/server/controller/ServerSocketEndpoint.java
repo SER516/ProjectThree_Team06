@@ -15,10 +15,15 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import com.google.gson.Gson;
+
+import server.model.FaceData;
+import server.model.ServerDataSingleton;
+
 @ServerEndpoint("/server")
 public class ServerSocketEndpoint {
 	
-
+	private static Gson gson = new Gson();
 	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
 	private static Thread rateThread; // Child thread for sending random number
 
@@ -28,11 +33,12 @@ public class ServerSocketEndpoint {
 			public void run() {
 				Random rand = new Random();
 				while (true) {
-					int  n = rand.nextInt(50) + 1;
 					if (queue != null)
-						sendAll("Message: " + n);
+						if(ServerDataSingleton.getInstance().isAutoReset()) {
+							sendAll(gson.toJson(ServerDataSingleton.getInstance().getFaceData()));
+						}
 					try {
-						sleep(2000);
+						sleep(ServerDataSingleton.getInstance().getStateInterval());
 					} catch (InterruptedException e) {
 					}
 				}
