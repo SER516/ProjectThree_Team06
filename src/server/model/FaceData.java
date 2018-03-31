@@ -3,22 +3,22 @@ package server.model;
 public class FaceData {
 	
 	// Eyebrow (Upper Face)
-	private float raiseBrow;
-	private float furrowBrow;
+	private float raiseBrow = 0;
+	private float furrowBrow = 0;
 	
 	// Smile (Lower face)
 	
-	private float smile;
-	private float clench;
-	private float smirkLeft;
-	private float smirkRight;
-	private float laugh;
+	private float smile = 0;
+	private float clench = 0;
+	private float smirkLeft = 0;
+	private float smirkRight = 0;
+	private float laugh = 0;
 	
 	// Eye
-	private boolean winkLeft;
-	private boolean winkRight;
-	private boolean lookLeft;
-	private boolean lookRight;
+	private boolean winkLeft = false;
+	private boolean winkRight = false;
+	private boolean lookLeft = false;
+	private boolean lookRight = false;
 	
 	private boolean blink;
 	public float getRaiseBrow() {
