@@ -93,9 +93,4 @@ public class FaceData {
 	public void setLookRight(boolean lookRight) {
 		this.lookRight = lookRight;
 	}
-	
-	
-	
-	
-
 }
