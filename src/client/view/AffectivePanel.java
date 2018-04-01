@@ -13,44 +13,44 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 
-public class AffectionUI extends JFrame{
+public class AffectivePanel extends JFrame{
 
     public static void main(String[] args) {
-        new AffectionUI();
+        new AffectivePanel();
     }
 
-    public AffectionUI(){
+    public AffectivePanel(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(950, 890);
         this.setLayout(new BorderLayout());
-       
+
 
         JPanel container = new JPanel();
         JPanel panelOne = new JPanel();
         JPanel panelTwo = new JPanel();
-        
-       
+
+
         //set up jpanel 1
         panelOne.setLayout(new BorderLayout());
         panelOne.setBackground(new Color(253, 235, 208));
         panelOne.add(new JLabel("Graph Plot",JLabel.CENTER),BorderLayout.NORTH);
-        
-        
+
+
         //set up jpanel2
-        Color[] colors = {new Color(236, 112, 99  ), new Color(93, 173, 226), 
+        Color[] colors = {new Color(236, 112, 99  ), new Color(93, 173, 226),
         				  new Color(88, 214, 141), new Color(235, 152, 78 ),
         				  new Color(255, 102, 255)};
-        
+
         String[] strings= {"Red","Blue", "Green","Orange","Pink"};
-        
+
         panelTwo.setLayout(new BorderLayout());
         panelTwo.setBackground(new Color(169, 204, 227));
         panelTwo.add(new JLabel("Performance Metrics", JLabel.CENTER), BorderLayout.NORTH);
-        
+
         JPanel panelTwo_center= new JPanel(new GridLayout(2, 3,5,10));
         //panelTwo_center.setBackground(new Color(169, 204, 227));
-        
-        //add Meditation 
+
+        //add Meditation
         JPanel panel_meditation = new JPanel();
         //panel_meditation.setBackground(new Color(189, 195, 199));
         JLabel meditation = new JLabel("Meditation");
@@ -62,8 +62,8 @@ public class AffectionUI extends JFrame{
         combo_meditation.setRenderer(renderer_meditation);
         panel_meditation.add(combo_meditation);
         panelTwo_center.add(panel_meditation);
-        
-        
+
+
         //add Engagement Boredom
         JPanel panel_boredom = new JPanel();
         JLabel boredom= new JLabel("Engagement Boredom");
@@ -77,7 +77,7 @@ public class AffectionUI extends JFrame{
         panel_boredom.add(combo_boredom);
         panelTwo_center.add(panel_boredom);
         panelTwo_center.add(panel_boredom);
-        
+
         //add Excitement shortTerm
         JPanel panel_excitementshort = new JPanel();
         //panel_excitementshort.setBackground(new Color(189, 195, 199));
@@ -91,7 +91,7 @@ public class AffectionUI extends JFrame{
         panel_excitementshort.add(combo_excitementshort);
         panelTwo_center.add(panel_excitementshort);
         panelTwo_center.add(panel_excitementshort);
-        
+
       //add Frustration
         JPanel panel_frustration = new JPanel();
        // panel_frustration.setBackground(new Color(148, 148, 184));
@@ -104,8 +104,8 @@ public class AffectionUI extends JFrame{
         combo_frustration.setRenderer(renderer_frustration);
         panel_frustration.add(combo_frustration);
         panelTwo_center.add(panel_frustration);
-        
-       
+
+
       //add Excitement Longterm
         JPanel panel_excitementlong = new JPanel();
        // panel_excitementlong.setBackground(new Color(189, 195, 199));
@@ -118,9 +118,9 @@ public class AffectionUI extends JFrame{
         combo_excitementlong.setRenderer(renderer_excitementlong);
         panel_excitementlong.add(combo_excitementlong);
         panelTwo_center.add(panel_excitementlong);
-        
+
         panelTwo_center.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-      
+
         panelTwo.add(panelTwo_center,BorderLayout.CENTER);
 
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
