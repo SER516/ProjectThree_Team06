@@ -31,7 +31,7 @@ public class WebSocketClientMain {
 					e.printStackTrace();
 				}
 			}
-		}
+		} 
 	}
 	
 	private static void wait4TerminateSignal() {

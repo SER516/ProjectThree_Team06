@@ -33,14 +33,14 @@ public class ServerSocketEndpoint {
 		rateThread = new Thread() {
 			public void run() {
 				Random rand = new Random();
-				while (true) {
+				while (flag) {
 					if (queue != null)
 						if(ServerDataSingleton.getInstance().isAutoReset()) {
 							try {
 								sendAll(gson.toJson(ServerDataSingleton.getInstance().getFaceData()));
 							}
 							catch(Exception e) {
-								break;
+								
 							}
 							
 						}
@@ -88,8 +88,8 @@ public class ServerSocketEndpoint {
 		System.out.println("session closed: " + session.getId());
 	}
 
-	private static void sendAll(String msg) throws IOException {
-	
+	private static void sendAll(String msg) {
+		try {
 			/* Sends a random number all open WebSocket sessions */
 			ArrayList<Session> closedSessions = new ArrayList<>();
 			for (Session session : queue) {
@@ -102,7 +102,10 @@ public class ServerSocketEndpoint {
 			}
 			queue.removeAll(closedSessions);
 			System.out.println("Sending " + msg + " to " + queue.size() + " clients");
-		
+		} catch (Throwable e) {
+			flag = false;
+			e.printStackTrace();
+		}
 	}
 
 }

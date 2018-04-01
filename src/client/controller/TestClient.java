@@ -1,5 +1,6 @@
 package client.controller;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.concurrent.CountDownLatch;
 import java.util.logging.Logger;
@@ -8,6 +9,7 @@ import javax.websocket.ClientEndpoint;
 import javax.websocket.CloseReason;
 import javax.websocket.ContainerProvider;
 import javax.websocket.OnClose;
+import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
@@ -15,40 +17,49 @@ import javax.websocket.WebSocketContainer;
 
 import org.eclipse.jetty.util.component.LifeCycle;
 
-public class TestClient
-{
-    public static void main(String[] args)
-    {
-        URI uri = URI.create("ws://localhost:8080/server");
+import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
 
-        try
-        {
-            WebSocketContainer container = ContainerProvider.getWebSocketContainer();
+import javax.websocket.ClientEndpoint;
+import javax.websocket.CloseReason;
+import javax.websocket.OnClose;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
 
-            try
-            {
-                // Attempt Connect
-                Session session = container.connectToServer(EventSocket.class,uri);
-                // Send a message
-                session.getBasicRemote().sendText("Hello");
-                // Close session
-                session.close();
-            }
-            finally
-            {
-                // Force lifecycle stop when done with container.
-                // This is to free up threads and resources that the
-                // JSR-356 container allocates. But unfortunately
-                // the JSR-356 spec does not handle lifecycles (yet)
-                if (container instanceof LifeCycle)
-                {
-                    ((LifeCycle)container).stop();
-                }
-            }
-        }
-        catch (Throwable t)
-        {
-            t.printStackTrace(System.err);
-        }
-    }
+@ClientEndpoint
+public class TestClient {
+
+	CountDownLatch latch = new CountDownLatch(1);
+	private Session session;
+
+	@OnOpen
+	public void onOpen(Session session) {
+		System.out.println("Connected to server");
+		this.session = session;
+		latch.countDown();
+	}
+
+	@OnMessage
+	public void onText(String message, Session session) {
+		System.out.println("Message received from server:" + message);
+	}
+
+	@OnClose
+	public void onClose(CloseReason reason, Session session) {
+		System.out.println("Closing a WebSocket due to " + reason.getReasonPhrase());
+	}
+
+	public CountDownLatch getLatch() {
+		return latch;
+	}
+
+	public void sendMessage(String str) {
+		try {
+			session.getBasicRemote().sendText(str);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+	}
 }

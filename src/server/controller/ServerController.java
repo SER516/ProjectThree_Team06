@@ -53,7 +53,7 @@ public class ServerController extends JFrame implements ActionListener {
 		else {
 			button.setText("Start");
 			try {
-				context.stop();
+//				context.stop();
 				connector.close();
 				server.stop();
 				serverThread.join();
