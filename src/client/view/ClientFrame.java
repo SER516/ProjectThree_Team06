@@ -28,7 +28,7 @@ public class ClientFrame extends JFrame {
         pack();
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800,500);
+        setSize(1300,700);
         centerGUI(this);
         setJMenuBar(new MenuBar());
         setVisible(true);
