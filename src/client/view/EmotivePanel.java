@@ -3,6 +3,11 @@ package client.view;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * EmotivePanel class is a emotive tab on the GUI
+ *
+ * @author Abhishek
+ */
 public class EmotivePanel extends JPanel {
     public static final String TABNAME = "Emotive";
     JPanel facePart;

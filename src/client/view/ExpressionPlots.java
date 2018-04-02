@@ -3,6 +3,11 @@ package client.view;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * ExpressionPlots class plots the graph of expressions received from server
+ *
+ * @author Abhishek
+ */
 public class ExpressionPlots extends JPanel {
     JLabel expression1 = new JLabel("Expression: 1");
     JLabel expression2 = new JLabel("Expression: 2");
