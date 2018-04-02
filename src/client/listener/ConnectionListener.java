@@ -4,7 +4,7 @@ public interface ConnectionListener {
 	
 	public void startServer();
 	
-	public void stopServer();
+	public void reconnectServer(String url);
 	
 	
 

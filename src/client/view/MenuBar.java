@@ -116,7 +116,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
         }
         else if (e.getSource() == reconnect)
         {
-            // reconnect to server code
+        		connectionListener.reconnectServer(null);
         }
     }
 
