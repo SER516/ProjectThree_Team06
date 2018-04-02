@@ -1,11 +1,11 @@
+package client.view;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
 
-import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Component;
@@ -13,19 +13,20 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 
-public class AffectionUI extends JFrame{
+public class AffectivePanel extends JPanel{
+    public static final String TABNAME = "Affectiva";
 
     public static void main(String[] args) {
-        new AffectionUI();
+        new AffectivePanel();
     }
 
-    public AffectionUI(){
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public AffectivePanel(){
+        /*this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(950, 890);
-        this.setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout());*/
        
 
-        JPanel container = new JPanel();
+        //JPanel container = new JPanel();
         JPanel panelOne = new JPanel();
         JPanel panelTwo = new JPanel();
         
@@ -130,12 +131,12 @@ public class AffectionUI extends JFrame{
         container.add(panelOne);
         container.add(panelTwo);*/
         
-        container.setLayout(new BorderLayout());
-        container.add(panelOne,BorderLayout.CENTER);
-        container.add(panelTwo,BorderLayout.EAST);
+        setLayout(new BorderLayout());
+        add(panelOne,BorderLayout.CENTER);
+        add(panelTwo,BorderLayout.EAST);
 
-        this.add(container);
-        this.setVisible(true);
+        /*this.add(container);
+        this.setVisible(true);*/
     }
 
  }

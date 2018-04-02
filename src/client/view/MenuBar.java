@@ -22,57 +22,61 @@ public class MenuBar extends JMenuBar implements ActionListener {
     JMenuItem reconnect;
 
     public MenuBar(){
-        URL menu_url = getClass().getResource("menu.jpg");
-        URL menubck_url = getClass().getResource("MENU_BACKGROUND.png");
+        URL menu_url = getClass().getResource("MENU_BACKGROUND.png");
+        URL menuBack_url = getClass().getResource("BlackBackground.jpg");
         JMenu menu = new JMenu("Menu");
-        BufferedImage menuImage, menuBckImage;
-        BufferedImage resizeMenuImg = null, resizeMenuBckImg = null;
-        Graphics2D g1 = null;
+        BufferedImage menuImage, menuBorder;
+        BufferedImage resizeMenuImg = null, resizeMBorder = null;
         try{
             menuImage = ImageIO.read(menu_url);
-            menuBckImage = ImageIO.read(menubck_url);
+            menuBorder = ImageIO.read(menuBack_url);
             resizeMenuImg= new BufferedImage(30, 20, BufferedImage.TYPE_INT_ARGB);
-            resizeMenuBckImg= new BufferedImage(30, 20, BufferedImage.TYPE_INT_ARGB);
+            resizeMBorder = new BufferedImage(20, 10, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = setGraphics(resizeMenuImg,menuImage);
-            g1 = setGraphics(resizeMenuBckImg, menuBckImage);
-
-        }catch (IOException e){
-            menuImage = null;
+            Graphics2D g1 = setGraphics(resizeMBorder, menuBorder);
+        }catch (IOException e) {
+            System.out.println("Please specify image path");
         }
         menu.setHorizontalTextPosition(SwingConstants.CENTER);
         menu.setVerticalTextPosition(SwingConstants.BOTTOM);
         menu.setIcon(new ImageIcon(resizeMenuImg));
         menu.setMnemonic(KeyEvent.VK_M);
-        launchServer = new JMenuItem("Launch Server"){
-            private Image  i= new ImageIcon(getClass().getResource("MENU_BACKGROUND.png")).getImage() ;
-
-            @Override
-            public void paintComponents(Graphics g) {
-                g.drawImage(i, 20, 20, this);
-                super.paintComponent(g);
-            }
-
-            @Override
-            public void setMnemonic(int mnemonic) {
-                super.setMnemonic(KeyEvent.VK_L);
-            }
-        };
+        launchServer = new JMenuItem("Launch Server");
+        launchServer.setMnemonic(KeyEvent.VK_L);
         launchServer.setAccelerator(KeyStroke.getKeyStroke("control L"));
-        launchServer.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMenuBckImg)));
-        launchServer.setOpaque(false);
-        menu.add(launchServer);
-        menu.add(new JPopupMenu.Separator());
+        launchServer.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
+        launchServer.setOpaque(true);
+        launchServer.setBackground(Color.BLACK);
+        launchServer.setForeground(Color.WHITE);
+
         JMenu connectMenu = new JMenu("Connect");
-        connectMenu.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMenuBckImg)));
+        connectMenu.setOpaque(true);
+        connectMenu.setBackground(Color.BLACK);
+        connectMenu.setForeground(Color.WHITE);
+        connectMenu.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
         connect = new JMenuItem("Connect");
         reconnect = new JMenuItem("Reconnect");
+        connect.setOpaque(true);
+        connect.setForeground(Color.WHITE);
+        connect.setBackground(Color.BLACK);
+        connect.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
+        reconnect.setOpaque(true);
+        reconnect.setForeground(Color.WHITE);
+        reconnect.setBackground(Color.BLACK);
+        reconnect.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
         connectMenu.add(connect);
+        connectMenu.add(new JPopupMenu.Separator());
         connectMenu.add(reconnect);
-        menu.add(connectMenu);
+
         launchServer.addActionListener(this);
         connect.addActionListener(this);
         reconnect.addActionListener(this);
-
+        menu.add(launchServer);
+        menu.add(new JPopupMenu.Separator());
+        menu.add(connectMenu);
+        menu.setOpaque(true);
+        menu.setBackground(Color.BLACK);
+        menu.setForeground(Color.WHITE);
         add(menu);
     }
 
@@ -87,7 +91,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         Dimension size = this.getSize();
-        g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("MENU_BACKGROUND.png")), 0, 0, size.width, size.height, this);
+        g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("BlackBackground.jpg")), 0,
+                0, size.width, size.height, this);
     }
     @Override
     public void actionPerformed(ActionEvent e) {

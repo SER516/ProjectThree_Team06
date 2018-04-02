@@ -18,17 +18,12 @@ public class EmotivePanel extends JPanel {
         Dimension df = this.getSize();
         facePart = new FaceExpressions();
         graphPart = new ExpressionPlots();
-        //facePart.setSize(new Dimension((int)(df.getWidth()*0.3),df.height));
-        facePart.setBackground(Color.BLUE);
-
-        //graphPart.setSize(new Dimension((int)(df.getWidth()*0.7),df.height));
-
-        graphPart.setBackground(Color.green);
+        facePart.setBackground(Color.LIGHT_GRAY);
+        graphPart.setBackground(Color.WHITE);
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-        splitPane.setResizeWeight(0.5);
+        splitPane.setResizeWeight(0.3);
         splitPane.setEnabled(false);
         splitPane.setDividerSize(0);
-
         splitPane.add(facePart);
         splitPane.add(graphPart);
         add(splitPane, BorderLayout.CENTER);
