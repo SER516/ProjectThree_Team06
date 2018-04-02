@@ -1,43 +1,67 @@
 package client.controller;
 
+import client.controller.ClientSocketEndpoint;
+import client.helper.ClientDataSingleton;
+
 import java.net.URI;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.websocket.ContainerProvider;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
 
 public class WebSocketClientMain {
+	Thread clientThread;
 	private static Object waitLock = new Object();
-
-	public static void main(String[] args) {
-		
-		WebSocketContainer container = null;
-		Session session = null;
-		try {
-			container = ContainerProvider.getWebSocketContainer();
-			session = container.connectToServer(ClientSocketEndpoint.class,
-					URI.create("ws://localhost:8080/server"));
-			wait4TerminateSignal();
-		} catch (Exception e) {
-			System.out.println("Add to console log");
-			e.printStackTrace();
-		} finally {
-			if (session != null) {
-				try {
-					session.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
+	Session session = null;
 	
 	private static void wait4TerminateSignal() {
 		synchronized (waitLock) {
 			try {
 				waitLock.wait();
 			} catch (InterruptedException e) {
+				System.out.println(e.getStackTrace());
 			}
 		}
+	}
+
+	public void connectToServer() {
+		final ExecutorService clientProcessingPool = Executors.newFixedThreadPool(10);
+		Runnable serverTask = new Runnable() {
+			
+			@Override
+			public void run() {
+				WebSocketContainer container = null;
+				try {
+					container = ContainerProvider.getWebSocketContainer();
+					session = container.connectToServer(ClientSocketEndpoint.class,
+							URI.create("ws://localhost:8080/server"));
+					ClientDataSingleton.getInstance().setSessionMaintained(true);
+					wait4TerminateSignal();
+				} catch (Exception e) {
+					System.out.println("Server Not Running");
+					e.printStackTrace();
+				} finally {
+					if (session != null) {
+						try {
+							session.close();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				} 
+				
+			}
+		};
+		clientThread = new Thread(serverTask);
+		clientThread.start();
+		
+	}
+
+
+	public Session getSession() {
+		return session;
+		
 	}
 }

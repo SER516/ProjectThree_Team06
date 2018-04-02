@@ -13,9 +13,15 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
 
+import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
+
+import client.helper.ClientDataSingleton;
+
 @ClientEndpoint
 public class ClientSocketEndpoint {
 	private static Object waitLock = new Object();
+	
+	
 
 	@OnMessage
 	public void onMessage(String message) {
@@ -23,14 +29,11 @@ public class ClientSocketEndpoint {
 		System.out.println("Received msg: " + message);
 	}
 
-	private static void wait4TerminateSignal() {
-		synchronized (waitLock) {
-			try {
-				waitLock.wait();
-			} catch (InterruptedException e) {
-			}
-		}
+	
+	@OnClose
+	public void closedConnection(Session session) {
+		ClientDataSingleton.getInstance().setSessionMaintained(false);
+		System.out.println("session closed: " + session.getId());
 	}
-
 	
 }
