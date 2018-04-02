@@ -17,6 +17,8 @@ import javax.websocket.server.ServerEndpoint;
 
 
 import com.google.gson.Gson;
+
+import server.model.FaceData;
 import server.model.ServerDataSingleton;
 
 @ServerEndpoint("/server")
@@ -26,10 +28,11 @@ public class ServerSocketEndpoint {
 	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
 	private static Thread rateThread; // Child thread for sending random number
 	static boolean flag= true;
+	
 
 	static {
 		flag = true;
-		// sends a random number to all clients after every 2 seconds
+
 		rateThread = new Thread() {
 			public void run() {
 				Random rand = new Random();
@@ -37,6 +40,10 @@ public class ServerSocketEndpoint {
 					if (queue != null)
 						if(ServerDataSingleton.getInstance().isAutoReset()) {
 							try {
+								long interval = ServerDataSingleton.getInstance().getStateInterval();
+								long counter = ServerDataSingleton.getInstance().getFaceData().getCounter();
+								long newCounter = counter + (interval/1000);
+								ServerDataSingleton.getInstance().getFaceData().setCounter(newCounter);
 								sendAll(gson.toJson(ServerDataSingleton.getInstance().getFaceData()));
 							}
 							catch(Exception e) {

@@ -3,6 +3,9 @@ package client.view;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.plaf.BorderUIResource;
+
+import client.listener.ConnectionListener;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +23,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
     JMenuItem launchServer;
     JMenuItem connect;
     JMenuItem reconnect;
+    private ConnectionListener connectionListener;
 
     public MenuBar(){
         URL menu_url = getClass().getResource("MENU_BACKGROUND.png");
@@ -79,6 +83,10 @@ public class MenuBar extends JMenuBar implements ActionListener {
         menu.setForeground(Color.WHITE);
         add(menu);
     }
+    
+    public void setConnectionListener(ConnectionListener connectionListener) {
+    		this.connectionListener = connectionListener;
+    }
 
     public Graphics2D setGraphics(BufferedImage resizeImg, BufferedImage menuImage){
         Graphics2D g2 = resizeImg.createGraphics();
@@ -102,7 +110,9 @@ public class MenuBar extends JMenuBar implements ActionListener {
         }
         else if (e.getSource() == connect)
         {
-            // connect to server code
+            if(connectionListener!=null) {
+            		connectionListener.startServer();
+            }
         }
         else if (e.getSource() == reconnect)
         {
