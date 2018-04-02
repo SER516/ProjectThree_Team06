@@ -13,17 +13,17 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 
-public class AffectivePanel extends JFrame{
+public class AffectionUI extends JFrame{
 
     public static void main(String[] args) {
-        new AffectivePanel();
+        new AffectionUI();
     }
 
-    public AffectivePanel(){
+    public AffectionUI(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(950, 890);
         this.setLayout(new BorderLayout());
-
+       
 
         JPanel container = new JPanel();
         JPanel panelOne = new JPanel();
@@ -135,7 +135,7 @@ public class AffectivePanel extends JFrame{
         container.add(panelTwo,BorderLayout.EAST);
 
         this.add(container);
-        this.setVisible(true););
+        this.setVisible(true);
     }
 
  }
