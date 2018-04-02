@@ -18,10 +18,7 @@ public class ClientMainController {
 
 	private static void setClientServerConnection(ClientFrame clientFrame) {
 		clientFrame.setConnectionListener(new ConnectionListener() {
-			@Override
-			public void stopServer() {
-				
-			}
+			
 			
 			@Override
 			public void startServer() {
@@ -29,6 +26,12 @@ public class ClientMainController {
 				if(!ClientDataSingleton.getInstance().isSessionMaintained()) {
 					webSocketClientMain.connectToServer();
 				}	
+			}
+
+			@Override
+			public void reconnectServer(String url) {
+				// TODO Auto-generated method stub
+				
 			}
 		});
 		
