@@ -20,7 +20,7 @@ public class AffectiveData {
 	private boolean lookLeft = false;
 	private boolean lookRight = false;
 	
-	private boolean blink;
+	private boolean blink = true;
 	public float getRaiseBrow() {
 		return raiseBrow;
 	}
