@@ -15,6 +15,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+
 import com.google.gson.Gson;
 
 import server.model.FaceData;
@@ -26,20 +27,39 @@ public class ServerSocketEndpoint {
 	private static Gson gson = new Gson();
 	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
 	private static Thread rateThread; // Child thread for sending random number
+	static boolean flag= true;
+	
 
 	static {
-		// sends a random number to all clients after every 2 seconds
+		flag = true;
+
 		rateThread = new Thread() {
 			public void run() {
 				Random rand = new Random();
-				while (true) {
+				while (flag) {
 					if (queue != null)
 						if(ServerDataSingleton.getInstance().isAutoReset()) {
-							sendAll(gson.toJson(ServerDataSingleton.getInstance().getFaceData()));
+							try {
+								long interval = ServerDataSingleton.getInstance().getStateInterval();
+								long counter = ServerDataSingleton.getInstance().getFaceData().getCounter();
+								long newCounter = counter + (interval/1000);
+								ServerDataSingleton.getInstance().getFaceData().setCounter(newCounter);
+								sendAll(gson.toJson(ServerDataSingleton.getInstance().getFaceData()));
+							}
+							catch(Exception e) {
+								
+							}
+							
 						}
 					try {
+						System.out.println(ServerDataSingleton.getInstance().getStateInterval());
 						sleep(ServerDataSingleton.getInstance().getStateInterval());
 					} catch (InterruptedException e) {
+						System.out.print("Inside exception");
+						
+					}
+					finally {
+						
 					}
 				}
 			};
@@ -90,6 +110,7 @@ public class ServerSocketEndpoint {
 			queue.removeAll(closedSessions);
 			System.out.println("Sending " + msg + " to " + queue.size() + " clients");
 		} catch (Throwable e) {
+			flag = false;
 			e.printStackTrace();
 		}
 	}
