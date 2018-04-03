@@ -7,10 +7,10 @@ public class ServerDataSingleton {
 	private static Object mutex = new Object();
 	private FaceData faceData = new FaceData();
 	private  boolean autoReset = ServerConstants.AUTO_RESET;
-	private long stateInterval= ServerConstants.STATE_INTERVAL;
+	private double stateInterval= ServerConstants.STATE_INTERVAL;
 	private boolean oneTimeSend = ServerConstants.ONE_TIME_SEND;
 	
-	public  long getStateInterval() {
+	public  double getStateInterval() {
 		return stateInterval;
 	}
 
@@ -22,7 +22,7 @@ public class ServerDataSingleton {
 		this.oneTimeSend = oneTimeSend;
 	}
 
-	public  void setStateInterval(long stateInterval) {
+	public  void setStateInterval(double stateInterval) {
 		this.stateInterval = stateInterval;
 	}
 

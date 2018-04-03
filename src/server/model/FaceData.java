@@ -1,11 +1,11 @@
 package server.model;
 
 public class FaceData {
-	private long counter;
-	public long getCounter() {
+	private double counter;
+	public double getCounter() {
 		return counter;
 	}
-	public void setCounter(long counter) {
+	public void setCounter(double counter) {
 		this.counter = counter;
 	}
 	// Eyebrow (Upper Face)

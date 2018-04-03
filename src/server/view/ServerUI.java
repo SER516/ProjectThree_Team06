@@ -14,6 +14,7 @@ import javax.swing.JFrame;
  */
 public class ServerUI extends javax.swing.JFrame {
 	ConsolePanel consolePanel;
+	DetectionPanel detectionPanel;
     /**
      * Creates new form ServerUI
      */
@@ -29,8 +30,8 @@ public class ServerUI extends javax.swing.JFrame {
         InteractivePanel intPanel = new InteractivePanel();
         this.getContentPane().add(intPanel);
         
-        DetectionPanel detPanel = new DetectionPanel();
-        this.getContentPane().add(detPanel);
+        detectionPanel = new DetectionPanel();
+        this.getContentPane().add(detectionPanel);
         
         consolePanel = new ConsolePanel();
         this.getContentPane().add(consolePanel);
@@ -63,6 +64,11 @@ public class ServerUI extends javax.swing.JFrame {
 
 	public void logMessage(String message) {
 		consolePanel.appendLogMessage(message);
+		
+	}
+
+	public void changeClockCounter(double counter) {
+		detectionPanel.changeClockCounter(counter);
 		
 	}
 

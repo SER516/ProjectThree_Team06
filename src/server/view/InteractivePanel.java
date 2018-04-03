@@ -124,9 +124,8 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
 	public void stateChanged(ChangeEvent e) {
 		if(e.getSource() == emoStateSpinner) {
 			String stateValue = emoStateSpinner.getValue().toString();
-			Double stateInterval = Double.parseDouble(stateValue) * 1000;
-			Long val =  stateInterval.longValue();
-			ServerDataSingleton.getInstance().setStateInterval(val);
+			Double stateInterval = Double.parseDouble(stateValue);
+			ServerDataSingleton.getInstance().setStateInterval(stateInterval);
 		}
 	}
 }
