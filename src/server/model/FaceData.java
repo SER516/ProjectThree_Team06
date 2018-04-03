@@ -2,7 +2,7 @@ package server.model;
 
 public class FaceData {
 	
-	private double counter;
+	private double counter = 0;
 	private AffectiveData affectiveData = new AffectiveData();
 	private ExpressiveData expressiveData = new ExpressiveData();
 	

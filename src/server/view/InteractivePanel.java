@@ -105,7 +105,6 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Hello");
 		if(e.getSource() == sendButton){
 			if(autoResetCheckBox.isSelected()) {
 				ServerDataSingleton.getInstance().setAutoReset(true);
