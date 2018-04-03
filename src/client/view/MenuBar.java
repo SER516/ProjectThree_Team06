@@ -120,7 +120,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == launchServer)
         {
-            // Server Launching code
+            connectionListener.initializeServer();
         }
         else if (e.getSource() == connect)
         {
@@ -132,6 +132,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
         {
         		connectionListener.reconnectServer(null);
         }
+        
     }
 
 }

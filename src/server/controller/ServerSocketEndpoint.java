@@ -75,7 +75,7 @@ public class ServerSocketEndpoint {
 	public void onMessage(Session session, String msg) {
 		// provided for completeness, in out scenario clients don't send any msg.
 		try {
-			System.out.println("received msg " + msg + " from " + session.getId());
+			logListener.logMessage("received msg " + msg + " from " + session.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -91,18 +91,18 @@ public class ServerSocketEndpoint {
 	@OnError
 	public void error(Session session, Throwable t) {
 		queue.remove(session);
-		System.err.println("Error on session " + session.getId());
+		logListener.logMessage("Error on session " + session.getId());
 	}
 
 	@OnClose
 	public void closedConnection(Session session) {
 		queue.remove(session);
-		System.out.println("session closed: " + session.getId());
+		logListener.logMessage("session closed: " + session.getId());
 	}
 
 	private static void sendAll(String msg) {
 		try {
-			/* Sends a random number all open WebSocket sessions */
+			/* Sends data to all open WebSocket sessions */
 			ArrayList<Session> closedSessions = new ArrayList<>();
 			for (Session session : queue) {
 				if (!session.isOpen()) {
@@ -113,7 +113,7 @@ public class ServerSocketEndpoint {
 				}
 			}
 			queue.removeAll(closedSessions);
-			System.out.println("Sending " + msg + " to " + queue.size() + " clients");
+			logListener.logMessage("Sending " + msg + " to " + queue.size() + " clients");
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
