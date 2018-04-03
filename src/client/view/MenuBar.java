@@ -2,13 +2,11 @@ package client.view;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.plaf.BorderUIResource;
-
-import client.listener.ConnectionListener;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.plaf.BorderUIResource;
+import client.listener.ConnectionListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -20,24 +18,32 @@ import java.net.URL;
  * @author Abhishek
  */
 public class MenuBar extends JMenuBar implements ActionListener {
+
     JMenuItem launchServer;
     JMenuItem connect;
     JMenuItem reconnect;
+
+    JLabel timmer;
     private ConnectionListener connectionListener;
+
 
     public MenuBar(){
         URL menu_url = getClass().getResource("MENU_BACKGROUND.png");
         URL menuBack_url = getClass().getResource("BlackBackground.jpg");
+        //URL stopimg_url = getClass().getResource("StopWatch.png");
         JMenu menu = new JMenu("Menu");
-        BufferedImage menuImage, menuBorder;
-        BufferedImage resizeMenuImg = null, resizeMBorder = null;
+        BufferedImage menuImage, menuBorder, stopImage;
+        BufferedImage resizeMenuImg = null, resizeMBorder = null, resizeStopImg = null;
         try{
             menuImage = ImageIO.read(menu_url);
             menuBorder = ImageIO.read(menuBack_url);
+            //stopImage = ImageIO.read(stopimg_url);
             resizeMenuImg= new BufferedImage(30, 20, BufferedImage.TYPE_INT_ARGB);
             resizeMBorder = new BufferedImage(20, 10, BufferedImage.TYPE_INT_ARGB);
+            //resizeStopImg = new BufferedImage(20, 20, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = setGraphics(resizeMenuImg,menuImage);
             Graphics2D g1 = setGraphics(resizeMBorder, menuBorder);
+            //Graphics2D g3 = setGraphics(resizeStopImg, stopImage);
         }catch (IOException e) {
             System.out.println("Please specify image path");
         }
@@ -72,6 +78,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
         connectMenu.add(new JPopupMenu.Separator());
         connectMenu.add(reconnect);
 
+        timmer = new JLabel("StopWatch");
+        timmer.setForeground(Color.WHITE);
+        //JMenuItem stopImage_item = new JMenuItem("Stop Watch", new ImageIcon(resizeStopImg));
+        /*stopImage_item.setSize(10,10);*/
+
         launchServer.addActionListener(this);
         connect.addActionListener(this);
         reconnect.addActionListener(this);
@@ -82,6 +93,9 @@ public class MenuBar extends JMenuBar implements ActionListener {
         menu.setBackground(Color.BLACK);
         menu.setForeground(Color.WHITE);
         add(menu);
+        add(Box.createHorizontalGlue());
+        //add(stopImage_item);
+        add(timmer);
     }
     
     public void setConnectionListener(ConnectionListener connectionListener) {

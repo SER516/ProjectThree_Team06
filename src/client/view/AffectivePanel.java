@@ -12,6 +12,13 @@ import java.awt.Component;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+/**
+ * This is a UI for Affective panel which plots the graph of
+ * parameters in performance metrics.
+ *
+ * @author avinash
+ */
+
 public class AffectivePanel extends JPanel {
 	public static final String TABNAME = "Affectiva";
 

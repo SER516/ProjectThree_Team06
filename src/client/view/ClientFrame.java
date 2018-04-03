@@ -1,6 +1,7 @@
 package client.view;
 
 import javax.swing.*;
+
 import javax.swing.border.EmptyBorder;
 
 import client.listener.ConnectionListener;
