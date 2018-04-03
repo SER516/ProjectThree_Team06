@@ -2,96 +2,41 @@ package server.model;
 
 public class AffectiveData {
 	
-	// Eyebrow (Upper Face)
-	private float raiseBrow = 0;
-	private float furrowBrow = 0;
+	private float meditation = 0;
+	private float engagementBoredom = 0;
+	private float excitementShortTerm = 0;
+	private float frustation = 0;
+	private float  excitementLongTerm = 0;
 	
-	// Smile (Lower face)
-	
-	private float smile = 0;
-	private float clench = 0;
-	private float smirkLeft = 0;
-	private float smirkRight = 0;
-	private float laugh = 0;
-	
-	// Eye
-	private boolean winkLeft = false;
-	private boolean winkRight = false;
-	private boolean lookLeft = false;
-	private boolean lookRight = false;
-	
-	private boolean blink = true;
-	public float getRaiseBrow() {
-		return raiseBrow;
+	public float getMeditation() {
+		return meditation;
 	}
-	public void setRaiseBrow(float raiseBrow) {
-		this.raiseBrow = raiseBrow;
+	public void setMeditation(float meditation) {
+		this.meditation = meditation;
 	}
-	public float getFurrowBrow() {
-		return furrowBrow;
+	public float getEngagementBoredom() {
+		return engagementBoredom;
 	}
-	public void setFurrowBrow(float furrowBrow) {
-		this.furrowBrow = furrowBrow;
+	public void setEngagementBoredom(float engagementBoredom) {
+		this.engagementBoredom = engagementBoredom;
 	}
-	public float getSmile() {
-		return smile;
+	public float getExcitementShortTerm() {
+		return excitementShortTerm;
 	}
-	public void setSmile(float smile) {
-		this.smile = smile;
+	public void setExcitementShortTerm(float excitementShortTerm) {
+		this.excitementShortTerm = excitementShortTerm;
 	}
-	public float getClench() {
-		return clench;
+	public float getFrustation() {
+		return frustation;
 	}
-	public void setClench(float clench) {
-		this.clench = clench;
+	public void setFrustation(float frustation) {
+		this.frustation = frustation;
 	}
-	public float getSmirkLeft() {
-		return smirkLeft;
+	public float getExcitementLongTerm() {
+		return excitementLongTerm;
 	}
-	public void setSmirkLeft(float smirkLeft) {
-		this.smirkLeft = smirkLeft;
-	}
-	public float getSmirkRight() {
-		return smirkRight;
-	}
-	public void setSmirkRight(float smirkRight) {
-		this.smirkRight = smirkRight;
-	}
-	public float getLaugh() {
-		return laugh;
-	}
-	public void setLaugh(float laugh) {
-		this.laugh = laugh;
-	}
-	public boolean isBlink() {
-		return blink;
-	}
-	public void setBlink(boolean blink) {
-		this.blink = blink;
-	}
-	public boolean isWinkLeft() {
-		return winkLeft;
-	}
-	public void setWinkLeft(boolean winkLeft) {
-		this.winkLeft = winkLeft;
-	}
-	public boolean isWinkRight() {
-		return winkRight;
-	}
-	public void setWinkRight(boolean winkRight) {
-		this.winkRight = winkRight;
-	}
-	public boolean isLookLeft() {
-		return lookLeft;
-	}
-	public void setLookLeft(boolean lookLeft) {
-		this.lookLeft = lookLeft;
-	}
-	public boolean isLookRight() {
-		return lookRight;
-	}
-	public void setLookRight(boolean lookRight) {
-		this.lookRight = lookRight;
-	}
+	public void setExcitementLongTerm(float excitementLongTerm) {
+		this.excitementLongTerm = excitementLongTerm;
+	} 
 
 }
