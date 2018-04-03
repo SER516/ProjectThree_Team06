@@ -18,7 +18,35 @@ public class ServerMainController {
 	private static ServerUI serverUI;
 	
 	public static void main(String args[]) {
+		new ServerMainController();
+	}
+	
+	public ServerMainController() {
 		initializeUI();
+		setListeners();
+		ServerSocketService serverSocketService = new ServerSocketService();
+		serverSocketService.startServer();
+	}
+
+
+	private static void setListeners() {
+		setLogListener();
+		setClockListener();
+		
+	}
+
+
+	private static void setClockListener() {
+		ServerSocketEndpoint.setClockListener(new ClockListener() {
+			@Override
+			public void changeCounter(double counter) {
+				serverUI.changeClockCounter(counter);	
+			}	
+		});
+	}
+
+
+	private static void setLogListener() {
 		ServerSocketEndpoint.setLogListener(new LogListener() {
 			@Override
 			public void logMessage(String message) {
@@ -26,18 +54,7 @@ public class ServerMainController {
 				serverUI.logMessage(message);
 			}
 		});
-		ServerSocketEndpoint.setClockListener(new ClockListener() {
-
-			@Override
-			public void changeCounter(double counter) {
-				serverUI.changeClockCounter(counter);
-				
-			}
-			
-		});
-		ServerSocketService serverSocketService = new ServerSocketService();
-		serverSocketService.startServer();
-	
+		
 	}
 
 

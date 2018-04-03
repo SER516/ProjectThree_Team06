@@ -6,6 +6,8 @@ public interface ConnectionListener {
 	
 	public void reconnectServer(String url);
 	
+	public void initializeServer();
+	
 	
 
 }
