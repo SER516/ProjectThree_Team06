@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server.main;
+package server.view;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -18,16 +18,20 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import server.model.ServerDataSingleton;
 /**
  *
  * @author mspranav
  */
-public class InteractivePanel extends JPanel {
+public class InteractivePanel extends JPanel implements ActionListener, ChangeListener {
 
     
-	JCheckBox AutoResetCheckBox;
+	JCheckBox autoResetCheckBox;
 	JSpinner emoStateSpinner;
-	JButton SendButton;
+	JButton sendButton;
 	
     /**
      * Creates new form InteractivePanel
@@ -49,30 +53,28 @@ public class InteractivePanel extends JPanel {
         emoStateLabel.setBounds(175, 29, 124, 25);
         this.add(emoStateLabel);
         
-        AutoResetCheckBox = new JCheckBox("Auto Reset");
-        AutoResetCheckBox.setForeground(Color.WHITE);
-        AutoResetCheckBox.setBackground(Color.GRAY);
-        AutoResetCheckBox.setFont(new Font("Tahoma", Font.BOLD, 12));
-        AutoResetCheckBox.setBounds(175, 61, 101, 25);
-        this.add(AutoResetCheckBox);
+        autoResetCheckBox = new JCheckBox("Auto Reset");
+        autoResetCheckBox.setForeground(Color.WHITE);
+        autoResetCheckBox.setBackground(Color.GRAY);
+        autoResetCheckBox.setFont(new Font("Tahoma", Font.BOLD, 12));
+        autoResetCheckBox.setBounds(175, 61, 101, 25);
+        this.add(autoResetCheckBox);
         
-        SendButton = new JButton("Send");
-        SendButton.setForeground(Color.WHITE);
-        SendButton.setBackground(Color.BLACK);
-        SendButton.setContentAreaFilled(false);
-        SendButton.setOpaque(true);
-        SendButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-            	
-            }
-        });
-        SendButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        SendButton.setBounds(302, 61, 107, 25);
-        this.add(SendButton);
         
+        sendButton = new JButton("Send");
+        sendButton.setForeground(Color.WHITE);
+        sendButton.setBackground(Color.BLACK);
+        sendButton.setContentAreaFilled(false);
+        sendButton.setOpaque(true);
+        sendButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        sendButton.setBounds(302, 61, 107, 25);
+        this.add(sendButton);
+        sendButton.addActionListener(this);
         emoStateSpinner = new JSpinner();
         emoStateSpinner.setModel(new SpinnerNumberModel(0.25, 0.25, 100.00, 0.50));
         emoStateSpinner.setBounds(324, 29, 55, 25);
+        emoStateSpinner.addChangeListener(this);
+        
         this.add(emoStateSpinner);
     }
 
@@ -100,6 +102,31 @@ public class InteractivePanel extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println("Hello");
+		if(e.getSource() == sendButton){
+			if(autoResetCheckBox.isSelected()) {
+				ServerDataSingleton.getInstance().setAutoReset(true);
+				ServerDataSingleton.getInstance().setOneTimeSend(false);
+			}
+			else {
+				ServerDataSingleton.getInstance().setAutoReset(false);
+				ServerDataSingleton.getInstance().setOneTimeSend(true);
+			}
+		}
+	}
+
+
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		if(e.getSource() == emoStateSpinner) {
+			String stateValue = emoStateSpinner.getValue().toString();
+			Double stateInterval = Double.parseDouble(stateValue) * 1000;
+			Long val =  stateInterval.longValue();
+			ServerDataSingleton.getInstance().setStateInterval(val);
+		}
+	}
 }

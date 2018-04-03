@@ -18,6 +18,7 @@ import javax.websocket.server.ServerEndpoint;
 
 import com.google.gson.Gson;
 
+import server.listener.LogListener;
 import server.model.FaceData;
 import server.model.ServerDataSingleton;
 
@@ -27,41 +28,39 @@ public class ServerSocketEndpoint {
 	private static Gson gson = new Gson();
 	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
 	private static Thread rateThread; // Child thread for sending random number
-	static boolean flag= true;
+	private static LogListener logListener;
 	
 
 	static {
-		flag = true;
-
 		rateThread = new Thread() {
 			public void run() {
-				Random rand = new Random();
-				while (flag) {
+				while (true) {
 					if (queue != null)
 						if(ServerDataSingleton.getInstance().isAutoReset()) {
-							try {
-								long interval = ServerDataSingleton.getInstance().getStateInterval();
-								long counter = ServerDataSingleton.getInstance().getFaceData().getCounter();
-								long newCounter = counter + (interval/1000);
-								ServerDataSingleton.getInstance().getFaceData().setCounter(newCounter);
-								sendAll(gson.toJson(ServerDataSingleton.getInstance().getFaceData()));
-							}
-							catch(Exception e) {
-								
-							}
-							
+							sendAndUpdateCounter();	
+						}
+						if(ServerDataSingleton.getInstance().isOneTimeSend()) {
+							sendAndUpdateCounter();
+							ServerDataSingleton.getInstance().setOneTimeSend(false);
 						}
 					try {
 						System.out.println(ServerDataSingleton.getInstance().getStateInterval());
 						sleep(ServerDataSingleton.getInstance().getStateInterval());
 					} catch (InterruptedException e) {
 						System.out.print("Inside exception");
-						
-					}
-					finally {
-						
 					}
 				}
+			}
+
+			private void sendAndUpdateCounter() {
+				long interval = ServerDataSingleton.getInstance().getStateInterval();
+				long counter = ServerDataSingleton.getInstance().getFaceData().getCounter();
+				long newCounter = counter + (interval / 1000);
+				ServerDataSingleton.getInstance().getFaceData().setCounter(newCounter);
+				String data = gson.toJson(ServerDataSingleton.getInstance().getFaceData());
+				logListener.logMessage(data);
+				sendAll(data);
+				
 			};
 		};
 		rateThread.start();
@@ -80,6 +79,7 @@ public class ServerSocketEndpoint {
 	@OnOpen
 	public void open(Session session) {
 		queue.add(session);
+		logListener.logMessage("New session opened: " + session.getId());
 		System.out.println("New session opened: " + session.getId());
 	}
 
@@ -110,9 +110,13 @@ public class ServerSocketEndpoint {
 			queue.removeAll(closedSessions);
 			System.out.println("Sending " + msg + " to " + queue.size() + " clients");
 		} catch (Throwable e) {
-			flag = false;
 			e.printStackTrace();
 		}
+	}
+
+	public static void setLogListener(LogListener logListenerObject) {
+		logListener = logListenerObject;
+		
 	}
 
 }
