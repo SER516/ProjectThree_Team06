@@ -5,12 +5,21 @@ import server.helper.ServerConstants;
 public class ServerDataSingleton {
 	private static volatile ServerDataSingleton serverDataSingleton;
 	private static Object mutex = new Object();
-	private static FaceData faceData = new FaceData();
+	private FaceData faceData = new FaceData();
 	private  boolean autoReset = ServerConstants.AUTO_RESET;
 	private long stateInterval= ServerConstants.STATE_INTERVAL;
+	private boolean oneTimeSend = ServerConstants.ONE_TIME_SEND;
 	
 	public  long getStateInterval() {
 		return stateInterval;
+	}
+
+	public boolean isOneTimeSend() {
+		return oneTimeSend;
+	}
+
+	public void setOneTimeSend(boolean oneTimeSend) {
+		this.oneTimeSend = oneTimeSend;
 	}
 
 	public  void setStateInterval(long stateInterval) {
@@ -38,11 +47,11 @@ public class ServerDataSingleton {
 		return result;
 	}
 
-	public  FaceData getFaceData() {
+	public FaceData getFaceData() {
 		return faceData;
 	}
 
-	public  void setFaceData(FaceData faceData) {
+	public void setFaceData(FaceData faceData) {
 		this.faceData = faceData;
 	}
 

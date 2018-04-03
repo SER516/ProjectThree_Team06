@@ -25,7 +25,7 @@ public class ClientSocketEndpoint {
 
 	@OnMessage
 	public void onMessage(String message) {
-		// the new USD rate arrives from the websocket server side.
+		// Face data json.
 		System.out.println("Received msg: " + message);
 	}
 
