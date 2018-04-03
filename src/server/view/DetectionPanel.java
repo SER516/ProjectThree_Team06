@@ -61,7 +61,7 @@ public class DetectionPanel extends JPanel{
         timeTxtField.setForeground(Color.WHITE);
         timeTxtField.setBackground(Color.DARK_GRAY);
         timeTxtField.setEditable(false);
-        timeTxtField.setText("29.25");
+        timeTxtField.setText("0");
         timeTxtField.setBounds(53, 29, 50, 25);
         this.add(timeTxtField);
         timeTxtField.setColumns(10);
