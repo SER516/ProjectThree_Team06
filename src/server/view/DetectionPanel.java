@@ -176,6 +176,11 @@ public class DetectionPanel extends JPanel{
     }// </editor-fold>//GEN-END:initComponents
 
 
+	public void changeClockCounter(double counter) {
+		timeTxtField.setText(String.valueOf(counter));
+	}
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

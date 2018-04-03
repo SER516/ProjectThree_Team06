@@ -18,6 +18,7 @@ import javax.websocket.server.ServerEndpoint;
 
 import com.google.gson.Gson;
 
+import server.listener.ClockListener;
 import server.listener.LogListener;
 import server.model.FaceData;
 import server.model.ServerDataSingleton;
@@ -29,6 +30,7 @@ public class ServerSocketEndpoint {
 	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
 	private static Thread rateThread; // Child thread for sending random number
 	private static LogListener logListener;
+	private static ClockListener clockListener;
 	
 
 	static {
@@ -44,8 +46,10 @@ public class ServerSocketEndpoint {
 							ServerDataSingleton.getInstance().setOneTimeSend(false);
 						}
 					try {
-						System.out.println(ServerDataSingleton.getInstance().getStateInterval());
-						sleep(ServerDataSingleton.getInstance().getStateInterval());
+						Double clock = ServerDataSingleton.getInstance().getStateInterval();
+						Long sleepValue = (long) (clock * 1000);
+						System.out.println(sleepValue);
+						sleep(sleepValue);
 					} catch (InterruptedException e) {
 						System.out.print("Inside exception");
 					}
@@ -53,12 +57,13 @@ public class ServerSocketEndpoint {
 			}
 
 			private void sendAndUpdateCounter() {
-				long interval = ServerDataSingleton.getInstance().getStateInterval();
-				long counter = ServerDataSingleton.getInstance().getFaceData().getCounter();
-				long newCounter = counter + (interval / 1000);
+				double interval = ServerDataSingleton.getInstance().getStateInterval();
+				double counter = ServerDataSingleton.getInstance().getFaceData().getCounter();
+				double newCounter = counter + interval;
 				ServerDataSingleton.getInstance().getFaceData().setCounter(newCounter);
 				String data = gson.toJson(ServerDataSingleton.getInstance().getFaceData());
 				logListener.logMessage(data);
+				clockListener.changeCounter(newCounter);
 				sendAll(data);
 				
 			};
@@ -116,6 +121,11 @@ public class ServerSocketEndpoint {
 
 	public static void setLogListener(LogListener logListenerObject) {
 		logListener = logListenerObject;
+		
+	}
+
+	public static void setClockListener(ClockListener clockListenerObject) {
+		clockListener = clockListenerObject;
 		
 	}
 

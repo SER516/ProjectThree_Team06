@@ -1,5 +1,6 @@
 package server.controller;
 
+import server.listener.ClockListener;
 import server.listener.LogListener;
 import server.services.ServerSocketService;
 import server.view.ServerUI;
@@ -24,6 +25,15 @@ public class ServerMainController {
 				System.out.println("Hello" + message);
 				serverUI.logMessage(message);
 			}
+		});
+		ServerSocketEndpoint.setClockListener(new ClockListener() {
+
+			@Override
+			public void changeCounter(double counter) {
+				serverUI.changeClockCounter(counter);
+				
+			}
+			
 		});
 		ServerSocketService serverSocketService = new ServerSocketService();
 		serverSocketService.startServer();
