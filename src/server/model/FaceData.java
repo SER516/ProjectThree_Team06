@@ -1,102 +1,27 @@
 package server.model;
 
 public class FaceData {
+	
 	private double counter;
+	private AffectiveData affectiveData = new AffectiveData();
+	private ExpressiveData expressiveData = new ExpressiveData();
+	
+	public AffectiveData getAffectiveData() {
+		return affectiveData;
+	}
+	public void setAffectiveData(AffectiveData affectiveData) {
+		this.affectiveData = affectiveData;
+	}
+	public ExpressiveData getExpressiveData() {
+		return expressiveData;
+	}
+	public void setExpressiveData(ExpressiveData expressiveData) {
+		this.expressiveData = expressiveData;
+	}
 	public double getCounter() {
 		return counter;
 	}
 	public void setCounter(double counter) {
 		this.counter = counter;
-	}
-	// Eyebrow (Upper Face)
-	private float raiseBrow = 0;
-	private float furrowBrow = 0;
-	
-	// Smile (Lower face)
-	
-	private float smile = 0;
-	private float clench = 0;
-	private float smirkLeft = 0;
-	private float smirkRight = 0;
-	private float laugh = 0;
-	
-	// Eye
-	private boolean winkLeft = false;
-	private boolean winkRight = false;
-	private boolean lookLeft = false;
-	private boolean lookRight = false;
-	
-	private boolean blink;
-	public float getRaiseBrow() {
-		return raiseBrow;
-	}
-	public void setRaiseBrow(float raiseBrow) {
-		this.raiseBrow = raiseBrow;
-	}
-	public float getFurrowBrow() {
-		return furrowBrow;
-	}
-	public void setFurrowBrow(float furrowBrow) {
-		this.furrowBrow = furrowBrow;
-	}
-	public float getSmile() {
-		return smile;
-	}
-	public void setSmile(float smile) {
-		this.smile = smile;
-	}
-	public float getClench() {
-		return clench;
-	}
-	public void setClench(float clench) {
-		this.clench = clench;
-	}
-	public float getSmirkLeft() {
-		return smirkLeft;
-	}
-	public void setSmirkLeft(float smirkLeft) {
-		this.smirkLeft = smirkLeft;
-	}
-	public float getSmirkRight() {
-		return smirkRight;
-	}
-	public void setSmirkRight(float smirkRight) {
-		this.smirkRight = smirkRight;
-	}
-	public float getLaugh() {
-		return laugh;
-	}
-	public void setLaugh(float laugh) {
-		this.laugh = laugh;
-	}
-	public boolean isBlink() {
-		return blink;
-	}
-	public void setBlink(boolean blink) {
-		this.blink = blink;
-	}
-	public boolean isWinkLeft() {
-		return winkLeft;
-	}
-	public void setWinkLeft(boolean winkLeft) {
-		this.winkLeft = winkLeft;
-	}
-	public boolean isWinkRight() {
-		return winkRight;
-	}
-	public void setWinkRight(boolean winkRight) {
-		this.winkRight = winkRight;
-	}
-	public boolean isLookLeft() {
-		return lookLeft;
-	}
-	public void setLookLeft(boolean lookLeft) {
-		this.lookLeft = lookLeft;
-	}
-	public boolean isLookRight() {
-		return lookRight;
-	}
-	public void setLookRight(boolean lookRight) {
-		this.lookRight = lookRight;
 	}
 }
