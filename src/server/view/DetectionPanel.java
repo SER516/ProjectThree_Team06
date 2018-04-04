@@ -8,6 +8,7 @@ package server.view;
 /**
  *
  * @author mspranav
+ * @author rishabmantri
  */
 
 
@@ -17,6 +18,8 @@ package server.view;
     
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -27,7 +30,10 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
+import server.model.ServerDataSingleton;
 
 
 
@@ -40,7 +46,7 @@ public class DetectionPanel extends JPanel{
 	JComboBox<String> EyeComboBox;
 	JCheckBox EyeAutoResetCheckBox;
 	JCheckBox ActivateCheckBox;
-        JRadioButton EyeActivateRadioButton;
+    JRadioButton EyeActivateRadioButton;
 	JComboBox<String> PerformanceMetricsComboBox;
 	JSpinner PerformanceMetricsSpinner;
 	
@@ -151,7 +157,303 @@ public class DetectionPanel extends JPanel{
         PerformanceMetricsSpinner.setBounds(161, 229, 55, 25);
         this.add(PerformanceMetricsSpinner);
         
+        upperfaceSpinner.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                float upperfaceValue = (float)((double) upperfaceSpinner.getValue());
+                String upperfaceExp = (String)UpperfaceComboBox.getSelectedItem();
+                if(upperfaceExp=="Raise Brow")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setRaiseBrow(upperfaceValue);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setFurrowBrow(0);
+                }
+                if(upperfaceExp=="Furrow Brow")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setFurrowBrow(upperfaceValue);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setRaiseBrow(0);
+                }
+
+            }
+        });
+         
+        UpperfaceComboBox.addActionListener(
+                 new ActionListener(){
+                 public void actionPerformed(ActionEvent e){
+                 float upperfaceValue = (float)((double) upperfaceSpinner.getValue());
+                 String upperfaceExp = (String)UpperfaceComboBox.getSelectedItem();
+                 if(upperfaceExp=="Raise Brow")
+                 {
+                	 ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setRaiseBrow(upperfaceValue);
+                     ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setFurrowBrow(0);
+                 }
+                 if(upperfaceExp=="Furrow Brow")
+                 {
+                	 ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setFurrowBrow(upperfaceValue);
+                     ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setRaiseBrow(0);
+                 }
+            }
+         });
+   
+        lowerfaceSpinner.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                float lowerfaceValue = (float)((double) lowerfaceSpinner.getValue());
+                String lowerfaceExp = (String)LowerfaceComboBox.getSelectedItem();
+                if(lowerfaceExp=="Smile")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmile(lowerfaceValue);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setClench(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(0);
+                }
+                if( lowerfaceExp=="Clench")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmile(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setClench(lowerfaceValue);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(0);
+                }
+                if(lowerfaceExp=="Smirk Left")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmile(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setClench(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(lowerfaceValue);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(0);
+                }
+                if(lowerfaceExp=="Smirk Right")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmile(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setClench(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(lowerfaceValue);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(0);
+                }
+                if(lowerfaceExp=="Laugh")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmile(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setClench(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(0);
+                    ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(lowerfaceValue);
+                 }
+
+            }
+        });
+
+        LowerfaceComboBox.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        float lowerfaceValue = (float)((double) lowerfaceSpinner.getValue());
+                        String lowerfaceExp = (String)LowerfaceComboBox.getSelectedItem();
+                        if(lowerfaceExp=="Smile")
+                        {
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmile(lowerfaceValue);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setClench(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(0);
+                        }
+                        if(lowerfaceExp=="Clench")
+                        {
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmile(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setClench(lowerfaceValue);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(0);
+                        }
+                        if(lowerfaceExp=="Smirk Left")
+                        {
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmile(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setClench(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(lowerfaceValue);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(0);
+                        }
+                        if(lowerfaceExp=="Smirk Right")
+                        {
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmile(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setClench(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(lowerfaceValue);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(0);
+                        }
+                        if(lowerfaceExp=="Laugh")
+                        {
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmile(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setClench(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(0);
+                            ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(lowerfaceValue);
+                         }
+                        
+                    }
+                }
+        );
+        
+        
+        PerformanceMetricsSpinner.addChangeListener(new ChangeListener() {
+        	@Override
+            public void stateChanged(ChangeEvent e) {
+                float performanceMetricsValue = (float)((double) PerformanceMetricsSpinner.getValue());
+                String performanceMetricsExp = (String)PerformanceMetricsComboBox.getSelectedItem();
+                if(performanceMetricsExp=="Meditation")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setMeditation(performanceMetricsValue);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setEngagementBoredom(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setFrustation(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                }
+                if(performanceMetricsExp=="Engagement Boredom")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setMeditation(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setEngagementBoredom(performanceMetricsValue);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setFrustation(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                }
+                if(performanceMetricsExp=="Excitement ShortTerm")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setMeditation(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setEngagementBoredom(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(performanceMetricsValue);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setFrustation(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                }
+                if(performanceMetricsExp=="Frustration")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setMeditation(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setEngagementBoredom(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setFrustation(performanceMetricsValue);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                }
+                if(performanceMetricsExp=="Excitement LongTerm")
+                {
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setMeditation(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setEngagementBoredom(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setFrustation(0);
+                    ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(performanceMetricsValue);
+                }
+                
+            }
+        });
+
+        PerformanceMetricsComboBox.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        float performanceMetricsValue = (float)((double) PerformanceMetricsSpinner.getValue());
+                        String performanceMetricsExp = (String)PerformanceMetricsComboBox.getSelectedItem();
+                        if(performanceMetricsExp=="Meditation")
+                        {
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setMeditation(performanceMetricsValue);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setEngagementBoredom(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setFrustation(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                        }
+                        if(performanceMetricsExp=="Engagement Boredom")
+                        {
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setMeditation(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setEngagementBoredom(performanceMetricsValue);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setFrustation(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                        }
+                        if(performanceMetricsExp=="Excitement ShortTerm")
+                        {
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setMeditation(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setEngagementBoredom(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(performanceMetricsValue);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setFrustation(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                        }
+                        if(performanceMetricsExp=="Frustration")
+                        {
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setMeditation(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setEngagementBoredom(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setFrustation(performanceMetricsValue);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                        }
+                        if(performanceMetricsExp=="Excitement LongTerm")
+                        {
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setMeditation(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setEngagementBoredom(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setFrustation(0);
+                            ServerDataSingleton.getInstance().getFaceData().getAffectiveData().setExcitementShortTerm(performanceMetricsValue);
+                        }
+                    }
+                }
+        );
+        
+        ActionListener eyeListener = new ActionListener() {
+        	  public void actionPerformed(ActionEvent e) {
+                  String eye = (String)EyeComboBox.getSelectedItem();
+                  if(EyeActivateRadioButton.isSelected())
+                  {
+                  	if(eye=="Blink")
+                  	{
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setBlink(true);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkLeft(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkRight(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookLeft(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookRight(false);
+                  	}
+                  	if(eye=="Wink Left")
+                  	{
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setBlink(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkLeft(true);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkRight(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookLeft(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookRight(false);
+                  	}
+                  	if(eye=="Wink Right")
+                  	{
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setBlink(true);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkLeft(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkRight(true);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookLeft(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookRight(false);
+                  	}
+                  	if(eye=="Look Left")
+                  	{
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setBlink(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkLeft(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkRight(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookLeft(true);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookRight(false);
+                  	}
+                  	if(eye=="Look Right")
+                  	{
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setBlink(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkLeft(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkRight(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookLeft(false);
+                      ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookRight(true);
+                  	}
+                  }
+                  else
+                  { 
+                  	ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setBlink(false);
+                  	ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkLeft(false);
+                  	ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setWinkRight(false);
+                  	ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookLeft(false);
+                  	ServerDataSingleton.getInstance().getFaceData().getExpressiveData().setLookRight(false);
+                  }
+        	  }
+        	};
+
+        EyeActivateRadioButton.addActionListener(eyeListener);
+        EyeComboBox.addActionListener(eyeListener);
     }
+    
+    
 
     
     /**
