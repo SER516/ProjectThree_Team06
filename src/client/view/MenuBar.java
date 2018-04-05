@@ -49,7 +49,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
         }
         menu.setHorizontalTextPosition(SwingConstants.CENTER);
         menu.setVerticalTextPosition(SwingConstants.BOTTOM);
-        menu.setIcon(new ImageIcon(resizeMenuImg));
+        //menu.setIcon(new ImageIcon(resizeMBorder));
+        //menu.setSize(this.getWidth(),20);
         menu.setMnemonic(KeyEvent.VK_M);
         launchServer = new JMenuItem("Launch Server");
         launchServer.setMnemonic(KeyEvent.VK_L);
@@ -96,6 +97,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
         //add(Box.createHorizontalGlue());
         //add(stopImage_item);
         add(timmer, BorderLayout.CENTER);
+        add(Box.createRigidArea(new Dimension(this.getWidth(),30)));
     }
     
     public void setConnectionListener(ConnectionListener connectionListener) {
@@ -132,7 +134,5 @@ public class MenuBar extends JMenuBar implements ActionListener {
         {
         		connectionListener.reconnectServer(null);
         }
-        
     }
-
 }
