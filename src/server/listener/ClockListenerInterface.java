@@ -1,5 +1,5 @@
 package server.listener;
 
-public interface ClockListener {
+public interface ClockListenerInterface {
 	public void changeCounter(double counter);
 }

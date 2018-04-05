@@ -1,8 +1,10 @@
 package server.controller;
 
-import server.listener.ClockListener;
-import server.listener.LogListener;
+import server.listener.ClockListenerInterface;
+import server.listener.LogListenerInterface;
 import server.model.ServerModelSingleton;
+import server.services.ClockListenerService;
+import server.services.InteractiveListenerService;
 import server.services.ServerSocketService;
 import server.view.ServerView;
 
@@ -17,36 +19,47 @@ import javax.swing.UIManager.*;
 public class ServerMainController {
 	
 	public ServerMainController(ServerView serverView, ServerModelSingleton 
-			serverDataSingleton, ServerSocketService serverSocketService) {
+			serverDataSingleton, ServerSocketService serverSocketService,
+			ClockListenerService clockListenerService, InteractiveListenerService interactiveListenerService) {
 		
 		addViewToController(serverView);
-		setListeners(serverView);
+		setListeners(serverView,clockListenerService,interactiveListenerService);
 		serverSocketService.startServer();
 	}
 
 
-	private static void setListeners(ServerView serverView) {
+	private void setListeners(ServerView serverView, 
+			ClockListenerService clockListenerService, 
+			InteractiveListenerService interactiveListenerService) {
+		
 		setLogListener(serverView);
-		setClockListener(serverView);
+		setClockListener(serverView, clockListenerService);
+		setInteractiveListener(serverView,interactiveListenerService);
 		
 	}
 
 
-	private static void setClockListener(ServerView serverView) {
-		ServerSocketEndpoint.setClockListener(new ClockListener() {
-			@Override
-			public void changeCounter(double counter) {
-				serverView.changeClockCounter(counter);	
-			}	
-		});
+
+	private void setInteractiveListener(ServerView serverView,
+			InteractiveListenerService interactiveListenerService) {
+		serverView.setInteractiveListener(interactiveListenerService);
+	}
+
+
+
+
+	private void setClockListener(ServerView serverView, 
+			ClockListenerService clockListenerService) {
+		
+		clockListenerService.attachViewToListener(serverView);
+		ServerSocketEndpoint.setClockListener(clockListenerService);
 	}
 
 
 	private static void setLogListener(ServerView serverView) {
-		ServerSocketEndpoint.setLogListener(new LogListener() {
+		ServerSocketEndpoint.setLogListener(new LogListenerInterface() {
 			@Override
 			public void logMessage(String message) {
-				System.out.println("Hello" + message);
 				serverView.logMessage(message);
 			}
 		});
