@@ -22,7 +22,7 @@ public class ExpressionPlots extends JPanel {
     JLabel expression11 = new JLabel("Expression: 11");
     JLabel expression12 = new JLabel("Expression: 12");
     public ExpressionPlots(){
-        setLayout(new GridLayout(3,4,1,1));
+        setLayout(new GridLayout(12,1,1,1));
         setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         add(expression1);
         add(expression2);
