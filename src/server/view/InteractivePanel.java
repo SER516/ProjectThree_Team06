@@ -62,8 +62,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
         
         
         sendButton = new JButton("Send");
-        sendButton.setForeground(Color.WHITE);
-        sendButton.setBackground(Color.BLACK);
+        sendButton.setBackground(Color.LIGHT_GRAY);
         sendButton.setContentAreaFilled(false);
         sendButton.setOpaque(true);
         sendButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
