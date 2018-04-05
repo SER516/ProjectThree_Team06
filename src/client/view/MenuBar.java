@@ -93,9 +93,9 @@ public class MenuBar extends JMenuBar implements ActionListener {
         menu.setBackground(Color.BLACK);
         menu.setForeground(Color.WHITE);
         add(menu);
-        add(Box.createHorizontalGlue());
+        //add(Box.createHorizontalGlue());
         //add(stopImage_item);
-        add(timmer);
+        add(timmer, BorderLayout.CENTER);
     }
     
     public void setConnectionListener(ConnectionListener connectionListener) {

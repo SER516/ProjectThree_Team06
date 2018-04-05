@@ -17,11 +17,12 @@ public class ClientFrame extends JFrame {
 
 	JPanel emotivePanel;
 	JPanel affectivePanel;
-	MenuBar menuBar = new MenuBar();
+	MenuBar menuBar;
 
 	public ClientFrame() {
 		setTitle("Client (Lab 3, Team 6)");
 		// add(createMainPanel());
+		menuBar = new MenuBar();
 		JTabbedPane tabbedPane = new JTabbedPane();
 		emotivePanel = new EmotivePanel();
 		affectivePanel = new AffectivePanel();

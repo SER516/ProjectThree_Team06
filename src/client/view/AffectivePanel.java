@@ -30,11 +30,11 @@ import javax.swing.border.EmptyBorder;
  */
 
 public class AffectivePanel extends JPanel {
-	public static final String TABNAME = "Affectiva";
+	public static final String TABNAME = "Affective";
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		new AffectivePanel();
-	}
+	}*/
 	
 	public void BuildPalette(JPanel J) {
 		JFrame colorframe = new JFrame();
