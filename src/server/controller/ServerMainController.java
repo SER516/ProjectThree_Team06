@@ -2,8 +2,9 @@ package server.controller;
 
 import server.listener.ClockListener;
 import server.listener.LogListener;
+import server.model.ServerModelSingleton;
 import server.services.ServerSocketService;
-import server.view.ServerUI;
+import server.view.ServerView;
 
 
 import java.util.logging.Level;
@@ -15,50 +16,45 @@ import javax.swing.UIManager.*;
 
 public class ServerMainController {
 	
-	private static ServerUI serverUI;
-	
-	public static void main(String args[]) {
-		new ServerMainController();
-	}
-	
-	public ServerMainController() {
-		initializeUI();
-		setListeners();
-		ServerSocketService serverSocketService = new ServerSocketService();
+	public ServerMainController(ServerView serverView, ServerModelSingleton 
+			serverDataSingleton, ServerSocketService serverSocketService) {
+		
+		addViewToController(serverView);
+		setListeners(serverView);
 		serverSocketService.startServer();
 	}
 
 
-	private static void setListeners() {
-		setLogListener();
-		setClockListener();
+	private static void setListeners(ServerView serverView) {
+		setLogListener(serverView);
+		setClockListener(serverView);
 		
 	}
 
 
-	private static void setClockListener() {
+	private static void setClockListener(ServerView serverView) {
 		ServerSocketEndpoint.setClockListener(new ClockListener() {
 			@Override
 			public void changeCounter(double counter) {
-				serverUI.changeClockCounter(counter);	
+				serverView.changeClockCounter(counter);	
 			}	
 		});
 	}
 
 
-	private static void setLogListener() {
+	private static void setLogListener(ServerView serverView) {
 		ServerSocketEndpoint.setLogListener(new LogListener() {
 			@Override
 			public void logMessage(String message) {
 				System.out.println("Hello" + message);
-				serverUI.logMessage(message);
+				serverView.logMessage(message);
 			}
 		});
 		
 	}
 
 
-	private static void initializeUI() {
+	private static void addViewToController(ServerView serverView) {
 		try {
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -66,21 +62,13 @@ public class ServerMainController {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            		serverUI = new ServerUI();
-            		serverUI.setVisible(true);
+            		serverView.setVisible(true);
             }
         });
 		
