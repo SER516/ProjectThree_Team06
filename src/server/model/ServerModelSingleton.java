@@ -2,8 +2,8 @@ package server.model;
 
 import server.helper.ServerConstants;
 
-public class ServerDataSingleton {
-	private static volatile ServerDataSingleton serverDataSingleton;
+public class ServerModelSingleton {
+	private static volatile ServerModelSingleton serverDataSingleton;
 	private static Object mutex = new Object();
 	private FaceData faceData = new FaceData();
 	private  boolean autoReset = ServerConstants.AUTO_RESET;
@@ -34,13 +34,13 @@ public class ServerDataSingleton {
 		this.autoReset = autoReset;
 	}
 
-	public static ServerDataSingleton getInstance() {
-		ServerDataSingleton result = serverDataSingleton;
+	public static ServerModelSingleton getInstance() {
+		ServerModelSingleton result = serverDataSingleton;
 		if (result == null) {
 			synchronized (mutex) {
 				result = serverDataSingleton;
 				if (result == null)
-					result = new ServerDataSingleton();
+					result = new ServerModelSingleton();
 				serverDataSingleton = result;
 			}
 		}

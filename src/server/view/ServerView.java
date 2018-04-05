@@ -12,13 +12,13 @@ import javax.swing.JFrame;
  *
  * @author mspranav
  */
-public class ServerUI extends javax.swing.JFrame {
+public class ServerView extends javax.swing.JFrame {
 	ConsolePanel consolePanel;
 	DetectionPanel detectionPanel;
     /**
      * Creates new form ServerUI
      */
-    public ServerUI() {
+    public ServerView() {
         //initComponents();
         this.setTitle("Emotiv Xavier Composer");
         this.getContentPane().setBackground(Color.LIGHT_GRAY);

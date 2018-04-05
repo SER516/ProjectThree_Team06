@@ -21,7 +21,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import server.model.ServerDataSingleton;
+import server.model.ServerModelSingleton;
 /**
  *
  * @author mspranav
@@ -107,12 +107,12 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == sendButton){
 			if(autoResetCheckBox.isSelected()) {
-				ServerDataSingleton.getInstance().setAutoReset(true);
-				ServerDataSingleton.getInstance().setOneTimeSend(false);
+				ServerModelSingleton.getInstance().setAutoReset(true);
+				ServerModelSingleton.getInstance().setOneTimeSend(false);
 			}
 			else {
-				ServerDataSingleton.getInstance().setAutoReset(false);
-				ServerDataSingleton.getInstance().setOneTimeSend(true);
+				ServerModelSingleton.getInstance().setAutoReset(false);
+				ServerModelSingleton.getInstance().setOneTimeSend(true);
 			}
 		}
 	}
@@ -124,7 +124,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
 		if(e.getSource() == emoStateSpinner) {
 			String stateValue = emoStateSpinner.getValue().toString();
 			Double stateInterval = Double.parseDouble(stateValue);
-			ServerDataSingleton.getInstance().setStateInterval(stateInterval);
+			ServerModelSingleton.getInstance().setStateInterval(stateInterval);
 		}
 	}
 }

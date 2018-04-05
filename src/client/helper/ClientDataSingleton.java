@@ -1,6 +1,6 @@
 package client.helper;
 
-import server.model.ServerDataSingleton;
+import server.model.ServerModelSingleton;
 
 public class ClientDataSingleton {
 	private static volatile ClientDataSingleton clientDataSingleton;

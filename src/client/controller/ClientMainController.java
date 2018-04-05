@@ -5,6 +5,7 @@ import javax.websocket.Session;
 import client.helper.ClientDataSingleton;
 import client.listener.ConnectionListener;
 import client.view.ClientFrame;
+import server.controller.ServerApplicationController;
 import server.controller.ServerMainController;
 
 public class ClientMainController {
@@ -31,8 +32,7 @@ public class ClientMainController {
 			}
 			@Override
 			public void initializeServer() {
-				new ServerMainController();
-				
+				new ServerApplicationController();
 			}
 		});	
 	}
