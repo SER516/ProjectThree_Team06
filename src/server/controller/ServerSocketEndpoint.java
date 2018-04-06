@@ -17,12 +17,10 @@ import javax.websocket.server.ServerEndpoint;
 
 
 import com.google.gson.Gson;
-
-import server.listener.ClockListenerInterface;
 import server.listener.LogListenerInterface;
 import server.model.FaceData;
 import server.model.ServerModelSingleton;
-import server.services.ClockListenerService;
+import server.services.DetectionListenerService;
 
 @ServerEndpoint("/server")
 public class ServerSocketEndpoint {
@@ -31,7 +29,7 @@ public class ServerSocketEndpoint {
 	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
 	private static Thread rateThread; // Child thread for sending random number
 	private static LogListenerInterface logListener;
-	private static ClockListenerService clockListener;
+	private static DetectionListenerService detectionListenerService;
 	
 
 	static {
@@ -49,7 +47,6 @@ public class ServerSocketEndpoint {
 					try {
 						Double clock = ServerModelSingleton.getInstance().getStateInterval();
 						Long sleepValue = (long) (clock * 1000);
-						System.out.println(sleepValue);
 						sleep(sleepValue);
 					} catch (InterruptedException e) {
 						System.out.print("Inside exception");
@@ -64,7 +61,7 @@ public class ServerSocketEndpoint {
 				ServerModelSingleton.getInstance().getFaceData().setCounter(newCounter);
 				String data = gson.toJson(ServerModelSingleton.getInstance().getFaceData());
 				logListener.logMessage(data);
-				clockListener.changeCounter(newCounter);
+				detectionListenerService.changeCounter(newCounter);
 				sendAll(data);
 				
 			};
@@ -125,8 +122,8 @@ public class ServerSocketEndpoint {
 		
 	}
 
-	public static void setClockListener(ClockListenerService clockListenerObject) {
-		clockListener = clockListenerObject;
+	public static void setDetectionListenerService(DetectionListenerService detectionListenerServiceObject) {
+		detectionListenerService = detectionListenerServiceObject;
 		
 	}
 

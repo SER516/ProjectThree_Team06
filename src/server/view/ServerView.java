@@ -8,6 +8,7 @@ package server.view;
 import java.awt.Color;
 import javax.swing.JFrame;
 
+import server.services.DetectionListenerService;
 import server.services.InteractiveListenerService;
 
 
@@ -81,6 +82,11 @@ public class ServerView extends javax.swing.JFrame {
 		
 		interactivePanel.setInteractiveListener(interactiveListenerService);
 		
+		
+	}
+
+	public void setDetectionListenerService(DetectionListenerService detectionListenerService) {
+		detectionPanel.setDetectionListenerService(detectionListenerService);
 		
 	}
     
