@@ -20,18 +20,18 @@ import java.net.URL;
  */
 public class MenuBar extends JMenuBar implements ActionListener {
 
-    JMenuItem launchServer;
-    JMenuItem connect;
-    JMenuItem reconnect;
-    JMenuItem stopWatch;
-    JMenuItem connection;
+    private JMenuItem launchServer;
+    private JMenuItem connect;
+    private JMenuItem reconnect;
+    private JMenuItem stopWatch;
+    private JMenuItem connection;
     private ConnectionListener connectionListener;
-    BufferedImage GreenIcon, RedIcon;
+    private BufferedImage GreenIcon, RedIcon;
 
 
     public MenuBar(){
         //URL menu_url = getClass().getResource("MENU_BACKGROUND.png");
-        setLayout(new GridLayout(1,3));
+        //setLayout(new GridLayout(1,4));
         URL menuBack_url = getClass().getResource("BlackBackground.jpg");
         URL stopimg_url = getClass().getResource("StopWatch.png");
         JMenu menu = new JMenu("Menu");
@@ -94,9 +94,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
         stopWatch = new JMenuItem("Stop Watch", new ImageIcon(resizeStopImg));
         //stopImage_item.setSize(1,this.getHeight());
-        connection = new JMenuItem("Not Connected", new ImageIcon(RedIcon));
-        /*connection.setIcon(new ImageIcon(resizeGreen));
-        connection.setText("Connected");*/
+        connection = new JMenuItem();
+        connect(false);
 
         launchServer.addActionListener(this);
         connect.addActionListener(this);
@@ -117,6 +116,22 @@ public class MenuBar extends JMenuBar implements ActionListener {
         add(connection);
         //add(timmer, BorderLayout.CENTER);
     }
+
+    /**
+     * connect method, changes the label and icon on menubar.
+     *
+     * @param flag
+     */
+    public void connect(boolean flag){
+        if(flag){
+            connection.setIcon(new ImageIcon(GreenIcon));
+            connection.setText("Connected");
+        }
+        else{
+            connection.setIcon(new ImageIcon(RedIcon));
+            connection.setText("Not Connected");
+        }
+    }
     
     public void setConnectionListener(ConnectionListener connectionListener) {
     		this.connectionListener = connectionListener;
@@ -136,6 +151,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
         g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("BlackBackground.jpg")), 0,
                 0, size.width, size.height, this);
     }
+
+    /**
+     * actionPerformed method handles the on click event from menu.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == launchServer)
@@ -147,8 +167,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
             if(connectionListener!=null) {
             		connectionListener.startServer();
             }
-            /*connection.setIcon(new ImageIcon(resizeGreen));
-            connection.setText("Connected");*/
+            /*call connection(true) to turn connection label green*/
         }
         else if (e.getSource() == reconnect)
         {
