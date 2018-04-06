@@ -28,7 +28,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
     private ConnectionListener connectionListener;
     private BufferedImage GreenIcon, RedIcon;
 
-
     public MenuBar(){
         //URL menu_url = getClass().getResource("MENU_BACKGROUND.png");
         //setLayout(new GridLayout(1,4));
@@ -68,26 +67,14 @@ public class MenuBar extends JMenuBar implements ActionListener {
         launchServer = new JMenuItem("Launch Server");
 
         Border black_border = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.BLACK);
-        launchServer.setBorder(black_border);
-        launchServer.setOpaque(true);
-        launchServer.setBackground(Color.BLACK);
-        launchServer.setForeground(Color.WHITE);
+        setForegroundBackground(launchServer, black_border);
 
         JMenu connectMenu = new JMenu("Connect");
-        connectMenu.setOpaque(true);
-        connectMenu.setBackground(Color.BLACK);
-        connectMenu.setForeground(Color.WHITE);
-        connectMenu.setBorder(black_border);
+        setForegroundBackground(connectMenu, black_border);
         connect = new JMenuItem("Connect");
         reconnect = new JMenuItem("Reconnect");
-        connect.setOpaque(true);
-        connect.setForeground(Color.WHITE);
-        connect.setBackground(Color.BLACK);
-        connect.setBorder(black_border);
-        reconnect.setOpaque(true);
-        reconnect.setForeground(Color.WHITE);
-        reconnect.setBackground(Color.BLACK);
-        reconnect.setBorder(black_border);
+        setForegroundBackground(connect, black_border);
+        setForegroundBackground(reconnect, black_border);
         connectMenu.add(connect);
         connectMenu.add(new JPopupMenu.Separator());
         connectMenu.add(reconnect);
@@ -103,13 +90,12 @@ public class MenuBar extends JMenuBar implements ActionListener {
         menu.add(launchServer);
         menu.add(new JPopupMenu.Separator());
         menu.add(connectMenu);
-        menu.setOpaque(true);
-        menu.setBackground(Color.BLACK);
-        menu.setForeground(Color.WHITE);
+        setForegroundBackground(menu, black_border);
         add(menu);
         //add(Box.createRigidArea(new Dimension(this.getWidth(),40)));
-        stopWatch.setBackground(Color.BLACK);
+        //setForegroundBackground(stopWatch, black_border);
         stopWatch.setForeground(Color.WHITE);
+        stopWatch.setBackground(Color.BLACK);
         connection.setBackground(Color.BLACK);
         connection.setForeground(Color.WHITE);
         add(stopWatch);
@@ -137,19 +123,36 @@ public class MenuBar extends JMenuBar implements ActionListener {
     		this.connectionListener = connectionListener;
     }
 
+    /**
+     * setForegroundBackground method customizes appearance of items in menubar
+     * @param item
+     * @param black_border
+     */
+    public void setForegroundBackground(JMenu item, Border black_border){
+        item.setBackground(Color.BLACK);
+        item.setForeground(Color.WHITE);
+        item.setBorder(black_border);
+        item.setOpaque(true);
+    }
+
+    /**
+     * setForegroundBackground method customizes appearance of items in menubar
+     * @param item
+     * @param black_border
+     */
+    public void setForegroundBackground(JMenuItem item, Border black_border){
+        item.setBackground(Color.BLACK);
+        item.setForeground(Color.WHITE);
+        item.setBorder(black_border);
+        item.setOpaque(true);
+    }
+
     public Graphics2D setGraphics(BufferedImage resizeImg, BufferedImage menuImage){
         Graphics2D g2 = resizeImg.createGraphics();
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g2.drawImage(menuImage, 0, 0, 30, 24, null);
         g2.dispose();
         return g2;
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        Dimension size = this.getSize();
-        g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("BlackBackground.jpg")), 0,
-                0, size.width, size.height, this);
     }
 
     /**
