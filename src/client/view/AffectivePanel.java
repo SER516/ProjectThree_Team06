@@ -81,7 +81,7 @@ public class AffectivePanel extends JPanel {
 		panel1.setBackground(new Color(255,99,71));
 		JButton button1 = new JButton("Focus");
 		button1.setFont(new Font("Papyrus", Font.BOLD, 25));
-		button1.setPreferredSize(new Dimension(110,50));
+		button1.setPreferredSize(new Dimension(110,37));
 		button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -99,7 +99,7 @@ public class AffectivePanel extends JPanel {
 		panel2.setBackground(new Color(128, 191, 255));
 		JButton button2 = new JButton("Stress");
 		button2.setFont(metric_font);
-		button2.setPreferredSize(new Dimension(110,50));
+		button2.setPreferredSize(new Dimension(110,37));
 		button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -117,7 +117,7 @@ public class AffectivePanel extends JPanel {
 		panel3.setBackground(new Color(204, 204, 255));
 		JButton button3 = new JButton("Interest");
 		button3.setFont(metric_font);
-		button3.setPreferredSize(new Dimension(110,50));
+		button3.setPreferredSize(new Dimension(110,37));
 		button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -135,7 +135,7 @@ public class AffectivePanel extends JPanel {
 		// panel_excitementshort.setBackground(new Color(189, 195, 199));
 		JButton button4 = new JButton("Engagement");
 		button4.setFont(metric_font);
-		button4.setPreferredSize(new Dimension(135,50));
+		button4.setPreferredSize(new Dimension(135,37));
 		button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -152,7 +152,7 @@ public class AffectivePanel extends JPanel {
 		panel5.setBackground(new Color(184, 102, 20));
 		JButton button5 = new JButton("Relaxation");
 		button5.setFont(metric_font);
-		button5.setPreferredSize(new Dimension(120,50));
+		button5.setPreferredSize(new Dimension(120,37));
 		button5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -171,7 +171,7 @@ public class AffectivePanel extends JPanel {
 		// panel_excitementlong.setBackground(new Color(189, 195, 199));
 		JButton button6 = new JButton("Excitement");
 		button6.setFont(metric_font);
-		button6.setPreferredSize(new Dimension(120,50));
+		button6.setPreferredSize(new Dimension(120,37));
 		button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
