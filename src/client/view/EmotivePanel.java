@@ -1,9 +1,10 @@
 package client.view;
 
 import javax.swing.*;
+
+import client.model.SingleTonData;
+
 import java.awt.*;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 
 /**
  * EmotivePanel class is a emotive tab on the GUI
@@ -11,18 +12,18 @@ import java.awt.event.AdjustmentListener;
  * @author Abhishek
  */
 public class EmotivePanel extends JPanel {
-    public static final String TABNAME = "Expression";
+    public static final String TABNAME = "Emotive";
     JPanel facePart;
-    JPanel graphPart;
+    ExpressionPlots graphPart;
 
     public EmotivePanel(){
         setLayout(new BorderLayout());
         Dimension df = this.getSize();
         facePart = new FaceExpressions();
         graphPart = new ExpressionPlots();
+        SingleTonData.getInstance().setExpressplot(graphPart);
         facePart.setBackground(Color.LIGHT_GRAY);
         graphPart.setBackground(Color.WHITE);
-
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         splitPane.setResizeWeight(0.3);
         splitPane.setEnabled(false);

@@ -1,7 +1,6 @@
-package server.model;
-
+package client.model;
 public class AffectiveData {
-	
+
 	private float interest = 0;
 	private float engagement = 0;
 	private float stress = 0;
@@ -45,3 +44,4 @@ public class AffectiveData {
 		this.focus = focus;
 	}
 }
+
