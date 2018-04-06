@@ -35,6 +35,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import server.services.DetectionListenerService;
+import server.services.InteractiveListenerService;
 
 
 
@@ -52,6 +53,7 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 	JComboBox<String> performanceMetricsComboBox;
 	JSpinner performanceMetricsSpinner;
 	DetectionListenerService detectionListenerService;
+    JSpinner lowerfaceSpinner;
 	
     public DetectionPanel() {
         this.setBackground(Color.LIGHT_GRAY);
@@ -114,7 +116,7 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
         lowerfaceComboBox.addActionListener(this);
         this.add(lowerfaceComboBox);
         
-        JSpinner lowerfaceSpinner = new JSpinner();
+        lowerfaceSpinner = new JSpinner();
         lowerfaceSpinner.setModel(new SpinnerNumberModel(0.00, 0.00, 1.00, 0.1));
         lowerfaceSpinner.setForeground(Color.WHITE);
         lowerfaceSpinner.setBounds(383, 97, 52, 25);
@@ -163,6 +165,7 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
         performanceMetricsComboBox.setBounds(14, 229, 139, 25);
         performanceMetricsComboBox.addActionListener(this);
         this.add(performanceMetricsComboBox);
+        
         performanceMetricsSpinner = new JSpinner();
         performanceMetricsSpinner.setModel(new SpinnerNumberModel(0.00, 0.00, 1.00, 0.1));
         performanceMetricsSpinner.setBounds(161, 229, 55, 25);
@@ -207,47 +210,61 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		if(e.getSource().equals("lowerfaceSpinner")) {
-			
+		System.out.println(e.getSource());
+		if(e.getSource() == lowerfaceSpinner) {	
+			System.out.println("lowerface");
+			float lowerfaceValue = (float)((double)lowerfaceSpinner.getValue());
+            String lowerfaceExp = (String)lowerfaceComboBox.getSelectedItem();
+			detectionListenerService.changeLowerface(lowerfaceExp,lowerfaceValue);
 		}
-		
-		else if(e.getSource().equals("upperfaceSpinner")){
-			
-		}
-		
-		else if(e.getSource().equals("performanceMetricsSpinner")){
-			
+		else if(e.getSource() == upperfaceSpinner){
+			float upperfaceValue = (float)((double)upperfaceSpinner.getValue());
+            String upperfaceExp = (String)upperfaceComboBox.getSelectedItem();
+			detectionListenerService.changeUpperface(upperfaceExp, upperfaceValue);		
+			}
+		else if(e.getSource() == performanceMetricsSpinner)
+		{
+			float metricsValue = (float)((double)performanceMetricsSpinner.getValue());
+            String metricsExp = (String)performanceMetricsComboBox.getSelectedItem();
+			detectionListenerService.changeLowerface(metricsExp,metricsValue);	
 		}
 		
 	}
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getSource());
 		if(e.getSource() == upperfaceComboBox) {
-			
+			float upperfaceValue = (float)((double)upperfaceSpinner.getValue());
+            String upperfaceExp = (String)upperfaceComboBox.getSelectedItem();
+			detectionListenerService.changeUpperface(upperfaceExp, upperfaceValue);
 		}
 		else if( e.getSource() == lowerfaceComboBox) {
-			
+			float lowerfaceValue = (float)((double)lowerfaceSpinner.getValue());
+			String lowerfaceExp = (String)lowerfaceComboBox.getSelectedItem();
+			detectionListenerService.changeLowerface(lowerfaceExp,lowerfaceValue);
 		}
 		
-		else if(e.getSource() == lowerfaceComboBox) {
-			
-		}		
-		else if(e.getSource() == lowerfaceComboBox) {
-			
-		}
 		else if(e.getSource() == performanceMetricsComboBox) {
-			
-		}
+			float metricsValue = (float)((double)performanceMetricsSpinner.getValue());
+            String metricsExp = (String)performanceMetricsComboBox.getSelectedItem();
+			detectionListenerService.changeLowerface(metricsExp,metricsValue);
+			}
 		else if(e.getSource() == eyeComboBox){
-			
+			String eye = (String)eyeComboBox.getSelectedItem();
+            if(eyeActivateRadioButton.isSelected())
+            {
+            detectionListenerService.changeEye(eye);	
+            }
+            
 		}
-		
 		else if(e.getSource() == eyeActivateRadioButton){
-			
-		}
+			String eye = (String)eyeComboBox.getSelectedItem();
+            if(eyeActivateRadioButton.isSelected())
+            {
+                detectionListenerService.changeEye(eye);	
+            }
+        }
 		else if(e.getSource() ==  eyeAutoResetCheckBox){
 			
 		}		
