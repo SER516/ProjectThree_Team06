@@ -2,41 +2,46 @@ package server.model;
 
 public class AffectiveData {
 	
-	private float meditation = 0;
-	private float engagementBoredom = 0;
-	private float excitementShortTerm = 0;
-	private float frustation = 0;
-	private float  excitementLongTerm = 0;
-	
-	public float getMeditation() {
-		return meditation;
+	private float interest = 0;
+	private float engagement = 0;
+	private float stress = 0;
+	private float relaxation = 0;
+	private float  excitement = 0;
+	private float  focus = 0;
+	public float getInterest() {
+		return interest;
 	}
-	public void setMeditation(float meditation) {
-		this.meditation = meditation;
+	public void setInterest(float interest) {
+		this.interest = interest;
 	}
-	public float getEngagementBoredom() {
-		return engagementBoredom;
+	public float getEngagement() {
+		return engagement;
 	}
-	public void setEngagementBoredom(float engagementBoredom) {
-		this.engagementBoredom = engagementBoredom;
+	public void setEngagement(float engagement) {
+		this.engagement = engagement;
 	}
-	public float getExcitementShortTerm() {
-		return excitementShortTerm;
+	public float getStress() {
+		return stress;
 	}
-	public void setExcitementShortTerm(float excitementShortTerm) {
-		this.excitementShortTerm = excitementShortTerm;
+	public void setStress(float stress) {
+		this.stress = stress;
 	}
-	public float getFrustation() {
-		return frustation;
+	public float getRelaxation() {
+		return relaxation;
 	}
-	public void setFrustation(float frustation) {
-		this.frustation = frustation;
+	public void setRelaxation(float relaxation) {
+		this.relaxation = relaxation;
 	}
-	public float getExcitementLongTerm() {
-		return excitementLongTerm;
+	public float getExcitement() {
+		return excitement;
 	}
-	public void setExcitementLongTerm(float excitementLongTerm) {
-		this.excitementLongTerm = excitementLongTerm;
-	} 
-
+	public void setExcitement(float excitement) {
+		this.excitement = excitement;
+	}
+	public float getFocus() {
+		return focus;
+	}
+	public void setFocus(float focus) {
+		this.focus = focus;
+	}
 }

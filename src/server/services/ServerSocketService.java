@@ -13,11 +13,11 @@ import org.eclipse.jetty.websocket.jsr356.server.ServerContainer;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 
 import server.controller.ServerSocketEndpoint;
-import server.listener.LogListener;
+import server.listener.LogListenerInterface;
 
 public class ServerSocketService {
 	Thread serverThread;
-	LogListener logListener;
+	LogListenerInterface logListener;
 
 	public void startServer() {
 		final ExecutorService clientProcessingPool = Executors.newFixedThreadPool(10);

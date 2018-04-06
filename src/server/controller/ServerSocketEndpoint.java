@@ -17,11 +17,10 @@ import javax.websocket.server.ServerEndpoint;
 
 
 import com.google.gson.Gson;
-
-import server.listener.ClockListener;
-import server.listener.LogListener;
+import server.listener.LogListenerInterface;
 import server.model.FaceData;
-import server.model.ServerDataSingleton;
+import server.model.ServerModelSingleton;
+import server.services.DetectionListenerService;
 
 @ServerEndpoint("/server")
 public class ServerSocketEndpoint {
@@ -29,8 +28,8 @@ public class ServerSocketEndpoint {
 	private static Gson gson = new Gson();
 	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
 	private static Thread rateThread; // Child thread for sending random number
-	private static LogListener logListener;
-	private static ClockListener clockListener;
+	private static LogListenerInterface logListener;
+	private static DetectionListenerService detectionListenerService;
 	
 
 	static {
@@ -38,17 +37,16 @@ public class ServerSocketEndpoint {
 			public void run() {
 				while (true) {
 					if (queue != null)
-						if(ServerDataSingleton.getInstance().isAutoReset()) {
+						if(ServerModelSingleton.getInstance().isAutoReset()) {
 							sendAndUpdateCounter();	
 						}
-						if(ServerDataSingleton.getInstance().isOneTimeSend()) {
+						if(ServerModelSingleton.getInstance().isOneTimeSend()) {
 							sendAndUpdateCounter();
-							ServerDataSingleton.getInstance().setOneTimeSend(false);
+							ServerModelSingleton.getInstance().setOneTimeSend(false);
 						}
 					try {
-						Double clock = ServerDataSingleton.getInstance().getStateInterval();
+						Double clock = ServerModelSingleton.getInstance().getStateInterval();
 						Long sleepValue = (long) (clock * 1000);
-						System.out.println(sleepValue);
 						sleep(sleepValue);
 					} catch (InterruptedException e) {
 						System.out.print("Inside exception");
@@ -57,13 +55,13 @@ public class ServerSocketEndpoint {
 			}
 
 			private void sendAndUpdateCounter() {
-				double interval = ServerDataSingleton.getInstance().getStateInterval();
-				double counter = ServerDataSingleton.getInstance().getFaceData().getCounter();
+				double interval = ServerModelSingleton.getInstance().getStateInterval();
+				double counter = ServerModelSingleton.getInstance().getFaceData().getCounter();
 				double newCounter = counter + interval;
-				ServerDataSingleton.getInstance().getFaceData().setCounter(newCounter);
-				String data = gson.toJson(ServerDataSingleton.getInstance().getFaceData());
+				ServerModelSingleton.getInstance().getFaceData().setCounter(newCounter);
+				String data = gson.toJson(ServerModelSingleton.getInstance().getFaceData());
 				logListener.logMessage(data);
-				clockListener.changeCounter(newCounter);
+				detectionListenerService.changeCounter(newCounter);
 				sendAll(data);
 				
 			};
@@ -119,13 +117,13 @@ public class ServerSocketEndpoint {
 		}
 	}
 
-	public static void setLogListener(LogListener logListenerObject) {
+	public static void setLogListener(LogListenerInterface logListenerObject) {
 		logListener = logListenerObject;
 		
 	}
 
-	public static void setClockListener(ClockListener clockListenerObject) {
-		clockListener = clockListenerObject;
+	public static void setDetectionListenerService(DetectionListenerService detectionListenerServiceObject) {
+		detectionListenerService = detectionListenerServiceObject;
 		
 	}
 

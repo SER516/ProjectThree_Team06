@@ -1,5 +1,7 @@
 package client.view;
 
+import client.model.SingleTonData;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
@@ -36,7 +38,7 @@ import javax.swing.border.EmptyBorder;
 
 public class AffectivePanel extends JPanel {
 	public static final String TABNAME = "Affective";
-
+	AffectivePlot graphPart;
 	/*public static void main(String[] args) {
 		new AffectivePanel();
 	}*/
@@ -57,6 +59,12 @@ public class AffectivePanel extends JPanel {
 		JLabel GraphPlot = new JLabel("Graph Plot",JLabel.CENTER);
 		GraphPlot.setFont(new Font("Papyrus", Font.BOLD, 15));
 		panelOne.add(GraphPlot, BorderLayout.NORTH);
+
+		panelOne.setLayout(new BorderLayout());
+		graphPart = new AffectivePlot();
+		SingleTonData.getInstance().setAffectivePlot(graphPart);
+		graphPart.setBackground(Color.WHITE);
+		panelOne.add(graphPart);
 
 		// set up jpanel2
 		Font metric_font= new Font("Papyrus", Font.BOLD, 21);

@@ -32,13 +32,14 @@ public class ClientFrame extends JFrame {
 		setLayout(new BorderLayout());
 
 		pack();
-		setResizable(false);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1300, 700);
 		centerGUI(this);
 		setJMenuBar(menuBar);
 		add(tabbedPane, BorderLayout.CENTER);
 		setVisible(true);
+		setResizable(false);
 	}
 
 	private void centerGUI(JFrame frame) {

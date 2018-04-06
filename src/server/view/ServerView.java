@@ -8,17 +8,22 @@ package server.view;
 import java.awt.Color;
 import javax.swing.JFrame;
 
+import server.services.DetectionListenerService;
+import server.services.InteractiveListenerService;
+
+
 /**
  *
  * @author mspranav
  */
-public class ServerUI extends javax.swing.JFrame {
+public class ServerView extends javax.swing.JFrame {
 	ConsolePanel consolePanel;
 	DetectionPanel detectionPanel;
+	InteractivePanel interactivePanel;
     /**
      * Creates new form ServerUI
      */
-    public ServerUI() {
+    public ServerView() {
         //initComponents();
         this.setTitle("Emotiv Xavier Composer");
         this.getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -27,8 +32,8 @@ public class ServerUI extends javax.swing.JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setLayout(null);
         
-        InteractivePanel intPanel = new InteractivePanel();
-        this.getContentPane().add(intPanel);
+        interactivePanel = new InteractivePanel();
+        this.getContentPane().add(interactivePanel);
         
         detectionPanel = new DetectionPanel();
         this.getContentPane().add(detectionPanel);
@@ -72,5 +77,17 @@ public class ServerUI extends javax.swing.JFrame {
 		
 	}
 
+	public void setInteractiveListener(InteractiveListenerService 
+			interactiveListenerService) {
+		
+		interactivePanel.setInteractiveListener(interactiveListenerService);
+		
+		
+	}
+
+	public void setDetectionListenerService(DetectionListenerService detectionListenerService) {
+		detectionPanel.setDetectionListenerService(detectionListenerService);
+		
+	}
     
 }

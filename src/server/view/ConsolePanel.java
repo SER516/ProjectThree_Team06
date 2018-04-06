@@ -40,18 +40,11 @@ public class ConsolePanel extends javax.swing.JPanel {
 		this.setLayout(null);
 
 		btnClearLog = new JButton("Clear Log");
-		btnClearLog.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-			}
-		});
 		btnClearLog.setBounds(140, 119, 171, 25);
-		btnClearLog.setForeground(Color.WHITE);
-		btnClearLog.setBackground(Color.BLACK);
+		btnClearLog.setBackground(Color.LIGHT_GRAY);
 		btnClearLog.setContentAreaFilled(false);
 		btnClearLog.setOpaque(true);
 		consoleTextArea = new JTextArea();
-		consoleTextArea.setForeground(Color.WHITE);
 		consoleTextArea.setBackground(Color.DARK_GRAY);
 		consoleTextArea.setBounds(10, 26, 454, 86);
 		this.add(btnClearLog);

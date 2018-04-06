@@ -20,8 +20,8 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
-import server.model.ServerDataSingleton;
+import server.model.ServerModelSingleton;
+import server.services.InteractiveListenerService;
 /**
  *
  * @author mspranav
@@ -32,6 +32,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
 	JCheckBox autoResetCheckBox;
 	JSpinner emoStateSpinner;
 	JButton sendButton;
+	InteractiveListenerService interactiveListenerService;
 	
     /**
      * Creates new form InteractivePanel
@@ -62,8 +63,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
         
         
         sendButton = new JButton("Send");
-        sendButton.setForeground(Color.WHITE);
-        sendButton.setBackground(Color.BLACK);
+        sendButton.setBackground(Color.LIGHT_GRAY);
         sendButton.setContentAreaFilled(false);
         sendButton.setOpaque(true);
         sendButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -106,14 +106,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == sendButton){
-			if(autoResetCheckBox.isSelected()) {
-				ServerDataSingleton.getInstance().setAutoReset(true);
-				ServerDataSingleton.getInstance().setOneTimeSend(false);
-			}
-			else {
-				ServerDataSingleton.getInstance().setAutoReset(false);
-				ServerDataSingleton.getInstance().setOneTimeSend(true);
-			}
+			interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
 		}
 	}
 
@@ -123,8 +116,18 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
 	public void stateChanged(ChangeEvent e) {
 		if(e.getSource() == emoStateSpinner) {
 			String stateValue = emoStateSpinner.getValue().toString();
-			Double stateInterval = Double.parseDouble(stateValue);
-			ServerDataSingleton.getInstance().setStateInterval(stateInterval);
+			interactiveListenerService.autoResetChange(stateValue);
 		}
 	}
+
+
+
+	public void setInteractiveListener(InteractiveListenerService interactiveListenerService) {
+		this.interactiveListenerService = interactiveListenerService;
+		
+	}
+
+
+
+	
 }

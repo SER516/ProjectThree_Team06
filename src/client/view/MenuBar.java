@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource;
 import client.listener.ConnectionListener;
 import java.awt.event.KeyEvent;
@@ -22,28 +23,35 @@ public class MenuBar extends JMenuBar implements ActionListener {
     JMenuItem launchServer;
     JMenuItem connect;
     JMenuItem reconnect;
-
-    JLabel timmer;
+    JMenuItem stopWatch;
+    JMenuItem connection;
     private ConnectionListener connectionListener;
 
 
     public MenuBar(){
-        URL menu_url = getClass().getResource("MENU_BACKGROUND.png");
+        //URL menu_url = getClass().getResource("MENU_BACKGROUND.png");
+        setLayout(new GridLayout(1,3));
         URL menuBack_url = getClass().getResource("BlackBackground.jpg");
-        //URL stopimg_url = getClass().getResource("StopWatch.png");
+        URL stopimg_url = getClass().getResource("StopWatch.png");
         JMenu menu = new JMenu("Menu");
-        BufferedImage menuImage, menuBorder, stopImage;
-        BufferedImage resizeMenuImg = null, resizeMBorder = null, resizeStopImg = null;
+        BufferedImage  menuBorder, stopImage, redImage, greenImage;
+        BufferedImage resizeMBorder = null, resizeStopImg = null, resizeRed = null, resizeGreen = null;
         try{
-            menuImage = ImageIO.read(menu_url);
+            //menuImage = ImageIO.read(menu_url);
+            redImage = ImageIO.read(getClass().getResource("redDot.png"));
+            greenImage = ImageIO.read(getClass().getResource("greenDot.png"));
             menuBorder = ImageIO.read(menuBack_url);
-            //stopImage = ImageIO.read(stopimg_url);
-            resizeMenuImg= new BufferedImage(30, 20, BufferedImage.TYPE_INT_ARGB);
+            stopImage = ImageIO.read(stopimg_url);
+            //resizeMenuImg= new BufferedImage(30, 20, BufferedImage.TYPE_INT_ARGB);
             resizeMBorder = new BufferedImage(20, 10, BufferedImage.TYPE_INT_ARGB);
-            //resizeStopImg = new BufferedImage(20, 20, BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g2 = setGraphics(resizeMenuImg,menuImage);
+            resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
+            resizeRed = new BufferedImage(30,30,BufferedImage.TYPE_INT_ARGB);
+            resizeGreen = new BufferedImage(30,30,BufferedImage.TYPE_INT_ARGB);
+            //Graphics2D g2 = setGraphics(resizeMenuImg,menuImage);
             Graphics2D g1 = setGraphics(resizeMBorder, menuBorder);
-            //Graphics2D g3 = setGraphics(resizeStopImg, stopImage);
+            Graphics2D g3 = setGraphics(resizeStopImg, stopImage);
+            Graphics2D g4 = setGraphics(resizeRed, redImage);
+            Graphics2D g5 = setGraphics(resizeGreen, greenImage);
         }catch (IOException e) {
             System.out.println("Please specify image path");
         }
@@ -53,9 +61,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
         //menu.setSize(this.getWidth(),20);
         menu.setMnemonic(KeyEvent.VK_M);
         launchServer = new JMenuItem("Launch Server");
-        launchServer.setMnemonic(KeyEvent.VK_L);
-        launchServer.setAccelerator(KeyStroke.getKeyStroke("control L"));
-        launchServer.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
+        //launchServer.setMnemonic(KeyEvent.VK_L);
+        //launchServer.setAccelerator(KeyStroke.getKeyStroke("control L"));
+        //launchServer.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
+        Border black_border = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.BLACK);
+        launchServer.setBorder(black_border);
         launchServer.setOpaque(true);
         launchServer.setBackground(Color.BLACK);
         launchServer.setForeground(Color.WHITE);
@@ -64,25 +74,30 @@ public class MenuBar extends JMenuBar implements ActionListener {
         connectMenu.setOpaque(true);
         connectMenu.setBackground(Color.BLACK);
         connectMenu.setForeground(Color.WHITE);
-        connectMenu.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
+        /*connectMenu.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));*/
+        connectMenu.setBorder(black_border);
         connect = new JMenuItem("Connect");
         reconnect = new JMenuItem("Reconnect");
         connect.setOpaque(true);
         connect.setForeground(Color.WHITE);
         connect.setBackground(Color.BLACK);
-        connect.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
+        //connect.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
+        connect.setBorder(black_border);
         reconnect.setOpaque(true);
         reconnect.setForeground(Color.WHITE);
         reconnect.setBackground(Color.BLACK);
-        reconnect.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
+        //reconnect.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
+        reconnect.setBorder(black_border);
         connectMenu.add(connect);
         connectMenu.add(new JPopupMenu.Separator());
         connectMenu.add(reconnect);
 
-        timmer = new JLabel("StopWatch");
-        timmer.setForeground(Color.WHITE);
-        //JMenuItem stopImage_item = new JMenuItem("Stop Watch", new ImageIcon(resizeStopImg));
-        /*stopImage_item.setSize(10,10);*/
+        stopWatch = new JMenuItem("Stop Watch", new ImageIcon(resizeStopImg));
+        //stopImage_item.setSize(1,this.getHeight());
+        connection = new JMenuItem("Not Connected", new ImageIcon(resizeRed));
+        /*connection.setIcon(new ImageIcon(resizeGreen));
+        connection.setText("Connected");*/
+
 
         launchServer.addActionListener(this);
         connect.addActionListener(this);
@@ -95,9 +110,16 @@ public class MenuBar extends JMenuBar implements ActionListener {
         menu.setForeground(Color.WHITE);
         add(menu);
         //add(Box.createHorizontalGlue());
-        //add(stopImage_item);
-        add(timmer, BorderLayout.CENTER);
-        add(Box.createRigidArea(new Dimension(this.getWidth(),30)));
+
+        stopWatch.setBackground(Color.BLACK);
+        stopWatch.setForeground(Color.WHITE);
+        connection.setBackground(Color.BLACK);
+        connection.setForeground(Color.WHITE);
+        add(stopWatch);
+        add(connection);
+        //add(timmer, BorderLayout.CENTER);
+        add(Box.createRigidArea(new Dimension(this.getWidth(),40)));
+
     }
     
     public void setConnectionListener(ConnectionListener connectionListener) {
