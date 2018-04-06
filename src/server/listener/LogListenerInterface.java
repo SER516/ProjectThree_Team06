@@ -1,6 +1,6 @@
 package server.listener;
 
-public interface LogListener {
+public interface LogListenerInterface {
 	
 	public void logMessage(String message);
 }

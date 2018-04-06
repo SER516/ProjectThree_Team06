@@ -2,41 +2,48 @@ package server.model;
 
 public class AffectiveData {
 	
-	private float meditation = 0;
-	private float engagementBoredom = 0;
-	private float excitementShortTerm = 0;
-	private float frustation = 0;
-	private float  excitementLongTerm = 0;
+	private float interest = 0;
+	private float engagement = 0;
+	private float stress = 0;
+	private float relaxation = 0;
+	private float  excitement = 0;
+	private float  focus = 0;
+	public float getInterest() {
+		return interest;
+	}
+	public void setInterest(float interest) {
+		this.interest = interest;
+	}
+	public float getEngagement() {
+		return engagement;
+	}
+	public void setEngagement(float engagement) {
+		this.engagement = engagement;
+	}
+	public float getStress() {
+		return stress;
+	}
+	public void setStress(float stress) {
+		this.stress = stress;
+	}
+	public float getRelaxation() {
+		return relaxation;
+	}
+	public void setRelaxation(float relaxation) {
+		this.relaxation = relaxation;
+	}
+	public float getExcitement() {
+		return excitement;
+	}
+	public void setExcitement(float excitement) {
+		this.excitement = excitement;
+	}
+	public float getFocus() {
+		return focus;
+	}
+	public void setFocus(float focus) {
+		this.focus = focus;
+	}
 	
-	public float getMeditation() {
-		return meditation;
-	}
-	public void setMeditation(float meditation) {
-		this.meditation = meditation;
-	}
-	public float getEngagementBoredom() {
-		return engagementBoredom;
-	}
-	public void setEngagementBoredom(float engagementBoredom) {
-		this.engagementBoredom = engagementBoredom;
-	}
-	public float getExcitementShortTerm() {
-		return excitementShortTerm;
-	}
-	public void setExcitementShortTerm(float excitementShortTerm) {
-		this.excitementShortTerm = excitementShortTerm;
-	}
-	public float getFrustation() {
-		return frustation;
-	}
-	public void setFrustation(float frustation) {
-		this.frustation = frustation;
-	}
-	public float getExcitementLongTerm() {
-		return excitementLongTerm;
-	}
-	public void setExcitementLongTerm(float excitementLongTerm) {
-		this.excitementLongTerm = excitementLongTerm;
-	} 
 
 }
