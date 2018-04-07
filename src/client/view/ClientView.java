@@ -9,17 +9,17 @@ import client.listener.ConnectionListener;
 import java.awt.*;
 
 /**
- * ClientFrame Class creates a JFrame object
+ * ClientView Class creates a JFrame object
  *
  * @author Abhishek
  */
-public class ClientFrame extends JFrame {
+public class ClientView extends JFrame {
 
 	JPanel emotivePanel;
 	JPanel affectivePanel;
 	MenuBar menuBar;
 
-	public ClientFrame() {
+	public ClientView() {
 		setTitle("Client (Lab 3, Team 6)");
 		// add(createMainPanel());
 		menuBar = new MenuBar();
@@ -52,7 +52,7 @@ public class ClientFrame extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		JFrame client = new ClientFrame();
+		JFrame client = new ClientView();
 	}
 
 	public void setConnectionListener(ConnectionListener connectionListener) {

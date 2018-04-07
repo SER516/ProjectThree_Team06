@@ -1,6 +1,6 @@
 package client.view;
 
-import client.helper.ClientDataSingleton;
+import client.model.ClientModelSingleton;
 import client.model.ExpressivePlotData;
 
 import javax.swing.*;
@@ -122,8 +122,7 @@ public class ExpressionPlots extends JPanel {
     }
     
     public void plotExpressionGraph() {
-
-            if(ClientDataSingleton.getInstance().getFaceData() != null) {
+            if(ClientModelSingleton.getInstance().getFaceData() != null) {
     	        expressivePlotData = ExpressivePlotData.getInstance();
 
     	        graphPlot1 = plotGraphForFeature(expressivePlotData.getBlinkList());

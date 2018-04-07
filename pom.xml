@@ -102,7 +102,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>client.controller.ClientMainController</mainClass>
+							<mainClass>client.controller.ClientApplicationController</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
