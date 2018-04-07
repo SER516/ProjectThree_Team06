@@ -1,44 +1,43 @@
 package client.controller;
 
-import javax.websocket.Session;
+import client.model.ClientModelSingleton;
+import client.view.ClientView;
+import server.view.ServerView;
 
-import client.helper.ClientDataSingleton;
-import client.listener.ConnectionListener;
-import client.view.ClientFrame;
-import server.controller.ServerApplicationController;
-import server.controller.ServerMainController;
+import javax.swing.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- * Controller class to handle web socket connection between the client and the server
- **/
 public class ClientMainController {
-
-    public static void main(String args[]) {
-        ClientDataSingleton.getInstance();
-        ClientFrame clientFrame = new ClientFrame();
-        setClientServerConnection(clientFrame);
+    public ClientMainController(ClientView clientView, ClientModelSingleton clientModelSingleton) {
+        addViewToController(clientView);
+        //setListeners();
     }
 
-    private static void setClientServerConnection(ClientFrame clientFrame) {
-        clientFrame.setConnectionListener(new ConnectionListener() {
-            @Override
-            public void startServer() {
-                WebSocketClientMain webSocketClientMain = new WebSocketClientMain();
-                if (!ClientDataSingleton.getInstance().isSessionMaintained()) {
-                    webSocketClientMain.connectToServer();
+    private static void addViewToController(ClientView clientView) {
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Aqua".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
                 }
             }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-            @Override
-            public void reconnectServer(String url) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void initializeServer() {
-                new ServerApplicationController();
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                clientView.setVisible(true);
             }
         });
+
     }
 }

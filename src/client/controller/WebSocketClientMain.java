@@ -1,15 +1,13 @@
 package client.controller;
 
-import client.controller.ClientSocketEndpoint;
-import client.helper.ClientDataSingleton;
-
-import java.net.URI;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import client.model.ClientModelSingleton;
 
 import javax.websocket.ContainerProvider;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
+import java.net.URI;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class WebSocketClientMain {
 	Thread clientThread;
@@ -37,7 +35,7 @@ public class WebSocketClientMain {
 					container = ContainerProvider.getWebSocketContainer();
 					session = container.connectToServer(ClientSocketEndpoint.class,
 							URI.create("ws://localhost:8080/server"));
-					ClientDataSingleton.getInstance().setSessionMaintained(true);
+					ClientModelSingleton.getInstance().setSessionMaintained(true);
 					wait4TerminateSignal();
 				} catch (Exception e) {
 					System.out.println("Server Not Running");

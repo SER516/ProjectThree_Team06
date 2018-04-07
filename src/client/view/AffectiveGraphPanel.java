@@ -19,7 +19,7 @@ class AffectiveGraphPanel extends JPanel{
 
 	public JPanel BuildPanel() {
 		AffectivePlot graphPart;
-		
+
 		/*setLayout(new BorderLayout());
 		setBackground(new Color(253, 235, 208));
 		JLabel GraphPlot = new JLabel("Graph Plot",JLabel.CENTER);
@@ -40,6 +40,11 @@ class AffectiveGraphPanel extends JPanel{
 		GraphPlot.setFont(new Font("Papyrus", Font.BOLD, 15));
 		panelOne.add(GraphPlot, BorderLayout.NORTH);
 		panelOne.setBorder(BorderFactory.createEtchedBorder());
+		panelOne.setLayout(new BorderLayout());
+		graphPart = new AffectivePlot();
+		SingleTonData.getInstance().setAffectivePlot(graphPart);
+		graphPart.setBackground(Color.WHITE);
+		panelOne.add(graphPart);
 		this.setLayout(new BorderLayout());
 		this.add(panelOne,BorderLayout.CENTER);
 		return this;

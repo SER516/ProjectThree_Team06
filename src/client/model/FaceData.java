@@ -1,8 +1,5 @@
 package client.model;
 
-import client.model.AffectiveData;
-import client.model.ExpressiveData;
-
 public class FaceData {
 
 	private double counter = 0;

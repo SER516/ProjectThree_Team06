@@ -1,8 +1,7 @@
 package client.view;
 
-import client.helper.ClientDataSingleton;
 import client.model.AffectiveData;
-import client.view.GraphPlot;
+import client.model.ClientModelSingleton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,32 +17,30 @@ public class AffectivePlot extends JPanel {
     JPanel affectivePanel = new JPanel();
 
     public AffectivePlot() {
-        this.setPreferredSize(new Dimension(500, 500));
+        this.setPreferredSize(new Dimension(1000, 1000));
         setRandomColors(1);
-        this.setLayout(new BorderLayout());
+        //this.setLayout(new BorderLayout());
         this.add(affectivePanel);
     }
     public void plotAffectiveGraph(){
-        affectivePanel.removeAll();
+        System.out.println("plotAffectiveGraph");
         affectivePanel.add(getAffectiveGraph());
         affectivePanel.repaint();
         affectivePanel.revalidate();
     }
 
     public GraphPlot getAffectiveGraph() {
-        System.out.println("getAffectiveGraph started");
         ArrayList<Float> affectiveDataList = new ArrayList<Float>();
-        //AffectiveData affectiveData = ClientDataSingleton.getInstance().getFaceData().getAffectiveData();
-        // Testing Data
-        affectiveDataList.add(0.6f);
-        affectiveDataList.add(0.1f);
-        affectiveDataList.add(0.4f);
-        affectiveDataList.add(0.3f);
-        affectiveDataList.add(0.2f);
+        affectiveData = ClientModelSingleton.getInstance().getFaceData().getAffectiveData();
+        affectiveDataList.add(affectiveData.getEngagement());
+        affectiveDataList.add(affectiveData.getFocus());
+        affectiveDataList.add(affectiveData.getExcitement());
+        affectiveDataList.add(affectiveData.getRelaxation());
+        affectiveDataList.add(affectiveData.getInterest());
+        affectiveDataList.add(affectiveData.getStress());
         inputData.add(affectiveDataList);
         graphPlot = new GraphPlot(inputData, colors);
         graphPlot.setBackground(Color.BLUE);
-        System.out.println("getAffectiveGraph end");
         return graphPlot;
     }
 
