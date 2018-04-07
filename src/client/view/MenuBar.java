@@ -20,22 +20,24 @@ import java.net.URL;
  */
 public class MenuBar extends JMenuBar implements ActionListener {
 
-    JMenuItem launchServer;
-    JMenuItem connect;
-    JMenuItem reconnect;
-    JMenuItem stopWatch;
-    JMenuItem connection;
+    private JMenuItem launchServer;
+    private JMenuItem connect;
+    private JMenuItem reconnect;
+    private JMenuItem stopWatch;
+    private JMenuItem connection;
     private ConnectionListener connectionListener;
-
+    private BufferedImage GreenIcon, RedIcon;
 
     public MenuBar(){
         //URL menu_url = getClass().getResource("MENU_BACKGROUND.png");
-        setLayout(new GridLayout(1,3));
+        //setLayout(new GridLayout(1,4));
         URL menuBack_url = getClass().getResource("BlackBackground.jpg");
         URL stopimg_url = getClass().getResource("StopWatch.png");
         JMenu menu = new JMenu("Menu");
         BufferedImage  menuBorder, stopImage, redImage, greenImage;
-        BufferedImage resizeMBorder = null, resizeStopImg = null, resizeRed = null, resizeGreen = null;
+        BufferedImage resizeMBorder = null, resizeStopImg = null;
+        GreenIcon = null;
+        RedIcon = null;
         try{
             //menuImage = ImageIO.read(menu_url);
             redImage = ImageIO.read(getClass().getResource("redDot.png"));
@@ -45,13 +47,15 @@ public class MenuBar extends JMenuBar implements ActionListener {
             //resizeMenuImg= new BufferedImage(30, 20, BufferedImage.TYPE_INT_ARGB);
             resizeMBorder = new BufferedImage(20, 10, BufferedImage.TYPE_INT_ARGB);
             resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
-            resizeRed = new BufferedImage(30,30,BufferedImage.TYPE_INT_ARGB);
-            resizeGreen = new BufferedImage(30,30,BufferedImage.TYPE_INT_ARGB);
+            RedIcon = new BufferedImage(30,30,BufferedImage.TYPE_INT_ARGB);
+
+            GreenIcon = new BufferedImage(25,25,BufferedImage.TYPE_INT_ARGB);
             //Graphics2D g2 = setGraphics(resizeMenuImg,menuImage);
             Graphics2D g1 = setGraphics(resizeMBorder, menuBorder);
             Graphics2D g3 = setGraphics(resizeStopImg, stopImage);
-            Graphics2D g4 = setGraphics(resizeRed, redImage);
-            Graphics2D g5 = setGraphics(resizeGreen, greenImage);
+            Graphics2D g4 = setGraphics(RedIcon, redImage);
+
+            Graphics2D g5 = setGraphics(GreenIcon, greenImage);
         }catch (IOException e) {
             System.out.println("Please specify image path");
         }
@@ -61,43 +65,24 @@ public class MenuBar extends JMenuBar implements ActionListener {
         //menu.setSize(this.getWidth(),20);
         menu.setMnemonic(KeyEvent.VK_M);
         launchServer = new JMenuItem("Launch Server");
-        //launchServer.setMnemonic(KeyEvent.VK_L);
-        //launchServer.setAccelerator(KeyStroke.getKeyStroke("control L"));
-        //launchServer.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
+
         Border black_border = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.BLACK);
-        launchServer.setBorder(black_border);
-        launchServer.setOpaque(true);
-        launchServer.setBackground(Color.BLACK);
-        launchServer.setForeground(Color.WHITE);
+        setForegroundBackground(launchServer, black_border);
 
         JMenu connectMenu = new JMenu("Connect");
-        connectMenu.setOpaque(true);
-        connectMenu.setBackground(Color.BLACK);
-        connectMenu.setForeground(Color.WHITE);
-        /*connectMenu.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));*/
-        connectMenu.setBorder(black_border);
+        setForegroundBackground(connectMenu, black_border);
         connect = new JMenuItem("Connect");
         reconnect = new JMenuItem("Reconnect");
-        connect.setOpaque(true);
-        connect.setForeground(Color.WHITE);
-        connect.setBackground(Color.BLACK);
-        //connect.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
-        connect.setBorder(black_border);
-        reconnect.setOpaque(true);
-        reconnect.setForeground(Color.WHITE);
-        reconnect.setBackground(Color.BLACK);
-        //reconnect.setBorder(new BorderUIResource.MatteBorderUIResource(new ImageIcon(resizeMBorder)));
-        reconnect.setBorder(black_border);
+        setForegroundBackground(connect, black_border);
+        setForegroundBackground(reconnect, black_border);
         connectMenu.add(connect);
         connectMenu.add(new JPopupMenu.Separator());
         connectMenu.add(reconnect);
 
         stopWatch = new JMenuItem("Stop Watch", new ImageIcon(resizeStopImg));
         //stopImage_item.setSize(1,this.getHeight());
-        connection = new JMenuItem("Not Connected", new ImageIcon(resizeRed));
-        /*connection.setIcon(new ImageIcon(resizeGreen));
-        connection.setText("Connected");*/
-
+        connection = new JMenuItem();
+        connect(false);
 
         launchServer.addActionListener(this);
         connect.addActionListener(this);
@@ -105,25 +90,61 @@ public class MenuBar extends JMenuBar implements ActionListener {
         menu.add(launchServer);
         menu.add(new JPopupMenu.Separator());
         menu.add(connectMenu);
-        menu.setOpaque(true);
-        menu.setBackground(Color.BLACK);
-        menu.setForeground(Color.WHITE);
+        setForegroundBackground(menu, black_border);
         add(menu);
-        //add(Box.createHorizontalGlue());
-
-        stopWatch.setBackground(Color.BLACK);
+        //add(Box.createRigidArea(new Dimension(this.getWidth(),40)));
+        //setForegroundBackground(stopWatch, black_border);
         stopWatch.setForeground(Color.WHITE);
+        stopWatch.setBackground(Color.BLACK);
         connection.setBackground(Color.BLACK);
         connection.setForeground(Color.WHITE);
         add(stopWatch);
         add(connection);
         //add(timmer, BorderLayout.CENTER);
-        add(Box.createRigidArea(new Dimension(this.getWidth(),40)));
+    }
 
+    /**
+     * connect method, changes the label and icon on menubar.
+     *
+     * @param flag
+     */
+    public void connect(boolean flag){
+        if(flag){
+            connection.setIcon(new ImageIcon(GreenIcon));
+            connection.setText("Connected");
+        }
+        else{
+            connection.setIcon(new ImageIcon(RedIcon));
+            connection.setText("Not Connected");
+        }
     }
     
     public void setConnectionListener(ConnectionListener connectionListener) {
     		this.connectionListener = connectionListener;
+    }
+
+    /**
+     * setForegroundBackground method customizes appearance of items in menubar
+     * @param item
+     * @param black_border
+     */
+    public void setForegroundBackground(JMenu item, Border black_border){
+        item.setBackground(Color.BLACK);
+        item.setForeground(Color.WHITE);
+        item.setBorder(black_border);
+        item.setOpaque(true);
+    }
+
+    /**
+     * setForegroundBackground method customizes appearance of items in menubar
+     * @param item
+     * @param black_border
+     */
+    public void setForegroundBackground(JMenuItem item, Border black_border){
+        item.setBackground(Color.BLACK);
+        item.setForeground(Color.WHITE);
+        item.setBorder(black_border);
+        item.setOpaque(true);
     }
 
     public Graphics2D setGraphics(BufferedImage resizeImg, BufferedImage menuImage){
@@ -134,12 +155,10 @@ public class MenuBar extends JMenuBar implements ActionListener {
         return g2;
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        Dimension size = this.getSize();
-        g.drawImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("BlackBackground.jpg")), 0,
-                0, size.width, size.height, this);
-    }
+    /**
+     * actionPerformed method handles the on click event from menu.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == launchServer)
@@ -151,6 +170,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
             if(connectionListener!=null) {
             		connectionListener.startServer();
             }
+            /*call connection(true) to turn connection label green*/
         }
         else if (e.getSource() == reconnect)
         {
