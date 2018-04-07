@@ -25,37 +25,21 @@ public class ExpressivePlotData {
 
 	public ArrayList<Float> getRaiseBrowList() {
 		ArrayList<Float> cf = new ArrayList<Float>();
-		cf.add(1.0f);
-		cf.add(0.8f);
-		cf.add(0.9f);
-		cf.add(0.5f);
 		return cf;
 	}
 
 	public ArrayList<Float> getFurrowBrowList() {
 		ArrayList<Float> cf = new ArrayList<Float>();
-		cf.add(1.0f);
-		cf.add(0.8f);
-		cf.add(0.9f);
-		cf.add(0.5f);
 		return cf;
 	}
 
 	public ArrayList<Float> getSmileList() {
 		ArrayList<Float> cf = new ArrayList<Float>();
-		cf.add(1.0f);
-		cf.add(0.8f);
-		cf.add(0.9f);
-		cf.add(0.5f);
 		return cf;
 	}
 
 	public ArrayList<Float> getClenchList() {
 		ArrayList<Float> cf = new ArrayList<Float>();
-		cf.add(1.0f);
-		cf.add(0.8f);
-		cf.add(0.9f);
-		cf.add(0.5f);
 		return cf;
 	}
 
