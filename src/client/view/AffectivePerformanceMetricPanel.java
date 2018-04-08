@@ -29,6 +29,12 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * This is part of AffectivePanel  UI. 
+ * This panel has performance metrics.
+ *
+ * @author avinash
+ */
 
 class AffectivePerformanceMetricPanel extends JPanel{
 	
