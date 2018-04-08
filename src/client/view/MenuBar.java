@@ -31,7 +31,9 @@ public class MenuBar extends JMenuBar implements ActionListener {
     public MenuBar(){
         //URL menu_url = getClass().getResource("MENU_BACKGROUND.png");
         //setLayout(new GridLayout(1,4));
+        Font metric_font= new Font("Papyrus", Font.BOLD, 15);
         URL menuBack_url = getClass().getResource("BlackBackground.jpg");
+        Border black_border = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.BLACK);
         URL stopimg_url = getClass().getResource("StopWatch.png");
         JMenu menu = new JMenu("Menu");
         BufferedImage  menuBorder, stopImage, redImage, greenImage;
@@ -64,17 +66,15 @@ public class MenuBar extends JMenuBar implements ActionListener {
         //menu.setIcon(new ImageIcon(resizeMBorder));
         //menu.setSize(this.getWidth(),20);
         menu.setMnemonic(KeyEvent.VK_M);
+        menu.setFont(metric_font);
         launchServer = new JMenuItem("Launch Server");
-
-        Border black_border = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.BLACK);
-        setForegroundBackground(launchServer, black_border);
-
+        setForegroundBackground(launchServer, black_border, metric_font);
         JMenu connectMenu = new JMenu("Connect");
-        setForegroundBackground(connectMenu, black_border);
+        setForegroundBackground(connectMenu, black_border, metric_font);
         connect = new JMenuItem("Connect");
         reconnect = new JMenuItem("Reconnect");
-        setForegroundBackground(connect, black_border);
-        setForegroundBackground(reconnect, black_border);
+        setForegroundBackground(connect, black_border, metric_font);
+        setForegroundBackground(reconnect, black_border, metric_font);
         connectMenu.add(connect);
         connectMenu.add(new JPopupMenu.Separator());
         connectMenu.add(reconnect);
@@ -90,14 +90,12 @@ public class MenuBar extends JMenuBar implements ActionListener {
         menu.add(launchServer);
         menu.add(new JPopupMenu.Separator());
         menu.add(connectMenu);
-        setForegroundBackground(menu, black_border);
+        setForegroundBackground(menu, black_border, metric_font);
         add(menu);
         //add(Box.createRigidArea(new Dimension(this.getWidth(),40)));
-        //setForegroundBackground(stopWatch, black_border);
-        stopWatch.setForeground(Color.WHITE);
-        stopWatch.setBackground(Color.BLACK);
-        connection.setBackground(Color.BLACK);
-        connection.setForeground(Color.WHITE);
+        setForegroundBackground(stopWatch, metric_font);
+        setForegroundBackground(connection, metric_font);
+
         add(stopWatch);
         add(connection);
         //add(timmer, BorderLayout.CENTER);
@@ -128,9 +126,10 @@ public class MenuBar extends JMenuBar implements ActionListener {
      * @param item
      * @param black_border
      */
-    public void setForegroundBackground(JMenu item, Border black_border){
+    public void setForegroundBackground(JMenu item, Border black_border, Font font){
         item.setBackground(Color.BLACK);
         item.setForeground(Color.WHITE);
+        item.setFont(font);
         item.setBorder(black_border);
         item.setOpaque(true);
     }
@@ -140,10 +139,23 @@ public class MenuBar extends JMenuBar implements ActionListener {
      * @param item
      * @param black_border
      */
-    public void setForegroundBackground(JMenuItem item, Border black_border){
+    public void setForegroundBackground(JMenuItem item, Border black_border, Font font){
         item.setBackground(Color.BLACK);
         item.setForeground(Color.WHITE);
         item.setBorder(black_border);
+        item.setFont(font);
+        item.setOpaque(true);
+    }
+
+    /**
+     * setForegroundBackground method customizes appearance of items in menubar
+     * @param item
+     * @param font
+     */
+    public void setForegroundBackground(JMenuItem item, Font font){
+        item.setBackground(Color.BLACK);
+        item.setForeground(Color.WHITE);
+        item.setFont(font);
         item.setOpaque(true);
     }
 

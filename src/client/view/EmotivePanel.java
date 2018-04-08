@@ -22,8 +22,8 @@ public class EmotivePanel extends JPanel {
         facePart = new FaceExpressions();
         graphPart = new ExpressionPlots();
         SingleTonData.getInstance().setExpressplot(graphPart);
-        facePart.setBackground(Color.LIGHT_GRAY);
-        graphPart.setBackground(Color.WHITE);
+        //facePart.setBackground(new Color(169, 204, 227));
+        //graphPart.setBackground(Color.WHITE);
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         splitPane.setResizeWeight(0.3);
         splitPane.setEnabled(false);
