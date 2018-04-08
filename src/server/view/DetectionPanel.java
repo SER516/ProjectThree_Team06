@@ -226,7 +226,7 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 		{
 			float metricsValue = (float)((double)performanceMetricsSpinner.getValue());
             String metricsExp = (String)performanceMetricsComboBox.getSelectedItem();
-			detectionListenerService.changeLowerface(metricsExp,metricsValue);	
+			detectionListenerService.changePerformanceMatrics(metricsExp,metricsValue);	
 		}
 		
 	}
@@ -248,7 +248,7 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 		else if(e.getSource() == performanceMetricsComboBox) {
 			float metricsValue = (float)((double)performanceMetricsSpinner.getValue());
             String metricsExp = (String)performanceMetricsComboBox.getSelectedItem();
-			detectionListenerService.changeLowerface(metricsExp,metricsValue);
+			detectionListenerService.changePerformanceMatrics(metricsExp,metricsValue);
 			}
 		else if(e.getSource() == eyeComboBox){
 			String eye = (String)eyeComboBox.getSelectedItem();
