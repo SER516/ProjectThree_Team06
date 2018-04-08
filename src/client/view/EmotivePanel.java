@@ -19,7 +19,7 @@ public class EmotivePanel extends JPanel {
     public EmotivePanel(){
         setLayout(new BorderLayout());
         Dimension df = this.getSize();
-        facePart = new FaceExpressions();
+        facePart = new FaceExpressions("000000000000.png");
         graphPart = new ExpressionPlots();
         SingleTonData.getInstance().setExpressplot(graphPart);
         //facePart.setBackground(new Color(169, 204, 227));
