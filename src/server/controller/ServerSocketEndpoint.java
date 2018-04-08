@@ -60,7 +60,6 @@ public class ServerSocketEndpoint {
 				double newCounter = counter + interval;
 				ServerModelSingleton.getInstance().getFaceData().setCounter(newCounter);
 				String data = gson.toJson(ServerModelSingleton.getInstance().getFaceData());
-				System.out.println(data);
 				logListener.logMessage(data);
 				detectionListenerService.changeCounter(newCounter);
 				sendAll(data);

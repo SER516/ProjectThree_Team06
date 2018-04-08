@@ -26,8 +26,9 @@ public class WebSocketClientMain {
 		}
 	}
 
-	public void connectToServer() {
+	public void connectToServer(String ip, String port) {
 		final ExecutorService clientProcessingPool = Executors.newFixedThreadPool(10);
+		String url = "ws://"+ip +":"+ port + "/server";
 		Runnable serverTask = new Runnable() {
 			
 			@Override
@@ -36,7 +37,7 @@ public class WebSocketClientMain {
 				try {
 					container = ContainerProvider.getWebSocketContainer();
 					session = container.connectToServer(ClientSocketEndpoint.class,
-							URI.create("ws://localhost:8080/server"));
+							URI.create(url));
 					ClientDataSingleton.getInstance().setSessionMaintained(true);
 					wait4TerminateSignal();
 				} catch (Exception e) {
