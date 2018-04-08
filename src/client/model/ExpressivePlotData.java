@@ -2,6 +2,8 @@ package client.model;
 
 import java.util.ArrayList;
 
+import server.model.ServerModelSingleton;
+
 public class ExpressivePlotData {
 	
 	private static volatile ExpressivePlotData expressivePlotData;
@@ -24,39 +26,19 @@ public class ExpressivePlotData {
 
 
 	public ArrayList<Float> getRaiseBrowList() {
-		ArrayList<Float> cf = new ArrayList<Float>();
-		cf.add(1.0f);
-		cf.add(0.8f);
-		cf.add(0.9f);
-		cf.add(0.5f);
-		return cf;
+		return raiseBrowList;
 	}
 
 	public ArrayList<Float> getFurrowBrowList() {
-		ArrayList<Float> cf = new ArrayList<Float>();
-		cf.add(1.0f);
-		cf.add(0.8f);
-		cf.add(0.9f);
-		cf.add(0.5f);
-		return cf;
+		return furrowBrowList;
 	}
 
 	public ArrayList<Float> getSmileList() {
-		ArrayList<Float> cf = new ArrayList<Float>();
-		cf.add(1.0f);
-		cf.add(0.8f);
-		cf.add(0.9f);
-		cf.add(0.5f);
-		return cf;
+		return smileList;
 	}
 
 	public ArrayList<Float> getClenchList() {
-		ArrayList<Float> cf = new ArrayList<Float>();
-		cf.add(1.0f);
-		cf.add(0.8f);
-		cf.add(0.9f);
-		cf.add(0.5f);
-		return cf;
+		return clenchList;
 	}
 
 	public ArrayList<Float> getSmirkLeftList() {

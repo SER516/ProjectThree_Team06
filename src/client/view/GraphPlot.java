@@ -41,8 +41,7 @@ public class GraphPlot extends JPanel {
 		graph.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		int width = getWidth();
 		int height = getHeight();
-		System.out.println(width);
-		System.out.println(height);
+		
 		graph.draw(new Line2D.Double(PAD, PAD, PAD, height - PAD));
 		graph.draw(new Line2D.Double(PAD, height - PAD, width - PAD, height - PAD));
 		Font font = graph.getFont();
