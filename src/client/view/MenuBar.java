@@ -31,7 +31,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
     public MenuBar(){
         //URL menu_url = getClass().getResource("MENU_BACKGROUND.png");
         //setLayout(new GridLayout(1,4));
-        Font metric_font= new Font("Papyrus", Font.BOLD, 15);
+        Font metric_font= new Font("Papyrus", Font.BOLD, 13);
         URL menuBack_url = getClass().getResource("BlackBackground.jpg");
         Border black_border = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.BLACK);
         URL stopimg_url = getClass().getResource("StopWatch.png");
@@ -56,7 +56,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
             Graphics2D g1 = setGraphics(resizeMBorder, menuBorder);
             Graphics2D g3 = setGraphics(resizeStopImg, stopImage);
             Graphics2D g4 = setGraphics(RedIcon, redImage);
-
             Graphics2D g5 = setGraphics(GreenIcon, greenImage);
         }catch (IOException e) {
             System.out.println("Please specify image path");

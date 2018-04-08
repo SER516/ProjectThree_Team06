@@ -39,7 +39,7 @@ public class ClientFrame extends JFrame {
 		setJMenuBar(menuBar);
 		add(tabbedPane, BorderLayout.CENTER);
 		setVisible(true);
-		setResizable(false);
+		setResizable(true);
 	}
 
 	private void centerGUI(JFrame frame) {
