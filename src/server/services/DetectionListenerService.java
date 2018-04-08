@@ -22,17 +22,13 @@ public class DetectionListenerService implements DetectionListenerInterface {
 		resetLowerface();
 		if (exp.equals("Smile")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setSmile(val);
-		}
-		else if (exp.equals("Clench")) {
+		} else if (exp.equals("Clench")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setClench(val);
-		}
-		else if (exp.equals("Smirk Left")) {
+		} else if (exp.equals("Smirk Left")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(val);
-		}
-		else if (exp.equals("Smirk Right")) {
+		} else if (exp.equals("Smirk Right")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(val);
-		}
-		else if (exp.equals("Laugh")) {
+		} else if (exp.equals("Laugh")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(val);
 		}
 	}
@@ -41,8 +37,7 @@ public class DetectionListenerService implements DetectionListenerInterface {
 		resetUpperface();
 		if (exp.equals("Raise Brow")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setRaiseBrow(val);
-		}
-		else if (exp.equals("Furrow Brow")) {
+		} else if (exp.equals("Furrow Brow")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setFurrowBrow(val);
 		}
 
@@ -52,17 +47,13 @@ public class DetectionListenerService implements DetectionListenerInterface {
 		resetPerformanceMetrics();
 		if (exp.equals("Interest")) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setInterest(val);
-		}
-		else if (exp.equals("Engagement")) {
+		} else if (exp.equals("Engagement")) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setEngagement(val);
-		}
-		else if (exp.equals("Stress")) {
+		} else if (exp.equals("Stress")) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setStress(val);
-		}
-		else if (exp.equals("Relaxation")) {
+		} else if (exp.equals("Relaxation")) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setRelaxation(val);
-		}
-		else if (exp.equals("Excitement Focus")) {
+		} else if (exp.equals("Excitement Focus")) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setExcitement(val);
 		}
 
@@ -73,17 +64,13 @@ public class DetectionListenerService implements DetectionListenerInterface {
 
 		if (eye.equals("Blink")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setBlink(true);
-		}
-		else if (eye.equals("Wink Left")) {
+		} else if (eye.equals("Wink Left")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setWinkLeft(true);
-		}
-		else if (eye.equals("Wink Right")) {
+		} else if (eye.equals("Wink Right")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setWinkRight(true);
-		}
-		else if (eye.equals("Look Left")) {
+		} else if (eye.equals("Look Left")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setLookLeft(true);
-		}
-		else if (eye.equals("Look Right")) {
+		} else if (eye.equals("Look Right")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setLookRight(true);
 		}
 
