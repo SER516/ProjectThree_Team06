@@ -51,7 +51,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
             resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
             RedIcon = new BufferedImage(30,30,BufferedImage.TYPE_INT_ARGB);
 
-            GreenIcon = new BufferedImage(25,25,BufferedImage.TYPE_INT_ARGB);
+            GreenIcon = new BufferedImage(30,25,BufferedImage.TYPE_INT_ARGB);
             //Graphics2D g2 = setGraphics(resizeMenuImg,menuImage);
             Graphics2D g1 = setGraphics(resizeMBorder, menuBorder);
             Graphics2D g3 = setGraphics(resizeStopImg, stopImage);
@@ -178,14 +178,15 @@ public class MenuBar extends JMenuBar implements ActionListener {
         }
         else if (e.getSource() == connect)
         {
+            this.connect(true);
             if(connectionListener!=null) {
             		connectionListener.startServer();
             }
-            /*call connection(true) to turn connection label green*/
         }
         else if (e.getSource() == reconnect)
         {
-        		connectionListener.reconnectServer(null);
+            this.connect(true);
+            connectionListener.reconnectServer(null);
         }
     }
 }
