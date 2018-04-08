@@ -10,6 +10,12 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * This is a part of AffectivePanel UI. 
+ * This panel is for Graph plot.
+ *
+ * @author avinash
+ */
 
 class AffectiveGraphPanel extends JPanel{
 	
