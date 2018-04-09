@@ -14,11 +14,13 @@ public class FaceExpressions extends JPanel{
     	String fileName = "000000000000.png";
     	setBackground(new Color(175, 175, 175));
        try {   
-    	   StringBuilder current = new StringBuilder(new java.io.File( "." ).getCanonicalPath());
-           System.out.println("Current dir:"+current);
-           current.append("\\Images\\");
-           current.append(fileName);
-          image = ImageIO.read(new File(current.toString()));
+    	   StringBuilder finalFileName = new StringBuilder(new java.io.File( "." ).getCanonicalPath());
+           System.out.println("Current dir:"+finalFileName);
+           finalFileName.append(File.separator);
+           finalFileName.append("Images");
+           finalFileName.append(File.separator);
+           finalFileName.append(fileName);
+          image = ImageIO.read(new File(finalFileName.toString()));
        } catch (IOException ex) {
             System.out.println("Exception in Adding IMage: "); 
        }

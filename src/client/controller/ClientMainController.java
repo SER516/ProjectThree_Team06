@@ -12,21 +12,22 @@ public class ClientMainController {
 
     public static void main(String args[]) {
         ClientDataSingleton.getInstance();
-        ClientFrame clientFrame = new ClientFrame();
-        setClockListener();
-        setClientServerConnection(clientFrame);
+        ClientFrame clientWindow = new ClientFrame();
+        setClientServerConnection(clientWindow);
+        setClockListener(clientWindow);
+
     }
 
-    private static void setClockListener() {
+    private static void setClockListener(ClientFrame clientWindow) {
         ClientSocketEndpoint.setClockListener(new ClockListener() {
             @Override
             public void updateTime(double time) {
-
+                clientWindow.updateTime(time);
             }
-        });
+         });
     }
 
-    private static void setClientServerConnection(ClientFrame clientFrame) {
-    	clientFrame.setServerClientListener(new ClientServerConnectionService());
+    private static void setClientServerConnection(ClientFrame clientWindow) {
+    	clientWindow.setServerClientListener(new ClientServerConnectionService());
     }
 }

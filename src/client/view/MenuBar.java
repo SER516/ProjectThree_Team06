@@ -26,7 +26,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
     private JMenuItem connect;
     private JMenuItem reconnect;
     private JMenuItem stopWatch;
-    private JMenuItem connection;
+
 	private ClientServerConnectionService clientServerConnectionService;
     private BufferedImage GreenIcon, RedIcon;
 
@@ -82,9 +82,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
         stopWatch = new JMenuItem("Stop Watch", new ImageIcon(resizeStopImg));
         //stopImage_item.setSize(1,this.getHeight());
-        connection = new JMenuItem();
-        connect(false);
-
         launchServer.addActionListener(this);
         connect.addActionListener(this);
         reconnect.addActionListener(this);
@@ -93,30 +90,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
         menu.add(connectMenu);
         setForegroundBackground(menu, black_border, metric_font);
         add(menu);
-        //add(Box.createRigidArea(new Dimension(this.getWidth(),40)));
         setForegroundBackground(stopWatch, metric_font);
-        setForegroundBackground(connection, metric_font);
-
         add(stopWatch);
-        add(connection);
-        //add(timmer, BorderLayout.CENTER);
     }
 
-    /**
-     * connect method, changes the label and icon on menubar.
-     *
-     * @param flag
-     */
-    public void connect(boolean flag){
-        if(flag){
-            connection.setIcon(new ImageIcon(GreenIcon));
-            connection.setText("Connected");
-        }
-        else{
-            connection.setIcon(new ImageIcon(RedIcon));
-            connection.setText("Not Connected");
-        }
-    }
+
 
     /**
      * setForegroundBackground method customizes appearance of items in menubar
@@ -208,4 +186,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
 	}
 
+    public void updateTimeValue(double time) {
+        stopWatch.setText(String.valueOf(time));
+    }
 }
