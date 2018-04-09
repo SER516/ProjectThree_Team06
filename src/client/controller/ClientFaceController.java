@@ -1,5 +1,6 @@
 package client.controller;
 
+import java.io.File;
 import java.io.IOException;
 import client.model.ExpressiveData;
 import javax.swing.*;
@@ -25,9 +26,12 @@ public class ClientFaceController {
 		 	StringBuilder finalFileName = new StringBuilder();
 			 try {   
 				 finalFileName.append(new java.io.File( "." ).getCanonicalPath());
-				 finalFileName.append("\\Images\\");
+				 finalFileName.append(File.separator);
+				 finalFileName.append("Images");
+				 finalFileName.append(File.separator);
 				 finalFileName.append(fileName);
-				 finalFileName.append(".png");		            
+				 finalFileName.append(".png");		
+				 System.out.println(finalFileName);
 		        } catch (IOException ex) {
 		             System.out.println("Exception in Adding IMage: ");
 		        }
