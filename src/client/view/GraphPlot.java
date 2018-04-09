@@ -71,7 +71,7 @@ public class GraphPlot extends JPanel {
 		int height = getHeight();
 		double xInc = (double) (width - 2 * PAD) / (channelData.size() - 1);
 		double scale = (double) (height - 2 * PAD) / checkMaxDataPoint(channelData);
-		graph.setPaint(colors.get(0));
+		graph.setPaint(colors.get(i));
 		for (int index = 0; index < channelData.size() - 1; index++) {
 			double x1 = PAD + index * xInc;
 			double y1 = height - PAD - scale * channelData.get(index);

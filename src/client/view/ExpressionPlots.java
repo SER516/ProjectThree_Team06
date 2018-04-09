@@ -107,7 +107,7 @@ public class ExpressionPlots extends JPanel {
     
     private void setPanelsLayout(JPanel expression, JSplitPane splitPane, String feature) {
     	expression.setLayout(new GridLayout(1,1,1,1));
-    	splitPane.setResizeWeight(0.1);
+    	splitPane.setResizeWeight(0.2);
     	splitPane.setEnabled(false);
         splitPane.setDividerSize(0);
         splitPane.add(new JLabel(feature));
@@ -117,9 +117,10 @@ public class ExpressionPlots extends JPanel {
     private GraphPlot plotGraphForFeature(ArrayList<Float> data) {
     	//graphPlot.removeAll();
     	System.out.println(data);
+    	inputData.clear();
     	inputData.add(data);
     	graphPlot = new GraphPlot(inputData, colors);
-    	graphPlot.setBackground(Color.GRAY);
+    	graphPlot.setBackground(Color.LIGHT_GRAY);
     	return graphPlot;
     }
     
