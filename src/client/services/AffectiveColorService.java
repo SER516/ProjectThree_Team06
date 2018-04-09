@@ -27,6 +27,7 @@ public class AffectiveColorService implements AffectiveColorListener {
 
 	@Override
 	public void changeDisplayLength(String text) {
+
 		clientWindow.changeDisplayLength(text);
 	}
 }

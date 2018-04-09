@@ -9,4 +9,5 @@ public interface AffectiveColorListener {
     public ArrayList<Color> getColors();
 
     void changeDisplayLength(String text);
+
 }

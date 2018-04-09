@@ -40,8 +40,9 @@ public class ClientSocketEndpoint {
 		ClientDataSingleton.getInstance().setFaceData(faceData);
 		ExpressivePlotData.getInstance().setDataToList(faceData.getExpressiveData());
 		SingleTonData.getInstance().getExpressplot().plotExpressionGraph();
-		AffectivePlotData.getInstance().setDataToList(faceData.getAffectiveData());
-		SingleTonData.getInstance().getAffectivePlot().plotAffectiveGraph();
+		AffectivePlotData.getInstance().setDataToList(faceData.getAffectiveData(),faceData);
+//		SingleTonData.getInstance().getAffectivePlot().plotAffectiveGraph();
+		SingleTonData.getInstance().getAffectivePlot().plotAffectiveGraph1(AffectivePlotData.getInstance().getDataset());
 		SingleTonData.getInstance().setFaceExpressionController(new ClientFaceController());
 		String fileName = SingleTonData.getInstance().getFaceExpressionController().
 				getFaceFileName(faceData.getExpressiveData());
