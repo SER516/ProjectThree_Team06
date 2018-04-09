@@ -27,6 +27,7 @@ public class ClientSocketEndpoint {
 	private static Object waitLock = new Object();
 	private static Gson gson = new Gson();
 	private FaceData faceData;
+	static WebSocketClientMain webSocketClientMain;
 	
 
 	@OnMessage
@@ -45,7 +46,21 @@ public class ClientSocketEndpoint {
 	@OnClose
 	public void closedConnection(Session session) {
 		ClientDataSingleton.getInstance().setSessionMaintained(false);
-		System.out.println("session closed: " + session.getId());
+		try {
+			session.close();
+			webSocketClientMain.clientThread.interrupt();
+			System.out.println("session closed: " + session.getId());
+		} catch (IOException e) {
+			System.out.println("exception");
+			e.printStackTrace();
+		}
+
+	}
+
+
+	public static void setMainClientWebSocket(WebSocketClientMain webSocketClientMainVal) {
+		webSocketClientMain = webSocketClientMainVal;
+		
 	}
 	
 }

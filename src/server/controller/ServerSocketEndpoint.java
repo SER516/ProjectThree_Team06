@@ -26,7 +26,7 @@ import server.services.DetectionListenerService;
 public class ServerSocketEndpoint {
 	
 	private static Gson gson = new Gson();
-	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
+	public static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
 	private static Thread rateThread; // Child thread for sending random number
 	private static LogListenerInterface logListener;
 	private static DetectionListenerService detectionListenerService;

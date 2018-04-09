@@ -19,14 +19,18 @@ public class WebSocketClientMain {
 	private static void wait4TerminateSignal() {
 		synchronized (waitLock) {
 			try {
+				System.out.println("Waiting");
 				waitLock.wait();
 			} catch (InterruptedException e) {
-				System.out.println(e.getStackTrace());
+				waitLock.notifyAll();
+				System.out.println("Interrupted asfsafsafsaf");
+				
 			}
 		}
 	}
 
 	public void connectToServer(String ip, String port) {
+		ClientSocketEndpoint.setMainClientWebSocket(this);
 		final ExecutorService clientProcessingPool = Executors.newFixedThreadPool(10);
 		String url = "ws://"+ip +":"+ port + "/server";
 		Runnable serverTask = new Runnable() {
@@ -40,6 +44,7 @@ public class WebSocketClientMain {
 							URI.create(url));
 					ClientDataSingleton.getInstance().setSessionMaintained(true);
 					wait4TerminateSignal();
+					
 				} catch (Exception e) {
 					System.out.println("Server Not Running");
 					e.printStackTrace();

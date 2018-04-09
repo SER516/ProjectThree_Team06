@@ -1,9 +1,11 @@
 package server.services;
 
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import javax.swing.JButton;
+import javax.websocket.Session;
 
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
@@ -18,19 +20,22 @@ import server.listener.LogListenerInterface;
 public class ServerSocketService {
 	Thread serverThread;
 	LogListenerInterface logListener;
+	Server server;
+	ServerConnector connector;
+	ServletContextHandler context;
 
 	public void startServer() {
 		final ExecutorService clientProcessingPool = Executors.newFixedThreadPool(10);
 		Runnable serverTask = new Runnable() {
 			@Override
 			public void run() {
-				Server server = new Server();
-				ServerConnector connector = new ServerConnector(server);
+				server = new Server();
+				connector = new ServerConnector(server);
 				connector.setPort(8080);
 				server.addConnector(connector);
 				// Setup the basic application "context" for this application at "/"
 				// This is also known as the handler tree (in jetty speak)
-				ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+				context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 				context.setContextPath("/");
 				server.setHandler(context);
 
@@ -52,6 +57,21 @@ public class ServerSocketService {
 		serverThread = new Thread(serverTask);
 		serverThread.start();
 
+	}
+
+	public void stopServer() {
+		try {
+			context.stop();
+			connector.close();
+			server.stop();
+			serverThread.join();
+			ServerSocketEndpoint.queue = new ConcurrentLinkedQueue<Session>();
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 

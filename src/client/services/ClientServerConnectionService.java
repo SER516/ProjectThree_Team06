@@ -9,6 +9,7 @@ import client.model.ClientConfigurationSingleton;
 import server.controller.ServerApplicationController;
 
 public class ClientServerConnectionService implements ConnectionListener {
+	WebSocketClientMain webSocketClientMain = new WebSocketClientMain();
 
 	@Override
 	public void startServer(String ip, String port) {
@@ -42,7 +43,6 @@ public class ClientServerConnectionService implements ConnectionListener {
 		if (!ClientDataSingleton.getInstance().isSessionMaintained()) {
 			ClientConfigurationSingleton.getInstance().setIp(ip);
 			ClientConfigurationSingleton.getInstance().setPort(port);
-			WebSocketClientMain webSocketClientMain = new WebSocketClientMain();
 			webSocketClientMain.connectToServer(ip, port);
 		} else {
 			JOptionPane.showMessageDialog(null, "Client is already connected");
