@@ -27,7 +27,8 @@ public class ClientFaceController {
 				 finalFileName.append(new java.io.File( "." ).getCanonicalPath());
 				 finalFileName.append("\\Images\\");
 				 finalFileName.append(fileName);
-				 finalFileName.append(".png");		            
+				 finalFileName.append(".png");
+				 System.out.print(finalFileName);
 		        } catch (IOException ex) {
 		             System.out.println("Exception in Adding IMage: ");
 		        }

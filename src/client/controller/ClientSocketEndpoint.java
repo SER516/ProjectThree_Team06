@@ -13,6 +13,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
 
+import client.listener.ClockListener;
 import client.model.AffectivePlotData;
 import client.model.ExpressivePlotData;
 import client.model.FaceData;
@@ -28,6 +29,7 @@ public class ClientSocketEndpoint {
 	private static Gson gson = new Gson();
 	private FaceData faceData;
 	static WebSocketClientMain webSocketClientMain;
+	static ClockListener  clockListener;
 	
 
 	@OnMessage
@@ -43,6 +45,8 @@ public class ClientSocketEndpoint {
 		SingleTonData.getInstance().setFaceExpressionController(new ClientFaceController());
 		String fileName = SingleTonData.getInstance().getFaceExpressionController().getFaceFileName(faceData.getExpressiveData());
 		SingleTonData.getInstance().getFaceExpressions().drawImage(fileName);
+		clockListener.updateTime(faceData.getCounter());
+
 	}
 
 	
@@ -65,5 +69,8 @@ public class ClientSocketEndpoint {
 		webSocketClientMain = webSocketClientMainVal;
 		
 	}
-	
+
+	public static void setClockListener(ClockListener clockListenerObj) {
+		clockListener = clockListenerObj;
+	}
 }
