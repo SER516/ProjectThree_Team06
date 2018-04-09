@@ -7,6 +7,7 @@ import java.net.URI;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.swing.*;
 import javax.websocket.ContainerProvider;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
@@ -46,8 +47,7 @@ public class WebSocketClientMain {
 					wait4TerminateSignal();
 					
 				} catch (Exception e) {
-					System.out.println("Server Not Running");
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Server is not running");
 				} finally {
 					if (session != null) {
 						try {
