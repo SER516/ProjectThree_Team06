@@ -171,8 +171,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 			clientServerConnectionService.initializeServer();
 		} else if (e.getSource() == connect) {
 
-			if (clientServerConnectionService != null) {
-				IpPort ipPort = new IpPort();
+			if (clientServerConnectionService != null) {    
                 connect_state(true);
 				launchDialogBox();
 			}
