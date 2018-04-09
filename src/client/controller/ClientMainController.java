@@ -2,6 +2,7 @@ package client.controller;
 
 import client.helper.ClientDataSingleton;
 import client.listener.ClockListener;
+import client.services.AffectiveColorService;
 import client.services.ClientServerConnectionService;
 import client.view.ClientFrame;
 
@@ -15,7 +16,13 @@ public class ClientMainController {
         ClientFrame clientWindow = new ClientFrame();
         setClientServerConnection(clientWindow);
         setClockListener(clientWindow);
+        setAffectiveListener(clientWindow);
 
+    }
+
+    private static void setAffectiveListener(ClientFrame clientWindow) {
+        clientWindow.setAffectiveListener(new AffectiveColorService(clientWindow));
+        
     }
 
     private static void setClockListener(ClientFrame clientWindow) {

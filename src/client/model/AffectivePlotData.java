@@ -12,7 +12,16 @@ public class AffectivePlotData {
     private ArrayList<Float> relaxList = new ArrayList<>(Arrays.asList(0.0f));
     private ArrayList<Float> stressList = new ArrayList<>(Arrays.asList(0.0f));
     private ArrayList<Float> excitmentList = new ArrayList<>(Arrays.asList(0.0f));
-    //private ArrayList<Float> focusList = new ArrayList<>(Arrays.asList(0.0f));
+
+	public ArrayList<Float> getFocusList() {
+		return focusList;
+	}
+
+	public void setFocusList(ArrayList<Float> focusList) {
+		this.focusList = focusList;
+	}
+
+	private ArrayList<Float> focusList = new ArrayList<>(Arrays.asList(0.0f));
     private ArrayList<ArrayList<Float>> mainDataList = new ArrayList<>();
     
     public ArrayList<ArrayList<Float>> getMainDataList() {
@@ -59,6 +68,8 @@ public class AffectivePlotData {
 		this.excitmentList = excitmentList;
 	}
 
+
+
 	
 
     public static AffectivePlotData getAffectivePlotData() {
@@ -79,19 +90,20 @@ public class AffectivePlotData {
     }
     
     public void setDataToList(AffectiveData affectivedata) {
+		focusList.add(affectivedata.getFocus());
     	interestList.add(affectivedata.getInterest());
     	engagementList.add(affectivedata.getEngagement());
     	stressList.add(affectivedata.getStress());
     	relaxList.add(affectivedata.getRelaxation());
     	excitmentList.add(affectivedata.getExcitement());
-    	//focusList.add(affectivedata.getFocus());
     	mainDataList.clear();
+		mainDataList.add(focusList);
+		mainDataList.add(stressList);
     	mainDataList.add(interestList);
     	mainDataList.add(engagementList);
-    	mainDataList.add(stressList);
     	mainDataList.add(relaxList);
     	mainDataList.add(excitmentList);
-    	//mainDataList.add(focusList);
+
     	
     }
 }

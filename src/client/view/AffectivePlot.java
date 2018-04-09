@@ -3,6 +3,7 @@ package client.view;
 import client.helper.ClientDataSingleton;
 import client.model.AffectiveData;
 import client.model.AffectivePlotData;
+import client.services.AffectiveColorService;
 import client.view.GraphPlot;
 
 import javax.swing.*;
@@ -16,13 +17,14 @@ public class AffectivePlot extends JPanel {
 
     private AffectiveData affectiveData;
     private ArrayList<ArrayList<Float>> inputData = new ArrayList<>();
-    private ArrayList<Color> colors = new ArrayList<>();
     private GraphPlot graphPlot;
     JPanel affectivePanel = new JPanel();
+    AffectiveColorService affectiveColorService;
+    private Integer length = 500;
+
 
     public AffectivePlot() {
         this.setPreferredSize(new Dimension(500, 500));
-        setRandomColors(5);
         this.setLayout(new BorderLayout());
         affectivePanel.setLayout(new GridLayout(1,1,1,1));
         affectivePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -40,21 +42,25 @@ public class AffectivePlot extends JPanel {
         System.out.println("getAffectiveGraph started");
         AffectivePlotData affectivePlotData = AffectivePlotData.getInstance();
         System.out.println(affectivePlotData.getMainDataList());
-        graphPlot = new GraphPlot(affectivePlotData.getMainDataList(), colors);
+
+        ArrayList<Color> colors =  affectiveColorService.getColors();
+        graphPlot = new GraphPlot(affectivePlotData.getMainDataList(), 
+        		colors,length);
+        
         graphPlot.setBackground(Color.LIGHT_GRAY);
         graphPlot.setBorder(new EmptyBorder(5, 5, 5, 5));
         System.out.println("getAffectiveGraph end");
         return graphPlot;
     }
 
-    private void setRandomColors(int size) {
-        for (int i = 0; i < size; i++) {
-            Random rand = new Random();
-            float r = rand.nextFloat();
-            float g = rand.nextFloat();
-            float b = rand.nextFloat();
-            Color randomColor = new Color(r, g, b);
-            colors.add(randomColor);
-        }
+	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
+		this.affectiveColorService = affectiveColorService;
+	}
+
+    public void changeDisplayLength(String length) {
+        this.length = Integer.parseInt(length);
+        plotAffectiveGraph();
     }
+
+
 }

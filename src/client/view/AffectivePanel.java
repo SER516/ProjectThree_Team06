@@ -1,6 +1,7 @@
 package client.view;
 
 import client.model.SingleTonData;
+import client.services.AffectiveColorService;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -30,8 +32,8 @@ import javax.swing.ListCellRenderer;
 import javax.swing.border.EmptyBorder;
 
 /**
- * This is a UI for Affective panel which plots the graph of
- * parameters in performance metrics.
+ * This is a UI for Affective panel which plots the graph of parameters in
+ * performance metrics.
  *
  * @author avinash
  */
@@ -39,13 +41,28 @@ import javax.swing.border.EmptyBorder;
 public class AffectivePanel extends JPanel {
 	public static final String TABNAME = "Affective";
 	AffectivePlot graphPart;
-	
+	AffectiveGraphPanel panelOne;
+	AffectivePerformanceMetricPanel panelTwo;
+
 	public AffectivePanel() {
-		AffectiveGraphPanel panelOne = new AffectiveGraphPanel();
-		AffectivePerformanceMetricPanel panelTwo = new AffectivePerformanceMetricPanel();
+		panelOne = new AffectiveGraphPanel();
+		panelTwo = new AffectivePerformanceMetricPanel();
 		setLayout(new BorderLayout());
 		add(panelOne, BorderLayout.CENTER);
 		add(panelTwo, BorderLayout.EAST);
 	}
 
+	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
+		panelOne.setAffectiveListener(affectiveColorService);
+		panelTwo.setAffectiveListener(affectiveColorService);
+	}
+
+	public ArrayList<Color> getColors() {
+		return panelTwo.getColors();
+
+	}
+
+	public void changeDisplayLength(String text) {
+		graphPart.changeDisplayLength(text);
+	}
 }

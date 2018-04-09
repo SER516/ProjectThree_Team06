@@ -5,9 +5,11 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import client.listener.ConnectionListener;
+import client.services.AffectiveColorService;
 import client.services.ClientServerConnectionService;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * ClientFrame Class creates a JFrame object
@@ -16,8 +18,8 @@ import java.awt.*;
  */
 public class ClientFrame extends JFrame {
 
-	JPanel emotivePanel;
-	JPanel affectivePanel;
+	EmotivePanel emotivePanel;
+	AffectivePanel affectivePanel;
 	MenuBar menuBar;
 
 	public ClientFrame() {
@@ -61,5 +63,19 @@ public class ClientFrame extends JFrame {
 
 	public void updateTime(double time) {
 		menuBar.updateTimeValue(time);
+	}
+
+	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
+		
+		affectivePanel.setAffectiveListener(affectiveColorService);
+	}
+
+	public ArrayList<Color> getColors() {
+		return affectivePanel.getColors();
+		
+	}
+
+	public void changeDisplayLength(String text) {
+		affectivePanel.changeDisplayLength(text);
 	}
 }

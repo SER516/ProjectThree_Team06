@@ -43,7 +43,8 @@ public class ClientSocketEndpoint {
 		AffectivePlotData.getInstance().setDataToList(faceData.getAffectiveData());
 		SingleTonData.getInstance().getAffectivePlot().plotAffectiveGraph();
 		SingleTonData.getInstance().setFaceExpressionController(new ClientFaceController());
-		String fileName = SingleTonData.getInstance().getFaceExpressionController().getFaceFileName(faceData.getExpressiveData());
+		String fileName = SingleTonData.getInstance().getFaceExpressionController().
+				getFaceFileName(faceData.getExpressiveData());
 		SingleTonData.getInstance().getFaceExpressions().drawImage(fileName);
 		clockListener.updateTime(faceData.getCounter());
 
