@@ -11,7 +11,6 @@ public class DetectionListenerService implements DetectionListenerInterface {
 	@Override
 	public void changeCounter(double counter) {
 		serverView.changeClockCounter(counter);
-
 	}
 
 	public void setServerView(ServerView serverView) {
@@ -40,12 +39,10 @@ public class DetectionListenerService implements DetectionListenerInterface {
 		} else if (exp.equals("Furrow Brow")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setFurrowBrow(val);
 		}
-
 	}
 
 	public void changePerformanceMatrics(String exp, float val) {
 		resetPerformanceMetrics();
-
 		if (exp.equals("Interest")) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setInterest(val);
 		} else if (exp.equals("Engagement")) {
@@ -60,12 +57,10 @@ public class DetectionListenerService implements DetectionListenerInterface {
 		else if(exp.equals("Focus")) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setFocus(val);
 		}
-
 	}
 
 	public void changeEye(String eye) {
 		resetEye();
-
 		if (eye.equals("Blink")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setBlink(true);
 		} else if (eye.equals("Wink Left")) {
@@ -77,7 +72,6 @@ public class DetectionListenerService implements DetectionListenerInterface {
 		} else if (eye.equals("Look Right")) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setLookRight(true);
 		}
-
 	}
 
 	public void resetEye() {
@@ -86,7 +80,6 @@ public class DetectionListenerService implements DetectionListenerInterface {
 		ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setWinkRight(false);
 		ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setLookLeft(false);
 		ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setLookRight(false);
-
 	}
 
 	public void resetUpperface() {
@@ -120,5 +113,4 @@ public class DetectionListenerService implements DetectionListenerInterface {
 	public void setEyeAutoResetCheckBox(boolean flag) {
 		ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setAutoReset(flag);
 	}
-
 }

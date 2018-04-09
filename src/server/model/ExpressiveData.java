@@ -6,7 +6,6 @@ public class ExpressiveData {
 		private float furrowBrow = 0;
 		
 		// Smile (Lower face)
-		
 		private float smile = 0;
 		private float clench = 0;
 		private float smirkLeft = 0;
@@ -21,8 +20,6 @@ public class ExpressiveData {
 		private boolean blink = false;
 		private boolean autoReset;
 
-
-
 		public boolean isAutoReset() {
 			return autoReset;
 		}
@@ -31,26 +28,30 @@ public class ExpressiveData {
 			this.autoReset = autoReset;
 		}
 
-
-
 		public float getRaiseBrow() {
 			return raiseBrow;
 		}
+		
 		public void setRaiseBrow(float raiseBrow) {
 			this.raiseBrow = raiseBrow;
 		}
+		
 		public float getFurrowBrow() {
 			return furrowBrow;
 		}
+		
 		public void setFurrowBrow(float furrowBrow) {
 			this.furrowBrow = furrowBrow;
 		}
+		
 		public float getSmile() {
 			return smile;
 		}
+		
 		public void setSmile(float smile) {
 			this.smile = smile;
 		}
+		
 		public float getClench() {
 			return clench;
 		}

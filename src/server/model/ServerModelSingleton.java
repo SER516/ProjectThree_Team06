@@ -54,6 +54,4 @@ public class ServerModelSingleton {
 	public void setFaceData(FaceData faceData) {
 		this.faceData = faceData;
 	}
-
-
 }

@@ -19,52 +19,46 @@ public class ServerMainController {
 	public ServerMainController(ServerView serverView, ServerModelSingleton serverDataSingleton,
 			ServerSocketService serverSocketService, InteractiveListenerService interactiveListenerService,
 			DetectionListenerService detectionListenerService) {
-
-		addViewToController(serverView);
-		setListeners(serverView, interactiveListenerService, detectionListenerService, serverSocketService);
-		serverSocketService.startServer();
-	}
+				addViewToController(serverView);
+				setListeners(serverView, interactiveListenerService, detectionListenerService, serverSocketService);
+				serverSocketService.startServer();
+			}
 
 	private void setListeners(ServerView serverView, InteractiveListenerService interactiveListenerService,
 			DetectionListenerService detectionListenerService, ServerSocketService serverSocketService) {
-
-		setDetectionListener(serverView, detectionListenerService);
-		setLogListener(serverView);
-		setInteractiveListener(serverView, interactiveListenerService);
-		setServerStopListener(serverView,serverSocketService);
-
-	}
+				setDetectionListener(serverView, detectionListenerService);
+				setLogListener(serverView);
+				setInteractiveListener(serverView, interactiveListenerService);
+				setServerStopListener(serverView,serverSocketService);
+			}
 
 	private void setServerStopListener(ServerView serverView, ServerSocketService serverSocketService) {
 		serverView.setServerListener(new ServerListenerInterface() {
 			@Override
-			public void stopServer() {
-				serverSocketService.stopServer();
+				public void stopServer() {
+					serverSocketService.stopServer();
+					}
+				});
 			}
-		});
-		
-	}
 
 	private void setDetectionListener(ServerView serverView, DetectionListenerService detectionListenerService) {
-		detectionListenerService.setServerView(serverView);
-		ServerSocketEndpoint.setDetectionListenerService(detectionListenerService);
-		serverView.setDetectionListenerService(detectionListenerService);
-
-	}
+				detectionListenerService.setServerView(serverView);
+				ServerSocketEndpoint.setDetectionListenerService(detectionListenerService);
+				serverView.setDetectionListenerService(detectionListenerService);
+			}
 
 	private void setInteractiveListener(ServerView serverView, InteractiveListenerService interactiveListenerService) {
-		serverView.setInteractiveListener(interactiveListenerService);
-	}
+				serverView.setInteractiveListener(interactiveListenerService);
+			}
 
 	private static void setLogListener(ServerView serverView) {
 		ServerSocketEndpoint.setLogListener(new LogListenerInterface() {
 			@Override
-			public void logMessage(String message) {
-				serverView.logMessage(message);
+				public void logMessage(String message) {
+					serverView.logMessage(message);
+					}
+				});
 			}
-		});
-
-	}
 
 	private static void addViewToController(ServerView serverView) {
 		try {
@@ -90,6 +84,5 @@ public class ServerMainController {
 				serverView.setVisible(true);
 			}
 		});
-
 	}
 }

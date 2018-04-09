@@ -9,7 +9,6 @@ public class InteractiveListenerService implements InteractiveListener {
 	public void autoResetChange(String stateValue) {
 		Double stateInterval = Double.parseDouble(stateValue);
 		ServerModelSingleton.getInstance().setStateInterval(stateInterval);
-		
 	}
 
 	@Override
@@ -22,7 +21,5 @@ public class InteractiveListenerService implements InteractiveListener {
 			ServerModelSingleton.getInstance().setAutoReset(false);
 			ServerModelSingleton.getInstance().setOneTimeSend(true);
 		}
-		
 	}
-
 }

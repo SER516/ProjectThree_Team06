@@ -21,11 +21,9 @@ public class ServerApplicationController {
 		ServerMainController serverMainController = new ServerMainController(serverView,
 				serverDataSingleton,serverSocketService,
 				interactiveListenerService, detectionListenerService);
-		
 	}
 	
 	public static void main(String args[]) {
 		new ServerApplicationController();
 	}
-
 }

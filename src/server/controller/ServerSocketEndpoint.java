@@ -31,7 +31,6 @@ public class ServerSocketEndpoint {
 	private static LogListenerInterface logListener;
 	private static DetectionListenerService detectionListenerService;
 	
-
 	static {
 		rateThread = new Thread() {
 			public void run() {
@@ -68,7 +67,6 @@ public class ServerSocketEndpoint {
 					ServerModelSingleton.getInstance().getFaceData().getExpressiveData().resetValues();
 					detectionListenerService.disableActive();
 				}
-				
 			};
 		};
 		rateThread.start();
@@ -124,12 +122,9 @@ public class ServerSocketEndpoint {
 
 	public static void setLogListener(LogListenerInterface logListenerObject) {
 		logListener = logListenerObject;
-		
 	}
 
 	public static void setDetectionListenerService(DetectionListenerService detectionListenerServiceObject) {
 		detectionListenerService = detectionListenerServiceObject;
-		
 	}
-
 }

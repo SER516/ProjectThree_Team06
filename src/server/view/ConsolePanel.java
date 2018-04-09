@@ -32,10 +32,9 @@ public class ConsolePanel extends javax.swing.JPanel {
 	JTextArea consoleTextArea;
 
 	public ConsolePanel() {
-		// initComponents();
 		this.setBackground(Color.LIGHT_GRAY);
 		this.setBorder(new TitledBorder(null, "EmoEngine Log", TitledBorder.LEADING, TitledBorder.TOP,
-				new Font("Tahoma", Font.BOLD, 12), Color.BLACK));
+						new Font("Tahoma", Font.BOLD, 12), Color.BLACK));
 		this.setBounds(11, 408, 474, 152);
 		this.setLayout(null);
 
@@ -72,7 +71,6 @@ public class ConsolePanel extends javax.swing.JPanel {
 	public void appendLogMessage(String message) {
 		message = message + "\n";
 		consoleTextArea.append(message);
-
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables

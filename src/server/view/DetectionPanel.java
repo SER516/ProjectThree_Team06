@@ -153,8 +153,6 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
         eyeAutoResetCheckBox.addActionListener(this);
         this.add(eyeAutoResetCheckBox);
 
-
-        
         JLabel lblPerformanceMetrics = new JLabel("Performance Metrics:");
         lblPerformanceMetrics.setFont(new Font("Tahoma", Font.BOLD, 12));
         lblPerformanceMetrics.setForeground(Color.WHITE);
@@ -163,7 +161,6 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
         
         String[] pfMetricItems = new String[] {"Interest", "Engagement", 
                                                 "Stress","Relaxation","Excitement","Focus"};
-        
         performanceMetricsComboBox = new JComboBox<>(pfMetricItems);
         performanceMetricsComboBox.setBounds(14, 229, 139, 25);
         performanceMetricsComboBox.addActionListener(this);
@@ -174,7 +171,6 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
         performanceMetricsSpinner.setBounds(161, 229, 55, 25);
         performanceMetricsSpinner.addChangeListener(this);
         this.add(performanceMetricsSpinner);
-        
     }
 
     
@@ -186,7 +182,6 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -199,23 +194,18 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
 	public void changeClockCounter(double counter) {
 		timeTxtField.setText(String.valueOf(counter));
 	}
 
-
 	public void setDetectionListenerService(DetectionListenerService detectionListenerService) {
-		this.detectionListenerService = detectionListenerService;
-		
+		this.detectionListenerService = detectionListenerService;		
 	}
-
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		System.out.println(e.getSource());
-		if(e.getSource() == lowerfaceSpinner) {	
-			System.out.println("lowerface");
+		if(e.getSource() == lowerfaceSpinner) {
 			float lowerfaceValue = (float)((double)lowerfaceSpinner.getValue());
             String lowerfaceExp = (String)lowerfaceComboBox.getSelectedItem();
 			detectionListenerService.changeLowerface(lowerfaceExp,lowerfaceValue);
@@ -230,8 +220,7 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 			float metricsValue = (float)((double)performanceMetricsSpinner.getValue());
             String metricsExp = (String)performanceMetricsComboBox.getSelectedItem();
 			detectionListenerService.changePerformanceMatrics(metricsExp,metricsValue);	
-		}
-		
+		}		
 	}
 
 	@Override
@@ -272,14 +261,11 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 		    if(eyeAutoResetCheckBox.isSelected()){
                 detectionListenerService.setEyeAutoResetCheckBox(true);
             }
-
-		}		
-		
+		}				
 	}
 
     public void disableActive() {
         eyeActivateRadioButton.setSelected(false);
         eyeAutoResetCheckBox.setSelected(false);
-
     }
 }

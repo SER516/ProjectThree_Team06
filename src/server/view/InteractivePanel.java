@@ -38,15 +38,11 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
      * Creates new form InteractivePanel
      */
     public InteractivePanel() {
-       // initComponents();
-       
-        
         this.setBackground(Color.LIGHT_GRAY);
         this.setBorder(new TitledBorder(null, "Interactive", TitledBorder.LEADING, 
                         TitledBorder.TOP, new Font("Tahoma", Font.BOLD, 12), null));
         this.setBounds(11, 11, 474, 104);
         this.setLayout(null);
-        
        
         JLabel emoStateLabel = new JLabel("<html>EmoState Interval:</html>");
         emoStateLabel.setForeground(Color.WHITE);
@@ -61,7 +57,6 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
         autoResetCheckBox.setBounds(175, 61, 101, 25);
         this.add(autoResetCheckBox);
         
-        
         sendButton = new JButton("Send");
         sendButton.setBackground(Color.LIGHT_GRAY);
         sendButton.setContentAreaFilled(false);
@@ -70,16 +65,13 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
         sendButton.setBounds(302, 61, 107, 25);
         this.add(sendButton);
         sendButton.addActionListener(this);
+
         emoStateSpinner = new JSpinner();
         emoStateSpinner.setModel(new SpinnerNumberModel(0.25, 0.25, 100.00, 0.50));
         emoStateSpinner.setBounds(324, 29, 55, 25);
         emoStateSpinner.addChangeListener(this);
-        
         this.add(emoStateSpinner);
     }
-
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,16 +93,12 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == sendButton){
 			interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
 		}
 	}
-
-
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
@@ -120,14 +108,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
 		}
 	}
 
-
-
 	public void setInteractiveListener(InteractiveListenerService interactiveListenerService) {
-		this.interactiveListenerService = interactiveListenerService;
-		
+		this.interactiveListenerService = interactiveListenerService;	
 	}
-
-
-
-	
 }

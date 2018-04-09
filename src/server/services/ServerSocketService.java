@@ -38,17 +38,13 @@ public class ServerSocketService {
 				context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 				context.setContextPath("/");
 				server.setHandler(context);
-
 				try {
 					// Initialize javax.websocket layer
 					ServerContainer wscontainer = WebSocketServerContainerInitializer.configureContext(context);
 					// Add server end point to the server
-					
 					wscontainer.addEndpoint(ServerSocketEndpoint.class);
-
 					server.start();
 					server.dump(System.err);
-					// server.join();
 				} catch (Throwable t) {
 					t.printStackTrace(System.err);
 				}
@@ -56,7 +52,6 @@ public class ServerSocketService {
 		};
 		serverThread = new Thread(serverTask);
 		serverThread.start();
-
 	}
 
 	public void stopServer() {
@@ -66,13 +61,8 @@ public class ServerSocketService {
 			server.stop();
 			serverThread.join();
 			ServerSocketEndpoint.queue = new ConcurrentLinkedQueue<Session>();
-
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
-
-
 }
