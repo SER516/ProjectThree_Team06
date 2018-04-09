@@ -2,6 +2,7 @@ package client.view;
 
 import client.helper.ClientDataSingleton;
 import client.model.AffectiveData;
+import client.model.AffectivePlotData;
 import client.view.GraphPlot;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class AffectivePlot extends JPanel {
 
     public AffectivePlot() {
         this.setPreferredSize(new Dimension(500, 500));
-        setRandomColors(1);
+        setRandomColors(5);
         this.setLayout(new BorderLayout());
         this.add(affectivePanel);
     }
@@ -32,16 +33,9 @@ public class AffectivePlot extends JPanel {
 
     public GraphPlot getAffectiveGraph() {
         System.out.println("getAffectiveGraph started");
-        ArrayList<Float> affectiveDataList = new ArrayList<Float>();
-        //AffectiveData affectiveData = ClientDataSingleton.getInstance().getFaceData().getAffectiveData();
-        // Testing Data
-        affectiveDataList.add(0.6f);
-        affectiveDataList.add(0.1f);
-        affectiveDataList.add(0.4f);
-        affectiveDataList.add(0.3f);
-        affectiveDataList.add(0.2f);
-        inputData.add(affectiveDataList);
-        graphPlot = new GraphPlot(inputData, colors);
+        AffectivePlotData affectivePlotData = AffectivePlotData.getInstance();
+        System.out.println(affectivePlotData.getMainDataList());
+        graphPlot = new GraphPlot(affectivePlotData.getMainDataList(), colors);
         graphPlot.setBackground(Color.BLUE);
         System.out.println("getAffectiveGraph end");
         return graphPlot;

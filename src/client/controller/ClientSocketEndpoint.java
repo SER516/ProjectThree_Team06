@@ -13,6 +13,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
 
+import client.model.AffectivePlotData;
 import client.model.ExpressivePlotData;
 import client.model.FaceData;
 import client.model.SingleTonData;
@@ -36,6 +37,7 @@ public class ClientSocketEndpoint {
 		ClientDataSingleton.getInstance().setFaceData(faceData);
 		ExpressivePlotData.getInstance().setDataToList(faceData.getExpressiveData());
 		SingleTonData.getInstance().getExpressplot().plotExpressionGraph();
+		AffectivePlotData.getInstance().setDataToList(faceData.getAffectiveData());
 		SingleTonData.getInstance().getAffectivePlot().plotAffectiveGraph();
 	}
 
