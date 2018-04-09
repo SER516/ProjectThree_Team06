@@ -59,4 +59,7 @@ public class ClientFrame extends JFrame {
 		
 	}
 
+	public void updateTime(double time) {
+		menuBar.updateTimeValue(time);
+	}
 }

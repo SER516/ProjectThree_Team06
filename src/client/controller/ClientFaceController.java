@@ -32,6 +32,7 @@ public class ClientFaceController {
 				 finalFileName.append(fileName);
 				 finalFileName.append(".png");		
 				 System.out.println(finalFileName);
+
 		        } catch (IOException ex) {
 		             System.out.println("Exception in Adding IMage: ");
 		        }

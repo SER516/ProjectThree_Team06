@@ -18,8 +18,8 @@ public class ExpressiveData {
 		private boolean winkRight = false;
 		private boolean lookLeft = false;
 		private boolean lookRight = false;
-		
-		private boolean blink = true;
+		private boolean blink = false;
+
 		public float getRaiseBrow() {
 			return raiseBrow;
 		}
