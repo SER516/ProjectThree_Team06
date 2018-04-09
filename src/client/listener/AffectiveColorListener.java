@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public interface AffectiveColorListener {
 
     public void setColor();
+
     public ArrayList<Color> getColors();
 
     void changeDisplayLength(String text);

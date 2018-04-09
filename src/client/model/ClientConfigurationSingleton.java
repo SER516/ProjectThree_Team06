@@ -1,40 +1,40 @@
 package client.model;
 
 public class ClientConfigurationSingleton {
-	private static volatile ClientConfigurationSingleton clientConfiguration;
-	private static Object mutex = new Object();
-	public String ip;
-	public String port;
+    private static volatile ClientConfigurationSingleton clientConfiguration;
+    private static Object mutex = new Object();
+    public String ip;
+    public String port;
 
-	public String getIp() {
-		return ip;
-	}
+    public static ClientConfigurationSingleton getInstance() {
+        ClientConfigurationSingleton result = clientConfiguration;
+        if (result == null) {
+            synchronized (mutex) {
+                result = clientConfiguration;
+                if (result == null) {
+                    result = new ClientConfigurationSingleton();
 
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
+                }
+                clientConfiguration = result;
+            }
+        }
+        return result;
+    }
 
-	public String getPort() {
-		return port;
-	}
+    public String getIp() {
+        return ip;
+    }
 
-	public void setPort(String port) {
-		this.port = port;
-	}
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 
-	public static ClientConfigurationSingleton getInstance() {
-		ClientConfigurationSingleton result = clientConfiguration;
-		if (result == null) {
-			synchronized (mutex) {
-				result = clientConfiguration;
-				if (result == null) {
-					result = new ClientConfigurationSingleton();
+    public String getPort() {
+        return port;
+    }
 
-				}
-				clientConfiguration = result;
-			}
-		}
-		return result;
-	}
+    public void setPort(String port) {
+        this.port = port;
+    }
 
 }

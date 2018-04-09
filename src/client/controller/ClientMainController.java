@@ -22,7 +22,7 @@ public class ClientMainController {
 
     private static void setAffectiveListener(ClientFrame clientWindow) {
         clientWindow.setAffectiveListener(new AffectiveColorService(clientWindow));
-        
+
     }
 
     private static void setClockListener(ClientFrame clientWindow) {
@@ -31,10 +31,10 @@ public class ClientMainController {
             public void updateTime(double time) {
                 clientWindow.updateTime(time);
             }
-         });
+        });
     }
 
     private static void setClientServerConnection(ClientFrame clientWindow) {
-    	clientWindow.setServerClientListener(new ClientServerConnectionService());
+        clientWindow.setServerClientListener(new ClientServerConnectionService());
     }
 }

@@ -16,7 +16,7 @@ public class EmotivePanel extends JPanel {
     FaceExpressions facePart;
     ExpressionPlots graphPart;
 
-    public EmotivePanel(){
+    public EmotivePanel() {
         setLayout(new BorderLayout());
         Dimension df = this.getSize();
         facePart = new FaceExpressions();

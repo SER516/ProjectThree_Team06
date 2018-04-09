@@ -25,54 +25,51 @@ import client.helper.ClientDataSingleton;
 
 @ClientEndpoint
 public class ClientSocketEndpoint {
-	private static Object waitLock = new Object();
-	private static Gson gson = new Gson();
-	private FaceData faceData;
-	static WebSocketClientMain webSocketClientMain;
-	static ClockListener  clockListener;
-	
+    static WebSocketClientMain webSocketClientMain;
+    static ClockListener clockListener;
+    private static Object waitLock = new Object();
+    private static Gson gson = new Gson();
+    private FaceData faceData;
 
-	@OnMessage
-	public void onMessage(String message) {
-		// Face data json.
-		System.out.println("Received msg: " + message);
-		faceData = gson.fromJson(message, FaceData.class);
-		ClientDataSingleton.getInstance().setFaceData(faceData);
-		ExpressivePlotData.getInstance().setDataToList(faceData.getExpressiveData());
-		SingleTonData.getInstance().getExpressplot().plotExpressionGraph();
-		AffectivePlotData.getInstance().setDataToList(faceData.getAffectiveData(),faceData);
-//		SingleTonData.getInstance().getAffectivePlot().plotAffectiveGraph();
-		SingleTonData.getInstance().getAffectivePlot().plotAffectiveGraph1(AffectivePlotData.getInstance().getDataset());
-		SingleTonData.getInstance().setFaceExpressionController(new ClientFaceController());
-		String fileName = SingleTonData.getInstance().getFaceExpressionController().
-				getFaceFileName(faceData.getExpressiveData());
-		SingleTonData.getInstance().getFaceExpressions().drawImage(fileName);
-		clockListener.updateTime(faceData.getCounter());
+    public static void setMainClientWebSocket(WebSocketClientMain webSocketClientMainVal) {
+        webSocketClientMain = webSocketClientMainVal;
 
-	}
+    }
 
-	
-	@OnClose
-	public void closedConnection(Session session) {
-		ClientDataSingleton.getInstance().setSessionMaintained(false);
-		try {
-			session.close();
-			webSocketClientMain.clientThread.interrupt();
-			System.out.println("session closed: " + session.getId());
-		} catch (IOException e) {
-			System.out.println("exception");
-			e.printStackTrace();
-		}
+    public static void setClockListener(ClockListener clockListenerObj) {
+        clockListener = clockListenerObj;
+    }
 
-	}
+    @OnMessage
+    public void onMessage(String message) {
+        // Face data json.
 
+        faceData = gson.fromJson(message, FaceData.class);
+        ClientDataSingleton.getInstance().setFaceData(faceData);
+        ExpressivePlotData.getInstance().setDataToList(faceData.getExpressiveData());
+        SingleTonData.getInstance().getExpressplot().plotExpressionGraph();
+        AffectivePlotData.getInstance().setDataToList(faceData.getAffectiveData(), faceData);
 
-	public static void setMainClientWebSocket(WebSocketClientMain webSocketClientMainVal) {
-		webSocketClientMain = webSocketClientMainVal;
-		
-	}
+        SingleTonData.getInstance().getAffectivePlot().plotAffectiveGraph1(AffectivePlotData.getInstance().getDataset());
+        SingleTonData.getInstance().setFaceExpressionController(new ClientFaceController());
+        String fileName = SingleTonData.getInstance().getFaceExpressionController().
+                getFaceFileName(faceData.getExpressiveData());
+        SingleTonData.getInstance().getFaceExpressions().drawImage(fileName);
+        clockListener.updateTime(faceData.getCounter());
 
-	public static void setClockListener(ClockListener clockListenerObj) {
-		clockListener = clockListenerObj;
-	}
+    }
+
+    @OnClose
+    public void closedConnection(Session session) {
+        ClientDataSingleton.getInstance().setSessionMaintained(false);
+        try {
+            session.close();
+            webSocketClientMain.clientThread.interrupt();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+
+    }
 }

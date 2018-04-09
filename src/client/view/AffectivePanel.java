@@ -39,30 +39,30 @@ import javax.swing.border.EmptyBorder;
  */
 
 public class AffectivePanel extends JPanel {
-	public static final String TABNAME = "Affective";
+    public static final String TABNAME = "Affective";
 
-	AffectiveGraphPanel panelOne;
-	AffectivePerformanceMetricPanel panelTwo;
+    AffectiveGraphPanel panelGraph;
+    AffectivePerformanceMetricPanel panelMetric;
 
-	public AffectivePanel() {
-		panelOne = new AffectiveGraphPanel();
-		panelTwo = new AffectivePerformanceMetricPanel();
-		setLayout(new BorderLayout());
-		add(panelOne, BorderLayout.CENTER);
-		add(panelTwo, BorderLayout.EAST);
-	}
+    public AffectivePanel() {
+        panelGraph = new AffectiveGraphPanel();
+        panelMetric = new AffectivePerformanceMetricPanel();
+        setLayout(new BorderLayout());
+        add(panelGraph, BorderLayout.CENTER);
+        add(panelMetric, BorderLayout.EAST);
+    }
 
-	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
-		panelOne.setAffectiveListener(affectiveColorService);
-		panelTwo.setAffectiveListener(affectiveColorService);
-	}
+    public void setAffectiveListener(AffectiveColorService affectiveColorService) {
+        panelGraph.setAffectiveListener(affectiveColorService);
+        panelMetric.setAffectiveListener(affectiveColorService);
+    }
 
-	public ArrayList<Color> getColors() {
-		return panelTwo.getColors();
+    public ArrayList<Color> getColors() {
+        return panelMetric.getColors();
 
-	}
+    }
 
-	public void changeDisplayLength(String text) {
-		panelOne.changeDisplayLength(text);
-	}
+    public void changeDisplayLength(String text) {
+        panelGraph.changeDisplayLength(text);
+    }
 }

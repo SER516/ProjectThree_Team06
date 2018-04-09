@@ -36,132 +36,130 @@ import javax.swing.text.NumberFormatter;
  * @author avinash
  */
 
-class AffectivePerformanceMetricPanel extends JPanel implements ActionListener,DocumentListener {
+class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, DocumentListener {
 
-	AffectiveColorService affectiveColorService;
-	JButton button1;
-	JButton button2;
-	JButton button3;
-	JButton button4;
-	JButton button5;
-	JButton button6;
-	JPanel panel1;
-	JPanel panel2;
-	JPanel panel3;
-	JPanel panel4;
-	JPanel panel5;
-	JPanel panel6;
-	JPanel panel7;
-	JTextField displayLength;
-	private ArrayList<Color> colors = new ArrayList<>();
+    AffectiveColorService affectiveColorService;
+    JButton btnFocus;
+    JButton btnStress;
+    JButton btnInterest;
+    JButton btnEngagement;
+    JButton btnRelaxation;
+    JButton btnExcitement;
+    JPanel focusColorDisplay;
+    JPanel stressColorDisplay;
+    JPanel interestColorDisplay;
+    JPanel engagementColorDisplay;
+    JPanel relaxationColorDisplay;
+    JPanel excitementColorDisplay;
+    JPanel panel7;
+    JTextField displayLength;
+    private ArrayList<Color> colors = new ArrayList<>();
 
-	public AffectivePerformanceMetricPanel() {
-		BuildPanel();
-	}
+    public AffectivePerformanceMetricPanel() {
+        BuildPanel();
+    }
 
-	public JPanel BuildPanel() {
+    public JPanel BuildPanel() {
 
-		// set up jpanel2
-		Font metric_font = new Font("Papyrus", Font.BOLD, 21);
-		setLayout(new BorderLayout());
-		setBackground(new Color(169, 204, 227));
-		JLabel PerformanceMetric = new JLabel("Performance Metrics", JLabel.CENTER);
-		PerformanceMetric.setFont(new Font("Papyrus", Font.BOLD, 15));
-		add(PerformanceMetric, BorderLayout.NORTH);
+        // set up PerformanceMetricPanel
+        Font metric_font = new Font("Papyrus", Font.BOLD, 21);
+        setLayout(new BorderLayout());
+        setBackground(new Color(169, 204, 227));
+        JLabel performanceMetricHead = new JLabel("Performance Metrics", JLabel.CENTER);
+        performanceMetricHead.setFont(new Font("Papyrus", Font.BOLD, 15));
+        add(performanceMetricHead, BorderLayout.NORTH);
 
-		JPanel panelTwo_center = new JPanel(new GridLayout(4, 2));
-		panelTwo_center.setBackground(new Color(220, 220, 220));
-		
-		
-		
-		// add Focus.
-		panel1 = new JPanel();
-		Color color1 = new Color(255, 99, 71);
-		colors.add(color1);
-		panel1.setBackground(color1);
-		
-		button1 = new JButton("Focus");
-		button1.setFont(new Font("Papyrus", Font.BOLD, 25));
-		button1.setPreferredSize(new Dimension(110, 50));
-		button1.addActionListener(this);
-		panel1.add(button1);
-		panelTwo_center.add(panel1);
+        JPanel performanceMetricBody = new JPanel(new GridLayout(4, 2));
+        performanceMetricBody.setBackground(new Color(220, 220, 220));
 
-		// add Stress
-		panel2 = new JPanel();
-		Color color2 = new Color(128, 191, 255);
-		colors.add(color2);
-		panel2.setBackground(color2);
-		button2 = new JButton("Stress");
-		button2.setFont(metric_font);
-		button2.setPreferredSize(new Dimension(110, 50));
-		button2.addActionListener(this);
-		panel2.add(button2);
-		panelTwo_center.add(panel2);
 
-		// add interest
-		panel3 = new JPanel();
-		Color color3 = new Color(204, 204, 255);
-		colors.add(color3);
-		panel3.setBackground(color3);
+        // add Focus.
+        focusColorDisplay = new JPanel();
+        Color defaultColorFocus = new Color(255, 99, 71);
+        colors.add(defaultColorFocus);
+        focusColorDisplay.setBackground(defaultColorFocus);
 
-		button3 = new JButton("Interest");
-		button3.setFont(metric_font);
-		button3.setPreferredSize(new Dimension(110, 50));
-		button3.addActionListener(this);
-		panel3.add(button3);
-		panelTwo_center.add(panel3);
+        btnFocus = new JButton("Focus");
+        btnFocus.setFont(new Font("Papyrus", Font.BOLD, 25));
+        btnFocus.setPreferredSize(new Dimension(110, 50));
+        btnFocus.addActionListener(this);
+        focusColorDisplay.add(btnFocus);
+        performanceMetricBody.add(focusColorDisplay);
 
-		// add Engagement
-		panel4 = new JPanel();
-		Color color4 = new Color(77, 255, 166);
-		colors.add(color4);
-		panel4.setBackground(color4);
-		// panel_excitementshort.setBackground(new Color(189, 195, 199));
-		button4 = new JButton("Engagement");
-		button4.setFont(metric_font);
-		button4.setPreferredSize(new Dimension(135, 50));
-		button4.addActionListener(this);
-		panel4.add(button4);
-		panelTwo_center.add(panel4);
+        // add Stress
+        stressColorDisplay = new JPanel();
+        Color defaultColorStress = new Color(128, 191, 255);
+        colors.add(defaultColorStress);
+        stressColorDisplay.setBackground(defaultColorStress);
+        btnStress = new JButton("Stress");
+        btnStress.setFont(metric_font);
+        btnStress.setPreferredSize(new Dimension(110, 50));
+        btnStress.addActionListener(this);
+        stressColorDisplay.add(btnStress);
+        performanceMetricBody.add(stressColorDisplay);
 
-		// add Relaxation
-		panel5 = new JPanel();
-		Color color5 = new Color(184, 102, 20);
-		colors.add(color5);
-		panel5.setBackground(color5);
-		button5 = new JButton("Relaxation");
-		button5.setFont(metric_font);
-		button5.setPreferredSize(new Dimension(120, 50));
-		button5.addActionListener(this);
-		panel5.add(button5);
-		panelTwo_center.add(panel5);
+        // add interest
+        interestColorDisplay = new JPanel();
+        Color defaultColorInterest = new Color(204, 204, 255);
+        colors.add(defaultColorInterest);
+        interestColorDisplay.setBackground(defaultColorInterest);
 
-		// add Excitement
-		panel6 = new JPanel();
-		Color color6 = new Color(255, 255, 102);
-		colors.add(color6);
-		panel6.setBackground(color6);
-		// panel_excitementlong.setBackground(new Color(189, 195, 199));
-		button6 = new JButton("Excitement");
-		button6.setFont(metric_font);
-		button6.setPreferredSize(new Dimension(120, 50));
-		button6.addActionListener(this);
-		panel6.add(button6);
-		panelTwo_center.add(panel6);
+        btnInterest = new JButton("Interest");
+        btnInterest.setFont(metric_font);
+        btnInterest.setPreferredSize(new Dimension(110, 50));
+        btnInterest.addActionListener(this);
+        interestColorDisplay.add(btnInterest);
+        performanceMetricBody.add(interestColorDisplay);
 
-		// add the display length of x axis.
-		JPanel panel7 = new JPanel(new GridBagLayout());
-		panel7.setBackground(new Color(220, 220, 220));
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridx = 0;
-		c.gridy = 0;
-		JLabel DisplayLength = new JLabel("Display Length  ");
-		DisplayLength.setFont(new Font("Papyrus", Font.BOLD, 15));
-		panel7.add(DisplayLength, c);
-		c.gridx = 1;
-		c.gridy = 0;
+        // add Engagement
+        engagementColorDisplay = new JPanel();
+        Color defaultColorEngagement = new Color(77, 255, 166);
+        colors.add(defaultColorEngagement);
+        engagementColorDisplay.setBackground(defaultColorEngagement);
+        // panel_excitementshort.setBackground(new Color(189, 195, 199));
+        btnEngagement = new JButton("Engagement");
+        btnEngagement.setFont(metric_font);
+        btnEngagement.setPreferredSize(new Dimension(135, 50));
+        btnEngagement.addActionListener(this);
+        engagementColorDisplay.add(btnEngagement);
+        performanceMetricBody.add(engagementColorDisplay);
 
+        // add Relaxation
+        relaxationColorDisplay = new JPanel();
+        Color defaultColorRelaxation = new Color(184, 102, 20);
+        colors.add(defaultColorRelaxation);
+        relaxationColorDisplay.setBackground(defaultColorRelaxation);
+        btnRelaxation = new JButton("Relaxation");
+        btnRelaxation.setFont(metric_font);
+        btnRelaxation.setPreferredSize(new Dimension(120, 50));
+        btnRelaxation.addActionListener(this);
+        relaxationColorDisplay.add(btnRelaxation);
+        performanceMetricBody.add(relaxationColorDisplay);
+
+        // add Excitement
+        excitementColorDisplay = new JPanel();
+        Color defaultColorExcitement = new Color(255, 255, 102);
+        colors.add(defaultColorExcitement);
+        excitementColorDisplay.setBackground(defaultColorExcitement);
+        // panel_excitementlong.setBackground(new Color(189, 195, 199));
+        btnExcitement = new JButton("Excitement");
+        btnExcitement.setFont(metric_font);
+        btnExcitement.setPreferredSize(new Dimension(120, 50));
+        btnExcitement.addActionListener(this);
+        excitementColorDisplay.add(btnExcitement);
+        performanceMetricBody.add(excitementColorDisplay);
+
+        // add the display length of x axis.
+        JPanel panel7 = new JPanel(new GridBagLayout());
+        panel7.setBackground(new Color(220, 220, 220));
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        JLabel DisplayLength = new JLabel("Display Length  ");
+        DisplayLength.setFont(new Font("Papyrus", Font.BOLD, 15));
+        panel7.add(DisplayLength, c);
+        c.gridx = 1;
+        c.gridy = 0;
 
 
 //		NumberFormat format = NumberFormat.getInstance();
@@ -170,91 +168,81 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener,D
 //		formatter.setMinimum(0);
 //		formatter.setMaximum(Integer.MAX_VALUE);
 //		formatter.setAllowsInvalid(false);
-		displayLength = new JTextField(10);
-		displayLength.setText(String.valueOf(50));
-		displayLength.getDocument().addDocumentListener(this);
+        displayLength = new JTextField(10);
+        displayLength.setText(String.valueOf(50));
+        displayLength.getDocument().addDocumentListener(this);
 
 
-		panel7.add(displayLength, c);
-		panelTwo_center.add(panel7);
+        panel7.add(displayLength, c);
+        performanceMetricBody.add(panel7);
 
-		panelTwo_center.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		panelTwo_center.setBorder(BorderFactory.createEtchedBorder());
-		add(panelTwo_center, BorderLayout.CENTER);
+        performanceMetricBody.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        performanceMetricBody.setBorder(BorderFactory.createEtchedBorder());
+        add(performanceMetricBody, BorderLayout.CENTER);
 
-		return this;
+        return this;
 
-	}
+    }
 
-	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
-		this.affectiveColorService = affectiveColorService;
+    public void setAffectiveListener(AffectiveColorService affectiveColorService) {
+        this.affectiveColorService = affectiveColorService;
 
-	}
+    }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == button1) {
-			setColor(panel1,0);
+        if (e.getSource() == btnFocus) {
+            setColor(focusColorDisplay, 0);
 
-		} else if (e.getSource() == button2) {
-			setColor(panel2,1);
-		}
+        } else if (e.getSource() == btnStress) {
+            setColor(stressColorDisplay, 1);
+        } else if (e.getSource() == btnInterest) {
+            setColor(interestColorDisplay, 2);
+        } else if (e.getSource() == btnEngagement) {
+            setColor(engagementColorDisplay, 3);
+        } else if (e.getSource() == btnRelaxation) {
+            setColor(relaxationColorDisplay, 4);
+        } else if (e.getSource() == btnExcitement) {
+            setColor(excitementColorDisplay, 5);
+        }
 
-		else if (e.getSource() == button3) {
-			setColor(panel3,2);
-		}
-
-		else if (e.getSource() == button4) {
-			setColor(panel4,3);
-		}
-
-		else if (e.getSource() == button5) {
-			setColor(panel5,4);
-		}
-
-		else if (e.getSource() == button6) {
-			setColor(panel6,5);
-		}
-
-	}
-	
-	
-
-	public ArrayList<Color> getColors() {
-		return colors;
-	}
-
-	public void setColors(ArrayList<Color> colors) {
-		this.colors = colors;
-	}
-
-	private void setColor(JPanel panel, int index) {
-		Color newColor = JColorChooser.showDialog(null, "Choose a color", null);
-		if(newColor == null) {
-			return;
-		}
-		else {
-			panel.setBackground(newColor);
-			colors.set(index,newColor);
-		}
-		
-
-	}
+    }
 
 
-	@Override
-	public void insertUpdate(DocumentEvent e) {
-		affectiveColorService.changeDisplayLength(displayLength.getText());
-	}
+    public ArrayList<Color> getColors() {
+        return colors;
+    }
 
-	@Override
-	public void removeUpdate(DocumentEvent e) {
-		affectiveColorService.changeDisplayLength(displayLength.getText());
-	}
+    public void setColors(ArrayList<Color> colors) {
+        this.colors = colors;
+    }
 
-	@Override
-	public void changedUpdate(DocumentEvent e) {
-		affectiveColorService.changeDisplayLength(displayLength.getText());
-	}
+    private void setColor(JPanel panel, int index) {
+        Color newColor = JColorChooser.showDialog(null, "Choose a color", null);
+        if (newColor == null) {
+            return;
+        } else {
+            panel.setBackground(newColor);
+            colors.set(index, newColor);
+        }
+
+
+    }
+
+
+    @Override
+    public void insertUpdate(DocumentEvent e) {
+        affectiveColorService.changeDisplayLength(displayLength.getText());
+    }
+
+    @Override
+    public void removeUpdate(DocumentEvent e) {
+        affectiveColorService.changeDisplayLength(displayLength.getText());
+    }
+
+    @Override
+    public void changedUpdate(DocumentEvent e) {
+        affectiveColorService.changeDisplayLength(displayLength.getText());
+    }
 }

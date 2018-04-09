@@ -8,26 +8,26 @@ import client.view.ClientFrame;
 
 public class AffectiveColorService implements AffectiveColorListener {
 
-	ClientFrame clientWindow;
-	
-    public AffectiveColorService(ClientFrame clientWindow) {
-		this.clientWindow = clientWindow;
-	}
+    ClientFrame clientWindow;
 
-	@Override
+    public AffectiveColorService(ClientFrame clientWindow) {
+        this.clientWindow = clientWindow;
+    }
+
+    @Override
     public void setColor() {
 
     }
 
-	@Override
-	public ArrayList<Color> getColors() {
-		return clientWindow.getColors();
+    @Override
+    public ArrayList<Color> getColors() {
+        return clientWindow.getColors();
 
-	}
+    }
 
-	@Override
-	public void changeDisplayLength(String text) {
+    @Override
+    public void changeDisplayLength(String text) {
 
-		clientWindow.changeDisplayLength(text);
-	}
+        clientWindow.changeDisplayLength(text);
+    }
 }

@@ -20,43 +20,44 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
 import server.model.ServerModelSingleton;
 import server.services.InteractiveListenerService;
+
 /**
- *
  * @author mspranav
  */
 public class InteractivePanel extends JPanel implements ActionListener, ChangeListener {
 
-    
-	JCheckBox autoResetCheckBox;
-	JSpinner emoStateSpinner;
-	JButton sendButton;
-	InteractiveListenerService interactiveListenerService;
-	
+
+    JCheckBox autoResetCheckBox;
+    JSpinner emoStateSpinner;
+    JButton sendButton;
+    InteractiveListenerService interactiveListenerService;
+
     /**
      * Creates new form InteractivePanel
      */
     public InteractivePanel() {
         this.setBackground(Color.LIGHT_GRAY);
-        this.setBorder(new TitledBorder(null, "Interactive", TitledBorder.LEADING, 
-                        TitledBorder.TOP, new Font("Tahoma", Font.BOLD, 12), null));
+        this.setBorder(new TitledBorder(null, "Interactive", TitledBorder.LEADING,
+                TitledBorder.TOP, new Font("Tahoma", Font.BOLD, 12), null));
         this.setBounds(11, 11, 474, 104);
         this.setLayout(null);
-       
+
         JLabel emoStateLabel = new JLabel("<html>EmoState Interval:</html>");
         emoStateLabel.setForeground(Color.WHITE);
         emoStateLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
         emoStateLabel.setBounds(175, 29, 124, 25);
         this.add(emoStateLabel);
-        
+
         autoResetCheckBox = new JCheckBox("Auto Reset");
         autoResetCheckBox.setForeground(Color.WHITE);
         autoResetCheckBox.setBackground(Color.GRAY);
         autoResetCheckBox.setFont(new Font("Tahoma", Font.BOLD, 12));
         autoResetCheckBox.setBounds(175, 61, 101, 25);
         this.add(autoResetCheckBox);
-        
+
         sendButton = new JButton("Send");
         sendButton.setBackground(Color.LIGHT_GRAY);
         sendButton.setContentAreaFilled(false);
@@ -72,6 +73,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
         emoStateSpinner.addChangeListener(this);
         this.add(emoStateSpinner);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,31 +86,31 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == sendButton){
-			interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
-		}
-	}
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == sendButton) {
+            interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
+        }
+    }
 
-	@Override
-	public void stateChanged(ChangeEvent e) {
-		if(e.getSource() == emoStateSpinner) {
-			String stateValue = emoStateSpinner.getValue().toString();
-			interactiveListenerService.autoResetChange(stateValue);
-		}
-	}
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        if (e.getSource() == emoStateSpinner) {
+            String stateValue = emoStateSpinner.getValue().toString();
+            interactiveListenerService.autoResetChange(stateValue);
+        }
+    }
 
-	public void setInteractiveListener(InteractiveListenerService interactiveListenerService) {
-		this.interactiveListenerService = interactiveListenerService;	
-	}
+    public void setInteractiveListener(InteractiveListenerService interactiveListenerService) {
+        this.interactiveListenerService = interactiveListenerService;
+    }
 }
