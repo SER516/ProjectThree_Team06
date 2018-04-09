@@ -62,7 +62,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
     public JPanel BuildPanel() {
 
         // set up PerformanceMetricPanel
-        Font metric_font = new Font("Papyrus", Font.BOLD, 21);
+        Font metric_font = new Font("Papyrus", Font.BOLD, 13);
         setLayout(new BorderLayout());
         setBackground(new Color(169, 204, 227));
         JLabel performanceMetricHead = new JLabel("Performance Metrics", JLabel.CENTER);
@@ -80,7 +80,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         focusColorDisplay.setBackground(defaultColorFocus);
 
         btnFocus = new JButton("Focus");
-        btnFocus.setFont(new Font("Papyrus", Font.BOLD, 25));
+        btnFocus.setFont(metric_font);
         btnFocus.setPreferredSize(new Dimension(110, 50));
         btnFocus.addActionListener(this);
         focusColorDisplay.add(btnFocus);
