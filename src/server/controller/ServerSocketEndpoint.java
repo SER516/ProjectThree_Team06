@@ -26,7 +26,7 @@ import server.services.DetectionListenerService;
 public class ServerSocketEndpoint {
 	
 	private static Gson gson = new Gson();
-	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
+	public static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
 	private static Thread rateThread; // Child thread for sending random number
 	private static LogListenerInterface logListener;
 	private static DetectionListenerService detectionListenerService;
@@ -60,7 +60,6 @@ public class ServerSocketEndpoint {
 				double newCounter = counter + interval;
 				ServerModelSingleton.getInstance().getFaceData().setCounter(newCounter);
 				String data = gson.toJson(ServerModelSingleton.getInstance().getFaceData());
-				System.out.println(data);
 				logListener.logMessage(data);
 				detectionListenerService.changeCounter(newCounter);
 				sendAll(data);

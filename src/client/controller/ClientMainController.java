@@ -1,9 +1,11 @@
 package client.controller;
 
+import javax.swing.JOptionPane;
 import javax.websocket.Session;
 
 import client.helper.ClientDataSingleton;
 import client.listener.ConnectionListener;
+import client.services.ClientServerConnectionService;
 import client.view.ClientFrame;
 import server.controller.ServerApplicationController;
 import server.controller.ServerMainController;
@@ -20,25 +22,6 @@ public class ClientMainController {
     }
 
     private static void setClientServerConnection(ClientFrame clientFrame) {
-        clientFrame.setConnectionListener(new ConnectionListener() {
-            @Override
-            public void startServer() {
-                WebSocketClientMain webSocketClientMain = new WebSocketClientMain();
-                if (!ClientDataSingleton.getInstance().isSessionMaintained()) {
-                    webSocketClientMain.connectToServer();
-                }
-            }
-
-            @Override
-            public void reconnectServer(String url) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void initializeServer() {
-                new ServerApplicationController();
-            }
-        });
+    	clientFrame.setServerClientListener(new ClientServerConnectionService());
     }
 }

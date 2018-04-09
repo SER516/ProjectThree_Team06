@@ -1,6 +1,7 @@
 package server.controller;
 
 import server.listener.LogListenerInterface;
+import server.listener.ServerListenerInterface;
 import server.model.ServerModelSingleton;
 import server.services.DetectionListenerService;
 import server.services.InteractiveListenerService;
@@ -20,17 +21,28 @@ public class ServerMainController {
 			DetectionListenerService detectionListenerService) {
 
 		addViewToController(serverView);
-		setListeners(serverView, interactiveListenerService, detectionListenerService);
+		setListeners(serverView, interactiveListenerService, detectionListenerService, serverSocketService);
 		serverSocketService.startServer();
 	}
 
 	private void setListeners(ServerView serverView, InteractiveListenerService interactiveListenerService,
-			DetectionListenerService detectionListenerService) {
+			DetectionListenerService detectionListenerService, ServerSocketService serverSocketService) {
 
 		setDetectionListener(serverView, detectionListenerService);
 		setLogListener(serverView);
 		setInteractiveListener(serverView, interactiveListenerService);
+		setServerStopListener(serverView,serverSocketService);
 
+	}
+
+	private void setServerStopListener(ServerView serverView, ServerSocketService serverSocketService) {
+		serverView.setServerListener(new ServerListenerInterface() {
+			@Override
+			public void stopServer() {
+				serverSocketService.stopServer();
+			}
+		});
+		
 	}
 
 	private void setDetectionListener(ServerView serverView, DetectionListenerService detectionListenerService) {

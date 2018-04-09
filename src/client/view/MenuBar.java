@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource;
 import client.listener.ConnectionListener;
+import client.services.ClientServerConnectionService;
+
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -25,7 +27,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
     private JMenuItem reconnect;
     private JMenuItem stopWatch;
     private JMenuItem connection;
-    private ConnectionListener connectionListener;
+	private ClientServerConnectionService clientServerConnectionService;
     private BufferedImage GreenIcon, RedIcon;
 
     public MenuBar(){
@@ -115,10 +117,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
             connection.setText("Not Connected");
         }
     }
-    
-    public void setConnectionListener(ConnectionListener connectionListener) {
-    		this.connectionListener = connectionListener;
-    }
 
     /**
      * setForegroundBackground method customizes appearance of items in menubar
@@ -170,23 +168,44 @@ public class MenuBar extends JMenuBar implements ActionListener {
      * actionPerformed method handles the on click event from menu.
      * @param e
      */
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == launchServer)
-        {
-            connectionListener.initializeServer();
-        }
-        else if (e.getSource() == connect)
-        {
-            this.connect(true);
-            if(connectionListener!=null) {
-            		connectionListener.startServer();
-            }
-        }
-        else if (e.getSource() == reconnect)
-        {
-            this.connect(true);
-            connectionListener.reconnectServer(null);
-        }
-    }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == launchServer) {
+			clientServerConnectionService.initializeServer();
+		} else if (e.getSource() == connect) {
+			if (clientServerConnectionService != null) {
+				IpPort ipPort = new IpPort();
+				launchDialogBox();
+			}
+			/* call connection(true) to turn connection label green */
+		} else if (e.getSource() == reconnect) {
+			clientServerConnectionService.reconnectServer(null);
+		}
+	}
+
+	public void setServerClientListener(ClientServerConnectionService clientServerConnectionService) {
+		this.clientServerConnectionService = clientServerConnectionService;
+
+	}
+
+	private void launchDialogBox() {
+		JTextField ipField = new JTextField(15);
+		JTextField ipPort = new JTextField(15);
+		ipField.setText("localhost");
+		ipPort.setText("8080");
+		JPanel myPanel = new JPanel();
+		myPanel.add(new JLabel("IP:"));
+		myPanel.add(ipField);
+		myPanel.add(Box.createHorizontalStrut(15));
+		myPanel.add(new JLabel("Port:"));
+		myPanel.add(ipPort);
+		int result = JOptionPane.showConfirmDialog(null, myPanel, "Please Enter IP"
+						+ "and Port",
+				JOptionPane.OK_CANCEL_OPTION);
+		if (result == JOptionPane.OK_OPTION) {
+			clientServerConnectionService.startServer(ipField.getText(), ipPort.getText());
+		}
+
+	}
+
 }

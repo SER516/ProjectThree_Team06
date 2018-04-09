@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import client.listener.ConnectionListener;
+import client.services.ClientServerConnectionService;
 
 import java.awt.*;
 
@@ -51,12 +52,10 @@ public class ClientFrame extends JFrame {
 		frame.setLocation(x, y);
 	}
 
-	public static void main(String[] args) {
-		JFrame client = new ClientFrame();
-	}
 
-	public void setConnectionListener(ConnectionListener connectionListener) {
-		menuBar.setConnectionListener(connectionListener);
+	public void setServerClientListener(ClientServerConnectionService clientServerConnectionService) {
+		menuBar.setServerClientListener(clientServerConnectionService);
+
 		
 	}
 
