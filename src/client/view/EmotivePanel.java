@@ -12,16 +12,17 @@ import java.awt.*;
  * @author Abhishek
  */
 public class EmotivePanel extends JPanel {
-    public static final String TABNAME = "Emotive";
-    JPanel facePart;
+    public static final String TABNAME = "Expressive";
+    FaceExpressions facePart;
     ExpressionPlots graphPart;
 
     public EmotivePanel(){
         setLayout(new BorderLayout());
         Dimension df = this.getSize();
-        facePart = new FaceExpressions("000000000000.png");
+        facePart = new FaceExpressions();
         graphPart = new ExpressionPlots();
         SingleTonData.getInstance().setExpressplot(graphPart);
+        SingleTonData.getInstance().setFaceExpressions(facePart);
         //facePart.setBackground(new Color(169, 204, 227));
         //graphPart.setBackground(Color.WHITE);
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
