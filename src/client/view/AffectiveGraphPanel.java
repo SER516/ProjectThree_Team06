@@ -62,8 +62,8 @@ class AffectiveGraphPanel extends JPanel{
 		
 	}
 
-	
 
-	
-	
+	public void changeDisplayLength(String text) {
+		graphPart.changeDisplayLength(text);
+	}
 }

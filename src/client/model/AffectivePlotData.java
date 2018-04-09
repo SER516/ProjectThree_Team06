@@ -1,5 +1,8 @@
 package client.model;
 
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -12,6 +15,22 @@ public class AffectivePlotData {
     private ArrayList<Float> relaxList = new ArrayList<>(Arrays.asList(0.0f));
     private ArrayList<Float> stressList = new ArrayList<>(Arrays.asList(0.0f));
     private ArrayList<Float> excitmentList = new ArrayList<>(Arrays.asList(0.0f));
+	XYSeriesCollection dataset;
+
+	XYSeries interestSeries = new XYSeries("interest");
+	XYSeries engagementSeries = new XYSeries("engagementSeries");
+	XYSeries relaxSeries = new XYSeries("relaxSeries");
+	XYSeries stressSeries = new XYSeries("stressSeries");
+	XYSeries excitmentSeries = new XYSeries("excitmentSeries");
+	XYSeries focusSeries = new XYSeries("focusSeries");
+
+
+
+	public XYSeriesCollection getDataset() {
+		return dataset;
+	}
+
+
 
 	public ArrayList<Float> getFocusList() {
 		return focusList;
@@ -89,21 +108,42 @@ public class AffectivePlotData {
         return result;
     }
     
-    public void setDataToList(AffectiveData affectivedata) {
-		focusList.add(affectivedata.getFocus());
-    	interestList.add(affectivedata.getInterest());
-    	engagementList.add(affectivedata.getEngagement());
-    	stressList.add(affectivedata.getStress());
-    	relaxList.add(affectivedata.getRelaxation());
-    	excitmentList.add(affectivedata.getExcitement());
-    	mainDataList.clear();
-		mainDataList.add(focusList);
-		mainDataList.add(stressList);
-    	mainDataList.add(interestList);
-    	mainDataList.add(engagementList);
-    	mainDataList.add(relaxList);
-    	mainDataList.add(excitmentList);
+    public void setDataToList(AffectiveData affectivedata, FaceData faceData) {
+//		focusList.add(affectivedata.getFocus());
+//    	interestList.add(affectivedata.getInterest());
+//    	engagementList.add(affectivedata.getEngagement());
+//    	stressList.add(affectivedata.getStress());
+//    	relaxList.add(affectivedata.getRelaxation());
+//    	excitmentList.add(affectivedata.getExcitement());
+//    	mainDataList.clear();
+//		mainDataList.add(focusList);
+//		mainDataList.add(stressList);
+//    	mainDataList.add(interestList);
+//    	mainDataList.add(engagementList);
+//    	mainDataList.add(relaxList);
+//    	mainDataList.add(excitmentList);
+
+    	double counter = faceData.getCounter();
+    	dataset = new XYSeriesCollection();
+		interestSeries.add(faceData.getCounter(),affectivedata.getInterest());
+		engagementSeries.add(faceData.getCounter(),affectivedata.getEngagement());
+		relaxSeries.add(faceData.getCounter(),affectivedata.getRelaxation());
+		stressSeries.add(faceData.getCounter(),affectivedata.getStress());
+		excitmentSeries.add(faceData.getCounter(),affectivedata.getExcitement());
+		focusSeries.add(faceData.getCounter(),affectivedata.getFocus());
+		dataset.addSeries(focusSeries);
+		dataset.addSeries(stressSeries);
+		dataset.addSeries(interestSeries);
+		dataset.addSeries(engagementSeries);
+		dataset.addSeries(relaxSeries);
+		dataset.addSeries(excitmentSeries);
+
+
 
     	
     }
+
+	public void setDataForJChart() {
+
+	}
 }

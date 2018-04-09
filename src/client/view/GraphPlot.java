@@ -27,6 +27,7 @@ public class GraphPlot extends JPanel {
 	 * initializing the graph attributes on 'baseGraph'
 	 */
 	public GraphPlot(ArrayList<ArrayList<Float>> inputData, ArrayList<Color> colors) {
+
 		serverData.addAll(inputData);
 		this.colors = colors;
 		this.setPreferredSize(new Dimension(200,200));
@@ -80,9 +81,7 @@ public class GraphPlot extends JPanel {
 		int width = getWidth();
 		int height = getHeight();
 		double xInc = (double) (width - 2 * PAD) / (channelData.size() - 1);
-		if(length !=null){
-			xInc = xInc + length;
-		}
+
 		double scale = (double) (height - 2 * PAD) / checkMaxDataPoint(channelData);
 		graph.setPaint(colors.get(i));
 		for (int index = 0; index < channelData.size() - 1; index++) {

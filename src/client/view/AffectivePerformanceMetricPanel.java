@@ -15,23 +15,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JColorChooser;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import java.awt.Component;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.NumberFormatter;
 
 /**
  * This is part of AffectivePanel UI. This panel has performance metrics.
@@ -39,7 +36,7 @@ import javax.swing.event.ChangeListener;
  * @author avinash
  */
 
-class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, ChangeListener {
+class AffectivePerformanceMetricPanel extends JPanel implements ActionListener,DocumentListener {
 
 	AffectiveColorService affectiveColorService;
 	JButton button1;
@@ -165,8 +162,18 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 		c.gridx = 1;
 		c.gridy = 0;
 
+
+
+//		NumberFormat format = NumberFormat.getInstance();
+//		NumberFormatter formatter = new NumberFormatter(format);
+//		formatter.setValueClass(Integer.class);
+//		formatter.setMinimum(0);
+//		formatter.setMaximum(Integer.MAX_VALUE);
+//		formatter.setAllowsInvalid(false);
 		displayLength = new JTextField(10);
-		displayLength.setText(String.valueOf(500));
+		displayLength.setText(String.valueOf(50));
+		displayLength.getDocument().addDocumentListener(this);
+
 
 		panel7.add(displayLength, c);
 		panelTwo_center.add(panel7);
@@ -235,11 +242,19 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 
 	}
 
-	@Override
-	public void stateChanged(ChangeEvent e) {
-		if(e.getSource() == displayLength){
 
-			affectiveColorService.changeDisplayLength(displayLength.getText());
-		}
+	@Override
+	public void insertUpdate(DocumentEvent e) {
+		affectiveColorService.changeDisplayLength(displayLength.getText());
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent e) {
+		affectiveColorService.changeDisplayLength(displayLength.getText());
+	}
+
+	@Override
+	public void changedUpdate(DocumentEvent e) {
+		affectiveColorService.changeDisplayLength(displayLength.getText());
 	}
 }

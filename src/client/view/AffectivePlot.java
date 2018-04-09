@@ -3,8 +3,20 @@ package client.view;
 import client.helper.ClientDataSingleton;
 import client.model.AffectiveData;
 import client.model.AffectivePlotData;
+import client.model.FaceData;
+import client.model.SingleTonData;
 import client.services.AffectiveColorService;
 import client.view.GraphPlot;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.time.TimeSeriesCollection;
+import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -20,7 +32,8 @@ public class AffectivePlot extends JPanel {
     private GraphPlot graphPlot;
     JPanel affectivePanel = new JPanel();
     AffectiveColorService affectiveColorService;
-    private Integer length = 500;
+    private Integer length = 50;
+
 
 
     public AffectivePlot() {
@@ -58,9 +71,46 @@ public class AffectivePlot extends JPanel {
 	}
 
     public void changeDisplayLength(String length) {
-        this.length = Integer.parseInt(length);
-        plotAffectiveGraph();
+        try {
+            this.length = Integer.parseInt(length);
+            plotAffectiveGraph1(AffectivePlotData.getInstance().getDataset());
+        } catch(Exception e) {
+            System.out.print("Invalid data");
+        }
+
     }
 
 
+    public void plotAffectiveGraph1(XYSeriesCollection dataset) {
+        JFreeChart chart = ChartFactory.createXYLineChart("", "",
+                "", dataset, PlotOrientation.VERTICAL, false, true,
+                false);
+
+        XYPlot plot = chart.getXYPlot();
+        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+        ValueAxis range = plot.getRangeAxis();
+        range = plot.getDomainAxis();
+        range.setRange(0, length);
+        range = plot.getRangeAxis();
+        range.setRange(0,1);
+        ArrayList<Color> colors =  affectiveColorService.getColors();
+
+
+
+        for (int i = 0; i < colors.size(); i++) {
+            renderer.setSeriesPaint(i, colors.get(i));
+            renderer.setSeriesShapesVisible(i, false);
+        }
+        plot.setRenderer(renderer);
+        plot.setRangeGridlinesVisible(false);
+        plot.setDomainGridlinesVisible(false);
+
+
+
+        affectivePanel.removeAll();
+        affectivePanel.add(new ChartPanel(chart));
+        affectivePanel.repaint();
+        affectivePanel.revalidate();
+
+    }
 }

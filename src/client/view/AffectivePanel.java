@@ -40,7 +40,7 @@ import javax.swing.border.EmptyBorder;
 
 public class AffectivePanel extends JPanel {
 	public static final String TABNAME = "Affective";
-	AffectivePlot graphPart;
+
 	AffectiveGraphPanel panelOne;
 	AffectivePerformanceMetricPanel panelTwo;
 
@@ -63,6 +63,6 @@ public class AffectivePanel extends JPanel {
 	}
 
 	public void changeDisplayLength(String text) {
-		graphPart.changeDisplayLength(text);
+		panelOne.changeDisplayLength(text);
 	}
 }
