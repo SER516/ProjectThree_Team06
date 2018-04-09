@@ -1,17 +1,18 @@
 package client.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AffectivePlotData {
 
     private static volatile AffectivePlotData affectivePlotData;
     private static Object mutex = new Object();
-    private ArrayList<Float> interestList = new ArrayList<>();
-    private ArrayList<Float> engagementList = new ArrayList<>();
-    private ArrayList<Float> relaxList = new ArrayList<>();
-    private ArrayList<Float> stressList = new ArrayList<>();
-    private ArrayList<Float> excitmentList = new ArrayList<>();
-    //private ArrayList<Float> focusList = new ArrayList<>();
+    private ArrayList<Float> interestList = new ArrayList<>(Arrays.asList(0.0f));
+    private ArrayList<Float> engagementList = new ArrayList<>(Arrays.asList(0.0f));
+    private ArrayList<Float> relaxList = new ArrayList<>(Arrays.asList(0.0f));
+    private ArrayList<Float> stressList = new ArrayList<>(Arrays.asList(0.0f));
+    private ArrayList<Float> excitmentList = new ArrayList<>(Arrays.asList(0.0f));
+    //private ArrayList<Float> focusList = new ArrayList<>(Arrays.asList(0.0f));
     private ArrayList<ArrayList<Float>> mainDataList = new ArrayList<>();
     
     public ArrayList<ArrayList<Float>> getMainDataList() {

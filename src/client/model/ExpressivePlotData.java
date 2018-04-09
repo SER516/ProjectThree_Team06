@@ -1,6 +1,7 @@
 package client.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import server.model.ServerModelSingleton;
 
@@ -8,17 +9,17 @@ public class ExpressivePlotData {
 	
 	private static volatile ExpressivePlotData expressivePlotData;
 	private static Object mutex = new Object();
-	private ArrayList<Float> raiseBrowList = new ArrayList<>();
-	private ArrayList<Float> furrowBrowList = new ArrayList<>();
-	private ArrayList<Float> smileList = new ArrayList<>();
-	private ArrayList<Float> clenchList = new ArrayList<>();
-	private ArrayList<Float> smirkLeftList = new ArrayList<>();
-	private ArrayList<Float> smirkRightList = new ArrayList<>();
-	private ArrayList<Float> laughList = new ArrayList<>();
-	private ArrayList<Float> winkLeftList = new ArrayList<>();
-	private ArrayList<Float> winkRightList = new ArrayList<>();
-	private ArrayList<Float> lookLeftList = new ArrayList<>();
-	private ArrayList<Float> lookRightList = new ArrayList<>();
+	private ArrayList<Float> raiseBrowList = new ArrayList<>(Arrays.asList(0.0f));
+	private ArrayList<Float> furrowBrowList = new ArrayList<>(Arrays.asList(0.0f));
+	private ArrayList<Float> smileList = new ArrayList<>(Arrays.asList(0.0f));
+	private ArrayList<Float> clenchList = new ArrayList<>(Arrays.asList(0.0f));
+	private ArrayList<Float> smirkLeftList = new ArrayList<>(Arrays.asList(0.0f));
+	private ArrayList<Float> smirkRightList = new ArrayList<>(Arrays.asList(0.0f));
+	private ArrayList<Float> laughList = new ArrayList<>(Arrays.asList(0.0f));
+	private ArrayList<Float> winkLeftList = new ArrayList<>(Arrays.asList(0.0f));
+	private ArrayList<Float> winkRightList = new ArrayList<>(Arrays.asList(0.0f));
+	private ArrayList<Float> lookLeftList = new ArrayList<>(Arrays.asList(0.0f));
+	private ArrayList<Float> lookRightList = new ArrayList<>(Arrays.asList(0.0f));
 	
 	public static ExpressivePlotData getExpressivePlotData() {
 		return expressivePlotData;

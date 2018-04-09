@@ -1,5 +1,6 @@
 package client.view;
 
+import client.controller.PlotController;
 import client.helper.ClientDataSingleton;
 import client.model.ExpressivePlotData;
 
@@ -27,7 +28,9 @@ public class ExpressionPlots extends JPanel {
     JPanel expression11 = new JPanel();
     JPanel expression12 = new JPanel();
     
-    private ExpressivePlotData expressivePlotData;
+    private PlotController plotController = new PlotController();
+    //private ExpressivePlotData expressivePlotData;
+    private ArrayList<ArrayList<Float>> plotData = new ArrayList<>();
     private ArrayList<ArrayList<Float>> inputData = new ArrayList<>();
     private ArrayList<Color> colors = new ArrayList<>();
     
@@ -107,7 +110,8 @@ public class ExpressionPlots extends JPanel {
     
     private void setPanelsLayout(JPanel expression, JSplitPane splitPane, String feature) {
     	expression.setLayout(new GridLayout(1,1,1,1));
-    	splitPane.setResizeWeight(0.2);
+    	splitPane.setResizeWeight(0.1);
+    	
     	splitPane.setEnabled(false);
         splitPane.setDividerSize(0);
         splitPane.add(new JLabel(feature));
@@ -127,54 +131,55 @@ public class ExpressionPlots extends JPanel {
     public void plotExpressionGraph() {
 
             if(ClientDataSingleton.getInstance().getFaceData() != null) {
-    	        expressivePlotData = ExpressivePlotData.getInstance();
+    	        //expressivePlotData = ExpressivePlotData.getInstance();
+    	        plotData = plotController.getExpressivePlotData();
     	        
     	        System.out.println("Blink Array");
-    	        graphPlot1 = plotGraphForFeature(expressivePlotData.getBlinkList());
+    	        graphPlot1 = plotGraphForFeature(plotData.get(0));
     	        addGraphsToPanel(expression1, splitPane1, graphPlot1, "Blink");
 
     	        System.out.println("Clench Array");
-    	        graphPlot2 = plotGraphForFeature(expressivePlotData.getClenchList());
+    	        graphPlot2 = plotGraphForFeature(plotData.get(1));
     	        addGraphsToPanel(expression2, splitPane2, graphPlot2, "Clench");
 
     	        System.out.println("FurrowBrow Array");
-    	        graphPlot3 = plotGraphForFeature(expressivePlotData.getFurrowBrowList());
+    	        graphPlot3 = plotGraphForFeature(plotData.get(2));
     	        addGraphsToPanel(expression3, splitPane3, graphPlot3, "FurrowBrow");
 
     	        System.out.println("Laugh Array");
-    	        graphPlot4 = plotGraphForFeature(expressivePlotData.getLaughList());
+    	        graphPlot4 = plotGraphForFeature(plotData.get(3));
     	        addGraphsToPanel(expression4, splitPane4, graphPlot4, "Laugh");
 
     	        System.out.println("LookLeft Array");
-    	        graphPlot5 = plotGraphForFeature(expressivePlotData.getLookLeftList());
+    	        graphPlot5 = plotGraphForFeature(plotData.get(4));
     	        addGraphsToPanel(expression5, splitPane5, graphPlot5, "LookLeft");
 
     	        System.out.println("LookRight Array");
-    	        graphPlot6 = plotGraphForFeature(expressivePlotData.getLookRightList());
+    	        graphPlot6 = plotGraphForFeature(plotData.get(5));
     	        addGraphsToPanel(expression6, splitPane6, graphPlot6, "LookRight");
 
     	        System.out.println("RaiseBrow Array");
-    	        graphPlot7 = plotGraphForFeature(expressivePlotData.getRaiseBrowList());
+    	        graphPlot7 = plotGraphForFeature(plotData.get(6));
     	        addGraphsToPanel(expression7, splitPane7, graphPlot7, "RaiseBrow");
 
     	        System.out.println("Smile Array");
-    	        graphPlot8 = plotGraphForFeature(expressivePlotData.getSmileList());
+    	        graphPlot8 = plotGraphForFeature(plotData.get(7));
     	        addGraphsToPanel(expression8, splitPane8, graphPlot8, "Smile");
 
     	        System.out.println("SmirkLeft Array");
-    	        graphPlot9 = plotGraphForFeature(expressivePlotData.getSmirkLeftList());
+    	        graphPlot9 = plotGraphForFeature(plotData.get(8));
     	        addGraphsToPanel(expression9, splitPane9, graphPlot9, "SmirkLeft");
 
     	        System.out.println("SmirkRight Array");
-    	        graphPlot10 = plotGraphForFeature(expressivePlotData.getSmirkRightList());
+    	        graphPlot10 = plotGraphForFeature(plotData.get(9));
     	        addGraphsToPanel(expression10, splitPane10, graphPlot10, "SmirkRight");
 
     	        System.out.println("WinkLeft Array");
-    	        graphPlot11 = plotGraphForFeature(expressivePlotData.getWinkLeftList());
+    	        graphPlot11 = plotGraphForFeature(plotData.get(10));
     	        addGraphsToPanel(expression11, splitPane11, graphPlot11, "WinkLeft");
 
     	        System.out.println("WinkRight Array");
-    	        graphPlot12 = plotGraphForFeature(expressivePlotData.getWinkRightList());
+    	        graphPlot12 = plotGraphForFeature(plotData.get(11));
     	        addGraphsToPanel(expression12, splitPane12, graphPlot12, "WinkRight");
 
 
