@@ -109,8 +109,8 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
         lblLowerface.setBounds(250, 68, 139, 33);
         this.add(lblLowerface);
         
-        String[] lowerfaceItems = new String[] {"Smile", "Clench","Smirk Left",
-                                                "Smirk Right","Laugh"};
+        String[] lowerfaceItems = new String[] {"Laugh", "Clench","Smirk Left",
+                                                "Smirk Right","Smile"};
         lowerfaceComboBox = new JComboBox<>(lowerfaceItems);
         lowerfaceComboBox.setBounds(250, 98, 123, 25);
         lowerfaceComboBox.addActionListener(this);
@@ -162,7 +162,7 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
         this.add(lblPerformanceMetrics);
         
         String[] pfMetricItems = new String[] {"Interest", "Engagement", 
-                                                "Stress","Relaxation","Excitement Focus"};
+                                                "Stress","Relaxation","Excitement","Focus"};
         
         performanceMetricsComboBox = new JComboBox<>(pfMetricItems);
         performanceMetricsComboBox.setBounds(14, 229, 139, 25);

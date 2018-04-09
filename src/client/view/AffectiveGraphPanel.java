@@ -1,10 +1,12 @@
 package client.view;
 
 import client.model.SingleTonData;
+import client.services.AffectiveColorService;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -19,12 +21,13 @@ import javax.swing.JPanel;
 
 class AffectiveGraphPanel extends JPanel{
 	
+	AffectivePlot graphPart;
 	public AffectiveGraphPanel(){	
 		BuildPanel();	
 	}
 
 	public JPanel BuildPanel() {
-		AffectivePlot graphPart = null;
+		
 		
 		setLayout(new BorderLayout());
 		setBackground(new Color(253, 235, 208));
@@ -53,5 +56,14 @@ class AffectiveGraphPanel extends JPanel{
 		*/
 		
 	}
+
+	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
+		graphPart.setAffectiveListener(affectiveColorService);
+		
+	}
+
+	
+
+	
 	
 }

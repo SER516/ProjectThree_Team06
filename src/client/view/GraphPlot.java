@@ -18,6 +18,7 @@ public class GraphPlot extends JPanel {
 	ArrayList<ArrayList<Float>> serverData = new ArrayList<>();
 	final int PAD = 1;
 	ArrayList<Color> colors;
+	Integer length;
 
 	/*
 	 * @param inputData : Data received from server
@@ -29,6 +30,14 @@ public class GraphPlot extends JPanel {
 		serverData.addAll(inputData);
 		this.colors = colors;
 		this.setPreferredSize(new Dimension(200,200));
+	}
+
+	public GraphPlot(ArrayList<ArrayList<Float>> inputData, ArrayList<Color> colors, Integer length) {
+		serverData.addAll(inputData);
+		this.colors = colors;
+		this.setPreferredSize(new Dimension(200,200));
+		this.length = length;
+
 	}
 
 	/*
@@ -66,10 +75,14 @@ public class GraphPlot extends JPanel {
 	 * on Graph
 	 */
 	private void paintData(int i, Graphics2D graph) {
+
 		ArrayList<Float> channelData = serverData.get(i);
 		int width = getWidth();
 		int height = getHeight();
 		double xInc = (double) (width - 2 * PAD) / (channelData.size() - 1);
+		if(length !=null){
+			xInc = xInc + length;
+		}
 		double scale = (double) (height - 2 * PAD) / checkMaxDataPoint(channelData);
 		graph.setPaint(colors.get(i));
 		for (int index = 0; index < channelData.size() - 1; index++) {

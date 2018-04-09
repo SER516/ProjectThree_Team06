@@ -45,6 +45,7 @@ public class DetectionListenerService implements DetectionListenerInterface {
 
 	public void changePerformanceMatrics(String exp, float val) {
 		resetPerformanceMetrics();
+
 		if (exp.equals("Interest")) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setInterest(val);
 		} else if (exp.equals("Engagement")) {
@@ -53,8 +54,11 @@ public class DetectionListenerService implements DetectionListenerInterface {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setStress(val);
 		} else if (exp.equals("Relaxation")) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setRelaxation(val);
-		} else if (exp.equals("Excitement Focus")) {
+		} else if (exp.equals("Excitement")) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setExcitement(val);
+		}
+		else if(exp.equals("Focus")) {
+			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setFocus(val);
 		}
 
 	}
