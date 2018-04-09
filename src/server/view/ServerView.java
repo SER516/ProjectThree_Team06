@@ -33,7 +33,7 @@ public class ServerView extends JFrame {
 		// initComponents();
 		this.setTitle("Emotiv Xavier Composer");
 		this.getContentPane().setBackground(Color.LIGHT_GRAY);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.setBounds(100, 100, 500, 600);
 		this.getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
