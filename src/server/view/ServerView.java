@@ -100,4 +100,7 @@ public class ServerView extends JFrame {
 		
 	}
 
+    public void disableActive() {
+		detectionPanel.disableActive();
+    }
 }

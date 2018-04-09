@@ -19,5 +19,8 @@ public interface DetectionListenerInterface {
 	public void resetLowerface();
 	
 	public void resetPerformanceMetrics();
-	
+
+	public void disableActive();
+
+	void setEyeAutoResetCheckBox(boolean b);
 }

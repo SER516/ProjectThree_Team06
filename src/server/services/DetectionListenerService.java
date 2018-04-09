@@ -107,4 +107,14 @@ public class DetectionListenerService implements DetectionListenerInterface {
 		ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setExcitement(0);
 	}
 
+	@Override
+	public void disableActive() {
+		serverView.disableActive();
+	}
+
+	@Override
+	public void setEyeAutoResetCheckBox(boolean flag) {
+		ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setAutoReset(flag);
+	}
+
 }

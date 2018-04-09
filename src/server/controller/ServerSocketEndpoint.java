@@ -63,6 +63,11 @@ public class ServerSocketEndpoint {
 				logListener.logMessage(data);
 				detectionListenerService.changeCounter(newCounter);
 				sendAll(data);
+				if(ServerModelSingleton.getInstance().getFaceData().getExpressiveData().isAutoReset()){
+					ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setAutoReset(false);
+					ServerModelSingleton.getInstance().getFaceData().getExpressiveData().resetValues();
+					detectionListenerService.disableActive();
+				}
 				
 			};
 		};

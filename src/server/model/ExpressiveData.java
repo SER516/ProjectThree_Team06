@@ -19,6 +19,19 @@ public class ExpressiveData {
 		private boolean lookLeft = false;
 		private boolean lookRight = false;
 		private boolean blink = false;
+		private boolean autoReset;
+
+
+
+		public boolean isAutoReset() {
+			return autoReset;
+		}
+
+		public void setAutoReset(boolean autoReset) {
+			this.autoReset = autoReset;
+		}
+
+
 
 		public float getRaiseBrow() {
 			return raiseBrow;
@@ -92,5 +105,19 @@ public class ExpressiveData {
 		public void setLookRight(boolean lookRight) {
 			this.lookRight = lookRight;
 		}
-	
+
+
+
+		public void resetValues(){
+
+			winkLeft = false;
+			winkRight = false;
+			lookLeft = false;
+			lookRight = false;
+			blink = false;
+
+		}
+
+
+
 }

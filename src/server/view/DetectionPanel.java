@@ -150,7 +150,10 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
         eyeAutoResetCheckBox.setBackground(Color.GRAY);
         eyeAutoResetCheckBox.setBounds(294, 164, 95, 25);
         eyeAutoResetCheckBox.addActionListener(this);
+        eyeAutoResetCheckBox.addActionListener(this);
         this.add(eyeAutoResetCheckBox);
+
+
         
         JLabel lblPerformanceMetrics = new JLabel("Performance Metrics:");
         lblPerformanceMetrics.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -266,14 +269,17 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
             }
         }
 		else if(e.getSource() ==  eyeAutoResetCheckBox){
-			
+		    if(eyeAutoResetCheckBox.isSelected()){
+                detectionListenerService.setEyeAutoResetCheckBox(true);
+            }
+
 		}		
 		
 	}
 
+    public void disableActive() {
+        eyeActivateRadioButton.setSelected(false);
+        eyeAutoResetCheckBox.setSelected(false);
 
-	
-
-
-    
+    }
 }
