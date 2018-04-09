@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class GraphPlot extends JPanel {
 	ArrayList<ArrayList<Float>> serverData = new ArrayList<>();
-	final int PAD = 0;
+	final int PAD = 1;
 	ArrayList<Color> colors;
 
 	/*
@@ -94,11 +94,7 @@ public class GraphPlot extends JPanel {
 	 * maximum data point from data stream
 	 */
 	private float checkMaxDataPoint(ArrayList<Float> data) {
-		float max = -Integer.MAX_VALUE;
-		for (int index = 0; index < data.size(); index++) {
-			if (data.get(index) > max)
-				max = data.get(index);
-		}
+		float max = 1.0f;
 		return max;
 	}
 

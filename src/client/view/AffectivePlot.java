@@ -6,6 +6,8 @@ import client.model.AffectivePlotData;
 import client.view.GraphPlot;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,9 +24,12 @@ public class AffectivePlot extends JPanel {
         this.setPreferredSize(new Dimension(500, 500));
         setRandomColors(5);
         this.setLayout(new BorderLayout());
+        affectivePanel.setLayout(new GridLayout(1,1,1,1));
+        affectivePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         this.add(affectivePanel);
     }
     public void plotAffectiveGraph(){
+    	
         affectivePanel.removeAll();
         affectivePanel.add(getAffectiveGraph());
         affectivePanel.repaint();
@@ -36,7 +41,8 @@ public class AffectivePlot extends JPanel {
         AffectivePlotData affectivePlotData = AffectivePlotData.getInstance();
         System.out.println(affectivePlotData.getMainDataList());
         graphPlot = new GraphPlot(affectivePlotData.getMainDataList(), colors);
-        graphPlot.setBackground(Color.BLUE);
+        graphPlot.setBackground(Color.LIGHT_GRAY);
+        graphPlot.setBorder(new EmptyBorder(5, 5, 5, 5));
         System.out.println("getAffectiveGraph end");
         return graphPlot;
     }

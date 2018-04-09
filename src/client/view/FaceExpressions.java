@@ -9,4 +9,8 @@ public class FaceExpressions extends JPanel{
         add(new JLabel("Face Expression", JLabel.CENTER), BorderLayout.NORTH);
         setBackground(new Color(253, 235, 208));
     }
+    
+    public void PaintFace() {
+    	
+    }
 }

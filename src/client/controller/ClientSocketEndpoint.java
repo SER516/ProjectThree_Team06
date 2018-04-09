@@ -39,6 +39,7 @@ public class ClientSocketEndpoint {
 		SingleTonData.getInstance().getExpressplot().plotExpressionGraph();
 		AffectivePlotData.getInstance().setDataToList(faceData.getAffectiveData());
 		SingleTonData.getInstance().getAffectivePlot().plotAffectiveGraph();
+		SingleTonData.getInstance().getFaceExpression().PaintFace();
 	}
 
 	
