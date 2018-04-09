@@ -26,7 +26,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
     private JMenuItem connect;
     private JMenuItem reconnect;
     private JMenuItem stopWatch;
-
+    private JMenuItem connection_label;
 	private ClientServerConnectionService clientServerConnectionService;
     private BufferedImage GreenIcon, RedIcon;
 
@@ -81,6 +81,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
         connectMenu.add(reconnect);
 
         stopWatch = new JMenuItem("Stop Watch", new ImageIcon(resizeStopImg));
+        connection_label = new JMenuItem();
+        connect_state(false);
         //stopImage_item.setSize(1,this.getHeight());
         launchServer.addActionListener(this);
         connect.addActionListener(this);
@@ -92,9 +94,26 @@ public class MenuBar extends JMenuBar implements ActionListener {
         add(menu);
         setForegroundBackground(stopWatch, metric_font);
         add(stopWatch);
+        setForegroundBackground(connection_label,metric_font);
+        add(connection_label);
     }
 
 
+    /**
+     * connect method, changes the label and icon on menubar.
+     *
+     * @param flag
+     */
+    public void connect_state(boolean flag){
+        if(flag){
+            connection_label.setIcon(new ImageIcon(GreenIcon));
+            connection_label.setText("Connected");
+        }
+        else{
+            connection_label.setIcon(new ImageIcon(RedIcon));
+            connection_label.setText("Not Connected");
+        }
+    }
 
     /**
      * setForegroundBackground method customizes appearance of items in menubar
@@ -151,12 +170,14 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		if (e.getSource() == launchServer) {
 			clientServerConnectionService.initializeServer();
 		} else if (e.getSource() == connect) {
+
 			if (clientServerConnectionService != null) {
 				IpPort ipPort = new IpPort();
+                connect_state(true);
 				launchDialogBox();
 			}
-			/* call connection(true) to turn connection label green */
 		} else if (e.getSource() == reconnect) {
+		    connect_state(true);
 			clientServerConnectionService.reconnectServer(null);
 		}
 	}
