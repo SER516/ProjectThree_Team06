@@ -1,6 +1,7 @@
 package server.controller;
 
 import server.listener.InteractiveListener;
+import server.model.FaceData;
 import server.model.ServerModelSingleton;
 import server.services.DetectionListenerService;
 import server.services.InteractiveListenerService;
@@ -12,6 +13,7 @@ public class ServerApplicationController {
 	public ServerApplicationController() {
 		ServerView serverView = new ServerView();
 		ServerModelSingleton serverDataSingleton = ServerModelSingleton.getInstance();
+		serverDataSingleton.setFaceData(new FaceData());
 		ServerSocketService serverSocketService = new ServerSocketService();
 		InteractiveListenerService interactiveListenerService = new InteractiveListenerService();
 		DetectionListenerService detectionListenerService = new DetectionListenerService();
