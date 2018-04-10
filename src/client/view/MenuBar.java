@@ -50,9 +50,9 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		greenIcon = null;
 		redIcon = null;
 		try {
-			redImage = ImageIO.read(getClass().getResource("redDot.png"));
-			greenImage = ImageIO.read(getClass().getResource("greenDot.png"));
-			stopImage = ImageIO.read(getClass().getResource("StopWatch.png"));
+			redImage = ImageIO.read(getClass().getClassLoader().getResource("client/Images/redDot.png"));
+			greenImage = ImageIO.read(getClass().getClassLoader().getResource("client/Images/greenDot.png"));
+			stopImage = ImageIO.read(getClass().getClassLoader().getResource("client/Images/StopWatch.png"));
 			resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 			redIcon = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 			greenIcon = new BufferedImage(30, 25, BufferedImage.TYPE_INT_ARGB);
