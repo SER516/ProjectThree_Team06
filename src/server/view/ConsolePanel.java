@@ -36,15 +36,16 @@ public class ConsolePanel extends javax.swing.JPanel {
         btnClearLog.setBackground(Color.LIGHT_GRAY);
         btnClearLog.setContentAreaFilled(false);
         btnClearLog.setOpaque(true);
+        consoleTextArea = new JTextArea();
+        consoleTextArea.setBackground(Color.WHITE);
+        consoleTextArea.setBounds(10, 26, 454, 86);
         btnClearLog.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                consoleTextArea.setText("");
             }
         });
-        consoleTextArea = new JTextArea();
-        consoleTextArea.setBackground(Color.DARK_GRAY);
-        consoleTextArea.setBounds(10, 26, 454, 86);
+
         this.add(btnClearLog);
         this.add(consoleTextArea);
     }
