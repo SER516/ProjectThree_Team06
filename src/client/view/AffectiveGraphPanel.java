@@ -27,15 +27,20 @@ class AffectiveGraphPanel extends JPanel {
         BuildPanel();
     }
 
+    /**
+     * This function constructs a JPanel 
+     * at the center for graph plot.
+     * @return
+     */
     public JPanel BuildPanel() {
-
-
         setLayout(new BorderLayout());
+       
+        // new Color(..) is used to add color to JPanel.
         setBackground(new Color(253, 235, 208));
+        
         JLabel GraphPlot = new JLabel("Graph Plot", JLabel.CENTER);
         GraphPlot.setFont(new Font("Papyrus", Font.BOLD, 15));
         add(GraphPlot, BorderLayout.NORTH);
-
         setLayout(new BorderLayout());
         graphPart = new AffectivePlot();
         SingleTonData.getInstance().setAffectivePlot(graphPart);

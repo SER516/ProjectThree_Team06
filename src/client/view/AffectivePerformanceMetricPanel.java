@@ -59,26 +59,33 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         BuildPanel();
     }
 
+    /**
+     * This function builds a panel with 6 performance metrics. 
+     * They are Focus, Stress, Interest, Engagement, Relaxation. 
+     * 
+     * @return
+     */
+    
     public JPanel BuildPanel() {
-
+    	
         // set up PerformanceMetricPanel
         Font metric_font = new Font("Papyrus", Font.BOLD, 13);
         setLayout(new BorderLayout());
+        
+        //new Color(..) is used for color or panel. 
         setBackground(new Color(169, 204, 227));
         JLabel performanceMetricHead = new JLabel("Performance Metrics", JLabel.CENTER);
         performanceMetricHead.setFont(new Font("Papyrus", Font.BOLD, 15));
         add(performanceMetricHead, BorderLayout.NORTH);
-
         JPanel performanceMetricBody = new JPanel(new GridLayout(4, 2));
         performanceMetricBody.setBackground(new Color(220, 220, 220));
 
 
-        // add Focus.
+        // add Focus panel to performanceMetricBody panel. 
         focusColorDisplay = new JPanel();
         Color defaultColorFocus = new Color(255, 99, 71);
         colors.add(defaultColorFocus);
         focusColorDisplay.setBackground(defaultColorFocus);
-
         btnFocus = new JButton("Focus");
         btnFocus.setFont(metric_font);
         btnFocus.setPreferredSize(new Dimension(110, 50));
@@ -86,7 +93,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         focusColorDisplay.add(btnFocus);
         performanceMetricBody.add(focusColorDisplay);
 
-        // add Stress
+        // add Stress panel to performanceMetricBody panel. 
         stressColorDisplay = new JPanel();
         Color defaultColorStress = new Color(128, 191, 255);
         colors.add(defaultColorStress);
@@ -98,12 +105,11 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         stressColorDisplay.add(btnStress);
         performanceMetricBody.add(stressColorDisplay);
 
-        // add interest
+        // add Interest panel to performanceMetricBody panel. 
         interestColorDisplay = new JPanel();
         Color defaultColorInterest = new Color(204, 204, 255);
         colors.add(defaultColorInterest);
         interestColorDisplay.setBackground(defaultColorInterest);
-
         btnInterest = new JButton("Interest");
         btnInterest.setFont(metric_font);
         btnInterest.setPreferredSize(new Dimension(110, 50));
@@ -111,12 +117,11 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         interestColorDisplay.add(btnInterest);
         performanceMetricBody.add(interestColorDisplay);
 
-        // add Engagement
+        // add Engagement panel to performanceMetricBody panel. 
         engagementColorDisplay = new JPanel();
         Color defaultColorEngagement = new Color(77, 255, 166);
         colors.add(defaultColorEngagement);
         engagementColorDisplay.setBackground(defaultColorEngagement);
-        // panel_excitementshort.setBackground(new Color(189, 195, 199));
         btnEngagement = new JButton("Engagement");
         btnEngagement.setFont(metric_font);
         btnEngagement.setPreferredSize(new Dimension(135, 50));
@@ -124,7 +129,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         engagementColorDisplay.add(btnEngagement);
         performanceMetricBody.add(engagementColorDisplay);
 
-        // add Relaxation
+        // add Relaxation panel to performanceMetricBody panel. 
         relaxationColorDisplay = new JPanel();
         Color defaultColorRelaxation = new Color(184, 102, 20);
         colors.add(defaultColorRelaxation);
@@ -136,12 +141,11 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         relaxationColorDisplay.add(btnRelaxation);
         performanceMetricBody.add(relaxationColorDisplay);
 
-        // add Excitement
+        // add Excitement panel to performanceMetricBody panel. 
         excitementColorDisplay = new JPanel();
         Color defaultColorExcitement = new Color(255, 255, 102);
         colors.add(defaultColorExcitement);
         excitementColorDisplay.setBackground(defaultColorExcitement);
-        // panel_excitementlong.setBackground(new Color(189, 195, 199));
         btnExcitement = new JButton("Excitement");
         btnExcitement.setFont(metric_font);
         btnExcitement.setPreferredSize(new Dimension(120, 50));
@@ -160,19 +164,9 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         panel7.add(DisplayLength, c);
         c.gridx = 1;
         c.gridy = 0;
-
-
-//		NumberFormat format = NumberFormat.getInstance();
-//		NumberFormatter formatter = new NumberFormatter(format);
-//		formatter.setValueClass(Integer.class);
-//		formatter.setMinimum(0);
-//		formatter.setMaximum(Integer.MAX_VALUE);
-//		formatter.setAllowsInvalid(false);
         displayLength = new JTextField(10);
         displayLength.setText(String.valueOf(50));
         displayLength.getDocument().addDocumentListener(this);
-
-
         panel7.add(displayLength, c);
         performanceMetricBody.add(panel7);
 
@@ -210,6 +204,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
     }
 
 
+   
     public ArrayList<Color> getColors() {
         return colors;
     }

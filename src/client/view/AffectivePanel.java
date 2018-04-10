@@ -32,18 +32,28 @@ import javax.swing.ListCellRenderer;
 import javax.swing.border.EmptyBorder;
 
 /**
- * This is a UI for Affective panel which plots the graph of parameters in
- * performance metrics.
+ * This class creates the affective panel in which 
+ * graph plot is done based on 6 parameters. 
  *
  * @author avinash
  */
 
 public class AffectivePanel extends JPanel {
+	
+			
     public static final String TABNAME = "Affective";
 
     AffectiveGraphPanel panelGraph;
     AffectivePerformanceMetricPanel panelMetric;
 
+    /**
+     * constructor of affective panel and 
+     * calls two other classes - 
+     * AffectiveGraphPanel: for graph plot panel
+     * AffectivePerformanceMetricPanel. - for performance metric panel.
+     * 
+     */
+    
     public AffectivePanel() {
         panelGraph = new AffectiveGraphPanel();
         panelMetric = new AffectivePerformanceMetricPanel();
@@ -51,6 +61,7 @@ public class AffectivePanel extends JPanel {
         add(panelGraph, BorderLayout.CENTER);
         add(panelMetric, BorderLayout.EAST);
     }
+
 
     public void setAffectiveListener(AffectiveColorService affectiveColorService) {
         panelGraph.setAffectiveListener(affectiveColorService);
