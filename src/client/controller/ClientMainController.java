@@ -38,6 +38,6 @@ public class ClientMainController {
     }
 
     private static void setClientServerConnection(ClientFrame clientWindow) {
-        clientWindow.setServerClientListener(new ClientServerConnectionService());
-    }
+		clientWindow.setServerClientListener(new ClientServerConnectionService());
+	}
 }

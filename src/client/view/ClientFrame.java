@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import client.services.AffectiveColorService;
 import client.services.ClientServerConnectionService;
+import constants.ClientConstants;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,83 +17,87 @@ import java.util.ArrayList;
  */
 public class ClientFrame extends JFrame {
 
-    EmotivePanel emotivePanel;
-    AffectivePanel affectivePanel;
-    MenuBar menuBar;
+	EmotivePanel emotivePanel;
+	AffectivePanel affectivePanel;
+	MenuBar menuBar;
 
-    public ClientFrame() {
-        setTitle("Client (Lab 3, Team 6)");
-        // add(createMainPanel());
-        menuBar = new MenuBar();
-        JTabbedPane tabbedPane = new JTabbedPane();
-        emotivePanel = new EmotivePanel();
-        affectivePanel = new AffectivePanel();
-        tabbedPane.addTab(EmotivePanel.TABNAME, emotivePanel);
-        tabbedPane.addTab(AffectivePanel.TABNAME, affectivePanel);
-        tabbedPane.setBorder(new EmptyBorder(10, 10, 10, 10));
-        setLayout(new BorderLayout());
+	public ClientFrame() {
+		setTitle(ClientConstants.TITLE);
+		// add(createMainPanel());
+		menuBar = new MenuBar();
+		JTabbedPane tabbedPane = new JTabbedPane();
+		emotivePanel = new EmotivePanel();
+		affectivePanel = new AffectivePanel();
+		tabbedPane.addTab(EmotivePanel.TABNAME, emotivePanel);
+		tabbedPane.addTab(AffectivePanel.TABNAME, affectivePanel);
+		tabbedPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+		setLayout(new BorderLayout());
+		pack();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(1300, 700);
+		centerGUI(this);
+		setJMenuBar(menuBar);
+		add(tabbedPane, BorderLayout.CENTER);
+		setResizable(true);
+		setVisible(true);
+	}
 
-        pack();
+	/**
+	 * centerGUI method setup the client window dimensions
+	 * 
+	 * @param frame
+	 */
+	private void centerGUI(JFrame frame) {
+		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+		int w = frame.getSize().width;
+		int h = frame.getSize().height;
+		int x = (d.width - w) / 2;
+		int y = (d.height - h) / 2;
+		frame.setLocation(x, y);
+	}
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1300, 700);
-        centerGUI(this);
-        setJMenuBar(menuBar);
-        add(tabbedPane, BorderLayout.CENTER);
-        setResizable(true);
-        setVisible(true);
-    }
+	/**
+	 * setServerClientListener method sets client server connection listeners
+	 * 
+	 * @param clientServerConnectionService
+	 */
+	public void setServerClientListener(ClientServerConnectionService clientServerConnectionService) {
+		menuBar.setServerClientListener(clientServerConnectionService);
+	}
 
-    /**
-     * centerGUI method setup the client window dimensions
-     * @param frame
-     */
-    private void centerGUI(JFrame frame) {
-        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-        int w = frame.getSize().width;
-        int h = frame.getSize().height;
-        int x = (d.width - w) / 2;
-        int y = (d.height - h) / 2;
-        frame.setLocation(x, y);
-    }
+	/**
+	 * updateTime method updates stop watch timer on menubar
+	 * 
+	 * @param time
+	 */
+	public void updateTime(double time) {
+		menuBar.updateTimeValue(time);
+	}
 
-    /**
-     * setServerClientListener method sets client server connection listeners
-     * @param clientServerConnectionService
-     */
-    public void setServerClientListener(ClientServerConnectionService clientServerConnectionService) {
-        menuBar.setServerClientListener(clientServerConnectionService);
-    }
+	/**
+	 * setAffectiveListener method sets color change service for affective panel
+	 * 
+	 * @param affectiveColorService
+	 */
+	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
+		affectivePanel.setAffectiveListener(affectiveColorService);
+	}
 
-    /**
-     * updateTime method updates stop watch timer on menubar
-     * @param time
-     */
-    public void updateTime(double time) {
-        menuBar.updateTimeValue(time);
-    }
+	/**
+	 * getColors method extracts colors on affective tab
+	 * 
+	 * @return
+	 */
+	public ArrayList<Color> getColors() {
+		return affectivePanel.getColors();
+	}
 
-    /**
-     * setAffectiveListener method sets color change service for affective panel
-     * @param affectiveColorService
-     */
-    public void setAffectiveListener(AffectiveColorService affectiveColorService) {
-        affectivePanel.setAffectiveListener(affectiveColorService);
-    }
-
-    /**
-     * getColors method extracts colors on affective tab
-     * @return
-     */
-    public ArrayList<Color> getColors() {
-        return affectivePanel.getColors();
-    }
-
-    /**
-     * changedisplayLengthLabel method updates length of affective panel
-     * @param text
-     */
-    public void changedisplayLengthLabel(String text) {
-        affectivePanel.changedisplayLengthLabel(text);
-    }
+	/**
+	 * changedisplayLengthLabel method updates length of affective panel
+	 * 
+	 * @param text
+	 */
+	public void changedisplayLengthLabel(String text) {
+		affectivePanel.changedisplayLengthLabel(text);
+	}
 }
