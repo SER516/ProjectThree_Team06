@@ -43,7 +43,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
     private ArrayList<Color> colors = new ArrayList<>();
 
     public AffectivePerformanceMetricPanel() {
-        BuildPanel();
+        buildPanel();
     }
 
     /**
@@ -53,10 +53,10 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
      * @return
      */
 
-    public JPanel BuildPanel() {
+    public JPanel buildPanel() {
 
         // set up PerformanceMetricPanel
-        Font metric_font = new Font("Papyrus", Font.BOLD, 13);
+        Font metricFont = new Font("Papyrus", Font.BOLD, 13);
         setLayout(new BorderLayout());
 
         //new Color(..) is used for color or panel.
@@ -74,7 +74,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         colors.add(defaultColorFocus);
         focusColorDisplay.setBackground(defaultColorFocus);
         btnFocus = new JButton("Focus");
-        btnFocus.setFont(metric_font);
+        btnFocus.setFont(metricFont);
         btnFocus.setPreferredSize(new Dimension(110, 50));
         btnFocus.addActionListener(this);
         focusColorDisplay.add(btnFocus);
@@ -86,7 +86,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         colors.add(defaultColorStress);
         stressColorDisplay.setBackground(defaultColorStress);
         btnStress = new JButton("Stress");
-        btnStress.setFont(metric_font);
+        btnStress.setFont(metricFont);
         btnStress.setPreferredSize(new Dimension(110, 50));
         btnStress.addActionListener(this);
         stressColorDisplay.add(btnStress);
@@ -98,7 +98,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         colors.add(defaultColorInterest);
         interestColorDisplay.setBackground(defaultColorInterest);
         btnInterest = new JButton("Interest");
-        btnInterest.setFont(metric_font);
+        btnInterest.setFont(metricFont);
         btnInterest.setPreferredSize(new Dimension(110, 50));
         btnInterest.addActionListener(this);
         interestColorDisplay.add(btnInterest);
@@ -110,7 +110,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         colors.add(defaultColorEngagement);
         engagementColorDisplay.setBackground(defaultColorEngagement);
         btnEngagement = new JButton("Engagement");
-        btnEngagement.setFont(metric_font);
+        btnEngagement.setFont(metricFont);
         btnEngagement.setPreferredSize(new Dimension(135, 50));
         btnEngagement.addActionListener(this);
         engagementColorDisplay.add(btnEngagement);
@@ -122,7 +122,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         colors.add(defaultColorRelaxation);
         relaxationColorDisplay.setBackground(defaultColorRelaxation);
         btnRelaxation = new JButton("Relaxation");
-        btnRelaxation.setFont(metric_font);
+        btnRelaxation.setFont(metricFont);
         btnRelaxation.setPreferredSize(new Dimension(120, 50));
         btnRelaxation.addActionListener(this);
         relaxationColorDisplay.add(btnRelaxation);
@@ -134,7 +134,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         colors.add(defaultColorExcitement);
         excitementColorDisplay.setBackground(defaultColorExcitement);
         btnExcitement = new JButton("Excitement");
-        btnExcitement.setFont(metric_font);
+        btnExcitement.setFont(metricFont);
         btnExcitement.setPreferredSize(new Dimension(120, 50));
         btnExcitement.addActionListener(this);
         excitementColorDisplay.add(btnExcitement);
@@ -146,9 +146,9 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
-        JLabel DisplayLength = new JLabel("Display Length  ");
-        DisplayLength.setFont(new Font("Papyrus", Font.BOLD, 15));
-        panel7.add(DisplayLength, c);
+        JLabel displayLengthLabel = new JLabel("Display Length  ");
+        displayLengthLabel.setFont(new Font("Papyrus", Font.BOLD, 15));
+        panel7.add(displayLengthLabel, c);
         c.gridx = 1;
         c.gridy = 0;
         displayLength = new JTextField(10);
@@ -215,16 +215,16 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 
     @Override
     public void insertUpdate(DocumentEvent e) {
-        affectiveColorService.changeDisplayLength(displayLength.getText());
+        affectiveColorService.changedisplayLengthLabel(displayLength.getText());
     }
 
     @Override
     public void removeUpdate(DocumentEvent e) {
-        affectiveColorService.changeDisplayLength(displayLength.getText());
+        affectiveColorService.changedisplayLengthLabel(displayLength.getText());
     }
 
     @Override
     public void changedUpdate(DocumentEvent e) {
-        affectiveColorService.changeDisplayLength(displayLength.getText());
+        affectiveColorService.changedisplayLengthLabel(displayLength.getText());
     }
 }

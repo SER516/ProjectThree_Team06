@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import client.listener.AffectiveColorListener;
 import client.view.ClientFrame;
 
+/**
+ *
+ */
 public class AffectiveColorService implements AffectiveColorListener {
 
     ClientFrame clientWindow;
@@ -26,8 +29,8 @@ public class AffectiveColorService implements AffectiveColorListener {
     }
 
     @Override
-    public void changeDisplayLength(String text) {
+    public void changedisplayLengthLabel(String text) {
 
-        clientWindow.changeDisplayLength(text);
+        clientWindow.changedisplayLengthLabel(text);
     }
 }

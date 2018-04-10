@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /**
- *
+ *Affective panel action listener.
  */
 public interface AffectiveColorListener {
 
@@ -12,6 +12,6 @@ public interface AffectiveColorListener {
 
     public ArrayList<Color> getColors();
 
-    void changeDisplayLength(String text);
+    void changedisplayLengthLabel(String text);
 
 }

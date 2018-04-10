@@ -43,7 +43,7 @@ public class ClientFaceController {
 
 
         } catch (IOException ex) {
-            System.out.println("Exception in Adding Image: ");
+            JOptionPane.showMessageDialog(null, "Exception in Adding Image:");
         }
 
         return finalFileName.toString();

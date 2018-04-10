@@ -19,6 +19,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ *
+ */
 
 public class AffectivePlot extends JPanel {
 
@@ -65,7 +68,7 @@ public class AffectivePlot extends JPanel {
         this.affectiveColorService = affectiveColorService;
     }
 
-    public void changeDisplayLength(String length) {
+    public void changedisplayLengthLabel(String length) {
         try {
             this.length = Integer.parseInt(length);
             plotAffectiveGraph1(AffectivePlotData.getInstance().getDataset());
