@@ -3,6 +3,7 @@ package client.services;
 import java.awt.Color;
 import java.util.ArrayList;
 import client.listener.AffectiveColorListener;
+import client.model.AffectivePlotData;
 import client.view.ClientFrame;
 
 /**
@@ -29,6 +30,16 @@ public class AffectiveColorService implements AffectiveColorListener {
 
 	@Override
 	public void changedisplayLengthLabel(String text) {
-		clientWindow.changedisplayLengthLabel(text);
+		try{
+			AffectivePlotData.getInstance().setGraphLength(Integer.parseInt(text));
+			clientWindow.changedisplayLengthLabel();
+
+		}
+		catch (Exception e){
+			System.out.print(e.getMessage());
+		}
+
+
+
 	}
 }
