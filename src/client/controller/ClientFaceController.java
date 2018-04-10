@@ -2,10 +2,8 @@ package client.controller;
 
 import java.io.File;
 import java.io.IOException;
-
 import client.constants.ClientConstants;
 import client.model.ExpressiveData;
-
 import javax.swing.JOptionPane;
 
 /**

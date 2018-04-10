@@ -16,7 +16,6 @@ public class ClientConfigurationSingleton {
 				result = clientConfiguration;
 				if (result == null) {
 					result = new ClientConfigurationSingleton();
-
 				}
 				clientConfiguration = result;
 			}
