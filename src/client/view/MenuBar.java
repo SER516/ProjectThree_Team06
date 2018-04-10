@@ -56,9 +56,9 @@ public class MenuBar extends JMenuBar implements ActionListener {
 			finalFileName.append(File.separator);
 			finalFileName.append(ClientConstants.IMAGES);
 			finalFileName.append(File.separator);
-			redImage = ImageIO.read(new File(finalFileName.toString()+"redDot.png"));
-			greenImage = ImageIO.read(new File(finalFileName.toString()+"greenDot.png"));
-			stopImage = ImageIO.read(new File(finalFileName.toString()+"StopWatch.png"));
+			redImage = ImageIO.read(new File(finalFileName.toString()+ClientConstants.CONNECTED_IMAGE));
+			greenImage = ImageIO.read(new File(finalFileName.toString()+ClientConstants.NOT_CONNECTED_IMAGE));
+			stopImage = ImageIO.read(new File(finalFileName.toString()+ClientConstants.STOP_WATCH_IMAGE));
 			resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 			redIcon = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 			greenIcon = new BufferedImage(30, 25, BufferedImage.TYPE_INT_ARGB);
@@ -124,7 +124,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	 */
 	public void setForegroundBackground(JMenu item, Border blackBorder, Font font) {
 		item.setBackground(Color.LIGHT_GRAY);
-		item.setForeground(Color.WHITE);
+		item.setForeground(Color.BLACK);
 		item.setFont(font);
 		item.setBorder(blackBorder);
 		item.setOpaque(true);
@@ -139,7 +139,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	 */
 	public void setForegroundBackground(JMenuItem item, Border blackBorder, Font font) {
 		item.setBackground(Color.LIGHT_GRAY);
-		item.setForeground(Color.WHITE);
+		item.setForeground(Color.BLACK);
 		item.setBorder(blackBorder);
 		item.setFont(font);
 		item.setOpaque(true);
@@ -153,7 +153,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	 */
 	public void setForegroundBackground(JMenuItem item, Font font) {
 		item.setBackground(Color.LIGHT_GRAY);
-		item.setForeground(Color.WHITE);
+		item.setForeground(Color.BLACK);
 		item.setFont(font);
 		item.setOpaque(true);
 	}

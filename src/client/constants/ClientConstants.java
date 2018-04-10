@@ -41,4 +41,7 @@ public class ClientConstants {
 	public static final String ON_VALUE = "0";
 	public static final String OFF_VALUE = "1";
 	public static final String CURRENT_DIR = ".";
+	public static final String CONNECTED_IMAGE = "redDot.png";
+	public static final String NOT_CONNECTED_IMAGE = "greenDot.png";
+	public static final String STOP_WATCH_IMAGE = "StopWatch.png";
 }
