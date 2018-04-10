@@ -44,7 +44,7 @@ public class AffectivePanel extends JPanel {
 		return panelMetric.getColors();
 	}
 
-	public void changedisplayLengthLabel(String text) {
-		panelGraph.changedisplayLengthLabel(text);
+	public void changedisplayLengthLabel() {
+		panelGraph.changedisplayLengthLabel();
 	}
 }

@@ -2,9 +2,7 @@ package client.view;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
 import client.constants.ClientConstants;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -21,7 +19,8 @@ public class FaceExpressions extends JPanel {
 		String fileName = "000000000000.png";
 		setBackground(new Color(175, 175, 175));
 		try {
-			StringBuilder finalFileName = new StringBuilder(new java.io.File(".").getCanonicalPath());
+			StringBuilder finalFileName = new StringBuilder(
+					new java.io.File(ClientConstants.CURRENT_DIR).getCanonicalPath());
 			finalFileName.append(File.separator);
 			finalFileName.append(ClientConstants.IMAGES);
 			finalFileName.append(File.separator);
