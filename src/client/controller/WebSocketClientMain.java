@@ -22,7 +22,6 @@ public class WebSocketClientMain {
 	private static void wait4TerminateSignal() {
 		synchronized (waitLock) {
 			try {
-
 				waitLock.wait();
 			} catch (InterruptedException e) {
 				waitLock.notifyAll();
@@ -57,7 +56,7 @@ public class WebSocketClientMain {
 						try {
 							session.close();
 						} catch (Exception e) {
-							JOptionPane.showMessageDialog(null, ClientConstants.CLOSING_SESSION_EXCEPTION);
+							JOptionPane.showMessageDialog(null, ClientConstants.CLOSING_SESSION_EXCEPTION_MESSAGE);
 						}
 					}
 				}

@@ -53,7 +53,7 @@ public class FaceExpressions extends JPanel {
 			this.repaint();
 			this.revalidate();
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, ClientConstants.DRAW_IMAGE_EXCEPTION);
+			JOptionPane.showMessageDialog(null, ClientConstants.DRAW_IMAGE_EXCEPTION_MESSAGE);
 		}
 	}
 }

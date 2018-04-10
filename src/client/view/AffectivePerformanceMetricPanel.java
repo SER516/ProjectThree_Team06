@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
 import client.services.AffectiveColorService;
 import constants.ClientConstants;
 
@@ -151,7 +150,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
-		JLabel displayLengthLabel = new JLabel("Display Length  ");
+		JLabel displayLengthLabel = new JLabel(ClientConstants.DISPLAY_LENGTH);
 		displayLengthLabel.setFont(ClientConstants.TEXT_FONT);
 		panel7.add(displayLengthLabel, c);
 		c.gridx = 1;
@@ -177,10 +176,8 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
 		if (e.getSource() == btnFocus) {
 			setColor(focusColorDisplay, 0);
-
 		} else if (e.getSource() == btnStress) {
 			setColor(stressColorDisplay, 1);
 		} else if (e.getSource() == btnInterest) {
@@ -192,7 +189,6 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 		} else if (e.getSource() == btnExcitement) {
 			setColor(excitementColorDisplay, 5);
 		}
-
 	}
 
 	public ArrayList<Color> getColors() {
@@ -204,7 +200,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 	}
 
 	private void setColor(JPanel panel, int index) {
-		Color newColor = JColorChooser.showDialog(null, "Choose a color", null);
+		Color newColor = JColorChooser.showDialog(null, ClientConstants.CHOOSE_COLOR, null);
 		if (newColor == null) {
 			return;
 		} else {

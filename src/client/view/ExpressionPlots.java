@@ -1,11 +1,15 @@
 package client.view;
 
-import client.controller.PlotController;
-import client.helper.ClientDataSingleton;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import client.controller.PlotController;
+import client.helper.ClientDataSingleton;
 
 /**
  * ExpressionPlots class plots the graph of expressions received from server.
@@ -85,7 +89,6 @@ public class ExpressionPlots extends JPanel {
 		setPanelsLayout(expression9, splitPane9, "SmirkRight");
 		setPanelsLayout(expression10, splitPane10, "WinkLeft");
 		setPanelsLayout(expression11, splitPane11, "WinkRight");
-
 		this.add(expression1);
 		this.add(expression2);
 		this.add(expression3);

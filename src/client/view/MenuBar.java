@@ -60,7 +60,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 			Graphics2D g4 = setGraphics(redIcon, redImage);
 			Graphics2D g5 = setGraphics(greenIcon, greenImage);
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION);
+			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION_MESSAGE);
 		}
 		menu.setHorizontalTextPosition(SwingConstants.CENTER);
 		menu.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -76,11 +76,9 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		connectMenu.add(connect);
 		connectMenu.add(new JPopupMenu.Separator());
 		connectMenu.add(reconnect);
-
-		stopWatch = new JMenuItem("Stop Watch", new ImageIcon(resizeStopImg));
+		stopWatch = new JMenuItem(ClientConstants.STOP_WATCH, new ImageIcon(resizeStopImg));
 		connectionLabel = new JMenuItem();
 		connect_state(false);
-
 		launchServer.addActionListener(this);
 		connect.addActionListener(this);
 		reconnect.addActionListener(this);

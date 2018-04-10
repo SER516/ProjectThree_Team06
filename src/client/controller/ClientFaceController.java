@@ -38,7 +38,7 @@ public class ClientFaceController {
 			finalFileName.append(fileName);
 			finalFileName.append(ClientConstants.PNG);
 		} catch (IOException ex) {
-			JOptionPane.showMessageDialog(null, ClientConstants.ADDING_IMAGE_EXCEPTION);
+			JOptionPane.showMessageDialog(null, ClientConstants.ADDING_IMAGE_EXCEPTION_MESSAGE);
 		}
 		return finalFileName.toString();
 	}

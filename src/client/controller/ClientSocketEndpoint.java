@@ -67,7 +67,7 @@ public class ClientSocketEndpoint {
 			session.close();
 			webSocketClientMain.clientThread.interrupt();
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, ClientConstants.CLOSING_CONNECTION_EXCEPTION);
+			JOptionPane.showMessageDialog(null, ClientConstants.CLOSING_CONNECTION_EXCEPTION_MESSAGE);
 		}
 	}
 }

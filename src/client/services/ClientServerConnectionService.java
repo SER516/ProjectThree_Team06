@@ -5,6 +5,7 @@ import client.controller.WebSocketClientMain;
 import client.helper.ClientDataSingleton;
 import client.listener.ConnectionListener;
 import client.model.ClientConfigurationSingleton;
+import constants.ClientConstants;
 import server.controller.ServerApplicationController;
 
 /**
@@ -27,7 +28,7 @@ public class ClientServerConnectionService implements ConnectionListener {
 		String ip = ClientConfigurationSingleton.getInstance().getIp();
 		String port = ClientConfigurationSingleton.getInstance().getPort();
 		if (ip == null || port == null) {
-			JOptionPane.showMessageDialog(null, "Please connect to the server first");
+			JOptionPane.showMessageDialog(null, ClientConstants.CONNECT_TO_SERVER);
 		} else {
 			establishServerClientConnection(ip, port);
 		}
@@ -52,7 +53,7 @@ public class ClientServerConnectionService implements ConnectionListener {
 			ClientConfigurationSingleton.getInstance().setPort(port);
 			webSocketClientMain.connectToServer(ip, port);
 		} else {
-			JOptionPane.showMessageDialog(null, "Client is already connected");
+			JOptionPane.showMessageDialog(null, ClientConstants.CLIENT_ALREADY_CONNECTED);
 		}
 
 	}
