@@ -25,7 +25,7 @@ public class ServerMainController {
                                 DetectionListenerService detectionListenerService) {
         addViewToController(serverView);
         setListeners(serverView, interactiveListenerService, detectionListenerService, serverSocketService);
-        serverSocketService.startServer();
+        serverSocketService.startServer(serverView);
     }
 
     private static void setLogListener(ServerView serverView) {
