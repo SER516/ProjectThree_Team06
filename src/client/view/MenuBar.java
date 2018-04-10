@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -47,13 +48,18 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		metricFont = new Font("Papyrus", Font.BOLD, 13);
 		Border blackBorder = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.LIGHT_GRAY);
 		BufferedImage stopImage, redImage, greenImage;
+
 		BufferedImage resizeStopImg = null;
 		greenIcon = null;
 		redIcon = null;
 		try {
-			redImage = ImageIO.read(getClass().getClassLoader().getResource("client/Images/redDot.png"));
-			greenImage = ImageIO.read(getClass().getClassLoader().getResource("client/Images/greenDot.png"));
-			stopImage = ImageIO.read(getClass().getClassLoader().getResource("client/Images/StopWatch.png"));
+			StringBuilder finalFileName = new StringBuilder(new java.io.File(".").getCanonicalPath());
+			finalFileName.append(File.separator);
+			finalFileName.append(ClientConstants.IMAGES);
+			finalFileName.append(File.separator);
+			redImage = ImageIO.read(new File(finalFileName.toString()+"redDot.png"));
+			greenImage = ImageIO.read(new File(finalFileName.toString()+"greenDot.png"));
+			stopImage = ImageIO.read(new File(finalFileName.toString()+"StopWatch.png"));
 			resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 			redIcon = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 			greenIcon = new BufferedImage(30, 25, BufferedImage.TYPE_INT_ARGB);
