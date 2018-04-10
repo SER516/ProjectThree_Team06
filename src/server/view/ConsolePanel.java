@@ -9,8 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
 /**
@@ -37,17 +36,19 @@ public class ConsolePanel extends javax.swing.JPanel {
         btnClearLog.setContentAreaFilled(false);
         btnClearLog.setOpaque(true);
         consoleTextArea = new JTextArea();
-        consoleTextArea.setBackground(Color.WHITE);
-        consoleTextArea.setBounds(10, 26, 454, 86);
+
         btnClearLog.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 consoleTextArea.setText("");
             }
         });
-
+        JScrollPane scrollPane = new JScrollPane(consoleTextArea);
+        scrollPane.setBackground(Color.WHITE);
+        scrollPane.setBounds(10, 26, 454, 86);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         this.add(btnClearLog);
-        this.add(consoleTextArea);
+        this.add(scrollPane);
     }
 
     /**
