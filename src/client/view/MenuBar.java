@@ -40,11 +40,12 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	private JMenuItem connectionLabel;
 	private ClientServerConnectionService clientServerConnectionService;
 	private BufferedImage greenIcon, redIcon;
+	private Font metricFont;
 
 	public MenuBar() {
 		JMenu menu = new JMenu("Menu");
-		Font metricFont = new Font("Papyrus", Font.BOLD, 13);
-		Border blackBorder = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY);
+		metricFont = new Font("Papyrus", Font.BOLD, 13);
+		Border blackBorder = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.LIGHT_GRAY);
 		BufferedImage stopImage, redImage, greenImage;
 		BufferedImage resizeStopImg = null;
 		greenIcon = null;
@@ -65,6 +66,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		menu.setHorizontalTextPosition(SwingConstants.CENTER);
 		menu.setVerticalTextPosition(SwingConstants.BOTTOM);
 		menu.setFont(metricFont);
+		menu.setBackground(Color.LIGHT_GRAY);
 		launchServer = new JMenuItem("Launch Server");
 		setForegroundBackground(launchServer, blackBorder, metricFont);
 		JMenu connectMenu = new JMenu("Connect");
@@ -116,7 +118,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	 * @param font
 	 */
 	public void setForegroundBackground(JMenu item, Border blackBorder, Font font) {
-		item.setBackground(Color.DARK_GRAY);
+		item.setBackground(Color.LIGHT_GRAY);
 		item.setForeground(Color.WHITE);
 		item.setFont(font);
 		item.setBorder(blackBorder);
@@ -131,7 +133,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	 * @param font
 	 */
 	public void setForegroundBackground(JMenuItem item, Border blackBorder, Font font) {
-		item.setBackground(Color.DARK_GRAY);
+		item.setBackground(Color.LIGHT_GRAY);
 		item.setForeground(Color.WHITE);
 		item.setBorder(blackBorder);
 		item.setFont(font);
@@ -145,7 +147,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	 * @param font
 	 */
 	public void setForegroundBackground(JMenuItem item, Font font) {
-		item.setBackground(Color.DARK_GRAY);
+		item.setBackground(Color.LIGHT_GRAY);
 		item.setForeground(Color.WHITE);
 		item.setFont(font);
 		item.setOpaque(true);
@@ -222,6 +224,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	 * @param time
 	 */
 	public void updateTimeValue(double time) {
+		stopWatch.setOpaque(true);
 		stopWatch.setText(String.valueOf(time));
+		setForegroundBackground(stopWatch, metricFont);
 	}
 }
