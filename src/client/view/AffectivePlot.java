@@ -1,5 +1,6 @@
 package client.view;
 
+
 import client.model.AffectiveData;
 import client.model.AffectivePlotData;
 import client.services.AffectiveColorService;
@@ -19,9 +20,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 
-/**
- *
- */
 public class AffectivePlot extends JPanel {
 
     JPanel affectivePanel = new JPanel();
@@ -67,7 +65,7 @@ public class AffectivePlot extends JPanel {
         this.affectiveColorService = affectiveColorService;
     }
 
-    public void changedisplayLengthLabel(String length) {
+    public void changeDisplayLength(String length) {
         try {
             this.length = Integer.parseInt(length);
             plotAffectiveGraph1(AffectivePlotData.getInstance().getDataset());

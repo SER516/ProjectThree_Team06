@@ -6,6 +6,9 @@ import client.services.AffectiveColorService;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -21,18 +24,23 @@ class AffectiveGraphPanel extends JPanel {
     AffectivePlot graphPart;
 
     public AffectiveGraphPanel() {
-        buildPanel();
+        BuildPanel();
     }
 
-    public JPanel buildPanel() {
-
-
+    /**
+     * This function constructs a JPanel
+     * at the center for graph plot.
+     * @return
+     */
+    public JPanel BuildPanel() {
         setLayout(new BorderLayout());
+
+        // new Color(..) is used to add color to JPanel.
         setBackground(new Color(253, 235, 208));
+
         JLabel GraphPlot = new JLabel("Graph Plot", JLabel.CENTER);
         GraphPlot.setFont(new Font("Papyrus", Font.BOLD, 15));
         add(GraphPlot, BorderLayout.NORTH);
-
         setLayout(new BorderLayout());
         graphPart = new AffectivePlot();
         SingleTonData.getInstance().setAffectivePlot(graphPart);
@@ -49,7 +57,7 @@ class AffectiveGraphPanel extends JPanel {
     }
 
 
-    public void changedisplayLengthLabel(String text) {
-        graphPart.changedisplayLengthLabel(text);
+    public void changeDisplayLength(String text) {
+        graphPart.changeDisplayLength(text);
     }
 }

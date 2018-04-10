@@ -1,7 +1,10 @@
 package client.view;
 
 import javax.swing.*;
+
 import javax.swing.border.EmptyBorder;
+
+import client.listener.ConnectionListener;
 import client.services.AffectiveColorService;
 import client.services.ClientServerConnectionService;
 
@@ -9,7 +12,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * ClientFrame Class creates a JFrame object.
+ * ClientFrame Class creates a JFrame object
  *
  * @author Abhishek
  */
@@ -72,7 +75,7 @@ public class ClientFrame extends JFrame {
 
     }
 
-    public void changedisplayLengthLabel(String text) {
-        affectivePanel.changedisplayLengthLabel(text);
+    public void changeDisplayLength(String text) {
+        affectivePanel.changeDisplayLength(text);
     }
 }

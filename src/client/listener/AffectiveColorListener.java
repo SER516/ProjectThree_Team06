@@ -12,6 +12,6 @@ public interface AffectiveColorListener {
 
     public ArrayList<Color> getColors();
 
-    void changedisplayLengthLabel(String text);
+    void changeDisplayLength(String text);
 
 }
