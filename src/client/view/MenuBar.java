@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -33,6 +34,7 @@ import client.services.ClientServerConnectionService;
  */
 public class MenuBar extends JMenuBar implements ActionListener {
 
+	private JMenu menu;
 	private JMenuItem launchServer;
 	private JMenuItem connect;
 	private JMenuItem reconnect;
@@ -42,17 +44,21 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	private BufferedImage greenIcon, redIcon;
 
 	public MenuBar() {
-		JMenu menu = new JMenu("Menu");
-		Font metricFont = new Font("Papyrus", Font.BOLD, 13);
-		Border blackBorder = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY);
+		menu = new JMenu("Menu");
+		Border blackBorder = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.LIGHT_GRAY);
 		BufferedImage stopImage, redImage, greenImage;
+
 		BufferedImage resizeStopImg = null;
 		greenIcon = null;
 		redIcon = null;
 		try {
-			redImage = ImageIO.read(getClass().getResource("redDot.png"));
-			greenImage = ImageIO.read(getClass().getResource("greenDot.png"));
-			stopImage = ImageIO.read(getClass().getResource("StopWatch.png"));
+			StringBuilder finalFileName = new StringBuilder(new java.io.File(".").getCanonicalPath());
+			finalFileName.append(File.separator);
+			finalFileName.append(ClientConstants.IMAGES);
+			finalFileName.append(File.separator);
+			redImage = ImageIO.read(new File(finalFileName.toString()+ClientConstants.CONNECTED_IMAGE));
+			greenImage = ImageIO.read(new File(finalFileName.toString()+ClientConstants.NOT_CONNECTED_IMAGE));
+			stopImage = ImageIO.read(new File(finalFileName.toString()+ClientConstants.STOP_WATCH_IMAGE));
 			resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 			redIcon = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 			greenIcon = new BufferedImage(30, 25, BufferedImage.TYPE_INT_ARGB);
@@ -64,15 +70,16 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		}
 		menu.setHorizontalTextPosition(SwingConstants.CENTER);
 		menu.setVerticalTextPosition(SwingConstants.BOTTOM);
-		menu.setFont(metricFont);
+		menu.setFont(ClientConstants.TEXT_FONT);
+		menu.setBackground(Color.LIGHT_GRAY);
 		launchServer = new JMenuItem("Launch Server");
-		setForegroundBackground(launchServer, blackBorder, metricFont);
+		setForegroundBackground(launchServer, blackBorder, ClientConstants.TEXT_FONT);
 		JMenu connectMenu = new JMenu("Connect");
-		setForegroundBackground(connectMenu, blackBorder, metricFont);
+		setForegroundBackground(connectMenu, blackBorder, ClientConstants.TEXT_FONT);
 		connect = new JMenuItem("Connect");
 		reconnect = new JMenuItem("Reconnect");
-		setForegroundBackground(connect, blackBorder, metricFont);
-		setForegroundBackground(reconnect, blackBorder, metricFont);
+		setForegroundBackground(connect, blackBorder, ClientConstants.TEXT_FONT);
+		setForegroundBackground(reconnect, blackBorder, ClientConstants.TEXT_FONT);
 		connectMenu.add(connect);
 		connectMenu.add(new JPopupMenu.Separator());
 		connectMenu.add(reconnect);
@@ -85,11 +92,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		menu.add(launchServer);
 		menu.add(new JPopupMenu.Separator());
 		menu.add(connectMenu);
-		setForegroundBackground(menu, blackBorder, metricFont);
+		setForegroundBackground(menu, blackBorder, ClientConstants.TEXT_FONT);
 		add(menu);
-		setForegroundBackground(stopWatch, metricFont);
+		setForegroundBackground(stopWatch, ClientConstants.TEXT_FONT);
 		add(stopWatch);
-		setForegroundBackground(connectionLabel, metricFont);
+		setForegroundBackground(connectionLabel, ClientConstants.TEXT_FONT);
 		add(connectionLabel);
 	}
 
@@ -116,8 +123,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	 * @param font
 	 */
 	public void setForegroundBackground(JMenu item, Border blackBorder, Font font) {
-		item.setBackground(Color.DARK_GRAY);
-		item.setForeground(Color.WHITE);
+		item.setBackground(Color.LIGHT_GRAY);
+		item.setForeground(Color.BLACK);
 		item.setFont(font);
 		item.setBorder(blackBorder);
 		item.setOpaque(true);
@@ -131,8 +138,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	 * @param font
 	 */
 	public void setForegroundBackground(JMenuItem item, Border blackBorder, Font font) {
-		item.setBackground(Color.DARK_GRAY);
-		item.setForeground(Color.WHITE);
+		item.setBackground(Color.LIGHT_GRAY);
+		item.setForeground(Color.BLACK);
 		item.setBorder(blackBorder);
 		item.setFont(font);
 		item.setOpaque(true);
@@ -145,8 +152,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	 * @param font
 	 */
 	public void setForegroundBackground(JMenuItem item, Font font) {
-		item.setBackground(Color.DARK_GRAY);
-		item.setForeground(Color.WHITE);
+		item.setBackground(Color.LIGHT_GRAY);
+		item.setForeground(Color.BLACK);
 		item.setFont(font);
 		item.setOpaque(true);
 	}
@@ -222,6 +229,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	 * @param time
 	 */
 	public void updateTimeValue(double time) {
+		stopWatch.setOpaque(true);
 		stopWatch.setText(String.valueOf(time));
+		setForegroundBackground(stopWatch, ClientConstants.TEXT_FONT);
 	}
 }

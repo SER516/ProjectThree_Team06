@@ -13,6 +13,7 @@ import org.eclipse.jetty.websocket.jsr356.server.ServerContainer;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import server.controller.ServerSocketEndpoint;
 import server.listener.LogListenerInterface;
+import server.view.ServerView;
 
 /**
  *Server Socket class that sets up server side socket connection with client.
@@ -24,7 +25,7 @@ public class ServerSocketService {
     ServerConnector connector;
     ServletContextHandler context;
 
-    public void startServer() {
+    public void startServer(ServerView serverView) {
         final ExecutorService clientProcessingPool = Executors.newFixedThreadPool(10);
         Runnable serverTask = new Runnable() {
             @Override
@@ -46,7 +47,14 @@ public class ServerSocketService {
                     server.start();
                     server.dump(System.err);
                 } catch (Throwable t) {
-                    t.printStackTrace(System.err);
+                    try {
+                        context.stop();
+                        connector.close();
+                        JOptionPane.showMessageDialog(null, "Server is already running");
+                        serverView.dispose();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         };
