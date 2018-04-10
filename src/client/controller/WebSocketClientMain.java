@@ -5,7 +5,6 @@ import javax.swing.JOptionPane;
 import javax.websocket.ContainerProvider;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
-
 import client.constants.ClientConstants;
 import client.helper.ClientDataSingleton;
 
@@ -38,7 +37,7 @@ public class WebSocketClientMain {
 	 */
 	public void connectToServer(String ip, String port) {
 		ClientSocketEndpoint.setMainClientWebSocket(this);
-		String url = "ws://" + ip + ":" + port + "/server";
+		String url = ClientConstants.WEB_SOCKETS_SCHEMA + ip + ClientConstants.COLON + port + ClientConstants.SERVER_DIR;
 		Runnable serverTask = new Runnable() {
 
 			@Override
