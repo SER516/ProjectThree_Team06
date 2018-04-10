@@ -2,17 +2,13 @@ package client.view;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.Border;
 import client.services.ClientServerConnectionService;
-
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * MenuBar handles the menu options given on main frame.
@@ -30,30 +26,20 @@ public class MenuBar extends JMenuBar implements ActionListener {
     private BufferedImage greenIcon, redIcon;
 
     public MenuBar() {
-
-        Font metricFont = new Font("Papyrus", Font.BOLD, 13);
-        URL menuBackUrl = getClass().getResource("BlackBackground.jpg");
-        Border blackBorder = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.BLACK);
-        URL stoppingUrl = getClass().getResource("StopWatch.png");
         JMenu menu = new JMenu("Menu");
-        BufferedImage menuBorder, stopImage, redImage, greenImage;
-        BufferedImage resizeMBorder = null, resizeStopImg = null;
+        Font metricFont = new Font("Papyrus", Font.BOLD, 13);
+        Border blackBorder = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY);
+        BufferedImage stopImage, redImage, greenImage;
+        BufferedImage resizeStopImg = null;
         greenIcon = null;
         redIcon = null;
         try {
-
             redImage = ImageIO.read(getClass().getResource("redDot.png"));
             greenImage = ImageIO.read(getClass().getResource("greenDot.png"));
-            menuBorder = ImageIO.read(menuBackUrl);
-            stopImage = ImageIO.read(stoppingUrl);
-
-            resizeMBorder = new BufferedImage(20, 10, BufferedImage.TYPE_INT_ARGB);
+            stopImage = ImageIO.read(getClass().getResource("StopWatch.png"));
             resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
             redIcon = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
-
             greenIcon = new BufferedImage(30, 25, BufferedImage.TYPE_INT_ARGB);
-
-            Graphics2D g1 = setGraphics(resizeMBorder, menuBorder);
             Graphics2D g3 = setGraphics(resizeStopImg, stopImage);
             Graphics2D g4 = setGraphics(redIcon, redImage);
             Graphics2D g5 = setGraphics(greenIcon, greenImage);
@@ -62,8 +48,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
         }
         menu.setHorizontalTextPosition(SwingConstants.CENTER);
         menu.setVerticalTextPosition(SwingConstants.BOTTOM);
-
-        menu.setMnemonic(KeyEvent.VK_M);
         menu.setFont(metricFont);
         launchServer = new JMenuItem("Launch Server");
         setForegroundBackground(launchServer, blackBorder, metricFont);
@@ -97,7 +81,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
 
     /**
-     * connect method, changes the label and icon on menubar.
+     * connect_state method changes the label and icon on menubar.
      *
      * @param flag
      */
@@ -116,9 +100,10 @@ public class MenuBar extends JMenuBar implements ActionListener {
      *
      * @param item
      * @param blackBorder
+     * @param font
      */
     public void setForegroundBackground(JMenu item, Border blackBorder, Font font) {
-        item.setBackground(Color.BLACK);
+        item.setBackground(Color.DARK_GRAY);
         item.setForeground(Color.WHITE);
         item.setFont(font);
         item.setBorder(blackBorder);
@@ -130,9 +115,10 @@ public class MenuBar extends JMenuBar implements ActionListener {
      *
      * @param item
      * @param blackBorder
+     * @param font
      */
     public void setForegroundBackground(JMenuItem item, Border blackBorder, Font font) {
-        item.setBackground(Color.BLACK);
+        item.setBackground(Color.DARK_GRAY);
         item.setForeground(Color.WHITE);
         item.setBorder(blackBorder);
         item.setFont(font);
@@ -146,12 +132,18 @@ public class MenuBar extends JMenuBar implements ActionListener {
      * @param font
      */
     public void setForegroundBackground(JMenuItem item, Font font) {
-        item.setBackground(Color.BLACK);
+        item.setBackground(Color.DARK_GRAY);
         item.setForeground(Color.WHITE);
         item.setFont(font);
         item.setOpaque(true);
     }
 
+    /**
+     * setGraphics method creates a rendered image
+     * @param resizeImg
+     * @param menuImage
+     * @return
+     */
     public Graphics2D setGraphics(BufferedImage resizeImg, BufferedImage menuImage) {
         Graphics2D g2 = resizeImg.createGraphics();
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
@@ -181,11 +173,18 @@ public class MenuBar extends JMenuBar implements ActionListener {
         }
     }
 
+    /**
+     * setServerClientListener method connects client server connection lister
+     * @param clientServerConnectionService
+     */
     public void setServerClientListener(ClientServerConnectionService clientServerConnectionService) {
         this.clientServerConnectionService = clientServerConnectionService;
 
     }
 
+    /**
+     * launchDialogBox method provides a dialogue box for IP and port user inputs
+     */
     private void launchDialogBox() {
         JTextField ipField = new JTextField(15);
         JTextField ipPort = new JTextField(15);
@@ -206,6 +205,10 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
     }
 
+    /**
+     * updateTimeValue method updates stop watch timer on menubar.
+     * @param time
+     */
     public void updateTimeValue(double time) {
         stopWatch.setText(String.valueOf(time));
     }

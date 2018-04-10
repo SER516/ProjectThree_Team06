@@ -75,9 +75,7 @@ public class AffectivePlot extends JPanel {
         } catch (Exception e) {
             System.out.print("Invalid data");
         }
-
     }
-
 
     public void plotAffectiveGraph1(XYSeriesCollection dataset) {
         JFreeChart chart = ChartFactory.createXYLineChart("", "",
@@ -93,7 +91,6 @@ public class AffectivePlot extends JPanel {
         range.setRange(0, 1);
         ArrayList<Color> colors = affectiveColorService.getColors();
 
-
         for (int i = 0; i < colors.size(); i++) {
             renderer.setSeriesPaint(i, colors.get(i));
             renderer.setSeriesShapesVisible(i, false);
@@ -101,7 +98,6 @@ public class AffectivePlot extends JPanel {
         plot.setRenderer(renderer);
         plot.setRangeGridlinesVisible(false);
         plot.setDomainGridlinesVisible(false);
-
 
         affectivePanel.removeAll();
         affectivePanel.add(new ChartPanel(chart));
