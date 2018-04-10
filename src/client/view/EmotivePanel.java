@@ -13,23 +13,22 @@ import java.awt.*;
  */
 public class EmotivePanel extends JPanel {
     public static final String TABNAME = "Expressive";
-    FaceExpressions facePart;
-    ExpressionPlots graphPart;
+    FaceExpressions faceExpressions;
+    ExpressionPlots expressionPlots;
 
     public EmotivePanel() {
         setLayout(new BorderLayout());
         Dimension df = this.getSize();
-        facePart = new FaceExpressions();
-        graphPart = new ExpressionPlots();
-        SingleTonData.getInstance().setExpressplot(graphPart);
-        SingleTonData.getInstance().setFaceExpressions(facePart);
-
+        faceExpressions = new FaceExpressions();
+        expressionPlots = new ExpressionPlots();
+        SingleTonData.getInstance().setExpressplot(expressionPlots);
+        SingleTonData.getInstance().setFaceExpressions(faceExpressions);
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         splitPane.setResizeWeight(0.3);
         splitPane.setEnabled(false);
         splitPane.setDividerSize(0);
-        splitPane.add(facePart);
-        splitPane.add(graphPart);
+        splitPane.add(faceExpressions);
+        splitPane.add(expressionPlots);
         add(splitPane, BorderLayout.CENTER);
     }
 }

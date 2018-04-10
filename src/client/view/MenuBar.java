@@ -79,7 +79,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
         add(connectionLabel);
     }
 
-
     /**
      * connect_state method changes the label and icon on menubar.
      *
@@ -89,7 +88,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
         if (flag) {
             connectionLabel.setIcon(new ImageIcon(greenIcon));
             connectionLabel.setText("Connected");
-        } else {
+        }
+        else {
             connectionLabel.setIcon(new ImageIcon(redIcon));
             connectionLabel.setText("Not Connected");
         }
@@ -179,7 +179,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
      */
     public void setServerClientListener(ClientServerConnectionService clientServerConnectionService) {
         this.clientServerConnectionService = clientServerConnectionService;
-
     }
 
     /**
@@ -202,7 +201,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
         if (result == JOptionPane.OK_OPTION) {
             clientServerConnectionService.startServer(ipField.getText(), ipPort.getText());
         }
-
     }
 
     /**

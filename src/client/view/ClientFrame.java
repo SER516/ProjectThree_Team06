@@ -86,7 +86,6 @@ public class ClientFrame extends JFrame {
      */
     public ArrayList<Color> getColors() {
         return affectivePanel.getColors();
-
     }
 
     /**
