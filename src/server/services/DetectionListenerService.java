@@ -11,6 +11,9 @@ import server.view.ServerView;
 public class DetectionListenerService implements DetectionListenerInterface {
     ServerView serverView;
 
+    /**
+	 * changes counter value on serverview
+	 */
     @Override
     public void changeCounter(double counter) {
         serverView.changeClockCounter(counter);
@@ -20,6 +23,9 @@ public class DetectionListenerService implements DetectionListenerInterface {
         this.serverView = serverView;
     }
 
+    /**
+	 * Updates the lowerface expression data based on the selected combobox and spinner values.
+	 */
     public void changeLowerface(String exp, float val) {
         resetLowerface();
         if (exp.equals("Smile")) {
@@ -35,6 +41,9 @@ public class DetectionListenerService implements DetectionListenerInterface {
         }
     }
 
+    /**
+	 * Updates the upperface expression data based on the selected combobox and spinner values.
+	 */
     public void changeUpperface(String exp, float val) {
         resetUpperface();
         if (exp.equals("Raise Brow")) {
@@ -44,6 +53,9 @@ public class DetectionListenerService implements DetectionListenerInterface {
         }
     }
 
+    /**
+	 * Updates the performance Matrics affective data based on the selected combobox and spinner values.
+	 */
     public void changePerformanceMatrics(String exp, float val) {
         resetPerformanceMetrics();
         if (exp.equals("Interest")) {
@@ -61,6 +73,9 @@ public class DetectionListenerService implements DetectionListenerInterface {
         }
     }
 
+    /**
+	 * Updates the eye expression data based on the selected combobox values.
+	 */
     public void changeEye(String eye) {
         resetEye();
         if (eye.equals("Blink")) {
@@ -76,6 +91,9 @@ public class DetectionListenerService implements DetectionListenerInterface {
         }
     }
 
+    /**
+	 * resets all eye expression data to false
+	 */
     public void resetEye() {
         ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setBlink(false);
         ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setWinkLeft(false);
@@ -84,11 +102,17 @@ public class DetectionListenerService implements DetectionListenerInterface {
         ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setLookRight(false);
     }
 
+    /**
+	 * resets all upperface expression data to 0
+	 */
     public void resetUpperface() {
         ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setRaiseBrow(0);
         ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setFurrowBrow(0);
     }
 
+    /**
+	 * resets all lowerface expression data to 0
+	 */
     public void resetLowerface() {
         ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setSmile(0);
         ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setClench(0);
@@ -97,6 +121,9 @@ public class DetectionListenerService implements DetectionListenerInterface {
         ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(0);
     }
 
+    /**
+	 * resets all performance Metrics expression data to 0
+	 */
     public void resetPerformanceMetrics() {
         ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setInterest(0);
         ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setEngagement(0);
@@ -106,11 +133,17 @@ public class DetectionListenerService implements DetectionListenerInterface {
         ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setExcitement(0);
     }
 
+    /**
+	 * disables eye checkbox and radio button
+	 */
     @Override
     public void disableActive() {
         serverView.disableActive();
     }
 
+    /**
+	 * resets Eye checkbox
+	 */
     @Override
     public void setEyeAutoResetCheckBox(boolean flag) {
         ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setAutoReset(flag);
