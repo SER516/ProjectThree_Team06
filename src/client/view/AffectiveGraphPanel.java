@@ -1,60 +1,51 @@
 package client.view;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import client.constants.ClientConstants;
 import client.model.SingleTonData;
 import client.services.AffectiveColorService;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 /**
- * This is a part of AffectivePanel UI.
- * This panel is for Graph plot.
+ * This is a part of AffectivePanel UI. This panel is for Graph plot.
  *
  * @author avinash
  */
 
 class AffectiveGraphPanel extends JPanel {
 
-    AffectivePlot graphPart;
+	AffectivePlot affectiveGraphPlot;
 
-    public AffectiveGraphPanel() {
-        buildPanel();
-    }
+	public AffectiveGraphPanel() {
+		buildPanel();
+	}
 
-    /**
-     * This function constructs a JPanel
-     * at the center for graph plot.
-     * @return
-     */
-    public JPanel buildPanel() {
-        setLayout(new BorderLayout());
+	/**
+	 * This function constructs a JPanel at the center for graph plot.
+	 * 
+	 * @return
+	 */
+	public JPanel buildPanel() {
+		setLayout(new BorderLayout());
+		setBackground(ClientConstants.LIGHT_YELLOW);
+		JLabel graphPlotLabel = new JLabel(ClientConstants.GRAPH_PLOT, JLabel.CENTER);
+		graphPlotLabel.setFont(ClientConstants.TEXT_FONT);
+		add(graphPlotLabel, BorderLayout.NORTH);
+		setLayout(new BorderLayout());
+		affectiveGraphPlot = new AffectivePlot();
+		SingleTonData.getInstance().setAffectivePlot(affectiveGraphPlot);
+		affectiveGraphPlot.setBackground(Color.WHITE);
+		add(affectiveGraphPlot);
+		return this;
+	}
 
-        // new Color(..) is used to add color to JPanel.
-        setBackground(new Color(253, 235, 208));
+	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
+		affectiveGraphPlot.setAffectiveListener(affectiveColorService);
+	}
 
-        JLabel GraphPlot = new JLabel("Graph Plot", JLabel.CENTER);
-        GraphPlot.setFont(new Font("Papyrus", Font.BOLD, 15));
-        add(GraphPlot, BorderLayout.NORTH);
-        setLayout(new BorderLayout());
-        graphPart = new AffectivePlot();
-        SingleTonData.getInstance().setAffectivePlot(graphPart);
-        graphPart.setBackground(Color.WHITE);
-        add(graphPart);
-        return this;
-
-
-    }
-
-    public void setAffectiveListener(AffectiveColorService affectiveColorService) {
-        graphPart.setAffectiveListener(affectiveColorService);
-
-    }
-
-
-    public void changedisplayLengthLabel(String text) {
-        graphPart.changedisplayLengthLabel(text);
-    }
+	public void changedisplayLengthLabel(String text) {
+		affectiveGraphPlot.changedisplayLengthLabel(text);
+	}
 }
