@@ -37,43 +37,28 @@ public class AffectivePlot extends JPanel {
 		this.add(affectivePanel);
 	}
 
-	public void plotAffectiveGraph() {
-		affectivePanel.removeAll();
-		affectivePanel.add(getAffectiveGraph());
-		affectivePanel.repaint();
-		affectivePanel.revalidate();
-	}
 
-	public GraphPlot getAffectiveGraph() {
-		AffectivePlotData affectivePlotData = AffectivePlotData.getInstance();
-		ArrayList<Color> colors = affectiveColorService.getColors();
-		graphPlot = new GraphPlot(affectivePlotData.getMainDataList(), colors, length);
-		graphPlot.setBackground(Color.LIGHT_GRAY);
-		graphPlot.setBorder(new EmptyBorder(5, 5, 5, 5));
-		return graphPlot;
-	}
+
 
 	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
 		this.affectiveColorService = affectiveColorService;
 	}
 
-	public void changedisplayLengthLabel(String length) {
-		try {
-			this.length = Integer.parseInt(length);
-			plotAffectiveGraph1(AffectivePlotData.getInstance().getDataset());
-		} catch (Exception e) {
-			System.out.print("Invalid data");
-		}
+	public void changedisplayLengthLabel() {
+
+		plotAffectiveGraph1(AffectivePlotData.getInstance().regenerateDataSet());
+
 	}
 
 	public void plotAffectiveGraph1(XYSeriesCollection dataset) {
-		JFreeChart chart = ChartFactory.createXYLineChart("", "", "", dataset, PlotOrientation.VERTICAL, false, true,
+		JFreeChart chart = ChartFactory.createXYLineChart("", "", "", dataset,
+				PlotOrientation.VERTICAL, false, true,
 				false);
 		XYPlot plot = chart.getXYPlot();
 		XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
 		ValueAxis range = plot.getRangeAxis();
 		range = plot.getDomainAxis();
-		range.setRange(0, length);
+		range.setRange(0, AffectivePlotData.getInstance().getGraphLength());
 		range = plot.getRangeAxis();
 		range.setRange(0, 1);
 		ArrayList<Color> colors = affectiveColorService.getColors();
