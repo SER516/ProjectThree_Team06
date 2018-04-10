@@ -34,6 +34,7 @@ import client.services.ClientServerConnectionService;
  */
 public class MenuBar extends JMenuBar implements ActionListener {
 
+	private JMenu menu;
 	private JMenuItem launchServer;
 	private JMenuItem connect;
 	private JMenuItem reconnect;
@@ -41,11 +42,9 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	private JMenuItem connectionLabel;
 	private ClientServerConnectionService clientServerConnectionService;
 	private BufferedImage greenIcon, redIcon;
-	private Font metricFont;
 
 	public MenuBar() {
-		JMenu menu = new JMenu("Menu");
-		metricFont = new Font("Papyrus", Font.BOLD, 13);
+		menu = new JMenu("Menu");
 		Border blackBorder = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.LIGHT_GRAY);
 		BufferedImage stopImage, redImage, greenImage;
 
@@ -71,16 +70,16 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		}
 		menu.setHorizontalTextPosition(SwingConstants.CENTER);
 		menu.setVerticalTextPosition(SwingConstants.BOTTOM);
-		menu.setFont(metricFont);
+		menu.setFont(ClientConstants.TEXT_FONT);
 		menu.setBackground(Color.LIGHT_GRAY);
 		launchServer = new JMenuItem("Launch Server");
-		setForegroundBackground(launchServer, blackBorder, metricFont);
+		setForegroundBackground(launchServer, blackBorder, ClientConstants.TEXT_FONT);
 		JMenu connectMenu = new JMenu("Connect");
-		setForegroundBackground(connectMenu, blackBorder, metricFont);
+		setForegroundBackground(connectMenu, blackBorder, ClientConstants.TEXT_FONT);
 		connect = new JMenuItem("Connect");
 		reconnect = new JMenuItem("Reconnect");
-		setForegroundBackground(connect, blackBorder, metricFont);
-		setForegroundBackground(reconnect, blackBorder, metricFont);
+		setForegroundBackground(connect, blackBorder, ClientConstants.TEXT_FONT);
+		setForegroundBackground(reconnect, blackBorder, ClientConstants.TEXT_FONT);
 		connectMenu.add(connect);
 		connectMenu.add(new JPopupMenu.Separator());
 		connectMenu.add(reconnect);
@@ -93,11 +92,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		menu.add(launchServer);
 		menu.add(new JPopupMenu.Separator());
 		menu.add(connectMenu);
-		setForegroundBackground(menu, blackBorder, metricFont);
+		setForegroundBackground(menu, blackBorder, ClientConstants.TEXT_FONT);
 		add(menu);
-		setForegroundBackground(stopWatch, metricFont);
+		setForegroundBackground(stopWatch, ClientConstants.TEXT_FONT);
 		add(stopWatch);
-		setForegroundBackground(connectionLabel, metricFont);
+		setForegroundBackground(connectionLabel, ClientConstants.TEXT_FONT);
 		add(connectionLabel);
 	}
 
@@ -232,6 +231,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	public void updateTimeValue(double time) {
 		stopWatch.setOpaque(true);
 		stopWatch.setText(String.valueOf(time));
-		setForegroundBackground(stopWatch, metricFont);
+		setForegroundBackground(stopWatch, ClientConstants.TEXT_FONT);
 	}
 }
