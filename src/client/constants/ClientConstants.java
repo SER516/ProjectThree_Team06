@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+/**
+ *
+ */
 public class ClientConstants {
 	public static final String CLOSING_CONNECTION_EXCEPTION_MESSAGE = "Exception during close Connection ";
 	public final static String ADDING_IMAGE_EXCEPTION_MESSAGE = "Exception in Adding Image:";

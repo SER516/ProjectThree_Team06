@@ -35,6 +35,12 @@ public class ConsolePanel extends javax.swing.JPanel {
         btnClearLog.setBackground(Color.LIGHT_GRAY);
         btnClearLog.setContentAreaFilled(false);
         btnClearLog.setOpaque(true);
+        btnClearLog.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         consoleTextArea = new JTextArea();
 
         btnClearLog.addActionListener(new ActionListener() {
