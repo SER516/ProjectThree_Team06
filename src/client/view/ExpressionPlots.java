@@ -8,6 +8,8 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+
+import client.constants.ClientConstants;
 import client.controller.PlotController;
 import client.helper.ClientDataSingleton;
 
@@ -17,45 +19,46 @@ import client.helper.ClientDataSingleton;
  * @author Abhishek
  */
 public class ExpressionPlots extends JPanel {
-	JPanel expression1 = new JPanel();
-	JPanel expression2 = new JPanel();
-	JPanel expression3 = new JPanel();
-	JPanel expression4 = new JPanel();
-	JPanel expression5 = new JPanel();
-	JPanel expression6 = new JPanel();
-	JPanel expression7 = new JPanel();
-	JPanel expression8 = new JPanel();
-	JPanel expression9 = new JPanel();
-	JPanel expression10 = new JPanel();
-	JPanel expression11 = new JPanel();
-	JPanel expression12 = new JPanel();
-	JSplitPane splitPane1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	JSplitPane splitPane2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	JSplitPane splitPane3 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	JSplitPane splitPane4 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	JSplitPane splitPane5 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	JSplitPane splitPane6 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	JSplitPane splitPane7 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	JSplitPane splitPane8 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	JSplitPane splitPane9 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	JSplitPane splitPane10 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	JSplitPane splitPane11 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	JSplitPane splitPane12 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+
+	JPanel blinkPanel = new JPanel();
+	JPanel clenchPanel = new JPanel();
+	JPanel furrowBrowPanel = new JPanel();
+	JPanel laughPanel = new JPanel();
+	JPanel lookLeftPanel = new JPanel();
+	JPanel lookRightPanel = new JPanel();
+	JPanel raiseBrowPanel = new JPanel();
+	JPanel smilePanel = new JPanel();
+	JPanel smirkLeftPanel = new JPanel();
+	JPanel smirkRightPanel = new JPanel();
+	JPanel winkLeftPanel = new JPanel();
+	JPanel winkRightPanel = new JPanel();
+	JSplitPane blinkSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane clenchSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane furrowBrowSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane laughSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane lookLeftSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane lookRightSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane raiseBrowSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane smileSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane smirkLeftSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane smirkRightSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane winkLeftSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane winkRightSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	private PlotController plotController = new PlotController();
 	private ArrayList<ArrayList<Float>> plotData = new ArrayList<>();
 	private ArrayList<ArrayList<Float>> inputData = new ArrayList<>();
 	private ArrayList<Color> colors = new ArrayList<>();
 	private GraphPlot graphPlot;
-	private GraphPlot graphPlot1;
-	private GraphPlot graphPlot2;
-	private GraphPlot graphPlot3;
-	private GraphPlot graphPlot4;
-	private GraphPlot graphPlot5;
-	private GraphPlot graphPlot6;
-	private GraphPlot graphPlot7;
-	private GraphPlot graphPlot8;
-	private GraphPlot graphPlot9;
-	private GraphPlot graphPlot10;
+	private GraphPlot blinkGraphPlot;
+	private GraphPlot clenchGraphPlot;
+	private GraphPlot furrowBrowGraphPlot;
+	private GraphPlot laughGraphPlot;
+	private GraphPlot lookLeftGraphPlot;
+	private GraphPlot lookRightGraphPlot;
+	private GraphPlot raiseBrowGraphPlot;
+	private GraphPlot smileGraphPlot;
+	private GraphPlot smirkLeftGraphPlot;
+	private GraphPlot smirkRightGraphPlot;
 	private GraphPlot graphPlot11;
 	private GraphPlot graphPlot12;
 
@@ -77,36 +80,37 @@ public class ExpressionPlots extends JPanel {
 
 	public void addPanels() {
 		this.setLayout(new GridLayout(12, 1, 1, 1));
-		setPanelsLayout(expression1, splitPane1, "Blink");
-		setPanelsLayout(expression2, splitPane2, "Clench");
-		setPanelsLayout(expression3, splitPane3, "FurrowBrow");
-		setPanelsLayout(expression4, splitPane4, "Laugh");
-		setPanelsLayout(expression5, splitPane5, "LookLeft");
-		setPanelsLayout(expression6, splitPane6, "LookRight");
-		setPanelsLayout(expression7, splitPane7, "RaiseBrow");
-		setPanelsLayout(expression12, splitPane12, "Smile");
-		setPanelsLayout(expression8, splitPane8, "SmirkLeft");
-		setPanelsLayout(expression9, splitPane9, "SmirkRight");
-		setPanelsLayout(expression10, splitPane10, "WinkLeft");
-		setPanelsLayout(expression11, splitPane11, "WinkRight");
-		this.add(expression1);
-		this.add(expression2);
-		this.add(expression3);
-		this.add(expression4);
-		this.add(expression5);
-		this.add(expression6);
-		this.add(expression7);
-		this.add(expression8);
-		this.add(expression9);
-		this.add(expression10);
-		this.add(expression11);
-		this.add(expression12);
+		setPanelsLayout(blinkPanel, blinkSplitPane, ClientConstants.BLINK);
+		setPanelsLayout(clenchPanel, clenchSplitPane, ClientConstants.CLENCH);
+		setPanelsLayout(furrowBrowPanel, furrowBrowSplitPane, ClientConstants.FURROW_BROW);
+		setPanelsLayout(laughPanel, laughSplitPane, ClientConstants.LAUGH);
+		setPanelsLayout(lookLeftPanel, lookLeftSplitPane, ClientConstants.LOOK_LEFT);
+		setPanelsLayout(lookRightPanel, lookRightSplitPane, ClientConstants.LOOK_RIGHT);
+		setPanelsLayout(raiseBrowPanel, raiseBrowSplitPane, ClientConstants.RAISE_BROW);
+		setPanelsLayout(smilePanel, smileSplitPane, ClientConstants.SMILE);
+		setPanelsLayout(smirkLeftPanel, smirkLeftSplitPane, ClientConstants.SMIRK_LEFT);
+		setPanelsLayout(smirkRightPanel, smirkRightSplitPane, ClientConstants.SMIRK_RIGHT);
+		setPanelsLayout(winkLeftPanel, winkLeftSplitPane, ClientConstants.WINK_LEFT);
+		setPanelsLayout(winkRightPanel, winkRightSplitPane, ClientConstants.WINK_RIGHT);
+		this.add(blinkPanel);
+		this.add(clenchPanel);
+		this.add(furrowBrowPanel);
+		this.add(laughPanel);
+		this.add(lookLeftPanel);
+		this.add(lookRightPanel);
+		this.add(raiseBrowPanel);
+		this.add(smilePanel);
+		this.add(smirkLeftPanel);
+		this.add(smirkRightPanel);
+		this.add(winkLeftPanel);
+		this.add(winkRightPanel);
 		setRandomColors(12);
 	}
 
 	private void setPanelsLayout(JPanel expression, JSplitPane splitPane, String feature) {
 		expression.setLayout(new GridLayout(1, 1, 1, 1));
 		splitPane.setResizeWeight(0.1);
+		splitPane.setDividerLocation(100);
 		splitPane.setEnabled(false);
 		splitPane.setDividerSize(0);
 		splitPane.add(new JLabel(feature));
@@ -122,46 +126,32 @@ public class ExpressionPlots extends JPanel {
 	}
 
 	public void plotExpressionGraph() {
-
 		if (ClientDataSingleton.getInstance().getFaceData() != null) {
-
 			plotData = plotController.getExpressivePlotData();
-
-			graphPlot1 = plotGraphForFeature(plotData.get(0));
-			addGraphsToPanel(expression1, splitPane1, graphPlot1, "Blink");
-
-			graphPlot2 = plotGraphForFeature(plotData.get(1));
-			addGraphsToPanel(expression2, splitPane2, graphPlot2, "Clench");
-
-			graphPlot3 = plotGraphForFeature(plotData.get(2));
-			addGraphsToPanel(expression3, splitPane3, graphPlot3, "FurrowBrow");
-
-			graphPlot4 = plotGraphForFeature(plotData.get(3));
-			addGraphsToPanel(expression4, splitPane4, graphPlot4, "Laugh");
-
-			graphPlot5 = plotGraphForFeature(plotData.get(4));
-			addGraphsToPanel(expression5, splitPane5, graphPlot5, "LookLeft");
-
-			graphPlot6 = plotGraphForFeature(plotData.get(5));
-			addGraphsToPanel(expression6, splitPane6, graphPlot6, "LookRight");
-
-			graphPlot7 = plotGraphForFeature(plotData.get(6));
-			addGraphsToPanel(expression7, splitPane7, graphPlot7, "RaiseBrow");
-
-			graphPlot8 = plotGraphForFeature(plotData.get(7));
-			addGraphsToPanel(expression8, splitPane8, graphPlot8, "Smile");
-
-			graphPlot9 = plotGraphForFeature(plotData.get(8));
-			addGraphsToPanel(expression9, splitPane9, graphPlot9, "SmirkLeft");
-
-			graphPlot10 = plotGraphForFeature(plotData.get(9));
-			addGraphsToPanel(expression10, splitPane10, graphPlot10, "SmirkRight");
-
+			blinkGraphPlot = plotGraphForFeature(plotData.get(0));
+			addGraphsToPanel(blinkPanel, blinkSplitPane, blinkGraphPlot, ClientConstants.BLINK);
+			clenchGraphPlot = plotGraphForFeature(plotData.get(1));
+			addGraphsToPanel(clenchPanel, clenchSplitPane, clenchGraphPlot, ClientConstants.CLENCH);
+			furrowBrowGraphPlot = plotGraphForFeature(plotData.get(2));
+			addGraphsToPanel(furrowBrowPanel, furrowBrowSplitPane, furrowBrowGraphPlot, ClientConstants.FURROW_BROW);
+			laughGraphPlot = plotGraphForFeature(plotData.get(3));
+			addGraphsToPanel(laughPanel, laughSplitPane, laughGraphPlot, ClientConstants.LAUGH);
+			lookLeftGraphPlot = plotGraphForFeature(plotData.get(4));
+			addGraphsToPanel(lookLeftPanel, lookLeftSplitPane, lookLeftGraphPlot, ClientConstants.LOOK_LEFT);
+			lookRightGraphPlot = plotGraphForFeature(plotData.get(5));
+			addGraphsToPanel(lookRightPanel, lookRightSplitPane, lookRightGraphPlot, ClientConstants.LOOK_RIGHT);
+			raiseBrowGraphPlot = plotGraphForFeature(plotData.get(6));
+			addGraphsToPanel(raiseBrowPanel, raiseBrowSplitPane, raiseBrowGraphPlot, ClientConstants.RAISE_BROW);
+			smileGraphPlot = plotGraphForFeature(plotData.get(7));
+			addGraphsToPanel(smilePanel, smileSplitPane, smileGraphPlot, ClientConstants.SMILE);
+			smirkLeftGraphPlot = plotGraphForFeature(plotData.get(8));
+			addGraphsToPanel(smirkLeftPanel, smirkLeftSplitPane, smirkLeftGraphPlot, ClientConstants.SMIRK_LEFT);
+			smirkRightGraphPlot = plotGraphForFeature(plotData.get(9));
+			addGraphsToPanel(smirkRightPanel, smirkRightSplitPane, smirkRightGraphPlot, ClientConstants.SMIRK_RIGHT);
 			graphPlot11 = plotGraphForFeature(plotData.get(10));
-			addGraphsToPanel(expression11, splitPane11, graphPlot11, "WinkLeft");
-
+			addGraphsToPanel(winkLeftPanel, winkLeftSplitPane, graphPlot11, ClientConstants.WINK_LEFT);
 			graphPlot12 = plotGraphForFeature(plotData.get(11));
-			addGraphsToPanel(expression12, splitPane12, graphPlot12, "WinkRight");
+			addGraphsToPanel(winkRightPanel, winkRightSplitPane, graphPlot12, ClientConstants.WINK_RIGHT);
 		}
 	}
 
