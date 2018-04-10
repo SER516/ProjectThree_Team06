@@ -7,10 +7,13 @@ import client.services.ClientServerConnectionService;
 import client.view.ClientFrame;
 
 /**
- * Controller class to handle web socket connection between the client and the server
+ * Controller class to handle web socket connection between the client and the server.
  **/
 public class ClientMainController {
-
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]) {
         ClientDataSingleton.getInstance();
         ClientFrame clientWindow = new ClientFrame();

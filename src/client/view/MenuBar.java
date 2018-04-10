@@ -2,13 +2,11 @@ package client.view;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.Border;
-import javax.swing.plaf.BorderUIResource;
-
-import client.listener.ConnectionListener;
 import client.services.ClientServerConnectionService;
 
 import java.awt.event.KeyEvent;
@@ -17,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * MenuBar handles the menu options given on main frame
+ * MenuBar handles the menu options given on main frame.
  *
  * @author Abhishek
  */
@@ -27,60 +25,60 @@ public class MenuBar extends JMenuBar implements ActionListener {
     private JMenuItem connect;
     private JMenuItem reconnect;
     private JMenuItem stopWatch;
-    private JMenuItem connection_label;
+    private JMenuItem connectionLabel;
     private ClientServerConnectionService clientServerConnectionService;
-    private BufferedImage GreenIcon, RedIcon;
+    private BufferedImage greenIcon, redIcon;
 
     public MenuBar() {
 
-        Font metric_font = new Font("Papyrus", Font.BOLD, 13);
-        URL menuBack_url = getClass().getResource("BlackBackground.jpg");
-        Border black_border = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.BLACK);
-        URL stopimg_url = getClass().getResource("StopWatch.png");
+        Font metricFont = new Font("Papyrus", Font.BOLD, 13);
+        URL menuBackUrl = getClass().getResource("BlackBackground.jpg");
+        Border blackBorder = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.BLACK);
+        URL stoppingUrl = getClass().getResource("StopWatch.png");
         JMenu menu = new JMenu("Menu");
         BufferedImage menuBorder, stopImage, redImage, greenImage;
         BufferedImage resizeMBorder = null, resizeStopImg = null;
-        GreenIcon = null;
-        RedIcon = null;
+        greenIcon = null;
+        redIcon = null;
         try {
 
             redImage = ImageIO.read(getClass().getResource("redDot.png"));
             greenImage = ImageIO.read(getClass().getResource("greenDot.png"));
-            menuBorder = ImageIO.read(menuBack_url);
-            stopImage = ImageIO.read(stopimg_url);
+            menuBorder = ImageIO.read(menuBackUrl);
+            stopImage = ImageIO.read(stoppingUrl);
 
             resizeMBorder = new BufferedImage(20, 10, BufferedImage.TYPE_INT_ARGB);
             resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
-            RedIcon = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
+            redIcon = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 
-            GreenIcon = new BufferedImage(30, 25, BufferedImage.TYPE_INT_ARGB);
+            greenIcon = new BufferedImage(30, 25, BufferedImage.TYPE_INT_ARGB);
 
             Graphics2D g1 = setGraphics(resizeMBorder, menuBorder);
             Graphics2D g3 = setGraphics(resizeStopImg, stopImage);
-            Graphics2D g4 = setGraphics(RedIcon, redImage);
-            Graphics2D g5 = setGraphics(GreenIcon, greenImage);
+            Graphics2D g4 = setGraphics(redIcon, redImage);
+            Graphics2D g5 = setGraphics(greenIcon, greenImage);
         } catch (IOException e) {
-            System.out.println("Please specify image path");
+            JOptionPane.showMessageDialog(null, "Image path not specified");
         }
         menu.setHorizontalTextPosition(SwingConstants.CENTER);
         menu.setVerticalTextPosition(SwingConstants.BOTTOM);
 
         menu.setMnemonic(KeyEvent.VK_M);
-        menu.setFont(metric_font);
+        menu.setFont(metricFont);
         launchServer = new JMenuItem("Launch Server");
-        setForegroundBackground(launchServer, black_border, metric_font);
+        setForegroundBackground(launchServer, blackBorder, metricFont);
         JMenu connectMenu = new JMenu("Connect");
-        setForegroundBackground(connectMenu, black_border, metric_font);
+        setForegroundBackground(connectMenu, blackBorder, metricFont);
         connect = new JMenuItem("Connect");
         reconnect = new JMenuItem("Reconnect");
-        setForegroundBackground(connect, black_border, metric_font);
-        setForegroundBackground(reconnect, black_border, metric_font);
+        setForegroundBackground(connect, blackBorder, metricFont);
+        setForegroundBackground(reconnect, blackBorder, metricFont);
         connectMenu.add(connect);
         connectMenu.add(new JPopupMenu.Separator());
         connectMenu.add(reconnect);
 
         stopWatch = new JMenuItem("Stop Watch", new ImageIcon(resizeStopImg));
-        connection_label = new JMenuItem();
+        connectionLabel = new JMenuItem();
         connect_state(false);
 
         launchServer.addActionListener(this);
@@ -89,12 +87,12 @@ public class MenuBar extends JMenuBar implements ActionListener {
         menu.add(launchServer);
         menu.add(new JPopupMenu.Separator());
         menu.add(connectMenu);
-        setForegroundBackground(menu, black_border, metric_font);
+        setForegroundBackground(menu, blackBorder, metricFont);
         add(menu);
-        setForegroundBackground(stopWatch, metric_font);
+        setForegroundBackground(stopWatch, metricFont);
         add(stopWatch);
-        setForegroundBackground(connection_label, metric_font);
-        add(connection_label);
+        setForegroundBackground(connectionLabel, metricFont);
+        add(connectionLabel);
     }
 
 
@@ -105,44 +103,44 @@ public class MenuBar extends JMenuBar implements ActionListener {
      */
     public void connect_state(boolean flag) {
         if (flag) {
-            connection_label.setIcon(new ImageIcon(GreenIcon));
-            connection_label.setText("Connected");
+            connectionLabel.setIcon(new ImageIcon(greenIcon));
+            connectionLabel.setText("Connected");
         } else {
-            connection_label.setIcon(new ImageIcon(RedIcon));
-            connection_label.setText("Not Connected");
+            connectionLabel.setIcon(new ImageIcon(redIcon));
+            connectionLabel.setText("Not Connected");
         }
     }
 
     /**
-     * setForegroundBackground method customizes appearance of items in menubar
+     * setForegroundBackground method customizes appearance of items in menubar.
      *
      * @param item
-     * @param black_border
+     * @param blackBorder
      */
-    public void setForegroundBackground(JMenu item, Border black_border, Font font) {
+    public void setForegroundBackground(JMenu item, Border blackBorder, Font font) {
         item.setBackground(Color.BLACK);
         item.setForeground(Color.WHITE);
         item.setFont(font);
-        item.setBorder(black_border);
+        item.setBorder(blackBorder);
         item.setOpaque(true);
     }
 
     /**
-     * setForegroundBackground method customizes appearance of items in menubar
+     * setForegroundBackground method customizes appearance of items in menubar.
      *
      * @param item
-     * @param black_border
+     * @param blackBorder
      */
-    public void setForegroundBackground(JMenuItem item, Border black_border, Font font) {
+    public void setForegroundBackground(JMenuItem item, Border blackBorder, Font font) {
         item.setBackground(Color.BLACK);
         item.setForeground(Color.WHITE);
-        item.setBorder(black_border);
+        item.setBorder(blackBorder);
         item.setFont(font);
         item.setOpaque(true);
     }
 
     /**
-     * setForegroundBackground method customizes appearance of items in menubar
+     * setForegroundBackground method customizes appearance of items in menubar.
      *
      * @param item
      * @param font

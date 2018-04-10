@@ -1,5 +1,8 @@
 package server.model;
 
+/**
+ *
+ */
 public class AffectiveData {
 
     private float interest = 0;

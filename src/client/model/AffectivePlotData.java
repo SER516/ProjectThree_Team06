@@ -6,6 +6,9 @@ import org.jfree.data.xy.XYSeriesCollection;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ *
+ */
 public class AffectivePlotData {
 
     private static volatile AffectivePlotData affectivePlotData;
@@ -29,13 +32,17 @@ public class AffectivePlotData {
         return affectivePlotData;
     }
 
+    /**
+     * @return
+     */
     public static AffectivePlotData getInstance() {
         AffectivePlotData result = affectivePlotData;
         if (result == null) {
             synchronized (mutex) {
                 result = affectivePlotData;
-                if (result == null)
+                if (result == null) {
                     result = new AffectivePlotData();
+                }
                 affectivePlotData = result;
             }
         }
@@ -98,20 +105,12 @@ public class AffectivePlotData {
         this.excitmentList = excitmentList;
     }
 
+    /**
+     * @param affectivedata
+     * @param faceData
+     */
     public void setDataToList(AffectiveData affectivedata, FaceData faceData) {
-//		focusList.add(affectivedata.getFocus());
-//    	interestList.add(affectivedata.getInterest());
-//    	engagementList.add(affectivedata.getEngagement());
-//    	stressList.add(affectivedata.getStress());
-//    	relaxList.add(affectivedata.getRelaxation());
-//    	excitmentList.add(affectivedata.getExcitement());
-//    	mainDataList.clear();
-//		mainDataList.add(focusList);
-//		mainDataList.add(stressList);
-//    	mainDataList.add(interestList);
-//    	mainDataList.add(engagementList);
-//    	mainDataList.add(relaxList);
-//    	mainDataList.add(excitmentList);
+
 
         double counter = faceData.getCounter();
         dataset = new XYSeriesCollection();

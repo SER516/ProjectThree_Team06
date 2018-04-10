@@ -7,7 +7,7 @@ import client.model.SingleTonData;
 import java.awt.*;
 
 /**
- * EmotivePanel class is a emotive tab on the GUI
+ * EmotivePanel class is a emotive tab on the GUI.
  *
  * @author Abhishek
  */
@@ -23,8 +23,7 @@ public class EmotivePanel extends JPanel {
         graphPart = new ExpressionPlots();
         SingleTonData.getInstance().setExpressplot(graphPart);
         SingleTonData.getInstance().setFaceExpressions(facePart);
-        //facePart.setBackground(new Color(169, 204, 227));
-        //graphPart.setBackground(Color.WHITE);
+
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         splitPane.setResizeWeight(0.3);
         splitPane.setEnabled(false);

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import client.model.ExpressivePlotData;
 
+/**
+ *
+ */
 public class PlotController {
 
     ExpressivePlotData expressivePlotData;

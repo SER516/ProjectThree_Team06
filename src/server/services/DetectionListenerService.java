@@ -5,6 +5,9 @@ import server.model.ServerModelSingleton;
 
 import server.view.ServerView;
 
+/**
+ *
+ */
 public class DetectionListenerService implements DetectionListenerInterface {
     ServerView serverView;
 

@@ -7,6 +7,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ *
+ */
 public class FaceExpressions extends JPanel {
 
     private BufferedImage image;
@@ -51,8 +54,7 @@ public class FaceExpressions extends JPanel {
             this.repaint();
             this.revalidate();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Exception during Draw Image");
         }
 
     }

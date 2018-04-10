@@ -2,6 +2,9 @@ package server.model;
 
 import server.helper.ServerConstants;
 
+/**
+ *
+ */
 public class ServerModelSingleton {
     private static volatile ServerModelSingleton serverDataSingleton;
     private static Object mutex = new Object();
@@ -15,8 +18,9 @@ public class ServerModelSingleton {
         if (result == null) {
             synchronized (mutex) {
                 result = serverDataSingleton;
-                if (result == null)
+                if (result == null) {
                     result = new ServerModelSingleton();
+                }
                 serverDataSingleton = result;
             }
         }

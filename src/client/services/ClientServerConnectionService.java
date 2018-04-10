@@ -8,6 +8,9 @@ import client.listener.ConnectionListener;
 import client.model.ClientConfigurationSingleton;
 import server.controller.ServerApplicationController;
 
+/**
+ *
+ */
 public class ClientServerConnectionService implements ConnectionListener {
     WebSocketClientMain webSocketClientMain = new WebSocketClientMain();
 
@@ -17,7 +20,10 @@ public class ClientServerConnectionService implements ConnectionListener {
 
     }
 
-
+    /**
+     *
+     * @param url
+     */
     @Override
     public void reconnectServer(String url) {
         String ip = ClientConfigurationSingleton.getInstance().getIp();
@@ -36,6 +42,11 @@ public class ClientServerConnectionService implements ConnectionListener {
 
     }
 
+    /**
+     *
+     * @param ip
+     * @param port
+     */
     private void establishServerClientConnection(String ip, String port) {
 
         if (!ClientDataSingleton.getInstance().isSessionMaintained()) {

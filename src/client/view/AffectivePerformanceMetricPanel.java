@@ -1,6 +1,6 @@
 package client.view;
 
-import client.model.SingleTonData;
+
 import client.services.AffectiveColorService;
 
 import java.awt.BorderLayout;
@@ -13,22 +13,13 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 
-import javax.swing.*;
 
-import java.awt.Component;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.NumberFormatter;
+
 
 /**
  * This is part of AffectivePanel UI. This panel has performance metrics.
@@ -51,18 +42,17 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
     JPanel engagementColorDisplay;
     JPanel relaxationColorDisplay;
     JPanel excitementColorDisplay;
-    JPanel panel7;
     JTextField displayLength;
     private ArrayList<Color> colors = new ArrayList<>();
 
     public AffectivePerformanceMetricPanel() {
-        BuildPanel();
+        buildPanel();
     }
 
-    public JPanel BuildPanel() {
+    public JPanel buildPanel() {
 
         // set up PerformanceMetricPanel
-        Font metric_font = new Font("Papyrus", Font.BOLD, 13);
+        Font metricFont = new Font("Papyrus", Font.BOLD, 13);
         setLayout(new BorderLayout());
         setBackground(new Color(169, 204, 227));
         JLabel performanceMetricHead = new JLabel("Performance Metrics", JLabel.CENTER);
@@ -80,7 +70,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         focusColorDisplay.setBackground(defaultColorFocus);
 
         btnFocus = new JButton("Focus");
-        btnFocus.setFont(metric_font);
+        btnFocus.setFont(metricFont);
         btnFocus.setPreferredSize(new Dimension(110, 50));
         btnFocus.addActionListener(this);
         focusColorDisplay.add(btnFocus);
@@ -92,7 +82,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         colors.add(defaultColorStress);
         stressColorDisplay.setBackground(defaultColorStress);
         btnStress = new JButton("Stress");
-        btnStress.setFont(metric_font);
+        btnStress.setFont(metricFont);
         btnStress.setPreferredSize(new Dimension(110, 50));
         btnStress.addActionListener(this);
         stressColorDisplay.add(btnStress);
@@ -105,7 +95,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         interestColorDisplay.setBackground(defaultColorInterest);
 
         btnInterest = new JButton("Interest");
-        btnInterest.setFont(metric_font);
+        btnInterest.setFont(metricFont);
         btnInterest.setPreferredSize(new Dimension(110, 50));
         btnInterest.addActionListener(this);
         interestColorDisplay.add(btnInterest);
@@ -118,7 +108,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         engagementColorDisplay.setBackground(defaultColorEngagement);
         // panel_excitementshort.setBackground(new Color(189, 195, 199));
         btnEngagement = new JButton("Engagement");
-        btnEngagement.setFont(metric_font);
+        btnEngagement.setFont(metricFont);
         btnEngagement.setPreferredSize(new Dimension(135, 50));
         btnEngagement.addActionListener(this);
         engagementColorDisplay.add(btnEngagement);
@@ -130,7 +120,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         colors.add(defaultColorRelaxation);
         relaxationColorDisplay.setBackground(defaultColorRelaxation);
         btnRelaxation = new JButton("Relaxation");
-        btnRelaxation.setFont(metric_font);
+        btnRelaxation.setFont(metricFont);
         btnRelaxation.setPreferredSize(new Dimension(120, 50));
         btnRelaxation.addActionListener(this);
         relaxationColorDisplay.add(btnRelaxation);
@@ -143,7 +133,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         excitementColorDisplay.setBackground(defaultColorExcitement);
         // panel_excitementlong.setBackground(new Color(189, 195, 199));
         btnExcitement = new JButton("Excitement");
-        btnExcitement.setFont(metric_font);
+        btnExcitement.setFont(metricFont);
         btnExcitement.setPreferredSize(new Dimension(120, 50));
         btnExcitement.addActionListener(this);
         excitementColorDisplay.add(btnExcitement);
@@ -155,19 +145,11 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
-        JLabel DisplayLength = new JLabel("Display Length  ");
-        DisplayLength.setFont(new Font("Papyrus", Font.BOLD, 15));
-        panel7.add(DisplayLength, c);
+        JLabel displayLengthLabel = new JLabel("Display Length  ");
+        displayLengthLabel.setFont(new Font("Papyrus", Font.BOLD, 15));
+        panel7.add(displayLengthLabel, c);
         c.gridx = 1;
         c.gridy = 0;
-
-
-//		NumberFormat format = NumberFormat.getInstance();
-//		NumberFormatter formatter = new NumberFormatter(format);
-//		formatter.setValueClass(Integer.class);
-//		formatter.setMinimum(0);
-//		formatter.setMaximum(Integer.MAX_VALUE);
-//		formatter.setAllowsInvalid(false);
         displayLength = new JTextField(10);
         displayLength.setText(String.valueOf(50));
         displayLength.getDocument().addDocumentListener(this);
@@ -233,16 +215,16 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 
     @Override
     public void insertUpdate(DocumentEvent e) {
-        affectiveColorService.changeDisplayLength(displayLength.getText());
+        affectiveColorService.changedisplayLengthLabel(displayLength.getText());
     }
 
     @Override
     public void removeUpdate(DocumentEvent e) {
-        affectiveColorService.changeDisplayLength(displayLength.getText());
+        affectiveColorService.changedisplayLengthLabel(displayLength.getText());
     }
 
     @Override
     public void changedUpdate(DocumentEvent e) {
-        affectiveColorService.changeDisplayLength(displayLength.getText());
+        affectiveColorService.changedisplayLengthLabel(displayLength.getText());
     }
 }

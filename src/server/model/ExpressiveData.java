@@ -1,5 +1,8 @@
 package server.model;
 
+/**
+ *
+ */
 public class ExpressiveData {
     // Eyebrow (Upper Face)
     private float raiseBrow = 0;

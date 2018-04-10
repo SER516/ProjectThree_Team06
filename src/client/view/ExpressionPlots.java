@@ -2,15 +2,13 @@ package client.view;
 
 import client.controller.PlotController;
 import client.helper.ClientDataSingleton;
-import client.model.ExpressivePlotData;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * ExpressionPlots class plots the graph of expressions received from server
+ * ExpressionPlots class plots the graph of expressions received from server.
  *
  * @author Abhishek
  */

@@ -1,5 +1,8 @@
 package client.listener;
 
+/**
+ *
+ */
 public interface ConnectionListener {
 
     public void startServer(String ip, String port);

@@ -1,28 +1,23 @@
 package client.controller;
 
+import client.helper.ClientDataSingleton;
 import java.io.IOException;
-import java.net.URI;
-import java.util.concurrent.CountDownLatch;
-
+import javax.swing.*;
 import javax.websocket.ClientEndpoint;
-import javax.websocket.CloseReason;
-import javax.websocket.ContainerProvider;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
 import javax.websocket.Session;
-import javax.websocket.WebSocketContainer;
-
 import client.listener.ClockListener;
 import client.model.AffectivePlotData;
 import client.model.ExpressivePlotData;
 import client.model.FaceData;
 import client.model.SingleTonData;
 import com.google.gson.Gson;
-import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 
-import client.helper.ClientDataSingleton;
 
+/**
+ *
+ */
 @ClientEndpoint
 public class ClientSocketEndpoint {
     static WebSocketClientMain webSocketClientMain;
@@ -40,6 +35,10 @@ public class ClientSocketEndpoint {
         clockListener = clockListenerObj;
     }
 
+    /**
+     *
+     * @param message
+     */
     @OnMessage
     public void onMessage(String message) {
         // Face data json.
@@ -50,7 +49,8 @@ public class ClientSocketEndpoint {
         SingleTonData.getInstance().getExpressplot().plotExpressionGraph();
         AffectivePlotData.getInstance().setDataToList(faceData.getAffectiveData(), faceData);
 
-        SingleTonData.getInstance().getAffectivePlot().plotAffectiveGraph1(AffectivePlotData.getInstance().getDataset());
+        SingleTonData.getInstance().getAffectivePlot().plotAffectiveGraph1
+                (AffectivePlotData.getInstance().getDataset());
         SingleTonData.getInstance().setFaceExpressionController(new ClientFaceController());
         String fileName = SingleTonData.getInstance().getFaceExpressionController().
                 getFaceFileName(faceData.getExpressiveData());
@@ -59,6 +59,10 @@ public class ClientSocketEndpoint {
 
     }
 
+    /**
+     *
+     * @param session
+     */
     @OnClose
     public void closedConnection(Session session) {
         ClientDataSingleton.getInstance().setSessionMaintained(false);
@@ -68,7 +72,7 @@ public class ClientSocketEndpoint {
 
         } catch (IOException e) {
 
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Exception during close Connection ");
         }
 
     }

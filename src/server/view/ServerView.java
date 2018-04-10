@@ -8,8 +8,6 @@ package server.view;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-
 import javax.swing.JFrame;
 
 import server.listener.ServerListenerInterface;
@@ -26,7 +24,7 @@ public class ServerView extends JFrame {
     ServerListenerInterface serverListenerInterface;
 
     /**
-     * Creates new form ServerUI
+     * Creates new form ServerUI.
      */
     public ServerView() {
         this.setTitle("Emotiv Xavier Composer");

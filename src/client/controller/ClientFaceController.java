@@ -7,8 +7,15 @@ import client.model.ExpressiveData;
 
 import javax.swing.*;
 
+/**
+ *
+ */
 public class ClientFaceController {
-
+    /**
+     *
+     * @param expressivedata
+     * @return
+     */
     public String getFaceFileName(ExpressiveData expressivedata) {
         StringBuilder fileName = new StringBuilder();
         JPanel facePanel = new JPanel();
@@ -36,7 +43,7 @@ public class ClientFaceController {
 
 
         } catch (IOException ex) {
-            System.out.println("Exception in Adding IMage: ");
+            System.out.println("Exception in Adding Image: ");
         }
 
         return finalFileName.toString();

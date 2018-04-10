@@ -1,23 +1,25 @@
 package client.controller;
 
-import client.controller.ClientSocketEndpoint;
 import client.helper.ClientDataSingleton;
-import client.listener.ClockListener;
-
 import java.net.URI;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import javax.websocket.ContainerProvider;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
 
+/**
+ *
+ */
 public class WebSocketClientMain {
     private static Object waitLock = new Object();
     Thread clientThread;
     Session session = null;
 
+    /**
+     *
+     */
     private static void wait4TerminateSignal() {
         synchronized (waitLock) {
             try {
@@ -31,6 +33,11 @@ public class WebSocketClientMain {
         }
     }
 
+    /**
+     *
+     * @param ip
+     * @param port
+     */
     public void connectToServer(String ip, String port) {
         ClientSocketEndpoint.setMainClientWebSocket(this);
         final ExecutorService clientProcessingPool = Executors.newFixedThreadPool(10);
@@ -54,7 +61,7 @@ public class WebSocketClientMain {
                         try {
                             session.close();
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            JOptionPane.showMessageDialog(null, "Exception on session close");
                         }
                     }
                 }

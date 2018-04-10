@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -20,8 +19,6 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
-import server.model.ServerModelSingleton;
 import server.services.InteractiveListenerService;
 
 /**
@@ -36,7 +33,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
     InteractiveListenerService interactiveListenerService;
 
     /**
-     * Creates new form InteractivePanel
+     * Creates new form InteractivePanel.
      */
     public InteractivePanel() {
         this.setBackground(Color.LIGHT_GRAY);

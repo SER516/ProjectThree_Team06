@@ -1,5 +1,8 @@
 package server.listener;
 
+/**
+ *
+ */
 public interface InteractiveListener {
 
     public void autoResetChange(String stateValue);

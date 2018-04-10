@@ -3,8 +3,10 @@ package client.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import server.model.ServerModelSingleton;
 
+/**
+ *
+ */
 public class ExpressivePlotData {
 
     private static volatile ExpressivePlotData expressivePlotData;
@@ -28,13 +30,17 @@ public class ExpressivePlotData {
         return expressivePlotData;
     }
 
+    /**
+     * @return
+     */
     public static ExpressivePlotData getInstance() {
         ExpressivePlotData result = expressivePlotData;
         if (result == null) {
             synchronized (mutex) {
                 result = expressivePlotData;
-                if (result == null)
+                if (result == null) {
                     result = new ExpressivePlotData();
+                }
                 expressivePlotData = result;
             }
         }
@@ -89,6 +95,9 @@ public class ExpressivePlotData {
         return blinkList;
     }
 
+    /**
+     * @param expressivedata
+     */
     public void setDataToList(ExpressiveData expressivedata) {
 
         raiseBrowList.add(expressivedata.getRaiseBrow());

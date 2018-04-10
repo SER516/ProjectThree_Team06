@@ -5,6 +5,9 @@ import client.view.AffectivePlot;
 import client.view.ExpressionPlots;
 import client.view.FaceExpressions;
 
+/**
+ *Class that sets up all the required singleton objects on client side.
+ */
 public class SingleTonData {
     private static volatile SingleTonData singletondata;
     private static Object mutex = new Object();
@@ -13,6 +16,10 @@ public class SingleTonData {
     private ClientFaceController faceExpressionController;
     private FaceExpressions faceExpressions;
 
+    /**
+     *
+     * @return
+     */
     public static SingleTonData getInstance() {
         SingleTonData result = singletondata;
         if (result == null) {

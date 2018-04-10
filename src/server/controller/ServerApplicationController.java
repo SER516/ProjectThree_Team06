@@ -1,6 +1,5 @@
 package server.controller;
 
-import server.listener.InteractiveListener;
 import server.model.FaceData;
 import server.model.ServerModelSingleton;
 import server.services.DetectionListenerService;
@@ -8,6 +7,9 @@ import server.services.InteractiveListenerService;
 import server.services.ServerSocketService;
 import server.view.ServerView;
 
+/**
+ * Class that sets singleton face data, connection and listener services for the server.
+ */
 public class ServerApplicationController {
 
     public ServerApplicationController() {

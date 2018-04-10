@@ -3,20 +3,20 @@ package server.services;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.websocket.Session;
 
-import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.websocket.jsr356.server.ServerContainer;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
-
 import server.controller.ServerSocketEndpoint;
 import server.listener.LogListenerInterface;
 
+/**
+ *Server Socket class that sets up server side socket connection with client.
+ */
 public class ServerSocketService {
     Thread serverThread;
     LogListenerInterface logListener;
@@ -62,7 +62,7 @@ public class ServerSocketService {
             serverThread.join();
             ServerSocketEndpoint.queue = new ConcurrentLinkedQueue<Session>();
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "An Exception has occurred");
         }
     }
 }

@@ -1,27 +1,23 @@
 package server.controller;
 
-import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Queue;
-import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
-
-import javax.websocket.CloseReason;
+import javax.swing.JOptionPane;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
-
-
 import com.google.gson.Gson;
 import server.listener.LogListenerInterface;
-import server.model.FaceData;
 import server.model.ServerModelSingleton;
 import server.services.DetectionListenerService;
 
+/**
+ *Server Socket Connection class that establishes connection threads for clock setting with client.
+ */
 @ServerEndpoint("/server")
 public class ServerSocketEndpoint {
 
@@ -35,20 +31,21 @@ public class ServerSocketEndpoint {
         rateThread = new Thread() {
             public void run() {
                 while (true) {
-                    if (queue != null)
+                    if (queue != null) {
                         if (ServerModelSingleton.getInstance().isAutoReset()) {
                             sendAndUpdateCounter();
                         }
-                    if (ServerModelSingleton.getInstance().isOneTimeSend()) {
-                        sendAndUpdateCounter();
-                        ServerModelSingleton.getInstance().setOneTimeSend(false);
-                    }
-                    try {
-                        Double clock = ServerModelSingleton.getInstance().getStateInterval();
-                        Long sleepValue = (long) (clock * 1000);
-                        sleep(sleepValue);
-                    } catch (InterruptedException e) {
-                        System.out.print("Inside exception");
+                        if (ServerModelSingleton.getInstance().isOneTimeSend()) {
+                            sendAndUpdateCounter();
+                            ServerModelSingleton.getInstance().setOneTimeSend(false);
+                        }
+                        try {
+                            Double clock = ServerModelSingleton.getInstance().getStateInterval();
+                            Long sleepValue = (long) (clock * 1000);
+                            sleep(sleepValue);
+                        } catch (InterruptedException e) {
+                            System.out.print("Inside exception");
+                        }
                     }
                 }
             }
@@ -89,7 +86,7 @@ public class ServerSocketEndpoint {
             queue.removeAll(closedSessions);
             logListener.logMessage("Sending " + msg + " to " + queue.size() + " clients");
         } catch (Throwable e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "An Exception has occurred while sending messages");
         }
     }
 
@@ -107,7 +104,7 @@ public class ServerSocketEndpoint {
         try {
             logListener.logMessage("received msg " + msg + " from " + session.getId());
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "An Exception has occurred while receiving messages");
         }
     }
 

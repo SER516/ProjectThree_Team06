@@ -3,6 +3,9 @@ package server.services;
 import server.listener.InteractiveListener;
 import server.model.ServerModelSingleton;
 
+/**
+ *
+ */
 public class InteractiveListenerService implements InteractiveListener {
 
     @Override

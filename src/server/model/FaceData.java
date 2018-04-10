@@ -1,5 +1,8 @@
 package server.model;
 
+/**
+ *
+ */
 public class FaceData {
 
     private double counter = 0;

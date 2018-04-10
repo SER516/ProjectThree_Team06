@@ -12,12 +12,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.UIManager;
-import javax.swing.UIManager.*;
 
+
+/**
+ *Main class for the server that sets and instantiates all listener services along with connection objects.
+ */
 public class ServerMainController {
 
     public ServerMainController(ServerView serverView, ServerModelSingleton serverDataSingleton,
-                                ServerSocketService serverSocketService, InteractiveListenerService interactiveListenerService,
+                                ServerSocketService serverSocketService,
+                                InteractiveListenerService interactiveListenerService,
                                 DetectionListenerService detectionListenerService) {
         addViewToController(serverView);
         setListeners(serverView, interactiveListenerService, detectionListenerService, serverSocketService);
@@ -35,23 +39,21 @@ public class ServerMainController {
 
     private static void addViewToController(ServerView serverView) {
         try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Aqua".equals(info.getName())) {
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | javax.swing.UnsupportedLookAndFeelException | IllegalAccessException ex) {
             Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
             Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        /* Create and display the form */
+        /**
+         *  Create and display the form .
+         */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 serverView.setVisible(true);
@@ -60,7 +62,8 @@ public class ServerMainController {
     }
 
     private void setListeners(ServerView serverView, InteractiveListenerService interactiveListenerService,
-                              DetectionListenerService detectionListenerService, ServerSocketService serverSocketService) {
+                              DetectionListenerService detectionListenerService,
+                              ServerSocketService serverSocketService) {
         setDetectionListener(serverView, detectionListenerService);
         setLogListener(serverView);
         setInteractiveListener(serverView, interactiveListenerService);

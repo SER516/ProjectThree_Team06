@@ -1,21 +1,15 @@
 package client.view;
 
-import client.helper.ClientDataSingleton;
 import client.model.AffectiveData;
 import client.model.AffectivePlotData;
-import client.model.FaceData;
-import client.model.SingleTonData;
 import client.services.AffectiveColorService;
-import client.view.GraphPlot;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartFrame;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
@@ -23,8 +17,11 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Random;
 
+
+/**
+ *
+ */
 public class AffectivePlot extends JPanel {
 
     JPanel affectivePanel = new JPanel();
@@ -70,7 +67,7 @@ public class AffectivePlot extends JPanel {
         this.affectiveColorService = affectiveColorService;
     }
 
-    public void changeDisplayLength(String length) {
+    public void changedisplayLengthLabel(String length) {
         try {
             this.length = Integer.parseInt(length);
             plotAffectiveGraph1(AffectivePlotData.getInstance().getDataset());

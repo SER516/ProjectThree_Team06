@@ -2,6 +2,9 @@ package client.helper;
 
 import client.model.FaceData;
 
+/**
+ *
+ */
 public class ClientDataSingleton {
     private static volatile ClientDataSingleton clientDataSingleton;
     private static Object mutex = new Object();
@@ -13,8 +16,9 @@ public class ClientDataSingleton {
         if (result == null) {
             synchronized (mutex) {
                 result = clientDataSingleton;
-                if (result == null)
+                if (result == null) {
                     result = new ClientDataSingleton();
+                }
                 clientDataSingleton = result;
             }
         }

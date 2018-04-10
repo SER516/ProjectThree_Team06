@@ -9,12 +9,12 @@ import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
 /**
- * GraphPlot class plots the data stream received from server on Graph component
+ * GraphPlot class plots the data stream received from server on Graph component.
  *
  * @author Team 6
  */
 public class GraphPlot extends JPanel {
-    final int PAD = 1;
+    public static final int PAD = 1;
     ArrayList<ArrayList<Float>> serverData = new ArrayList<>();
     ArrayList<Color> colors;
     Integer length;

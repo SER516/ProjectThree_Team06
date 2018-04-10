@@ -1,8 +1,8 @@
 package client.model;
 
-import client.model.AffectiveData;
-import client.model.ExpressiveData;
-
+/**
+ *Class that sets and returns the face expression parameters on client GUI.
+ */
 public class FaceData {
 
     private double counter = 0;

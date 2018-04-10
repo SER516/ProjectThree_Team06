@@ -1,5 +1,8 @@
 package client.model;
 
+/**
+ *
+ */
 public class ClientConfigurationSingleton {
     private static volatile ClientConfigurationSingleton clientConfiguration;
     private static Object mutex = new Object();

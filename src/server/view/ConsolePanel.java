@@ -7,17 +7,9 @@ package server.view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
 
 /**
  * @author mspranav
@@ -25,7 +17,7 @@ import javax.swing.text.Document;
 public class ConsolePanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ConsolePanel
+     * Creates new form ConsolePanel.
      */
     JButton btnClearLog;
     JTextArea consoleTextArea;
