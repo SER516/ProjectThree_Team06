@@ -5,8 +5,9 @@ import javax.swing.JOptionPane;
 import javax.websocket.ContainerProvider;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
+
+import client.constants.ClientConstants;
 import client.helper.ClientDataSingleton;
-import constants.ClientConstants;
 
 /**
  *

@@ -2,8 +2,10 @@ package client.controller;
 
 import java.io.File;
 import java.io.IOException;
+
+import client.constants.ClientConstants;
 import client.model.ExpressiveData;
-import constants.ClientConstants;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -17,21 +19,21 @@ public class ClientFaceController {
 	 */
 	public String getFaceFileName(ExpressiveData expressivedata) {
 		StringBuilder fileName = new StringBuilder();
-		fileName.append(expressivedata.getRaiseBrow() < 0.5 ? "0" : "1");
-		fileName.append(expressivedata.getFurrowBrow() < 0.5 ? "0" : "1");
-		fileName.append(expressivedata.getSmile() < 0.5 ? "0" : "1");
-		fileName.append(expressivedata.getClench() < 0.5 ? "0" : "1");
-		fileName.append(expressivedata.getSmirkLeft() < 0.5 ? "0" : "1");
-		fileName.append(expressivedata.getSmirkRight() < 0.5 ? "0" : "1");
-		fileName.append(expressivedata.getLaugh() < 0.5 ? "0" : "1");
-		fileName.append(expressivedata.isBlink() ? "1" : "0");
-		fileName.append(expressivedata.isWinkLeft() ? "1" : "0");
-		fileName.append(expressivedata.isWinkRight() ? "1" : "0");
-		fileName.append(expressivedata.isLookLeft() ? "1" : "0");
-		fileName.append(expressivedata.isLookRight() ? "1" : "0");
+		fileName.append(expressivedata.getRaiseBrow() < 0.5 ? ClientConstants.ON_VALUE : ClientConstants.OFF_VALUE);
+		fileName.append(expressivedata.getFurrowBrow() < 0.5 ? ClientConstants.ON_VALUE : ClientConstants.OFF_VALUE);
+		fileName.append(expressivedata.getSmile() < 0.5 ? ClientConstants.ON_VALUE : ClientConstants.OFF_VALUE);
+		fileName.append(expressivedata.getClench() < 0.5 ? ClientConstants.ON_VALUE : ClientConstants.OFF_VALUE);
+		fileName.append(expressivedata.getSmirkLeft() < 0.5 ? ClientConstants.ON_VALUE : ClientConstants.OFF_VALUE);
+		fileName.append(expressivedata.getSmirkRight() < 0.5 ? ClientConstants.ON_VALUE : ClientConstants.OFF_VALUE);
+		fileName.append(expressivedata.getLaugh() < 0.5 ? ClientConstants.ON_VALUE : ClientConstants.OFF_VALUE);
+		fileName.append(expressivedata.isBlink() ? ClientConstants.OFF_VALUE : ClientConstants.ON_VALUE);
+		fileName.append(expressivedata.isWinkLeft() ? ClientConstants.OFF_VALUE : ClientConstants.ON_VALUE);
+		fileName.append(expressivedata.isWinkRight() ? ClientConstants.OFF_VALUE : ClientConstants.ON_VALUE);
+		fileName.append(expressivedata.isLookLeft() ? ClientConstants.OFF_VALUE : ClientConstants.ON_VALUE);
+		fileName.append(expressivedata.isLookRight() ? ClientConstants.OFF_VALUE : ClientConstants.ON_VALUE);
 		StringBuilder finalFileName = new StringBuilder();
 		try {
-			finalFileName.append(new java.io.File(".").getCanonicalPath());
+			finalFileName.append(new java.io.File(ClientConstants.CURRENT_DIR).getCanonicalPath());
 			finalFileName.append(File.separator);
 			finalFileName.append(ClientConstants.IMAGES);
 			finalFileName.append(File.separator);

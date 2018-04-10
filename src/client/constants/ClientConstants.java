@@ -1,4 +1,4 @@
-package constants;
+package client.constants;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,8 +19,18 @@ public class ClientConstants {
 	public static final String PERFORMANCE_METRICS = "Performance Metrics";
 	public static final Color LIGHT_GREY = new Color(220, 220, 220);
 	public static final String FOCUS = "Focus";
+	public static final String STRESS = "Stress";
+	public static final String INTEREST = "Interest";
+	public static final String ENGAGEMENT = "Engagement";
+	public static final String RELAXATION = "Relaxation";
+	public static final String EXCITEMENT = "Excitement";
 	public static final String TITLE = "Client (Lab 3, Team 6)";
-	public static final Color DARKER_ORANGE = new Color(255, 99, 71);
+	public static final Color FOCUS_COLOR_DEFAULT = new Color(255, 99, 71);
+	public static final Color STRESS_COLOR_DEFAULT = new Color(128, 191, 255);
+	public static final Color INTEREST_COLOR_DEFAULT = new Color(204, 204, 255);
+	public static final Color ENGAGEMENT_COLOR_DEFAULT =  new Color(77, 255, 166);
+	public static final Color RELAXATION_COLOR_DEFAULT = new Color(184, 102, 20);
+	public static final Color EXCITEMENT_COLOR_DEFAULT = new Color(255, 255, 102);
 	public static final Color LIGHT_BLUE = new Color(169, 204, 227);
 	public static final Dimension BUTTON_DIMENSION = new Dimension(110, 50);
 	public static final String DISPLAY_LENGTH = "Display Length  ";
@@ -28,4 +38,7 @@ public class ClientConstants {
 	public static final String CONNECT_TO_SERVER = "Please connect to the server first";
 	public static final String STOP_WATCH = "Stop Watch";
 	public static final String CHOOSE_COLOR = "Choose a color";
+	public static final String ON_VALUE = "0";
+	public static final String OFF_VALUE = "1";
+	public static final String CURRENT_DIR = ".";
 }

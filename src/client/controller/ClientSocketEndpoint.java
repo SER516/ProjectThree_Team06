@@ -7,13 +7,14 @@ import javax.websocket.ClientEndpoint;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.Session;
+
+import client.constants.ClientConstants;
 import client.helper.ClientDataSingleton;
 import client.listener.ClockListener;
 import client.model.AffectivePlotData;
 import client.model.ExpressivePlotData;
 import client.model.FaceData;
 import client.model.SingleTonData;
-import constants.ClientConstants;
 
 /**
  *
@@ -40,13 +41,11 @@ public class ClientSocketEndpoint {
 	 */
 	@OnMessage
 	public void onMessage(String message) {
-		// Face data json.
 		faceData = gson.fromJson(message, FaceData.class);
 		ClientDataSingleton.getInstance().setFaceData(faceData);
 		ExpressivePlotData.getInstance().setDataToList(faceData.getExpressiveData());
 		SingleTonData.getInstance().getExpressplot().plotExpressionGraph();
 		AffectivePlotData.getInstance().setDataToList(faceData.getAffectiveData(), faceData);
-
 		SingleTonData.getInstance().getAffectivePlot()
 				.plotAffectiveGraph1(AffectivePlotData.getInstance().getDataset());
 		SingleTonData.getInstance().setFaceExpressionController(new ClientFaceController());

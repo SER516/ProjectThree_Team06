@@ -2,7 +2,6 @@ package client.model;
 
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -26,10 +25,6 @@ public class AffectivePlotData {
 	private ArrayList<Float> excitmentList = new ArrayList<>(Arrays.asList(0.0f));
 	private ArrayList<Float> focusList = new ArrayList<>(Arrays.asList(0.0f));
 	private ArrayList<ArrayList<Float>> mainDataList = new ArrayList<>();
-
-	public static AffectivePlotData getAffectivePlotData() {
-		return affectivePlotData;
-	}
 
 	/**
 	 * @return
@@ -109,22 +104,19 @@ public class AffectivePlotData {
 	 * @param faceData
 	 */
 	public void setDataToList(AffectiveData affectivedata, FaceData faceData) {
-		double counter = faceData.getCounter();
+		double faceDataCounter = faceData.getCounter();
 		dataset = new XYSeriesCollection();
-		interestSeries.add(faceData.getCounter(), affectivedata.getInterest());
-		engagementSeries.add(faceData.getCounter(), affectivedata.getEngagement());
-		relaxSeries.add(faceData.getCounter(), affectivedata.getRelaxation());
-		stressSeries.add(faceData.getCounter(), affectivedata.getStress());
-		excitmentSeries.add(faceData.getCounter(), affectivedata.getExcitement());
-		focusSeries.add(faceData.getCounter(), affectivedata.getFocus());
+		interestSeries.add(faceDataCounter, affectivedata.getInterest());
+		engagementSeries.add(faceDataCounter, affectivedata.getEngagement());
+		relaxSeries.add(faceDataCounter, affectivedata.getRelaxation());
+		stressSeries.add(faceDataCounter, affectivedata.getStress());
+		excitmentSeries.add(faceDataCounter, affectivedata.getExcitement());
+		focusSeries.add(faceDataCounter, affectivedata.getFocus());
 		dataset.addSeries(focusSeries);
 		dataset.addSeries(stressSeries);
 		dataset.addSeries(interestSeries);
 		dataset.addSeries(engagementSeries);
 		dataset.addSeries(relaxSeries);
 		dataset.addSeries(excitmentSeries);
-	}
-
-	public void setDataForJChart() {
 	}
 }

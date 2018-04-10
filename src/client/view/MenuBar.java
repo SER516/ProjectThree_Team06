@@ -23,8 +23,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
+import client.constants.ClientConstants;
 import client.services.ClientServerConnectionService;
-import constants.ClientConstants;
 
 /**
  * MenuBar handles the menu options given on main frame.

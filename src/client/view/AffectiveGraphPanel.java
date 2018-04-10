@@ -4,9 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import client.constants.ClientConstants;
 import client.model.SingleTonData;
 import client.services.AffectiveColorService;
-import constants.ClientConstants;
 
 /**
  * This is a part of AffectivePanel UI. This panel is for Graph plot.
@@ -16,7 +16,7 @@ import constants.ClientConstants;
 
 class AffectiveGraphPanel extends JPanel {
 
-	AffectivePlot graphPart;
+	AffectivePlot affectiveGraphPlot;
 
 	public AffectiveGraphPanel() {
 		buildPanel();
@@ -30,22 +30,22 @@ class AffectiveGraphPanel extends JPanel {
 	public JPanel buildPanel() {
 		setLayout(new BorderLayout());
 		setBackground(ClientConstants.LIGHT_YELLOW);
-		JLabel GraphPlot = new JLabel(ClientConstants.GRAPH_PLOT, JLabel.CENTER);
-		GraphPlot.setFont(ClientConstants.TEXT_FONT);
-		add(GraphPlot, BorderLayout.NORTH);
+		JLabel graphPlotLabel = new JLabel(ClientConstants.GRAPH_PLOT, JLabel.CENTER);
+		graphPlotLabel.setFont(ClientConstants.TEXT_FONT);
+		add(graphPlotLabel, BorderLayout.NORTH);
 		setLayout(new BorderLayout());
-		graphPart = new AffectivePlot();
-		SingleTonData.getInstance().setAffectivePlot(graphPart);
-		graphPart.setBackground(Color.WHITE);
-		add(graphPart);
+		affectiveGraphPlot = new AffectivePlot();
+		SingleTonData.getInstance().setAffectivePlot(affectiveGraphPlot);
+		affectiveGraphPlot.setBackground(Color.WHITE);
+		add(affectiveGraphPlot);
 		return this;
 	}
 
 	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
-		graphPart.setAffectiveListener(affectiveColorService);
+		affectiveGraphPlot.setAffectiveListener(affectiveColorService);
 	}
 
 	public void changedisplayLengthLabel(String text) {
-		graphPart.changedisplayLengthLabel(text);
+		affectiveGraphPlot.changedisplayLengthLabel(text);
 	}
 }

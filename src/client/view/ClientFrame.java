@@ -3,9 +3,10 @@ package client.view;
 import javax.swing.*;
 
 import javax.swing.border.EmptyBorder;
+
+import client.constants.ClientConstants;
 import client.services.AffectiveColorService;
 import client.services.ClientServerConnectionService;
-import constants.ClientConstants;
 
 import java.awt.*;
 import java.util.ArrayList;

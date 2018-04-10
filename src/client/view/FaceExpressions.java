@@ -2,7 +2,9 @@ package client.view;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import constants.ClientConstants;
+
+import client.constants.ClientConstants;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;

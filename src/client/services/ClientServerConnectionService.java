@@ -1,11 +1,12 @@
 package client.services;
 
 import javax.swing.JOptionPane;
+
+import client.constants.ClientConstants;
 import client.controller.WebSocketClientMain;
 import client.helper.ClientDataSingleton;
 import client.listener.ConnectionListener;
 import client.model.ClientConfigurationSingleton;
-import constants.ClientConstants;
 import server.controller.ServerApplicationController;
 
 /**
