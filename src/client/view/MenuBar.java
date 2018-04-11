@@ -85,7 +85,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		connectMenu.add(reconnect);
 		stopWatch = new JMenuItem(ClientConstants.STOP_WATCH, new ImageIcon(resizeStopImg));
 		connectionLabel = new JMenuItem();
-		connect_state(false);
+		connectState(false);
 		launchServer.addActionListener(this);
 		connect.addActionListener(this);
 		reconnect.addActionListener(this);
@@ -101,11 +101,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	}
 
 	/**
-	 * connect_state method changes the label and icon on menubar.
+	 * connectState method changes the label and icon on menubar.
 	 *
 	 * @param flag
 	 */
-	public void connect_state(boolean flag) {
+	public void connectState(boolean flag) {
 		if (flag) {
 			connectionLabel.setIcon(new ImageIcon(greenIcon));
 			connectionLabel.setText(ClientConstants.CONNECTED);
@@ -184,11 +184,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
 			clientServerConnectionService.initializeServer();
 		} else if (e.getSource() == connect) {
 			if (clientServerConnectionService != null) {
-//				connect_state(true);
+
 				launchDialogBox();
 			}
 		} else if (e.getSource() == reconnect) {
-//			connect_state(true);
+
 			clientServerConnectionService.reconnectServer(null);
 		}
 	}
@@ -237,6 +237,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
 
 	public void setConnectionLabel(boolean flag) {
-		connect_state(flag);
+		connectState(flag);
 	}
 }
