@@ -1,6 +1,6 @@
 package client.controller;
 
-import client.helper.ClientDataSingleton;
+import client.model.ClientDataSingleton;
 import client.listener.MenuBarListener;
 import client.services.AffectiveColorService;
 import client.services.ClientServerConnectionService;
@@ -9,9 +9,13 @@ import client.view.ClientFrame;
 /**
  * Controller class to handle web socket connection between the client and the
  * server.
- **/
+ * 
+ * @author Team06
+ * @version 1.0
+ */
 public class ClientMainController {
-	/**
+
+	/*
 	 *
 	 * @param args
 	 */
@@ -24,11 +28,17 @@ public class ClientMainController {
 
 	}
 
+	/*
+	 * @param clientWindow
+	 */
 	private static void setAffectiveListener(ClientFrame clientWindow) {
 		clientWindow.setAffectiveListener(new AffectiveColorService(clientWindow));
 
 	}
 
+	/*
+	 * @ param clientWindow
+	 */
 	private static void setClockListener(ClientFrame clientWindow) {
 		ClientSocketEndpoint.setClockListener(new MenuBarListener() {
 			@Override
@@ -41,10 +51,12 @@ public class ClientMainController {
 				clientWindow.setConnectionLabel(flag);
 			}
 
-
 		});
 	}
 
+	/*
+	 * @ param clientWindow
+	 */
 	private static void setClientServerConnection(ClientFrame clientWindow) {
 		clientWindow.setServerClientListener(new ClientServerConnectionService());
 	}

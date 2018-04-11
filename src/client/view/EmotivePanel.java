@@ -1,9 +1,7 @@
 package client.view;
 
 import javax.swing.*;
-
-import client.model.SingleTonData;
-
+import client.model.ClientDataSingleton;
 import java.awt.*;
 
 /**
@@ -20,8 +18,8 @@ public class EmotivePanel extends JPanel {
 		setLayout(new BorderLayout());
 		faceExpressions = new FaceExpressions();
 		expressionPlots = new ExpressionPlots();
-		SingleTonData.getInstance().setExpressplot(expressionPlots);
-		SingleTonData.getInstance().setFaceExpressions(faceExpressions);
+		ClientDataSingleton.getInstance().setExpressplot(expressionPlots);
+		ClientDataSingleton.getInstance().setFaceExpressions(faceExpressions);
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		splitPane.setResizeWeight(0.3);
 		splitPane.setEnabled(false);

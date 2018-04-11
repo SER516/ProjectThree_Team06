@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import client.constants.ClientConstants;
-import client.model.SingleTonData;
+import client.model.ClientDataSingleton;
 import client.services.AffectiveColorService;
 
 /**
@@ -35,7 +35,7 @@ class AffectiveGraphPanel extends JPanel {
 		add(graphPlotLabel, BorderLayout.NORTH);
 		setLayout(new BorderLayout());
 		affectiveGraphPlot = new AffectivePlot();
-		SingleTonData.getInstance().setAffectivePlot(affectiveGraphPlot);
+		ClientDataSingleton.getInstance().setAffectivePlot(affectiveGraphPlot);
 		affectiveGraphPlot.setBackground(Color.WHITE);
 		add(affectiveGraphPlot);
 		return this;
