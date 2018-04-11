@@ -19,6 +19,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
 import server.services.InteractiveListenerService;
 import server.services.ServerSocketService;
 
@@ -84,15 +85,21 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
     public void actionPerformed(ActionEvent e) {
 
 
-        if (e.getSource() == autoResetCheckBox) {
+        if (e.getSource() == autoResetCheckBox && sendButton.getActionCommand() == "Stop") {
 
             if (!autoResetCheckBox.isSelected()) {
                 interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
+                sendButton.setActionCommand("Send");
             }
         }
-        if (e.getSource() == sendButton)
-        {
-           interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
+        if (e.getSource() == sendButton && autoResetCheckBox.isSelected()) {
+            interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
+            sendButton.setActionCommand("Stop");
+
+        }
+
+        if (e.getSource() == sendButton && !autoResetCheckBox.isSelected()) {
+            interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
 
         }
 
@@ -105,8 +112,6 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
             String stateValue = emoStateSpinner.getValue().toString();
             interactiveListenerService.autoResetChange(stateValue);
         }
-
-
 
 
     }
