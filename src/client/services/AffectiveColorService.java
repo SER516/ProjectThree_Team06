@@ -7,7 +7,7 @@ import client.model.AffectivePlotData;
 import client.view.ClientFrame;
 
 /**
- * The AffectiveColorService class
+ * The AffectiveColorService class provides service of color matrix to the affective panel
  * 
  * @author Team06
  * @version 1.0
@@ -20,19 +20,26 @@ public class AffectiveColorService implements AffectiveColorListener {
 		this.clientWindow = clientWindow;
 	}
 
+	/**
+	 *	setColor abstract method from AffectiveColorListener Interface
+	 */
 	@Override
 	public void setColor() {
 
 	}
 
+	/**
+	 * getColors method gets color array from clientwindow
+	 * @return arraylist containing Colors of each matrix
+	 */
 	@Override
 	public ArrayList<Color> getColors() {
 		return clientWindow.getColors();
-
 	}
 
 	/**
-	 * 
+	 * changedisplayLengthLabel method changes label on clientWindow
+	 * @param text : string to set on client window
 	 */
 	@Override
 	public void changedisplayLengthLabel(String text) {

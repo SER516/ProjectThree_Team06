@@ -9,7 +9,7 @@ import client.model.ClientDataSingleton;
 import server.controller.ServerApplicationController;
 
 /**
- * The ClientServerConnectionService class
+ * The ClientServerConnectionService class provides service for client server connection
  * 
  * @author Team06
  * @version 1.0
@@ -23,8 +23,8 @@ public class ClientServerConnectionService implements ConnectionListener {
 	}
 
 	/**
-	 *
-	 * @param url
+	 *reconnectServer method implements reconnection to the last connected server
+	 * @param url String containing url of last connected server
 	 */
 	@Override
 	public void reconnectServer(String url) {
@@ -35,11 +35,10 @@ public class ClientServerConnectionService implements ConnectionListener {
 		} else {
 			establishServerClientConnection(ip, port);
 		}
-
 	}
 
 	/**
-	 * 
+	 * initializeServer method instantiate ServerApplicationController class
 	 */
 	@Override
 	public void initializeServer() {
@@ -47,9 +46,9 @@ public class ClientServerConnectionService implements ConnectionListener {
 	}
 
 	/**
-	 * 
-	 * @param ip
-	 * @param port
+	 * establishServerClientConnection method sets client configuration for server client connection
+	 * @param ip String which is User Input IP
+	 * @param port String denotes user input for port number
 	 */
 	private void establishServerClientConnection(String ip, String port) {
 		if (!ClientDataSingleton.getInstance().isSessionMaintained()) {

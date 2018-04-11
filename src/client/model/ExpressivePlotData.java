@@ -32,6 +32,7 @@ public class ExpressivePlotData {
 	}
 
 	/**
+	 * returns instance of class
 	 * @return
 	 */
 	public static ExpressivePlotData getInstance() {
@@ -97,7 +98,8 @@ public class ExpressivePlotData {
 	}
 
 	/**
-	 * @param expressivedata
+	 * setDataToList sets data received from server to its category
+	 * @param expressivedata : data received from server
 	 */
 	public void setDataToList(ExpressiveData expressivedata) {
 		raiseBrowList.add(expressivedata.getRaiseBrow());

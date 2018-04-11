@@ -68,6 +68,10 @@ public class ExpressionPlots extends JPanel {
 		addPanels();
 	}
 
+	/**
+	 * setRandomColors method assigns color values
+	 * @param size int size of color array
+	 */
 	private void setRandomColors(int size) {
 		for (int i = 0; i < size; i++) {
 			Random rand = new Random();
@@ -79,6 +83,9 @@ public class ExpressionPlots extends JPanel {
 		}
 	}
 
+	/**
+	 * addPanels method configures the 12 graph plots on Expressive panel
+	 */
 	public void addPanels() {
 		this.setLayout(new GridLayout(12, 1, 1, 1));
 		setPanelsLayout(blinkPanel, blinkSplitPane, ClientConstants.BLINK);
@@ -118,6 +125,11 @@ public class ExpressionPlots extends JPanel {
 		expression.add(splitPane);
 	}
 
+	/**
+	 * plotGraphForFeature plots feature values received from server
+	 * @param data ArrayList received from server
+	 * @return GraphPlot instance of graph
+	 */
 	private GraphPlot plotGraphForFeature(ArrayList<Float> data) {
 		inputData.clear();
 		inputData.add(data);
@@ -126,6 +138,9 @@ public class ExpressionPlots extends JPanel {
 		return graphPlot;
 	}
 
+	/**
+	 * plotExpressionGraph method adds values to the graph and plots graph
+	 */
 	public void plotExpressionGraph() {
 		if (ClientDataSingleton.getInstance().getFaceData() != null) {
 			plotData = plotController.getExpressivePlotData();
@@ -157,11 +172,11 @@ public class ExpressionPlots extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @param expression
-	 * @param splitPane
-	 * @param graphPlotCurr
-	 * @param feature
+	 * addGraphsToPanel adds plotted graph to the panel
+	 * @param expression Panel object of each expression
+	 * @param splitPane SplitPane object to split label and graph
+	 * @param graphPlotCurr GraphPlot graph with values
+	 * @param feature String with feature name related to expression
 	 */
 	private void addGraphsToPanel(JPanel expression, JSplitPane splitPane, GraphPlot graphPlotCurr, String feature) {
 		expression.removeAll();

@@ -42,7 +42,8 @@ public class FaceExpressions extends JPanel {
 	}
 
 	/**
-	 * @param g
+	 * painComponent method configures the Panel
+	 * @param g Graphics to be configured
 	 */
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -52,8 +53,8 @@ public class FaceExpressions extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @param fileName
+	 * drawImage method sets image on the faceExpression panel
+	 * @param fileName String name of file containing image
 	 */
 	public void drawImage(String fileName) {
 		BufferedImage image;

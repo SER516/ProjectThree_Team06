@@ -34,15 +34,28 @@ public class AffectivePanel extends JPanel {
 		add(panelMetric, BorderLayout.EAST);
 	}
 
+	/**
+	 * setAffectiveListener method passes value to the AffectiveListener of Graph Panel
+	 * and Metric value Panel
+	 * @param affectiveColorService instance of AffectiveColorService
+	 */
 	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
 		panelGraph.setAffectiveListener(affectiveColorService);
 		panelMetric.setAffectiveListener(affectiveColorService);
 	}
 
+	/**
+	 * getColors method gets color array from panelMetric
+	 * @return arraylist containing Colors of each matrix
+	 */
 	public ArrayList<Color> getColors() {
 		return panelMetric.getColors();
 	}
 
+	/**
+	 * changedisplayLengthLabel functions calls for AffectiveGraphPanel to change label
+	 * on Graph plot
+	 */
 	public void changedisplayLengthLabel() {
 		panelGraph.changedisplayLengthLabel();
 	}

@@ -20,13 +20,6 @@ public class GraphPlot extends JPanel {
 	ArrayList<Color> colors;
 	Integer length;
 
-	/**
-	 * @param inputData
-	 *            : Data received from server
-	 * @param colors
-	 *            : channel colors for graph plotting Function paintComponent
-	 *            initializing the graph attributes on 'baseGraph'
-	 */
 	public GraphPlot(ArrayList<ArrayList<Float>> inputData, ArrayList<Color> colors) {
 		serverData.addAll(inputData);
 		this.colors = colors;
@@ -41,6 +34,7 @@ public class GraphPlot extends JPanel {
 	}
 
 	/**
+	 * paintComponent method configures graph part on panel
 	 * @param baseGraph
 	 *            : Graphics component Function paintComponent initializing the
 	 *            graph attributes on 'baseGraph'
@@ -68,6 +62,7 @@ public class GraphPlot extends JPanel {
 	}
 
 	/**
+	 * paintData method configures graphPlot GUI
 	 * @param i
 	 *            : index of element in server data
 	 * @param graph
@@ -97,6 +92,7 @@ public class GraphPlot extends JPanel {
 	}
 
 	/**
+	 * checkMaxDataPoint method returns maximum data value
 	 * @param data
 	 *            : channel data
 	 * @return max : maximum data element Function checkMaxDataPoint calculates the

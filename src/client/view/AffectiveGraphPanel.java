@@ -42,10 +42,17 @@ class AffectiveGraphPanel extends JPanel {
 		return this;
 	}
 
+	/**
+	 * setAffectiveListener method provides connection listener to graph plot
+	 * @param affectiveColorService instance of AffectiveColorService
+	 */
 	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
 		affectiveGraphPlot.setAffectiveListener(affectiveColorService);
 	}
 
+	/**
+	 * changedisplayLengthLabel method calls for change label on graph plot
+	 */
 	public void changedisplayLengthLabel() {
 		affectiveGraphPlot.changedisplayLengthLabel();
 	}

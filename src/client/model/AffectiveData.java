@@ -1,7 +1,7 @@
 package client.model;
 
 /**
- * The AffectiveData class
+ * The AffectiveData class stores values received from server
  * 
  * @author Team06
  * @version 1.0

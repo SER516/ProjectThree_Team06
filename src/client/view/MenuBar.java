@@ -103,7 +103,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * connectState method changes the label and icon on menubar.
 	 *
-	 * @param flag
+	 * @param flag : boolean connected or not connected flag
 	 */
 	public void connectState(boolean flag) {
 		if (flag) {
@@ -117,10 +117,9 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
 	/**
 	 * setForegroundBackground method customizes appearance of items in menubar.
-	 *
-	 * @param item
-	 * @param blackBorder
-	 * @param font
+	 * @param item : Menu item to be configured
+	 * @param blackBorder : border to set
+	 * @param font : to set font of menu item
 	 */
 	public void setForegroundBackground(JMenu item, Border blackBorder, Font font) {
 		item.setBackground(Color.LIGHT_GRAY);
@@ -132,10 +131,9 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
 	/**
 	 * setForegroundBackground method customizes appearance of items in menubar.
-	 *
-	 * @param item
-	 * @param blackBorder
-	 * @param font
+	 * @param item : Menu item to be configured
+	 * @param blackBorder : border to set
+	 * @param font : to set font of menu item
 	 */
 	public void setForegroundBackground(JMenuItem item, Border blackBorder, Font font) {
 		item.setBackground(Color.LIGHT_GRAY);
@@ -148,8 +146,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * setForegroundBackground method customizes appearance of items in menubar.
 	 *
-	 * @param item
-	 * @param font
+	 * @param item : Menu item to be configured
+	 * @param font : to set font of menu item
 	 */
 	public void setForegroundBackground(JMenuItem item, Font font) {
 		item.setBackground(Color.LIGHT_GRAY);
@@ -161,9 +159,9 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * setGraphics method creates a rendered image
 	 * 
-	 * @param resizeImg
-	 * @param menuImage
-	 * @return
+	 * @param resizeImg : resized BufferedImage to be drawn on GUI
+	 * @param menuImage : original BufferedImage which is to be drawn on
+	 * @return : Graphics2D object for reference
 	 */
 	public Graphics2D setGraphics(BufferedImage resizeImg, BufferedImage menuImage) {
 		Graphics2D g2 = resizeImg.createGraphics();
@@ -176,7 +174,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * actionPerformed method handles the on click event from menu.
 	 *
-	 * @param e
+	 * @param e : ActionEvent performed on MenuBar
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -184,7 +182,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
 			clientServerConnectionService.initializeServer();
 		} else if (e.getSource() == connect) {
 			if (clientServerConnectionService != null) {
-
 				launchDialogBox();
 			}
 		} else if (e.getSource() == reconnect) {
@@ -196,7 +193,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * setServerClientListener method connects client server connection lister
 	 * 
-	 * @param clientServerConnectionService
+	 * @param clientServerConnectionService : Client Server Connection setup
 	 */
 	public void setServerClientListener(ClientServerConnectionService clientServerConnectionService) {
 		this.clientServerConnectionService = clientServerConnectionService;
@@ -226,7 +223,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * updateTimeValue method updates stop watch timer on menubar.
 	 * 
-	 * @param time
+	 * @param time : stop watch time to update
 	 */
 	public void updateTimeValue(double time) {
 		stopWatch.setOpaque(true);

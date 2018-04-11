@@ -20,7 +20,7 @@ import client.model.AffectivePlotData;
 import client.services.AffectiveColorService;
 
 /**
- * The AffectivePlot class sets up the the graph plot for AffectivePanel UI.
+ * The AffectivePlot class sets up the the graph plot for AffectivePanel GUI.
  * 
  * @author Team06
  * @version 1.0
@@ -44,15 +44,16 @@ public class AffectivePlot extends JPanel {
 		this.affectiveColorService = affectiveColorService;
 	}
 
+	/**
+	 * changedisplayLengthLabel changes label on the graph plot
+	 */
 	public void changedisplayLengthLabel() {
-
 		plotAffectiveGraph1(AffectivePlotData.getInstance().regenerateDataSet());
-
 	}
 
 	/**
-	 * 
-	 * @param dataset
+	 * plotAffectiveGraph1 method provides implementation of plotting values on AffectiveGraph
+	 * @param dataset XYSeriesCollection values to plot in 2d
 	 */
 	public void plotAffectiveGraph1(XYSeriesCollection dataset) {
 		JFreeChart chart = ChartFactory.createXYLineChart(ClientConstants.EMPTY, ClientConstants.EMPTY,

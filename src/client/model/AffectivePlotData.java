@@ -7,23 +7,27 @@ import org.jfree.data.xy.XYSeriesCollection;
 import client.constants.ClientConstants;
 
 /**
- * The AffectivePlotData class
+ * The AffectivePlotData class distributes and stores values into 6 categories
  * 
  * @author Team06
  * @version 1.0
  */
 
 public class AffectivePlotData {
+
 	private static volatile AffectivePlotData affectivePlotData;
 	private static Object mutex = new Object();
+
 	ArrayList<FaceData> faceDataArrayList = new ArrayList<>();
 	XYSeriesCollection dataset;
+
 	XYSeries interestSeries = new XYSeries(ClientConstants.INTEREST);
 	XYSeries engagementSeries = new XYSeries(ClientConstants.ENGAGEMENT);
 	XYSeries relaxSeries = new XYSeries(ClientConstants.RELAXATION);
 	XYSeries stressSeries = new XYSeries(ClientConstants.STRESS);
 	XYSeries excitmentSeries = new XYSeries(ClientConstants.EXCITEMENT);
 	XYSeries focusSeries = new XYSeries(ClientConstants.FOCUS);
+
 	private int graphLength = 50;
 
 	public int getGraphLength() {
@@ -34,9 +38,6 @@ public class AffectivePlotData {
 		this.graphLength = graphLength;
 	}
 
-	/**
-	 * @return
-	 */
 	public static AffectivePlotData getInstance() {
 		AffectivePlotData result = affectivePlotData;
 		if (result == null) {
@@ -56,10 +57,9 @@ public class AffectivePlotData {
 	}
 
 	/**
-	 * 
-	 * @param affectivedata
-	 * 
-	 * @param faceData
+	 * setDataToList method sets data received from server into 6 categories
+	 * @param affectivedata : Data received from server
+	 * @param faceData : data of face received from server
 	 */
 	public void setDataToList(AffectiveData affectivedata, FaceData faceData) {
 		faceDataArrayList.add(faceData);
@@ -80,7 +80,7 @@ public class AffectivePlotData {
 	}
 
 	/**
-	 * 
+	 * regenerateDataSet method generates next values from current values
 	 */
 	public XYSeriesCollection regenerateDataSet() {
 		XYSeries interestSeries = new XYSeries(ClientConstants.INTEREST);

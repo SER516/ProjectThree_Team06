@@ -45,7 +45,7 @@ public class ClientFrame extends JFrame {
 	/**
 	 * centerGUI method setup the client window dimensions
 	 * 
-	 * @param frame
+	 * @param frame JFrame object on which attributes have to be setup
 	 */
 	private void centerGUI(JFrame frame) {
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -56,11 +56,6 @@ public class ClientFrame extends JFrame {
 		frame.setLocation(x, y);
 	}
 
-	/**
-	 * setServerClientListener method sets client server connection listeners
-	 * 
-	 * @param clientServerConnectionService
-	 */
 	public void setServerClientListener(ClientServerConnectionService clientServerConnectionService) {
 		menuBar.setServerClientListener(clientServerConnectionService);
 	}
@@ -68,25 +63,20 @@ public class ClientFrame extends JFrame {
 	/**
 	 * updateTime method updates stop watch timer on menubar
 	 * 
-	 * @param time
+	 * @param time double value of stop watch timer
 	 */
 	public void updateTime(double time) {
 		menuBar.updateTimeValue(time);
 	}
 
-	/**
-	 * setAffectiveListener method sets color change service for affective panel
-	 * 
-	 * @param affectiveColorService
-	 */
 	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
 		affectivePanel.setAffectiveListener(affectiveColorService);
 	}
 
 	/**
-	 * getColors method extracts colors on affective tab
+	 * getColors method extracts colors from affective tab
 	 * 
-	 * @return
+	 * @return ArrayList containing colors on affective tab
 	 */
 	public ArrayList<Color> getColors() {
 		return affectivePanel.getColors();
@@ -101,7 +91,7 @@ public class ClientFrame extends JFrame {
 	}
 
 	/**
-	 * Set connection button
+	 * Set connection Label
 	 */
 	public void setConnectionLabel(boolean flag) {
 		menuBar.setConnectionLabel(flag);
