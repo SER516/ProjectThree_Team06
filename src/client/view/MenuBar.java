@@ -72,12 +72,12 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		menu.setVerticalTextPosition(SwingConstants.BOTTOM);
 		menu.setFont(ClientConstants.TEXT_FONT);
 		menu.setBackground(Color.LIGHT_GRAY);
-		launchServer = new JMenuItem("Launch Server");
+		launchServer = new JMenuItem(ClientConstants.LAUNCH_SERVER);
 		setForegroundBackground(launchServer, blackBorder, ClientConstants.TEXT_FONT);
-		JMenu connectMenu = new JMenu("Connect");
+		JMenu connectMenu = new JMenu(ClientConstants.CONNECT);
 		setForegroundBackground(connectMenu, blackBorder, ClientConstants.TEXT_FONT);
-		connect = new JMenuItem("Connect");
-		reconnect = new JMenuItem("Reconnect");
+		connect = new JMenuItem(ClientConstants.CONNECT);
+		reconnect = new JMenuItem(ClientConstants.RECONNECT);
 		setForegroundBackground(connect, blackBorder, ClientConstants.TEXT_FONT);
 		setForegroundBackground(reconnect, blackBorder, ClientConstants.TEXT_FONT);
 		connectMenu.add(connect);
@@ -85,7 +85,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		connectMenu.add(reconnect);
 		stopWatch = new JMenuItem(ClientConstants.STOP_WATCH, new ImageIcon(resizeStopImg));
 		connectionLabel = new JMenuItem();
-		connect_state(false);
+		connectState(false);
 		launchServer.addActionListener(this);
 		connect.addActionListener(this);
 		reconnect.addActionListener(this);
@@ -101,17 +101,17 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	}
 
 	/**
-	 * connect_state method changes the label and icon on menubar.
+	 * connectState method changes the label and icon on menubar.
 	 *
 	 * @param flag
 	 */
-	public void connect_state(boolean flag) {
+	public void connectState(boolean flag) {
 		if (flag) {
 			connectionLabel.setIcon(new ImageIcon(greenIcon));
-			connectionLabel.setText("Connected");
+			connectionLabel.setText(ClientConstants.CONNECTED);
 		} else {
 			connectionLabel.setIcon(new ImageIcon(redIcon));
-			connectionLabel.setText("Not Connected");
+			connectionLabel.setText(ClientConstants.NOT_CONNECTED);
 		}
 	}
 
@@ -184,11 +184,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
 			clientServerConnectionService.initializeServer();
 		} else if (e.getSource() == connect) {
 			if (clientServerConnectionService != null) {
-				connect_state(true);
+
 				launchDialogBox();
 			}
 		} else if (e.getSource() == reconnect) {
-			connect_state(true);
+
 			clientServerConnectionService.reconnectServer(null);
 		}
 	}
@@ -208,15 +208,15 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	private void launchDialogBox() {
 		JTextField ipField = new JTextField(15);
 		JTextField ipPort = new JTextField(15);
-		ipField.setText("localhost");
-		ipPort.setText("8080");
+		ipField.setText(ClientConstants.LOCALHOST);
+		ipPort.setText(ClientConstants.PORT_NUMBER);
 		JPanel myPanel = new JPanel();
-		myPanel.add(new JLabel("IP:"));
+		myPanel.add(new JLabel(ClientConstants.IP_STRING));
 		myPanel.add(ipField);
 		myPanel.add(Box.createHorizontalStrut(15));
-		myPanel.add(new JLabel("Port:"));
+		myPanel.add(new JLabel(ClientConstants.PORT_STRING));
 		myPanel.add(ipPort);
-		int result = JOptionPane.showConfirmDialog(null, myPanel, "Please Enter IP" + "and Port",
+		int result = JOptionPane.showConfirmDialog(null, myPanel, ClientConstants.ENTER_IP,
 				JOptionPane.OK_CANCEL_OPTION);
 		if (result == JOptionPane.OK_OPTION) {
 			clientServerConnectionService.startServer(ipField.getText(), ipPort.getText());
@@ -232,5 +232,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		stopWatch.setOpaque(true);
 		stopWatch.setText(String.valueOf(time));
 		setForegroundBackground(stopWatch, ClientConstants.TEXT_FONT);
+	}
+
+
+
+	public void setConnectionLabel(boolean flag) {
+		connectState(flag);
 	}
 }

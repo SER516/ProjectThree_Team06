@@ -11,6 +11,7 @@ import java.util.Arrays;
 public class AffectivePlotData {
 	private static volatile AffectivePlotData affectivePlotData;
 	private static Object mutex = new Object();
+	ArrayList<FaceData> faceDataArrayList = new ArrayList<>();
 	XYSeriesCollection dataset;
 	XYSeries interestSeries = new XYSeries("interest");
 	XYSeries engagementSeries = new XYSeries("engagementSeries");
@@ -18,13 +19,15 @@ public class AffectivePlotData {
 	XYSeries stressSeries = new XYSeries("stressSeries");
 	XYSeries excitmentSeries = new XYSeries("excitmentSeries");
 	XYSeries focusSeries = new XYSeries("focusSeries");
-	private ArrayList<Float> interestList = new ArrayList<>(Arrays.asList(0.0f));
-	private ArrayList<Float> engagementList = new ArrayList<>(Arrays.asList(0.0f));
-	private ArrayList<Float> relaxList = new ArrayList<>(Arrays.asList(0.0f));
-	private ArrayList<Float> stressList = new ArrayList<>(Arrays.asList(0.0f));
-	private ArrayList<Float> excitmentList = new ArrayList<>(Arrays.asList(0.0f));
-	private ArrayList<Float> focusList = new ArrayList<>(Arrays.asList(0.0f));
-	private ArrayList<ArrayList<Float>> mainDataList = new ArrayList<>();
+	private int graphLength = 50;
+
+	public int getGraphLength() {
+		return graphLength;
+	}
+
+	public void setGraphLength(int graphLength) {
+		this.graphLength = graphLength;
+	}
 
 	/**
 	 * @return
@@ -47,76 +50,62 @@ public class AffectivePlotData {
 		return dataset;
 	}
 
-	public ArrayList<Float> getFocusList() {
-		return focusList;
-	}
-
-	public void setFocusList(ArrayList<Float> focusList) {
-		this.focusList = focusList;
-	}
-
-	public ArrayList<ArrayList<Float>> getMainDataList() {
-		return mainDataList;
-	}
-
-	public ArrayList<Float> getInterestList() {
-		return interestList;
-	}
-
-	public void setInterestList(ArrayList<Float> interestList) {
-		this.interestList = interestList;
-	}
-
-	public ArrayList<Float> getEngagementList() {
-		return engagementList;
-	}
-
-	public void setEngagementList(ArrayList<Float> engagementList) {
-		this.engagementList = engagementList;
-	}
-
-	public ArrayList<Float> getRelaxList() {
-		return relaxList;
-	}
-
-	public void setRelaxList(ArrayList<Float> relaxList) {
-		this.relaxList = relaxList;
-	}
-
-	public ArrayList<Float> getStressList() {
-		return stressList;
-	}
-
-	public void setStressList(ArrayList<Float> stressList) {
-		this.stressList = stressList;
-	}
-
-	public ArrayList<Float> getExcitmentList() {
-		return excitmentList;
-	}
-
-	public void setExcitmentList(ArrayList<Float> excitmentList) {
-		this.excitmentList = excitmentList;
-	}
 
 	/**
 	 * @param affectivedata
 	 * @param faceData
 	 */
 	public void setDataToList(AffectiveData affectivedata, FaceData faceData) {
+		faceDataArrayList.add(faceData);
 		double faceDataCounter = faceData.getCounter();
 		dataset = new XYSeriesCollection();
-		interestSeries.add(faceDataCounter, affectivedata.getInterest());
-		engagementSeries.add(faceDataCounter, affectivedata.getEngagement());
-		relaxSeries.add(faceDataCounter, affectivedata.getRelaxation());
-		stressSeries.add(faceDataCounter, affectivedata.getStress());
-		excitmentSeries.add(faceDataCounter, affectivedata.getExcitement());
-		focusSeries.add(faceDataCounter, affectivedata.getFocus());
+		interestSeries.add(graphLength - faceDataCounter, affectivedata.getInterest());
+		engagementSeries.add( graphLength - faceDataCounter, affectivedata.getEngagement());
+		relaxSeries.add(graphLength - faceDataCounter, affectivedata.getRelaxation());
+		stressSeries.add(graphLength - faceDataCounter, affectivedata.getStress());
+		excitmentSeries.add(graphLength - faceDataCounter, affectivedata.getExcitement());
+		focusSeries.add(graphLength - faceDataCounter, affectivedata.getFocus());
 		dataset.addSeries(focusSeries);
 		dataset.addSeries(stressSeries);
 		dataset.addSeries(interestSeries);
 		dataset.addSeries(engagementSeries);
 		dataset.addSeries(relaxSeries);
 		dataset.addSeries(excitmentSeries);
+	}
+
+	public XYSeriesCollection regenerateDataSet() {
+		XYSeries interestSeries = new XYSeries("interest");
+		XYSeries engagementSeries = new XYSeries("engagementSeries");
+		XYSeries relaxSeries = new XYSeries("relaxSeries");
+		XYSeries stressSeries = new XYSeries("stressSeries");
+		XYSeries excitmentSeries = new XYSeries("excitmentSeries");
+		XYSeries focusSeries = new XYSeries("focusSeries");
+		XYSeriesCollection dataset = new XYSeriesCollection();
+		for(int i=0; i < faceDataArrayList.size();i++){
+
+			AffectiveData affectiveData = faceDataArrayList.get(i).getAffectiveData();
+			double counter = faceDataArrayList.get(i).getCounter();
+			interestSeries.add(graphLength - counter, affectiveData.getInterest());
+			engagementSeries.add(graphLength - counter, affectiveData.getEngagement());
+			relaxSeries.add(graphLength - counter, affectiveData.getRelaxation());
+			stressSeries.add(graphLength - counter, affectiveData.getStress());
+			excitmentSeries.add(graphLength - counter, affectiveData.getExcitement());
+			focusSeries.add(graphLength - counter, affectiveData.getFocus());
+		}
+		dataset.addSeries(focusSeries);
+		dataset.addSeries(stressSeries);
+		dataset.addSeries(interestSeries);
+		dataset.addSeries(engagementSeries);
+		dataset.addSeries(relaxSeries);
+		dataset.addSeries(excitmentSeries);
+
+		this.interestSeries = interestSeries;
+		this.engagementSeries = engagementSeries;
+		this.relaxSeries = relaxSeries;
+		this.stressSeries = stressSeries;
+		this.excitmentSeries = excitmentSeries;
+		this.focusSeries = focusSeries;
+		this.dataset =dataset;
+		return dataset;
 	}
 }

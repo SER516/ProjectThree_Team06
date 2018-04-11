@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+/**
+ *
+ */
 public class ClientConstants {
 	public static final String CLOSING_CONNECTION_EXCEPTION_MESSAGE = "Exception during close Connection ";
 	public final static String ADDING_IMAGE_EXCEPTION_MESSAGE = "Exception in Adding Image:";
@@ -59,4 +62,14 @@ public class ClientConstants {
 	public static final String SMIRK_RIGHT = "SmirkRight";
 	public static final String WINK_LEFT = "WinkLeft";
 	public static final String WINK_RIGHT = "WinkRight";
+	public static final String LAUNCH_SERVER = "Launch Server";
+	public static final String CONNECT = "Connect";
+	public static final String RECONNECT = "Reconnect";
+	public static final String CONNECTED = "Connected";
+	public static final String NOT_CONNECTED = "Not Connected";
+	public static final String ENTER_IP = "Please Enter IP and Port";
+	public static final String LOCALHOST = "localhost";
+	public static final String PORT_NUMBER = "8080";
+	public static final String IP_STRING = "IP";
+	public static final String PORT_STRING = "Port";
 }

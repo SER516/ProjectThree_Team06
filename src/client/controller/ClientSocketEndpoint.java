@@ -3,18 +3,17 @@ package client.controller;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import com.google.gson.Gson;
-import javax.websocket.ClientEndpoint;
-import javax.websocket.OnClose;
-import javax.websocket.OnMessage;
-import javax.websocket.Session;
+
+import javax.websocket.*;
 
 import client.constants.ClientConstants;
 import client.helper.ClientDataSingleton;
-import client.listener.ClockListener;
+import client.listener.MenuBarListener;
 import client.model.AffectivePlotData;
 import client.model.ExpressivePlotData;
 import client.model.FaceData;
 import client.model.SingleTonData;
+import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 
 /**
  *
@@ -22,7 +21,7 @@ import client.model.SingleTonData;
 @ClientEndpoint
 public class ClientSocketEndpoint {
 	static WebSocketClientMain webSocketClientMain;
-	static ClockListener clockListener;
+	static MenuBarListener clockListener;
 	private static Gson gson = new Gson();
 	private FaceData faceData;
 
@@ -31,9 +30,16 @@ public class ClientSocketEndpoint {
 
 	}
 
-	public static void setClockListener(ClockListener clockListenerObj) {
+	public static void setClockListener(MenuBarListener clockListenerObj) {
 		clockListener = clockListenerObj;
 	}
+
+
+	@OnOpen
+	public void open(Session session) {
+		clockListener.setConnectionLabel(true);
+	}
+
 
 	/**
 	 *
@@ -62,6 +68,7 @@ public class ClientSocketEndpoint {
 	@OnClose
 	public void closedConnection(Session session) {
 		ClientDataSingleton.getInstance().setSessionMaintained(false);
+		clockListener.setConnectionLabel(false);
 		try {
 			session.close();
 			webSocketClientMain.clientThread.interrupt();

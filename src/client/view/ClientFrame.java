@@ -95,10 +95,16 @@ public class ClientFrame extends JFrame {
 
 	/**
 	 * changedisplayLengthLabel method updates length of affective panel
-	 * 
-	 * @param text
+	 *
+     */
+	public void changedisplayLengthLabel() {
+		affectivePanel.changedisplayLengthLabel();
+	}
+
+	/**
+	 * Set  connection button
 	 */
-	public void changedisplayLengthLabel(String text) {
-		affectivePanel.changedisplayLengthLabel(text);
+	public void setConnectionLabel(boolean flag) {
+		menuBar.setConnectionLabel(flag);
 	}
 }

@@ -45,7 +45,7 @@ class AffectiveGraphPanel extends JPanel {
 		affectiveGraphPlot.setAffectiveListener(affectiveColorService);
 	}
 
-	public void changedisplayLengthLabel(String text) {
-		affectiveGraphPlot.changedisplayLengthLabel(text);
+	public void changedisplayLengthLabel() {
+		affectiveGraphPlot.changedisplayLengthLabel();
 	}
 }
