@@ -40,6 +40,9 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 	DetectionListenerService detectionListenerService;
 	JSpinner lowerfaceSpinner;
 
+	/**
+	 * Design and component setting for the detection panel
+	 */
 	public DetectionPanel() {
 		this.setBackground(Color.LIGHT_GRAY);
 		this.setBorder(new TitledBorder(null, "Detection", TitledBorder.LEADING, TitledBorder.TOP,
@@ -156,7 +159,7 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 	}
 
 	/**
-	 * 
+	 * Sets group component layout for the detection panel
 	 */
 	private void initComponents() {
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

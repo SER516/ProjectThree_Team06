@@ -19,7 +19,7 @@ import server.model.ServerModelSingleton;
 import server.view.ServerView;
 
 /**
- * The DetectionListenerService class
+ * The ServerSocketService class
  * 
  * @author Garv
  * @version 1.0
@@ -31,7 +31,7 @@ public class ServerSocketService implements ServerListenerInterface {
 	ServerConnector connector;
 	ServletContextHandler context;
 
-	/*
+	/**
 	 * Starts the server and binds the view to it
 	 * 
 	 * @param serverView

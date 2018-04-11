@@ -3,7 +3,7 @@ package server.model;
 import server.constants.ServerConstants;
 
 /**
- * Expressive Data Model
+ * Expressive Data Model pojo
  * 
  * @author Team 06
  * @version 1.0

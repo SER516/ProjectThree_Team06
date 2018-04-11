@@ -4,7 +4,7 @@ import server.listener.InteractiveListener;
 import server.model.ServerModelSingleton;
 
 /**
- * The DetectionListenerService class
+ * The InteractiveListenerService class
  * 
  * @author Team 06
  * @version 1.0
@@ -12,7 +12,7 @@ import server.model.ServerModelSingleton;
 public class InteractiveListenerService implements InteractiveListener {
 
 	/**
-	 * 
+	 * Changes the state interval according to the auto reset interval timer set
 	 */
 	@Override
 	public void autoResetChange(String stateValue) {
@@ -21,7 +21,7 @@ public class InteractiveListenerService implements InteractiveListener {
 	}
 
 	/**
-	 * 
+	 * Changes the send pattern according to auto reset or one time
 	 */
 	@Override
 	public void stateSpinnerChange(boolean isSelected) {

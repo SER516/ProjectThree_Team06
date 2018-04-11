@@ -1,7 +1,7 @@
 package server.model;
 
 /**
- * Affective Data Model
+ * Affective Data Model pojo
  * 
  * @author Team 06
  * @version 1.0

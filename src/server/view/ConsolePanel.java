@@ -51,7 +51,7 @@ public class ConsolePanel extends javax.swing.JPanel {
 	}
 
 	/**
-	 * 
+	 * Sets group component layout for the console panel
 	 */
 	private void initComponents() {
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -62,6 +62,10 @@ public class ConsolePanel extends javax.swing.JPanel {
 				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 300, Short.MAX_VALUE));
 	}
 
+	/**
+	 * Displays messages on the console log
+	 * @param message
+	 */
 	public void appendLogMessage(String message) {
 		message = message + "\n";
 		consoleTextArea.append(message);

@@ -68,7 +68,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
 	}
 
 	/**
-	 * 
+	 * Action Listener implementation for auto-reset or one time send
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -88,7 +88,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
 	}
 
 	/**
-	 * 
+	 * Change state listener for the state change spinner
 	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
