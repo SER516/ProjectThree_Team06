@@ -184,11 +184,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
 			clientServerConnectionService.initializeServer();
 		} else if (e.getSource() == connect) {
 			if (clientServerConnectionService != null) {
-				connect_state(true);
+//				connect_state(true);
 				launchDialogBox();
 			}
 		} else if (e.getSource() == reconnect) {
-			connect_state(true);
+//			connect_state(true);
 			clientServerConnectionService.reconnectServer(null);
 		}
 	}
@@ -232,5 +232,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		stopWatch.setOpaque(true);
 		stopWatch.setText(String.valueOf(time));
 		setForegroundBackground(stopWatch, ClientConstants.TEXT_FONT);
+	}
+
+
+
+	public void setConnectionLabel(boolean flag) {
+		connect_state(flag);
 	}
 }
