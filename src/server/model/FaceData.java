@@ -3,7 +3,7 @@ package server.model;
 /**
  * Face Data Model pojo
  * 
- * @author garv
+ * @author Team 06
  * @version 1.0
  */
 public class FaceData {

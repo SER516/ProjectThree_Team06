@@ -1,5 +1,6 @@
 package server.services;
 
+import server.constants.ServerConstants;
 import server.listener.DetectionListenerInterface;
 import server.model.ServerModelSingleton;
 
@@ -16,7 +17,9 @@ public class DetectionListenerService implements DetectionListenerInterface {
 
 	/**
 	 * changes counter value on serverview
-	 * @param counter for clock value
+	 * 
+	 * @param counter
+	 *            for clock value
 	 */
 	@Override
 	public void changeCounter(double counter) {
@@ -30,20 +33,22 @@ public class DetectionListenerService implements DetectionListenerInterface {
 	/**
 	 * Updates the lowerface expression data based on the selected combobox and
 	 * spinner values.
-	 * @param exp, val exp
+	 * 
+	 * @param exp,
+	 *            val exp
 	 */
-	
+
 	public void changeLowerface(String exp, float val) {
 		resetLowerface();
-		if (exp.equals("Smile")) {
+		if (exp.equals(ServerConstants.SMILE)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setSmile(val);
-		} else if (exp.equals("Clench")) {
+		} else if (exp.equals(ServerConstants.CLENCH)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setClench(val);
-		} else if (exp.equals("Smirk Left")) {
+		} else if (exp.equals(ServerConstants.SMIRK_LEFT)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setSmirkLeft(val);
-		} else if (exp.equals("Smirk Right")) {
+		} else if (exp.equals(ServerConstants.SMIRK_RIGHT)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setSmirkRight(val);
-		} else if (exp.equals("Laugh")) {
+		} else if (exp.equals(ServerConstants.LAUGH)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setLaugh(val);
 		}
 	}
@@ -51,13 +56,15 @@ public class DetectionListenerService implements DetectionListenerInterface {
 	/**
 	 * Updates the upperface expression data based on the selected combobox and
 	 * spinner values.
-	 * @param exp, float
+	 * 
+	 * @param exp,
+	 *            float
 	 */
 	public void changeUpperface(String exp, float val) {
 		resetUpperface();
-		if (exp.equals("Raise Brow")) {
+		if (exp.equals(ServerConstants.RAISE_BROW)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setRaiseBrow(val);
-		} else if (exp.equals("Furrow Brow")) {
+		} else if (exp.equals(ServerConstants.FURROW_BROW)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setFurrowBrow(val);
 		}
 	}
@@ -65,40 +72,43 @@ public class DetectionListenerService implements DetectionListenerInterface {
 	/**
 	 * Updates the performance Matrics affective data based on the selected combobox
 	 * and spinner values.
+	 * 
 	 * @param exp,val
 	 */
 	public void changePerformanceMatrics(String exp, float val) {
 		resetPerformanceMetrics();
-		if (exp.equals("Interest")) {
+		if (exp.equals(ServerConstants.INTEREST)) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setInterest(val);
-		} else if (exp.equals("Engagement")) {
+		} else if (exp.equals(ServerConstants.ENGAGEMENT)) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setEngagement(val);
-		} else if (exp.equals("Stress")) {
+		} else if (exp.equals(ServerConstants.STRESS)) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setStress(val);
-		} else if (exp.equals("Relaxation")) {
+		} else if (exp.equals(ServerConstants.RELAXATION)) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setRelaxation(val);
-		} else if (exp.equals("Excitement")) {
+		} else if (exp.equals(ServerConstants.EXCITEMENT)) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setExcitement(val);
-		} else if (exp.equals("Focus")) {
+		} else if (exp.equals(ServerConstants.FOCUS)) {
 			ServerModelSingleton.getInstance().getFaceData().getAffectiveData().setFocus(val);
 		}
 	}
 
 	/**
 	 * Updates the eye expression data based on the selected combobox values.
-	 * @param eye the current eye value
+	 * 
+	 * @param eye
+	 *            the current eye value
 	 */
 	public void changeEye(String eye) {
 		resetEye();
-		if (eye.equals("Blink")) {
+		if (eye.equals(ServerConstants.BLINK)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setBlink(true);
-		} else if (eye.equals("Wink Left")) {
+		} else if (eye.equals(ServerConstants.WINK_LEFT)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setWinkLeft(true);
-		} else if (eye.equals("Wink Right")) {
+		} else if (eye.equals(ServerConstants.WINK_RIGHT)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setWinkRight(true);
-		} else if (eye.equals("Look Left")) {
+		} else if (eye.equals(ServerConstants.LOOK_LEFT)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setLookLeft(true);
-		} else if (eye.equals("Look Right")) {
+		} else if (eye.equals(ServerConstants.LOOK_RIGHT)) {
 			ServerModelSingleton.getInstance().getFaceData().getExpressiveData().setLookRight(true);
 		}
 	}

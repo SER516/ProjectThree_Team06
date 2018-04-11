@@ -10,20 +10,18 @@ import server.model.ServerModelSingleton;
  * @version 1.0
  */
 public class InteractiveListenerService implements InteractiveListener {
-	
-	/*
-	 * (non-Javadoc)
-	 * @see server.listener.InteractiveListener#autoResetChange(java.lang.String)
+
+	/**
+	 * 
 	 */
 	@Override
 	public void autoResetChange(String stateValue) {
 		Double stateInterval = Double.parseDouble(stateValue);
 		ServerModelSingleton.getInstance().setStateInterval(stateInterval);
 	}
-	
-	/*
-	 * (non-Javadoc)
-	 * @see server.listener.InteractiveListener#stateSpinnerChange(boolean)
+
+	/**
+	 * 
 	 */
 	@Override
 	public void stateSpinnerChange(boolean isSelected) {
