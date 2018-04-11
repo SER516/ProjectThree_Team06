@@ -1,7 +1,8 @@
 package client.model;
 
 /**
- *
+ * @author Team06
+ * @version 1.0
  */
 public class AffectiveData {
 

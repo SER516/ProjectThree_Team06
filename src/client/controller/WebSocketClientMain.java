@@ -6,17 +6,19 @@ import javax.websocket.ContainerProvider;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
 import client.constants.ClientConstants;
-import client.helper.ClientDataSingleton;
+import client.model.ClientDataSingleton;
 
 /**
- *
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class WebSocketClientMain {
 	private static Object waitLock = new Object();
 	Thread clientThread;
 	Session session = null;
 
-	/**
+	/*
 	 *
 	 */
 	private static void wait4TerminateSignal() {
@@ -37,7 +39,8 @@ public class WebSocketClientMain {
 	 */
 	public void connectToServer(String ip, String port) {
 		ClientSocketEndpoint.setMainClientWebSocket(this);
-		String url = ClientConstants.WEB_SOCKETS_SCHEMA + ip + ClientConstants.COLON + port + ClientConstants.SERVER_DIR;
+		String url = ClientConstants.WEB_SOCKETS_SCHEMA + ip + ClientConstants.COLON + port
+				+ ClientConstants.SERVER_DIR;
 		Runnable serverTask = new Runnable() {
 
 			@Override
