@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * The FaceExpressions class
@@ -18,19 +19,23 @@ public class FaceExpressions extends JPanel {
 
 	private BufferedImage image;
 
+
 	public FaceExpressions() {
+
+
 		String fileName = "000000000000.png";
 		setBackground(ClientConstants.GREY);
+
 		try {
-			StringBuilder finalFileName = new StringBuilder(
-					new java.io.File(ClientConstants.CURRENT_DIR).getCanonicalPath());
-			finalFileName.append(File.separator);
-			finalFileName.append(ClientConstants.IMAGES);
-			finalFileName.append(File.separator);
-			finalFileName.append(fileName);
-			image = ImageIO.read(new File(finalFileName.toString()));
-		} catch (IOException ex) {
+			InputStream inputStream1 = getClass().getClassLoader().getResourceAsStream(fileName);
+			if(inputStream1 != null){
+				image = ImageIO.read(inputStream1);
+			}
+
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION_MESSAGE+ "Hello");
 		}
+
 	}
 
 	public BufferedImage getImage() {
@@ -58,14 +63,21 @@ public class FaceExpressions extends JPanel {
 	 */
 	public void drawImage(String fileName) {
 		BufferedImage image;
+
 		try {
-			image = ImageIO.read(new File(fileName.toString()));
-			this.setImage(image);
-			this.removeAll();
-			this.repaint();
-			this.revalidate();
+			InputStream inputStream1 = getClass().getClassLoader().getResourceAsStream(fileName);
+			if(inputStream1 != null){
+				image = ImageIO.read(inputStream1);
+				this.setImage(image);
+				this.removeAll();
+				this.repaint();
+				this.revalidate();
+			}
+
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, ClientConstants.DRAW_IMAGE_EXCEPTION_MESSAGE);
+			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION_MESSAGE+ "Hello");
 		}
+
+
 	}
 }
