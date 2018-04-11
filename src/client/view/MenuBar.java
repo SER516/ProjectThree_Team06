@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -51,22 +52,24 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		greenIcon = null;
 		redIcon = null;
 		try {
-			StringBuilder finalFileName = new StringBuilder(
-					new java.io.File(ClientConstants.CURRENT_DIR).getCanonicalPath());
-			finalFileName.append(File.separator);
-			finalFileName.append(ClientConstants.IMAGES);
-			finalFileName.append(File.separator);
-			redImage = ImageIO.read(new File(finalFileName.toString() + ClientConstants.CONNECTED_IMAGE));
-			greenImage = ImageIO.read(new File(finalFileName.toString() + ClientConstants.NOT_CONNECTED_IMAGE));
-			stopImage = ImageIO.read(new File(finalFileName.toString() + ClientConstants.STOP_WATCH_IMAGE));
-			resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
-			redIcon = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
-			greenIcon = new BufferedImage(30, 25, BufferedImage.TYPE_INT_ARGB);
-			Graphics2D g3 = setGraphics(resizeStopImg, stopImage);
-			Graphics2D g4 = setGraphics(redIcon, redImage);
-			Graphics2D g5 = setGraphics(greenIcon, greenImage);
+			InputStream inputStream1 = getClass().getClassLoader().getResourceAsStream(ClientConstants.CONNECTED_IMAGE);
+			InputStream inputStream2 = getClass().getClassLoader().getResourceAsStream(ClientConstants.NOT_CONNECTED_IMAGE);
+			InputStream inputStream3 = getClass().getClassLoader().getResourceAsStream(ClientConstants.STOP_WATCH_IMAGE);
+			if(inputStream1 != null && inputStream2 != null && inputStream3 !=null){
+				redImage = ImageIO.read(inputStream1);
+				greenImage = ImageIO.read(inputStream2);
+				stopImage = ImageIO.read(inputStream3);
+				resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
+				redIcon = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
+				greenIcon = new BufferedImage(30, 25, BufferedImage.TYPE_INT_ARGB);
+				Graphics2D g3 = setGraphics(resizeStopImg, stopImage);
+				Graphics2D g4 = setGraphics(redIcon, redImage);
+				Graphics2D g5 = setGraphics(greenIcon, greenImage);
+
+			}
+
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION_MESSAGE);
+			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION_MESSAGE+ "Hello");
 		}
 		menu.setHorizontalTextPosition(SwingConstants.CENTER);
 		menu.setVerticalTextPosition(SwingConstants.BOTTOM);

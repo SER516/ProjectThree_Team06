@@ -33,17 +33,7 @@ public class ClientFaceController {
 		fileName.append(expressivedata.isWinkRight() ? ClientConstants.OFF_VALUE : ClientConstants.ON_VALUE);
 		fileName.append(expressivedata.isLookLeft() ? ClientConstants.OFF_VALUE : ClientConstants.ON_VALUE);
 		fileName.append(expressivedata.isLookRight() ? ClientConstants.OFF_VALUE : ClientConstants.ON_VALUE);
-		StringBuilder finalFileName = new StringBuilder();
-		try {
-			finalFileName.append(new java.io.File(ClientConstants.CURRENT_DIR).getCanonicalPath());
-			finalFileName.append(File.separator);
-			finalFileName.append(ClientConstants.IMAGES);
-			finalFileName.append(File.separator);
-			finalFileName.append(fileName);
-			finalFileName.append(ClientConstants.PNG);
-		} catch (IOException ex) {
-			JOptionPane.showMessageDialog(null, ClientConstants.ADDING_IMAGE_EXCEPTION_MESSAGE);
-		}
-		return finalFileName.toString();
+		fileName.append(ClientConstants.PNG);
+		return fileName.toString();
 	}
 }
