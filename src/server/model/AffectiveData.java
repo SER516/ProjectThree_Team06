@@ -1,10 +1,10 @@
 package server.model;
 
 /**
- * Affective Data Model
+ * Affective Data Model pojo
  * 
- * @author garv
- * @version 1
+ * @author Team 06
+ * @version 1.0
  */
 public class AffectiveData {
 

@@ -26,8 +26,7 @@ public class ServerApplicationController {
 		ServerSocketService serverSocketService = new ServerSocketService();
 		InteractiveListenerService interactiveListenerService = new InteractiveListenerService();
 		DetectionListenerService detectionListenerService = new DetectionListenerService();
-		ServerMainController serverMainController = new ServerMainController(serverView, serverDataSingleton,
-				serverSocketService, interactiveListenerService, detectionListenerService);
+		new ServerMainController(serverView, serverDataSingleton, serverSocketService, interactiveListenerService,
+				detectionListenerService);
 	}
-
 }

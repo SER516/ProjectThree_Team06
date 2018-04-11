@@ -4,7 +4,7 @@ import client.model.ExpressivePlotData;
 import java.util.ArrayList;
 
 /**
- * The PlotController class
+ * The PlotController class controller class for expression values
  * 
  * @author Team06
  * @version 1.0
@@ -14,9 +14,6 @@ public class PlotController {
 	ExpressivePlotData expressivePlotData;
 	ArrayList<ArrayList<Float>> expressData = new ArrayList<>();
 
-	/**
-	 * 
-	 */
 	public ArrayList getExpressivePlotData() {
 		expressivePlotData = ExpressivePlotData.getInstance();
 		expressData.add(expressivePlotData.getBlinkList());
