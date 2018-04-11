@@ -12,8 +12,11 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.websocket.jsr356.server.ServerContainer;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import server.controller.ServerSocketEndpoint;
+import server.helper.ServerConstants;
 import server.listener.LogListenerInterface;
 import server.listener.ServerListenerInterface;
+import server.model.FaceData;
+import server.model.ServerModelSingleton;
 import server.view.ServerView;
 
 /**
@@ -69,6 +72,10 @@ public class ServerSocketService implements ServerListenerInterface{
             connector.close();
             server.stop();
             serverThread.join();
+            ServerModelSingleton.getInstance().setAutoReset(false);
+            ServerModelSingleton.getInstance().setOneTimeSend(false);
+            ServerModelSingleton.getInstance().setFaceData(new FaceData());
+            ServerModelSingleton.getInstance().setStateInterval(ServerConstants.STATE_INTERVAL);
             ServerSocketEndpoint.queue = new ConcurrentLinkedQueue<Session>();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "An Exception has occurred while stopping server");
