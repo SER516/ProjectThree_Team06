@@ -84,17 +84,26 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
     public void actionPerformed(ActionEvent e) {
 
 
-        if (e.getSource() == autoResetCheckBox) {
+        if (e.getSource() == autoResetCheckBox && sendButton.getActionCommand() == "Stop") {
 
             if (!autoResetCheckBox.isSelected()) {
                 interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
+                sendButton.setActionCommand("Send");
             }
         }
-        if (e.getSource() == sendButton)
+        if (e.getSource() == sendButton && autoResetCheckBox.isSelected())
         {
            interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
+           sendButton.setActionCommand("Stop");
 
         }
+
+        if (e.getSource() == sendButton && !autoResetCheckBox.isSelected())
+        {
+            interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
+
+        }
+
 
 
     }
