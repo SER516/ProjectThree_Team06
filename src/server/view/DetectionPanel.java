@@ -1,16 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package server.view;
-
-/**
- * @author mspranav
- * <p>
- * Creates new form DetectionPanel
- */
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -29,7 +17,9 @@ import javax.swing.event.ChangeListener;
 import server.services.DetectionListenerService;
 
 /**
- *
+ * @author mspranav
+ * <p>
+ * Creates new form DetectionPanel
  */
 
 public class DetectionPanel extends JPanel implements ChangeListener, ActionListener {
