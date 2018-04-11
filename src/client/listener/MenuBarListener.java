@@ -1,7 +1,7 @@
 package client.listener;
 
 /**
- * The MenuBarListener interface.
+ * The MenuBarListener interface provides design for value changes in Menu bar class
  * 
  * @author Team06
  * @version 1.0

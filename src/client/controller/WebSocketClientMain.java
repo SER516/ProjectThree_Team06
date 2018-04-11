@@ -9,7 +9,8 @@ import client.constants.ClientConstants;
 import client.model.ClientDataSingleton;
 
 /**
- * The WebSocketClientMain class
+ * The WebSocketClientMain class connects to the server socket
+ * and maintain the connection
  * 
  * @author Team06
  * @version 1.0
@@ -20,7 +21,7 @@ public class WebSocketClientMain {
 	Session session = null;
 
 	/**
-	 *
+	 * wait4TerminateSignal method synchronizes the web socket connection
 	 */
 	private static void wait4TerminateSignal() {
 		synchronized (waitLock) {
@@ -28,15 +29,14 @@ public class WebSocketClientMain {
 				waitLock.wait();
 			} catch (InterruptedException e) {
 				waitLock.notifyAll();
-
 			}
 		}
 	}
 
 	/**
-	 *
-	 * @param ip
-	 * @param port
+	 * connectToServer configures client connection to the server
+	 * @param ip : String with Server IP
+	 * @param port : String with Server port number
 	 */
 	public void connectToServer(String ip, String port) {
 		ClientSocketEndpoint.setMainClientWebSocket(this);
