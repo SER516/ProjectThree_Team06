@@ -1,6 +1,6 @@
 package server.model;
 
-import server.helper.ServerConstants;
+import server.constants.ServerConstants;
 
 /**
  *
