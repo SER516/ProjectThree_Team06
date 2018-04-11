@@ -24,7 +24,6 @@ public class ClientFrame extends JFrame {
 
 	public ClientFrame() {
 		setTitle(ClientConstants.TITLE);
-		// add(createMainPanel());
 		menuBar = new MenuBar();
 		JTabbedPane tabbedPane = new JTabbedPane();
 		emotivePanel = new EmotivePanel();
