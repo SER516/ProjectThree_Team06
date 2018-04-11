@@ -1,7 +1,7 @@
 package server.listener;
 
 /**
- *
+ * Interface for Log Panel
  */
 public interface LogListenerInterface {
 

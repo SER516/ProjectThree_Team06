@@ -7,6 +7,7 @@ import client.model.ExpressiveData;
 import javax.swing.JOptionPane;
 
 /**
+ * The ClientFaceController class
  * 
  * @author Team06
  * @version 1.0

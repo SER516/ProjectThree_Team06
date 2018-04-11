@@ -1,61 +1,64 @@
 package server.model;
 
-import server.helper.ServerConstants;
+import server.constants.ServerConstants;
 
 /**
- *
+ * Server Model Pojo which keeps Server Configurations
+ * 
+ * @author garv
+ * @version 1
  */
 public class ServerModelSingleton {
-    private static volatile ServerModelSingleton serverDataSingleton;
-    private static Object mutex = new Object();
-    private FaceData faceData = new FaceData();
-    private boolean autoReset = ServerConstants.AUTO_RESET;
-    private double stateInterval = ServerConstants.STATE_INTERVAL;
-    private boolean oneTimeSend = ServerConstants.ONE_TIME_SEND;
+	private static volatile ServerModelSingleton serverDataSingleton;
+	private static Object mutex = new Object();
+	private FaceData faceData = new FaceData();
+	private boolean autoReset = ServerConstants.AUTO_RESET;
+	private double stateInterval = ServerConstants.STATE_INTERVAL;
+	private boolean oneTimeSend = ServerConstants.ONE_TIME_SEND;
 
-    public static ServerModelSingleton getInstance() {
-        ServerModelSingleton result = serverDataSingleton;
-        if (result == null) {
-            synchronized (mutex) {
-                result = serverDataSingleton;
-                if (result == null) {
-                    result = new ServerModelSingleton();
-                }
-                serverDataSingleton = result;
-            }
-        }
-        return result;
-    }
+	public static ServerModelSingleton getInstance() {
+		ServerModelSingleton result = serverDataSingleton;
+		if (result == null) {
+			synchronized (mutex) {
+				result = serverDataSingleton;
+				if (result == null) {
+					result = new ServerModelSingleton();
+				}
+				serverDataSingleton = result;
+			}
+		}
+		return result;
+	}
 
-    public double getStateInterval() {
-        return stateInterval;
-    }
+	public double getStateInterval() {
+		return stateInterval;
+	}
 
-    public void setStateInterval(double stateInterval) {
-        this.stateInterval = stateInterval;
-    }
+	public void setStateInterval(double stateInterval) {
+		this.stateInterval = stateInterval;
+	}
 
-    public boolean isOneTimeSend() {
-        return oneTimeSend;
-    }
+	public boolean isOneTimeSend() {
+		return oneTimeSend;
+	}
 
-    public void setOneTimeSend(boolean oneTimeSend) {
-        this.oneTimeSend = oneTimeSend;
-    }
+	public void setOneTimeSend(boolean oneTimeSend) {
+		this.oneTimeSend = oneTimeSend;
+	}
 
-    public boolean isAutoReset() {
-        return autoReset;
-    }
+	public boolean isAutoReset() {
+		return autoReset;
+	}
 
-    public void setAutoReset(boolean autoReset) {
-        this.autoReset = autoReset;
-    }
+	public void setAutoReset(boolean autoReset) {
+		this.autoReset = autoReset;
+	}
 
-    public FaceData getFaceData() {
-        return faceData;
-    }
+	public FaceData getFaceData() {
+		return faceData;
+	}
 
-    public void setFaceData(FaceData faceData) {
-        this.faceData = faceData;
-    }
+	public void setFaceData(FaceData faceData) {
+		this.faceData = faceData;
+	}
 }

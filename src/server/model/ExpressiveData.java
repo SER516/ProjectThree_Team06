@@ -1,142 +1,149 @@
 package server.model;
 
+import server.constants.ServerConstants;
+
 /**
- *
+ * Expressive Data Model
+ * 
+ * @author garv
+ * @version 1
  */
 public class ExpressiveData {
-    // Eyebrow (Upper Face)
-    private float raiseBrow = 0;
-    private float furrowBrow = 0;
+	// Eyebrow (Upper Face)
+	private float raiseBrow = ServerConstants.ZERO_VALUE;
+	private float furrowBrow = ServerConstants.ZERO_VALUE;
 
-    // Smile (Lower face)
-    private float smile = 0;
-    private float clench = 0;
-    private float smirkLeft = 0;
-    private float smirkRight = 0;
-    private float laugh = 0;
+	// Smile (Lower face)
+	private float smile = ServerConstants.ZERO_VALUE;
+	private float clench = ServerConstants.ZERO_VALUE;
+	private float smirkLeft = ServerConstants.ZERO_VALUE;
+	private float smirkRight = ServerConstants.ZERO_VALUE;
+	private float laugh = ServerConstants.ZERO_VALUE;
 
-    // Eye
-    private boolean winkLeft = false;
-    private boolean winkRight = false;
-    private boolean lookLeft = false;
-    private boolean lookRight = false;
-    private boolean blink = false;
-    private boolean autoReset;
+	// Eye
+	private boolean winkLeft = ServerConstants.FALSYVALUE;
+	private boolean winkRight = ServerConstants.FALSYVALUE;
+	private boolean lookLeft = ServerConstants.FALSYVALUE;
+	private boolean lookRight = ServerConstants.FALSYVALUE;
+	private boolean blink = ServerConstants.FALSYVALUE;
 
-    public boolean isAutoReset() {
-        return autoReset;
-    }
+	private boolean autoReset;
 
-    public void setAutoReset(boolean autoReset) {
-        this.autoReset = autoReset;
-    }
+	public boolean isAutoReset() {
+		return autoReset;
+	}
 
-    public float getRaiseBrow() {
-        return raiseBrow;
-    }
+	public void setAutoReset(boolean autoReset) {
+		this.autoReset = autoReset;
+	}
 
-    public void setRaiseBrow(float raiseBrow) {
-        this.raiseBrow = raiseBrow;
-    }
+	public float getRaiseBrow() {
+		return raiseBrow;
+	}
 
-    public float getFurrowBrow() {
-        return furrowBrow;
-    }
+	public void setRaiseBrow(float raiseBrow) {
+		this.raiseBrow = raiseBrow;
+	}
 
-    public void setFurrowBrow(float furrowBrow) {
-        this.furrowBrow = furrowBrow;
-    }
+	public float getFurrowBrow() {
+		return furrowBrow;
+	}
 
-    public float getSmile() {
-        return smile;
-    }
+	public void setFurrowBrow(float furrowBrow) {
+		this.furrowBrow = furrowBrow;
+	}
 
-    public void setSmile(float smile) {
-        this.smile = smile;
-    }
+	public float getSmile() {
+		return smile;
+	}
 
-    public float getClench() {
-        return clench;
-    }
+	public void setSmile(float smile) {
+		this.smile = smile;
+	}
 
-    public void setClench(float clench) {
-        this.clench = clench;
-    }
+	public float getClench() {
+		return clench;
+	}
 
-    public float getSmirkLeft() {
-        return smirkLeft;
-    }
+	public void setClench(float clench) {
+		this.clench = clench;
+	}
 
-    public void setSmirkLeft(float smirkLeft) {
-        this.smirkLeft = smirkLeft;
-    }
+	public float getSmirkLeft() {
+		return smirkLeft;
+	}
 
-    public float getSmirkRight() {
-        return smirkRight;
-    }
+	public void setSmirkLeft(float smirkLeft) {
+		this.smirkLeft = smirkLeft;
+	}
 
-    public void setSmirkRight(float smirkRight) {
-        this.smirkRight = smirkRight;
-    }
+	public float getSmirkRight() {
+		return smirkRight;
+	}
 
-    public float getLaugh() {
-        return laugh;
-    }
+	public void setSmirkRight(float smirkRight) {
+		this.smirkRight = smirkRight;
+	}
 
-    public void setLaugh(float laugh) {
-        this.laugh = laugh;
-    }
+	public float getLaugh() {
+		return laugh;
+	}
 
-    public boolean isBlink() {
-        return blink;
-    }
+	public void setLaugh(float laugh) {
+		this.laugh = laugh;
+	}
 
-    public void setBlink(boolean blink) {
-        this.blink = blink;
-    }
+	public boolean isBlink() {
+		return blink;
+	}
 
-    public boolean isWinkLeft() {
-        return winkLeft;
-    }
+	public void setBlink(boolean blink) {
+		this.blink = blink;
+	}
 
-    public void setWinkLeft(boolean winkLeft) {
-        this.winkLeft = winkLeft;
-    }
+	public boolean isWinkLeft() {
+		return winkLeft;
+	}
 
-    public boolean isWinkRight() {
-        return winkRight;
-    }
+	public void setWinkLeft(boolean winkLeft) {
+		this.winkLeft = winkLeft;
+	}
 
-    public void setWinkRight(boolean winkRight) {
-        this.winkRight = winkRight;
-    }
+	public boolean isWinkRight() {
+		return winkRight;
+	}
 
-    public boolean isLookLeft() {
-        return lookLeft;
-    }
+	public void setWinkRight(boolean winkRight) {
+		this.winkRight = winkRight;
+	}
 
-    public void setLookLeft(boolean lookLeft) {
-        this.lookLeft = lookLeft;
-    }
+	public boolean isLookLeft() {
+		return lookLeft;
+	}
 
-    public boolean isLookRight() {
-        return lookRight;
-    }
+	public void setLookLeft(boolean lookLeft) {
+		this.lookLeft = lookLeft;
+	}
 
-    public void setLookRight(boolean lookRight) {
-        this.lookRight = lookRight;
-    }
+	public boolean isLookRight() {
+		return lookRight;
+	}
 
+	public void setLookRight(boolean lookRight) {
+		this.lookRight = lookRight;
+	}
 
-    public void resetValues() {
+	/*
+	 * Reset wink look and blink values
+	 */
+	public void resetValues() {
 
-        winkLeft = false;
-        winkRight = false;
-        lookLeft = false;
-        lookRight = false;
-        blink = false;
+		winkLeft = false;
+		winkRight = false;
+		lookLeft = false;
+		lookRight = false;
+		blink = false;
 
-    }
-
+	}
 
 }

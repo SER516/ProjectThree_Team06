@@ -1,29 +1,78 @@
 package server.listener;
 
 /**
- *
+ * 
+ * @author garv
+ * Interface for detection panel
  */
 public interface DetectionListenerInterface {
 
-    public void changeCounter(double counter);
+	/**
+	 * Changes the clock counter
+	 * 
+	 * @param counter
+	 */
+	public void changeCounter(double counter);
 
-    public void changeLowerface(String exp, float val);
+	/**
+	 * implement to changes lower face value
+	 * 
+	 * @param exp
+	 * @param val
+	 */
+	public void changeLowerface(String exp, float val);
 
-    public void changeUpperface(String exp, float val);
+	/**
+	 * implement to Change upper face values
+	 * 
+	 * @param exp
+	 * @param val
+	 */
 
-    public void changePerformanceMatrics(String exp, float val);
+	public void changeUpperface(String exp, float val);
 
-    public void changeEye(String eye);
+	/**
+	 * Implement to Change performance metric values
+	 * 
+	 * @param exp
+	 * @param val
+	 */
+	public void changePerformanceMatrics(String exp, float val);
 
-    public void resetEye();
+	/**
+	 * Implement to Change eye values
+	 * 
+	 * @param eye
+	 */
+	public void changeEye(String eye);
 
-    public void resetUpperface();
+	/**
+	 * Implement to Reset eye values
+	 */
+	public void resetEye();
 
-    public void resetLowerface();
+	/*
+	 * Implement to Reset upper face values
+	 */
+	public void resetUpperface();
 
-    public void resetPerformanceMetrics();
+	/*
+	 * Implement to reset lower face values
+	 */
+	public void resetLowerface();
 
-    public void disableActive();
+	/*
+	 * Implement to reset performance metrics
+	 */
+	public void resetPerformanceMetrics();
 
-    void setEyeAutoResetCheckBox(boolean b);
+	/*
+	 * Implement to disable active values
+	 */
+	public void disableActive();
+
+	/*
+	 * Implement to set Eye auto reset checkbox
+	 */
+	void setEyeAutoResetCheckBox(boolean b);
 }
