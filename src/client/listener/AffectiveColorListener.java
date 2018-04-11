@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /**
- * The AffectiveColorListener interface.
+ * The AffectiveColorListener interface provides abstract method for Affective Color manipulation
  * 
  * @author Team06
  * @version 1.0

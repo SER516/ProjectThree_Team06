@@ -16,7 +16,8 @@ import client.model.ExpressivePlotData;
 import client.model.FaceData;
 
 /**
- * The ClientSocketEndpoint class
+ * The ClientSocketEndpoint class creates socket endpoint of client
+ * Takes care of server client connection and data received from server
  * 
  * @author Team06
  * @version 1.0
@@ -43,7 +44,7 @@ public class ClientSocketEndpoint {
 	}
 
 	/**
-	 *
+	 * onMessage parse the JSON formated data received from server into values
 	 * @param message
 	 */
 	@OnMessage
@@ -64,8 +65,8 @@ public class ClientSocketEndpoint {
 	}
 
 	/**
-	 *
-	 * @param session
+	 * closedConnection method ends the websocket and client server connection
+	 * @param session : current session object
 	 */
 	@OnClose
 	public void closedConnection(Session session) {

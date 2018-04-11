@@ -16,7 +16,7 @@ import client.view.ClientFrame;
 public class ClientMainController {
 
 	/**
-	 *
+	 *	Starting point of client
 	 * @param args
 	 */
 	public static void main(String args[]) {
@@ -28,7 +28,8 @@ public class ClientMainController {
 	}
 
 	/**
-	 * @param clientWindow
+	 * setAffectiveListener configures the value listener for affective class
+	 * @param clientWindow : instance of Client window GUI
 	 */
 	private static void setAffectiveListener(ClientFrame clientWindow) {
 		clientWindow.setAffectiveListener(new AffectiveColorService(clientWindow));
@@ -36,8 +37,8 @@ public class ClientMainController {
 	}
 
 	/**
-	 * @ param clientWindow
-	 * 
+	 * setClockListener setup stopwatch value
+	 * @ param clientWindow : instance of Client window GUI
 	 */
 	private static void setClockListener(ClientFrame clientWindow) {
 		ClientSocketEndpoint.setClockListener(new MenuBarListener() {
@@ -50,12 +51,12 @@ public class ClientMainController {
 			public void setConnectionLabel(boolean flag) {
 				clientWindow.setConnectionLabel(flag);
 			}
-
 		});
 	}
 
 	/**
-	 * @ param clientWindow
+	 * setClientServerConnection instanciates client server connection class
+	 * @ param clientWindow : ClientFrame instance of Client GUI
 	 */
 	private static void setClientServerConnection(ClientFrame clientWindow) {
 		clientWindow.setServerClientListener(new ClientServerConnectionService());
