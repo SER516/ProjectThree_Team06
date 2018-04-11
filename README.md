@@ -11,6 +11,8 @@ mvn package
 
 java -jar ProjectThree_Team06-client.jar
 
+Test Case Document: Testing.xlsx
+
 Team 6
 
 
