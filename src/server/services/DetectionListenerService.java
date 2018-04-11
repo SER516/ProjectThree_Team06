@@ -7,7 +7,8 @@ import server.model.ServerModelSingleton;
 import server.view.ServerView;
 
 /**
- * The DetectionListenerService class
+ * The DetectionListenerService class implements the Detection Listener that changes the nature of data being sent to
+ * client for eg. the parameters for upper face , lower face, eye and performance metric values.
  * 
  * @author Team 06
  * @version 1.0

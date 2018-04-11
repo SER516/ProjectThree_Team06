@@ -7,7 +7,8 @@ import org.jfree.data.xy.XYSeriesCollection;
 import client.constants.ClientConstants;
 
 /**
- * The AffectivePlotData class distributes and stores values into 6 categories
+ * The AffectivePlotData class distributes and stores values into the six
+ * affective categories
  * 
  * @author Team06
  * @version 1.0
@@ -58,8 +59,11 @@ public class AffectivePlotData {
 
 	/**
 	 * setDataToList method sets data received from server into 6 categories
-	 * @param affectivedata : Data received from server
-	 * @param faceData : data of face received from server
+	 * 
+	 * @param affectivedata
+	 *            : Data received from server
+	 * @param faceData
+	 *            : data of face received from server
 	 */
 	public void setDataToList(AffectiveData affectivedata, FaceData faceData) {
 		faceDataArrayList.add(faceData);

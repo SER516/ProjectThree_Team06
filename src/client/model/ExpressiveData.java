@@ -1,8 +1,8 @@
 package client.model;
 
 /**
- * The ExpressiveData class act as a data storage class
- * with attributes of facial expression values
+ * The ExpressiveData class act as a data storage class with attributes of
+ * facial expression values
  * 
  * @author Team06
  * @version 1.0

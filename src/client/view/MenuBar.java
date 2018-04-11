@@ -7,7 +7,6 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
@@ -24,6 +23,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+
 import client.constants.ClientConstants;
 import client.services.ClientServerConnectionService;
 
@@ -53,9 +53,11 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		redIcon = null;
 		try {
 			InputStream inputStream1 = getClass().getClassLoader().getResourceAsStream(ClientConstants.CONNECTED_IMAGE);
-			InputStream inputStream2 = getClass().getClassLoader().getResourceAsStream(ClientConstants.NOT_CONNECTED_IMAGE);
-			InputStream inputStream3 = getClass().getClassLoader().getResourceAsStream(ClientConstants.STOP_WATCH_IMAGE);
-			if(inputStream1 != null && inputStream2 != null && inputStream3 !=null){
+			InputStream inputStream2 = getClass().getClassLoader()
+					.getResourceAsStream(ClientConstants.NOT_CONNECTED_IMAGE);
+			InputStream inputStream3 = getClass().getClassLoader()
+					.getResourceAsStream(ClientConstants.STOP_WATCH_IMAGE);
+			if (inputStream1 != null && inputStream2 != null && inputStream3 != null) {
 				redImage = ImageIO.read(inputStream1);
 				greenImage = ImageIO.read(inputStream2);
 				stopImage = ImageIO.read(inputStream3);
@@ -65,11 +67,10 @@ public class MenuBar extends JMenuBar implements ActionListener {
 				Graphics2D g3 = setGraphics(resizeStopImg, stopImage);
 				Graphics2D g4 = setGraphics(redIcon, redImage);
 				Graphics2D g5 = setGraphics(greenIcon, greenImage);
-
 			}
 
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION_MESSAGE+ "Hello");
+			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION_MESSAGE + "Hello");
 		}
 		menu.setHorizontalTextPosition(SwingConstants.CENTER);
 		menu.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -106,7 +107,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * connectState method changes the label and icon on menubar.
 	 *
-	 * @param flag : boolean connected or not connected flag
+	 * @param flag
+	 *            : boolean connected or not connected flag
 	 */
 	public void connectState(boolean flag) {
 		if (flag) {
@@ -120,9 +122,13 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
 	/**
 	 * setForegroundBackground method customizes appearance of items in menubar.
-	 * @param item : Menu item to be configured
-	 * @param blackBorder : border to set
-	 * @param font : to set font of menu item
+	 * 
+	 * @param item
+	 *            : Menu item to be configured
+	 * @param blackBorder
+	 *            : border to set
+	 * @param font
+	 *            : to set font of menu item
 	 */
 	public void setForegroundBackground(JMenu item, Border blackBorder, Font font) {
 		item.setBackground(Color.LIGHT_GRAY);
@@ -134,9 +140,13 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
 	/**
 	 * setForegroundBackground method customizes appearance of items in menubar.
-	 * @param item : Menu item to be configured
-	 * @param blackBorder : border to set
-	 * @param font : to set font of menu item
+	 * 
+	 * @param item
+	 *            : Menu item to be configured
+	 * @param blackBorder
+	 *            : border to set
+	 * @param font
+	 *            : to set font of menu item
 	 */
 	public void setForegroundBackground(JMenuItem item, Border blackBorder, Font font) {
 		item.setBackground(Color.LIGHT_GRAY);
@@ -149,8 +159,10 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * setForegroundBackground method customizes appearance of items in menubar.
 	 *
-	 * @param item : Menu item to be configured
-	 * @param font : to set font of menu item
+	 * @param item
+	 *            : Menu item to be configured
+	 * @param font
+	 *            : to set font of menu item
 	 */
 	public void setForegroundBackground(JMenuItem item, Font font) {
 		item.setBackground(Color.LIGHT_GRAY);
@@ -162,8 +174,10 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * setGraphics method creates a rendered image
 	 * 
-	 * @param resizeImg : resized BufferedImage to be drawn on GUI
-	 * @param menuImage : original BufferedImage which is to be drawn on
+	 * @param resizeImg
+	 *            : resized BufferedImage to be drawn on GUI
+	 * @param menuImage
+	 *            : original BufferedImage which is to be drawn on
 	 * @return : Graphics2D object for reference
 	 */
 	public Graphics2D setGraphics(BufferedImage resizeImg, BufferedImage menuImage) {
@@ -177,7 +191,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * actionPerformed method handles the on click event from menu.
 	 *
-	 * @param e : ActionEvent performed on MenuBar
+	 * @param e
+	 *            : ActionEvent performed on MenuBar
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -196,7 +211,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * setServerClientListener method connects client server connection lister
 	 * 
-	 * @param clientServerConnectionService : Client Server Connection setup
+	 * @param clientServerConnectionService
+	 *            : Client Server Connection setup
 	 */
 	public void setServerClientListener(ClientServerConnectionService clientServerConnectionService) {
 		this.clientServerConnectionService = clientServerConnectionService;
@@ -226,7 +242,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	/**
 	 * updateTimeValue method updates stop watch timer on menubar.
 	 * 
-	 * @param time : stop watch time to update
+	 * @param time
+	 *            : stop watch time to update
 	 */
 	public void updateTimeValue(double time) {
 		stopWatch.setOpaque(true);

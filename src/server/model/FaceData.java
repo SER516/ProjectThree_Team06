@@ -1,7 +1,7 @@
 package server.model;
 
 /**
- * Face Data Model pojo
+ * Face Data Model Plain Old Java Class for setting affective and expressive configurations.
  * 
  * @author Team 06
  * @version 1.0

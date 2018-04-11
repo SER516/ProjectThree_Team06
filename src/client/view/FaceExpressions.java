@@ -1,13 +1,15 @@
 package client.view;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import client.constants.ClientConstants;
-import java.awt.*;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import client.constants.ClientConstants;
 
 /**
  * The FaceExpressions class
@@ -19,21 +21,19 @@ public class FaceExpressions extends JPanel {
 
 	private BufferedImage image;
 
-
 	public FaceExpressions() {
-
 
 		String fileName = "000000000000.png";
 		setBackground(ClientConstants.GREY);
 
 		try {
 			InputStream inputStream1 = getClass().getClassLoader().getResourceAsStream(fileName);
-			if(inputStream1 != null){
+			if (inputStream1 != null) {
 				image = ImageIO.read(inputStream1);
 			}
 
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION_MESSAGE+ "Hello");
+			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION_MESSAGE + "Hello");
 		}
 
 	}
@@ -48,7 +48,9 @@ public class FaceExpressions extends JPanel {
 
 	/**
 	 * painComponent method configures the Panel
-	 * @param g Graphics to be configured
+	 * 
+	 * @param g
+	 *            Graphics to be configured
 	 */
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -59,14 +61,16 @@ public class FaceExpressions extends JPanel {
 
 	/**
 	 * drawImage method sets image on the faceExpression panel
-	 * @param fileName String name of file containing image
+	 * 
+	 * @param fileName
+	 *            String name of file containing image
 	 */
 	public void drawImage(String fileName) {
 		BufferedImage image;
 
 		try {
 			InputStream inputStream1 = getClass().getClassLoader().getResourceAsStream(fileName);
-			if(inputStream1 != null){
+			if (inputStream1 != null) {
 				image = ImageIO.read(inputStream1);
 				this.setImage(image);
 				this.removeAll();
@@ -75,9 +79,8 @@ public class FaceExpressions extends JPanel {
 			}
 
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION_MESSAGE+ "Hello");
+			JOptionPane.showMessageDialog(null, ClientConstants.IMAGE_PATH_EXCEPTION_MESSAGE + "Hello");
 		}
-
 
 	}
 }

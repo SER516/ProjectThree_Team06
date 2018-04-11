@@ -10,7 +10,8 @@ import server.services.DetectionListenerService;
 import server.services.InteractiveListenerService;
 
 /**
- * The ServerView class class creates the server main window.
+ * The ServerView class class creates the server main window. Main frame for the server that adds the Interactive,
+ * detection and the console panels.
  * 
  * @author Team 06
  * @version 1.0

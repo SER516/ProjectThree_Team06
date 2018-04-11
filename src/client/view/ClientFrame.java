@@ -1,14 +1,18 @@
 package client.view;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.util.ArrayList;
 
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
 import client.constants.ClientConstants;
 import client.services.AffectiveColorService;
 import client.services.ClientServerConnectionService;
-import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * The ClientFrame class creates the client main window.
@@ -45,7 +49,8 @@ public class ClientFrame extends JFrame {
 	/**
 	 * centerGUI method setup the client window dimensions
 	 * 
-	 * @param frame JFrame object on which attributes have to be setup
+	 * @param frame
+	 *            JFrame object on which attributes have to be setup
 	 */
 	private void centerGUI(JFrame frame) {
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -63,7 +68,8 @@ public class ClientFrame extends JFrame {
 	/**
 	 * updateTime method updates stop watch timer on menubar
 	 * 
-	 * @param time double value of stop watch timer
+	 * @param time
+	 *            double value of stop watch timer
 	 */
 	public void updateTime(double time) {
 		menuBar.updateTimeValue(time);
@@ -91,7 +97,10 @@ public class ClientFrame extends JFrame {
 	}
 
 	/**
-	 * Set connection Label
+	 * Set connection Label.
+	 * 
+	 * @param flag
+	 *            sets the connection label
 	 */
 	public void setConnectionLabel(boolean flag) {
 		menuBar.setConnectionLabel(flag);

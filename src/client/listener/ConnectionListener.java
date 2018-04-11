@@ -1,7 +1,8 @@
 package client.listener;
 
 /**
- * The ConnectionListener interface provides design for starting connection with server
+ * The ConnectionListener interface provides design for starting connection with
+ * server
  * 
  * @author Team06
  * @version 1.0

@@ -44,7 +44,9 @@ class AffectiveGraphPanel extends JPanel {
 
 	/**
 	 * setAffectiveListener method provides connection listener to graph plot
-	 * @param affectiveColorService instance of AffectiveColorService
+	 * 
+	 * @param affectiveColorService
+	 *            instance of AffectiveColorService
 	 */
 	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
 		affectiveGraphPlot.setAffectiveListener(affectiveColorService);

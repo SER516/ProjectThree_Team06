@@ -6,9 +6,8 @@ import client.view.ExpressionPlots;
 import client.view.FaceExpressions;
 
 /**
- * The ClientDataSingleton class holds data received from server
- * Also, act as a single point of contact for all the data needs
- * on client.
+ * The ClientDataSingleton class holds data received from server Also, act as a
+ * single point of contact for all the data needs on client.
  * 
  * @author Team06
  * @version 1.0

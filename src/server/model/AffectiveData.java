@@ -1,7 +1,7 @@
 package server.model;
 
 /**
- * Affective Data Model pojo
+ * AffectiveData Model Plain Old Java Class for setting individual affective configurations.
  * 
  * @author Team 06
  * @version 1.0
