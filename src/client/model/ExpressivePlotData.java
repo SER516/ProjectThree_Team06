@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- *
+ * The ExpressivePlotData class
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class ExpressivePlotData {
 

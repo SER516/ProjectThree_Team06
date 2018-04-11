@@ -1,7 +1,10 @@
 package client.model;
 
 /**
- * Class that sets and returns the face expression parameters on client GUI.
+ * The FaceData class sets returns the face expression parameters on client GUI.
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class FaceData {
 

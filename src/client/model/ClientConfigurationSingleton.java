@@ -1,6 +1,8 @@
 package client.model;
 
 /**
+ * The ClientConfigurationSingleton class
+ * 
  * @author Team06
  * @version 1.0
  */
@@ -10,7 +12,7 @@ public class ClientConfigurationSingleton {
 	public String ip;
 	public String port;
 
-	/*
+	/**
 	 * 
 	 */
 	public static ClientConfigurationSingleton getInstance() {

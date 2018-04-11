@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /**
- * Affective panel action listener.
+ * The AffectiveColorListener interface.
  * 
  * @author Team06
  * @version 1.0

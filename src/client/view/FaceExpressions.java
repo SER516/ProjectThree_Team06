@@ -9,7 +9,10 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- *
+ * The FaceExpressions class
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class FaceExpressions extends JPanel {
 
@@ -38,6 +41,9 @@ public class FaceExpressions extends JPanel {
 		this.image = image;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		setBackground(new Color(175, 175, 175));
@@ -45,6 +51,10 @@ public class FaceExpressions extends JPanel {
 		g.drawImage(image, 0, 0, 250, 350, this);
 	}
 
+	/**
+	 * 
+	 * @param fileName
+	 */
 	public void drawImage(String fileName) {
 		BufferedImage image;
 		try {

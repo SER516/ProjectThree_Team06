@@ -9,6 +9,7 @@ import client.constants.ClientConstants;
 import client.model.ClientDataSingleton;
 
 /**
+ * The WebSocketClientMain class
  * 
  * @author Team06
  * @version 1.0
@@ -18,7 +19,7 @@ public class WebSocketClientMain {
 	Thread clientThread;
 	Session session = null;
 
-	/*
+	/**
 	 *
 	 */
 	private static void wait4TerminateSignal() {

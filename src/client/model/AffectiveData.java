@@ -1,6 +1,8 @@
 package client.model;
 
 /**
+ * The AffectiveData class
+ * 
  * @author Team06
  * @version 1.0
  */

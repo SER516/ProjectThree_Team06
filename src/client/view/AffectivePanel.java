@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
- * This class creates the affective panel in which graph plot is done based on 6
- * parameters.
- *
- * @author avinash
+ * The AffectivePanel class creates the affective panel in which graph plot is
+ * done based on the six affective parameters.
+ * 
+ * @author Team06
+ * @version 1.0
  */
-
 public class AffectivePanel extends JPanel {
 
 	public static final String TABNAME = "Affective";
@@ -26,7 +26,6 @@ public class AffectivePanel extends JPanel {
 	 * for performance metric panel.
 	 *
 	 */
-
 	public AffectivePanel() {
 		panelGraph = new AffectiveGraphPanel();
 		panelMetric = new AffectivePerformanceMetricPanel();

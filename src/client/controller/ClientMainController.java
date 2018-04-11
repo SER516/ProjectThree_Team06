@@ -7,15 +7,15 @@ import client.services.ClientServerConnectionService;
 import client.view.ClientFrame;
 
 /**
- * Controller class to handle web socket connection between the client and the
- * server.
+ * The ClientMainController class handles web socket connection between the
+ * client and the server.
  * 
  * @author Team06
  * @version 1.0
  */
 public class ClientMainController {
 
-	/*
+	/**
 	 *
 	 * @param args
 	 */
@@ -25,10 +25,9 @@ public class ClientMainController {
 		setClientServerConnection(clientWindow);
 		setClockListener(clientWindow);
 		setAffectiveListener(clientWindow);
-
 	}
 
-	/*
+	/**
 	 * @param clientWindow
 	 */
 	private static void setAffectiveListener(ClientFrame clientWindow) {
@@ -36,7 +35,7 @@ public class ClientMainController {
 
 	}
 
-	/*
+	/**
 	 * @ param clientWindow
 	 */
 	private static void setClockListener(ClientFrame clientWindow) {
@@ -54,7 +53,7 @@ public class ClientMainController {
 		});
 	}
 
-	/*
+	/**
 	 * @ param clientWindow
 	 */
 	private static void setClientServerConnection(ClientFrame clientWindow) {

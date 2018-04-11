@@ -23,14 +23,14 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
-
 import client.constants.ClientConstants;
 import client.services.ClientServerConnectionService;
 
 /**
- * MenuBar handles the menu options given on main frame.
- *
- * @author Abhishek
+ * The MenuBar class handles the menu options given on main frame.
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class MenuBar extends JMenuBar implements ActionListener {
 
@@ -44,21 +44,21 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	private BufferedImage greenIcon, redIcon;
 
 	public MenuBar() {
-		menu = new JMenu("Menu");
+		menu = new JMenu(ClientConstants.MENU);
 		Border blackBorder = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.LIGHT_GRAY);
 		BufferedImage stopImage, redImage, greenImage;
-
 		BufferedImage resizeStopImg = null;
 		greenIcon = null;
 		redIcon = null;
 		try {
-			StringBuilder finalFileName = new StringBuilder(new java.io.File(".").getCanonicalPath());
+			StringBuilder finalFileName = new StringBuilder(
+					new java.io.File(ClientConstants.CURRENT_DIR).getCanonicalPath());
 			finalFileName.append(File.separator);
 			finalFileName.append(ClientConstants.IMAGES);
 			finalFileName.append(File.separator);
-			redImage = ImageIO.read(new File(finalFileName.toString()+ClientConstants.CONNECTED_IMAGE));
-			greenImage = ImageIO.read(new File(finalFileName.toString()+ClientConstants.NOT_CONNECTED_IMAGE));
-			stopImage = ImageIO.read(new File(finalFileName.toString()+ClientConstants.STOP_WATCH_IMAGE));
+			redImage = ImageIO.read(new File(finalFileName.toString() + ClientConstants.CONNECTED_IMAGE));
+			greenImage = ImageIO.read(new File(finalFileName.toString() + ClientConstants.NOT_CONNECTED_IMAGE));
+			stopImage = ImageIO.read(new File(finalFileName.toString() + ClientConstants.STOP_WATCH_IMAGE));
 			resizeStopImg = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 			redIcon = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 			greenIcon = new BufferedImage(30, 25, BufferedImage.TYPE_INT_ARGB);
@@ -233,8 +233,6 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		stopWatch.setText(String.valueOf(time));
 		setForegroundBackground(stopWatch, ClientConstants.TEXT_FONT);
 	}
-
-
 
 	public void setConnectionLabel(boolean flag) {
 		connectState(flag);
