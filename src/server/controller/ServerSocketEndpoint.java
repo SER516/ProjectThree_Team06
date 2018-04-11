@@ -52,7 +52,6 @@ public class ServerSocketEndpoint {
 							Long sleepValue = (long) (clock * 1000);
 							sleep(sleepValue);
 						} catch (InterruptedException e) {
-							System.out.print("Inside exception");
 						}
 					}
 				}

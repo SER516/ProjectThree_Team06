@@ -55,9 +55,13 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 
 	/**
 	 * affectivePanelComponents configures the Panel with colors and button
-	 * @param panelComponent Panel object on which other components should be integrated
-	 * @param colorComponent Color component on Affective Panel
-	 * @param buttonComponent Button for colors on panel
+	 * 
+	 * @param panelComponent
+	 *            Panel object on which other components should be integrated
+	 * @param colorComponent
+	 *            Color component on Affective Panel
+	 * @param buttonComponent
+	 *            Button for colors on panel
 	 * @return
 	 */
 	private Component affectivePanelComponents(JPanel panelComponent, Color colorComponent, JButton buttonComponent) {
@@ -123,7 +127,9 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 
 	/**
 	 * setConstraints method configures the UI constraints on Panel object
-	 * @param displayLengthPanel panel object to set constraints
+	 * 
+	 * @param displayLengthPanel
+	 *            panel object to set constraints
 	 * @return Panel object with constraints
 	 */
 	private GridBagConstraints setConstraints(JPanel displayLengthPanel) {
@@ -139,14 +145,15 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 		return displayLengthDimensions;
 	}
 
-
 	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
 		this.affectiveColorService = affectiveColorService;
 	}
 
 	/**
 	 * actionPerformed method joins action to it's handler
-	 * @param e ActionEvent instance to denote which actione is performed on GUI
+	 * 
+	 * @param e
+	 *            ActionEvent instance to denote which actione is performed on GUI
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -175,8 +182,11 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 
 	/**
 	 * setColor method implements dialogue box for colors
-	 * @param panel panel instance for setting colors dialogue box
-	 * @param index int to set color of that index
+	 * 
+	 * @param panel
+	 *            panel instance for setting colors dialogue box
+	 * @param index
+	 *            int to set color of that index
 	 */
 	private void setColor(JPanel panel, int index) {
 		Color newColor = JColorChooser.showDialog(null, ClientConstants.CHOOSE_COLOR, null);

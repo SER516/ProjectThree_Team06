@@ -2,6 +2,8 @@ package server.constants;
 
 import java.awt.Font;
 
+import javax.swing.Icon;
+
 /**
  * The ServerConstants class contains all the constants used in the client.
  * 
@@ -37,14 +39,22 @@ public class ServerConstants {
 	public static final String EXCITEMENT = "Excitement";
 	public static final String BLINK = "Blink";
 	public static final String CLENCH = "Clench";
-	public static final String FURROW_BROW = "FurrowBrow";
+	public static final String FURROW_BROW = "Furrow Brow";
 	public static final String LAUGH = "Laugh";
-	public static final String LOOK_LEFT = "LookLeft";
-	public static final String LOOK_RIGHT = "LookRight";
-	public static final String RAISE_BROW = "RaiseBrow";
+	public static final String LOOK_LEFT = "Look Left";
+	public static final String LOOK_RIGHT = "Look Right";
+	public static final String RAISE_BROW = "Raise Brow";
 	public static final String SMILE = "Smile";
-	public static final String SMIRK_LEFT = "SmirkLeft";
-	public static final String SMIRK_RIGHT = "SmirkRight";
-	public static final String WINK_LEFT = "WinkLeft";
-	public static final String WINK_RIGHT = "WinkRight";
+	public static final String SMIRK_LEFT = "Smirk Left";
+	public static final String SMIRK_RIGHT = "Smirk Right";
+	public static final String WINK_LEFT = "Wink Left";
+	public static final String WINK_RIGHT = "Wink Right";
+	public static final String DETECTION = "Detection";
+	public static final String TIME = "Time";
+	public static final String SECONDS = "Seconds";
+	public static final String UPPER_FACE = "Upperface:";
+	public static final String PERFORMANCE_METRICS = "Performance Metrics:";
+	public static final String ACTIVATE = "Activate";
+	public static String LOWERFACE = "Lowerface:";
+	public static String EYE = "Eye:";
 }

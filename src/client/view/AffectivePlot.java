@@ -52,8 +52,11 @@ public class AffectivePlot extends JPanel {
 	}
 
 	/**
-	 * plotAffectiveGraph1 method provides implementation of plotting values on AffectiveGraph
-	 * @param dataset XYSeriesCollection values to plot in 2d
+	 * plotAffectiveGraph1 method provides implementation of plotting values on
+	 * AffectiveGraph
+	 * 
+	 * @param dataset
+	 *            XYSeriesCollection values to plot in 2d
 	 */
 	public void plotAffectiveGraph1(XYSeriesCollection dataset) {
 		JFreeChart chart = ChartFactory.createXYLineChart(ClientConstants.EMPTY, ClientConstants.EMPTY,

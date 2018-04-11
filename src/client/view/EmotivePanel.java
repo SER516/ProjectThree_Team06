@@ -5,7 +5,7 @@ import client.model.ClientDataSingleton;
 import java.awt.*;
 
 /**
- * The EmotivePanel class is a emotive tab on the GUI.
+ * The EmotivePanel class is a expressive tab on the GUI.
  * 
  * @author Team06
  * @version 1.0
@@ -15,6 +15,9 @@ public class EmotivePanel extends JPanel {
 	FaceExpressions faceExpressions;
 	ExpressionPlots expressionPlots;
 
+	/**
+	 * Sets up the Emotive Panel
+	 */
 	public EmotivePanel() {
 		setLayout(new BorderLayout());
 		faceExpressions = new FaceExpressions();

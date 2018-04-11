@@ -1,7 +1,6 @@
 package server.view;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
@@ -19,13 +18,13 @@ import server.constants.ServerConstants;
 import server.services.DetectionListenerService;
 
 /**
- * The DetectionPanel class creates the Detection Panel display that sets the clock timer
- * along with the upperface, lowerface and eye features, also setting the Performance metrics.
+ * The DetectionPanel class creates the Detection Panel display that sets the
+ * clock timer along with the upperface, lowerface and eye features, also
+ * setting the Performance metrics.
  * 
  * @author Team 06
  * @version 1.0
  */
-
 public class DetectionPanel extends JPanel implements ChangeListener, ActionListener {
 
 	JTextField timeTxtField;
@@ -46,17 +45,15 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 	 */
 	public DetectionPanel() {
 		this.setBackground(Color.LIGHT_GRAY);
-		this.setBorder(new TitledBorder(null, "Detection", TitledBorder.LEADING, TitledBorder.TOP,
+		this.setBorder(new TitledBorder(null, ServerConstants.DETECTION, TitledBorder.LEADING, TitledBorder.TOP,
 				ServerConstants.TEXT_FONT, null));
 		this.setBounds(11, 130, 474, 267);
 		this.setLayout(null);
-
-		JLabel lblTime = new JLabel("Time:");
-		lblTime.setFont(ServerConstants.TEXT_FONT);
-		lblTime.setForeground(Color.WHITE);
-		lblTime.setBounds(14, 24, 41, 33);
-		this.add(lblTime);
-
+		JLabel timeLabel = new JLabel(ServerConstants.TIME);
+		timeLabel.setFont(ServerConstants.TEXT_FONT);
+		timeLabel.setForeground(Color.WHITE);
+		timeLabel.setBounds(14, 24, 41, 33);
+		this.add(timeLabel);
 		timeTxtField = new JTextField();
 		timeTxtField.setForeground(Color.WHITE);
 		timeTxtField.setBackground(Color.DARK_GRAY);
@@ -65,20 +62,19 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 		timeTxtField.setBounds(53, 29, 50, 25);
 		this.add(timeTxtField);
 		timeTxtField.setColumns(10);
+		JLabel secondsLabel = new JLabel(ServerConstants.SECONDS);
+		secondsLabel.setFont(ServerConstants.TEXT_FONT);
+		secondsLabel.setForeground(Color.WHITE);
+		secondsLabel.setBounds(113, 24, 64, 33);
+		this.add(secondsLabel);
 
-		JLabel lblSeconds = new JLabel("Seconds");
-		lblSeconds.setFont(ServerConstants.TEXT_FONT);
-		lblSeconds.setForeground(Color.WHITE);
-		lblSeconds.setBounds(113, 24, 64, 33);
-		this.add(lblSeconds);
+		JLabel upperFaceLabel = new JLabel(ServerConstants.UPPER_FACE);
+		upperFaceLabel.setFont(ServerConstants.TEXT_FONT);
+		upperFaceLabel.setForeground(Color.WHITE);
+		upperFaceLabel.setBounds(14, 68, 139, 33);
+		this.add(upperFaceLabel);
 
-		JLabel lblUpperface = new JLabel("Upperface:");
-		lblUpperface.setFont(ServerConstants.TEXT_FONT);
-		lblUpperface.setForeground(Color.WHITE);
-		lblUpperface.setBounds(14, 68, 139, 33);
-		this.add(lblUpperface);
-
-		String[] upperfaceItems = new String[] { "Raise Brow", "Furrow Brow" };
+		String[] upperfaceItems = new String[] { ServerConstants.RAISE_BROW, ServerConstants.FURROW_BROW };
 		upperfaceComboBox = new JComboBox<>(upperfaceItems);
 		upperfaceComboBox.setBounds(14, 98, 139, 25);
 		upperfaceComboBox.addActionListener(this);
@@ -91,13 +87,14 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 		upperfaceSpinner.addChangeListener(this);
 		this.add(upperfaceSpinner);
 
-		JLabel lblLowerface = new JLabel("Lowerface:");
-		lblLowerface.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblLowerface.setForeground(Color.WHITE);
-		lblLowerface.setBounds(250, 68, 139, 33);
-		this.add(lblLowerface);
+		JLabel lowerfaceLabel = new JLabel(ServerConstants.LOWERFACE);
+		lowerfaceLabel.setFont(ServerConstants.TEXT_FONT);
+		lowerfaceLabel.setForeground(Color.WHITE);
+		lowerfaceLabel.setBounds(250, 68, 139, 33);
+		this.add(lowerfaceLabel);
 
-		String[] lowerfaceItems = new String[] { "Laugh", "Clench", "Smirk Left", "Smirk Right", "Smile" };
+		String[] lowerfaceItems = new String[] { ServerConstants.LAUGH, ServerConstants.CLENCH,
+				ServerConstants.SMIRK_LEFT, ServerConstants.SMIRK_RIGHT, ServerConstants.SMILE };
 		lowerfaceComboBox = new JComboBox<>(lowerfaceItems);
 		lowerfaceComboBox.setBounds(250, 98, 123, 25);
 		lowerfaceComboBox.addActionListener(this);
@@ -110,19 +107,20 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 		lowerfaceSpinner.addChangeListener(this);
 		this.add(lowerfaceSpinner);
 
-		JLabel lblEye = new JLabel("Eye:");
-		lblEye.setFont(ServerConstants.TEXT_FONT);
-		lblEye.setForeground(Color.WHITE);
-		lblEye.setBounds(14, 134, 115, 33);
-		this.add(lblEye);
+		JLabel eyeLabel = new JLabel(ServerConstants.EYE);
+		eyeLabel.setFont(ServerConstants.TEXT_FONT);
+		eyeLabel.setForeground(Color.WHITE);
+		eyeLabel.setBounds(14, 134, 115, 33);
+		this.add(eyeLabel);
 
-		String[] eyeItems = new String[] { "Blink", "Wink Left", "Wink Right", "Look Left", "Look Right" };
+		String[] eyeItems = new String[] { ServerConstants.BLINK, ServerConstants.WINK_LEFT, ServerConstants.WINK_RIGHT,
+				ServerConstants.LOOK_LEFT, ServerConstants.WINK_RIGHT };
 		eyeComboBox = new JComboBox<>(eyeItems);
 		eyeComboBox.setBounds(14, 163, 139, 25);
 		eyeComboBox.addActionListener(this);
 		this.add(eyeComboBox);
 
-		eyeActivateRadioButton = new JRadioButton("Activate");
+		eyeActivateRadioButton = new JRadioButton(ServerConstants.ACTIVATE);
 		eyeActivateRadioButton.setFont(ServerConstants.TEXT_FONT);
 		eyeActivateRadioButton.setBackground(Color.GRAY);
 		eyeActivateRadioButton.setForeground(Color.WHITE);
@@ -130,7 +128,7 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 		eyeActivateRadioButton.addActionListener(this);
 		this.add(eyeActivateRadioButton);
 
-		eyeAutoResetCheckBox = new JCheckBox("Auto Reset");
+		eyeAutoResetCheckBox = new JCheckBox(ServerConstants.AUTO_RESETS);
 		eyeAutoResetCheckBox.setForeground(Color.WHITE);
 		eyeAutoResetCheckBox.setFont(ServerConstants.TEXT_FONT);
 		eyeAutoResetCheckBox.setBackground(Color.GRAY);
@@ -139,14 +137,14 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 		eyeAutoResetCheckBox.addActionListener(this);
 		this.add(eyeAutoResetCheckBox);
 
-		JLabel lblPerformanceMetrics = new JLabel("Performance Metrics:");
-		lblPerformanceMetrics.setFont(ServerConstants.TEXT_FONT);
-		lblPerformanceMetrics.setForeground(Color.WHITE);
-		lblPerformanceMetrics.setBounds(14, 199, 131, 33);
-		this.add(lblPerformanceMetrics);
+		JLabel performanceMetricsLabel = new JLabel(ServerConstants.PERFORMANCE_METRICS);
+		performanceMetricsLabel.setFont(ServerConstants.TEXT_FONT);
+		performanceMetricsLabel.setForeground(Color.WHITE);
+		performanceMetricsLabel.setBounds(14, 199, 131, 33);
+		this.add(performanceMetricsLabel);
 
-		String[] pfMetricItems = new String[] { "Interest", "Engagement", "Stress", "Relaxation", "Excitement",
-				"Focus" };
+		String[] pfMetricItems = new String[] { ServerConstants.INTEREST, ServerConstants.ENGAGEMENT,
+				ServerConstants.STRESS, ServerConstants.RELAXATION, ServerConstants.EXCITEMENT, ServerConstants.FOCUS };
 		performanceMetricsComboBox = new JComboBox<>(pfMetricItems);
 		performanceMetricsComboBox.setBounds(14, 229, 139, 25);
 		performanceMetricsComboBox.addActionListener(this);
@@ -160,6 +158,7 @@ public class DetectionPanel extends JPanel implements ChangeListener, ActionList
 	}
 
 	/**
+	 * 
 	 * Sets group component layout for the detection panel
 	 */
 	private void initComponents() {

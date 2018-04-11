@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * The ExpressivePlotData class
+ * The ExpressivePlotData class sets up the plot for facial expression value
  * 
  * @author Team06
  * @version 1.0
@@ -33,6 +33,7 @@ public class ExpressivePlotData {
 
 	/**
 	 * returns instance of class
+	 * 
 	 * @return
 	 */
 	public static ExpressivePlotData getInstance() {
@@ -99,7 +100,9 @@ public class ExpressivePlotData {
 
 	/**
 	 * setDataToList sets data received from server to its category
-	 * @param expressivedata : data received from server
+	 * 
+	 * @param expressivedata
+	 *            : data received from server
 	 */
 	public void setDataToList(ExpressiveData expressivedata) {
 		raiseBrowList.add(expressivedata.getRaiseBrow());
