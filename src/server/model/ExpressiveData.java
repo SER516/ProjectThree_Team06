@@ -3,7 +3,7 @@ package server.model;
 import server.constants.ServerConstants;
 
 /**
- * Expressive Data Model pojo
+ * ExpressiveData Model Plain Old Java Class for setting individual expressive configurations.
  * 
  * @author Team 06
  * @version 1.0

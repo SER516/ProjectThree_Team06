@@ -4,7 +4,8 @@ import server.listener.InteractiveListener;
 import server.model.ServerModelSingleton;
 
 /**
- * The InteractiveListenerService class
+ * The InteractiveListenerService class inherits the Interactive Listener for setting the pattern of data send
+ * as per the configurations set like auto reset or oe time send.
  * 
  * @author Team 06
  * @version 1.0

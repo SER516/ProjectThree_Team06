@@ -18,8 +18,8 @@ import server.services.InteractiveListenerService;
 import server.services.ServerSocketService;
 
 /**
- * The InteractivePanel class
- * 
+ * The InteractivePanel class creates the Interactive Panel display that sets up the time interval for communication
+ * with the client also sets up the auto reset or one time send to the client.
  * @author Team 06
  * @version 1.0
  */

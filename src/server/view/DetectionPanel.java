@@ -19,7 +19,8 @@ import server.constants.ServerConstants;
 import server.services.DetectionListenerService;
 
 /**
- * The DetectionPanel class
+ * The DetectionPanel class creates the Detection Panel display that sets the clock timer
+ * along with the upperface, lowerface and eye features, also setting the Performance metrics.
  * 
  * @author Team 06
  * @version 1.0

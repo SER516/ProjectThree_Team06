@@ -19,7 +19,8 @@ import server.model.ServerModelSingleton;
 import server.view.ServerView;
 
 /**
- * The ServerSocketService class
+ * The ServerSocketService class inherits the Server Listener that focuses on teh server start and stop
+ * functionalities.
  * 
  * @author Garv
  * @version 1.0
