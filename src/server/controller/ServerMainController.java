@@ -30,6 +30,7 @@ public class ServerMainController {
 	}
 
 	/**
+	 * sets the log listener for server console panel
 	 * 
 	 * @param serverView
 	 */
@@ -43,6 +44,7 @@ public class ServerMainController {
 	}
 
 	/**
+	 * attaches view to the controller following mvc
 	 * 
 	 * @param serverView
 	 */
@@ -61,7 +63,7 @@ public class ServerMainController {
 		}
 
 		/**
-		 * Create and display the form .
+		 * Create and display the form in a new thread .
 		 */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -71,6 +73,7 @@ public class ServerMainController {
 	}
 
 	/**
+	 * Performs dependency injection for loose coupling
 	 * 
 	 * @param serverView
 	 * @param interactiveListenerService
@@ -86,6 +89,7 @@ public class ServerMainController {
 	}
 
 	/**
+	 * Sets the server stop listener
 	 * 
 	 * @param serverView
 	 * @param serverSocketService
@@ -100,6 +104,7 @@ public class ServerMainController {
 	}
 
 	/**
+	 * Sets the listener for all fields in the detection panel
 	 * 
 	 * @param serverView
 	 * @param detectionListenerService
@@ -111,6 +116,7 @@ public class ServerMainController {
 	}
 
 	/**
+	 * Set the listener for all fields in interaction panel
 	 * 
 	 * @param serverView
 	 * @param interactiveListenerService

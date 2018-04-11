@@ -16,6 +16,9 @@ import server.view.ServerView;
  */
 public class ServerApplicationController {
 
+	/**
+	 * Inject dependency of view model and services
+	 */
 	public ServerApplicationController() {
 		ServerView serverView = new ServerView();
 		ServerModelSingleton serverDataSingleton = ServerModelSingleton.getInstance();
@@ -27,7 +30,4 @@ public class ServerApplicationController {
 				serverSocketService, interactiveListenerService, detectionListenerService);
 	}
 
-	public static void main(String args[]) {
-		new ServerApplicationController();
-	}
 }

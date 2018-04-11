@@ -37,6 +37,7 @@ public class ClientMainController {
 
 	/**
 	 * @ param clientWindow
+	 * 
 	 */
 	private static void setClockListener(ClientFrame clientWindow) {
 		ClientSocketEndpoint.setClockListener(new MenuBarListener() {

@@ -16,6 +16,7 @@ public class DetectionListenerService implements DetectionListenerInterface {
 
 	/**
 	 * changes counter value on serverview
+	 * @param counter for clock value
 	 */
 	@Override
 	public void changeCounter(double counter) {
@@ -29,7 +30,9 @@ public class DetectionListenerService implements DetectionListenerInterface {
 	/**
 	 * Updates the lowerface expression data based on the selected combobox and
 	 * spinner values.
+	 * @param exp, val exp
 	 */
+	
 	public void changeLowerface(String exp, float val) {
 		resetLowerface();
 		if (exp.equals("Smile")) {
@@ -48,6 +51,7 @@ public class DetectionListenerService implements DetectionListenerInterface {
 	/**
 	 * Updates the upperface expression data based on the selected combobox and
 	 * spinner values.
+	 * @param exp, float
 	 */
 	public void changeUpperface(String exp, float val) {
 		resetUpperface();
@@ -61,6 +65,7 @@ public class DetectionListenerService implements DetectionListenerInterface {
 	/**
 	 * Updates the performance Matrics affective data based on the selected combobox
 	 * and spinner values.
+	 * @param exp,val
 	 */
 	public void changePerformanceMatrics(String exp, float val) {
 		resetPerformanceMetrics();
@@ -81,6 +86,7 @@ public class DetectionListenerService implements DetectionListenerInterface {
 
 	/**
 	 * Updates the eye expression data based on the selected combobox values.
+	 * @param eye the current eye value
 	 */
 	public void changeEye(String eye) {
 		resetEye();

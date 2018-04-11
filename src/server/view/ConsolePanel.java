@@ -74,7 +74,4 @@ public class ConsolePanel extends javax.swing.JPanel {
 		message = message + "\n";
 		consoleTextArea.append(message);
 	}
-
-	// Variables declaration - do not modify//GEN-BEGIN:variables
-	// End of variables declaration//GEN-END:variables
 }

@@ -32,6 +32,9 @@ public class ServerSocketEndpoint {
 	private static LogListenerInterface logListener;
 	private static DetectionListenerService detectionListenerService;
 
+	/**
+	 * Spawns a thread for running server
+	 */
 	static {
 		rateThread = new Thread() {
 			public void run() {
@@ -55,6 +58,9 @@ public class ServerSocketEndpoint {
 				}
 			}
 
+			/**
+			 * Sends data to console log,parses json and change counter
+			 */
 			private void sendAndUpdateCounter() {
 				double interval = ServerModelSingleton.getInstance().getStateInterval();
 				double counter = ServerModelSingleton.getInstance().getFaceData().getCounter();
@@ -97,17 +103,33 @@ public class ServerSocketEndpoint {
 		}
 	}
 
+	/**
+	 * Sets the log listener so that message can be passed to console panel
+	 * 
+	 * @param logListenerObject
+	 */
 	public static void setLogListener(LogListenerInterface logListenerObject) {
 		logListener = logListenerObject;
 	}
 
+	/**
+	 * Sets the detection listener so that message can be passes to the detection
+	 * panel
+	 * 
+	 * @param detectionListenerServiceObject
+	 */
 	public static void setDetectionListenerService(DetectionListenerService detectionListenerServiceObject) {
 		detectionListenerService = detectionListenerServiceObject;
 	}
 
+	/**
+	 * provided for completeness, in out scenario clients don't send any msg.
+	 * 
+	 * @param session
+	 * @param msg
+	 */
 	@OnMessage
 	public void onMessage(Session session, String msg) {
-		// provided for completeness, in out scenario clients don't send any msg.
 		try {
 			logListener.logMessage("received msg " + msg + " from " + session.getId());
 		} catch (Exception e) {
@@ -115,6 +137,11 @@ public class ServerSocketEndpoint {
 		}
 	}
 
+	/**
+	 * When session is opened sends log to console panel and add session to a queue.
+	 * 
+	 * @param session
+	 */
 	@OnOpen
 	public void open(Session session) {
 		queue.add(session);
@@ -122,12 +149,23 @@ public class ServerSocketEndpoint {
 
 	}
 
+	/**
+	 * When an error is occured sends message to log
+	 * 
+	 * @param session
+	 * @param t
+	 */
 	@OnError
 	public void error(Session session, Throwable t) {
 		queue.remove(session);
 		logListener.logMessage("Error on session " + session.getId());
 	}
 
+	/**
+	 * When session closes the session is remvoved from the queue and logged
+	 * 
+	 * @param session
+	 */
 	@OnClose
 	public void closedConnection(Session session) {
 		queue.remove(session);

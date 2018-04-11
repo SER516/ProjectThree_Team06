@@ -14,4 +14,6 @@ public class ServerConstants {
 	public static final String SEND_EXCEPTION_MESSAGE = "An Exception has occurred while sending messages";
 	public static final String RECEIVE_EXCEPTION_MESSAGE = "An Exception has occurred while receiving messages";
 	public static final String NEW_SESSION_OPENED = "New session opened: ";
+	public static final float ZERO_VALUE = 0;
+	public static final boolean FALSYVALUE = false;
 }
