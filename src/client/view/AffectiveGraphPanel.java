@@ -5,15 +5,16 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import client.constants.ClientConstants;
-import client.model.SingleTonData;
+import client.model.ClientDataSingleton;
 import client.services.AffectiveColorService;
 
 /**
- * This is a part of AffectivePanel UI. This panel is for Graph plot.
- *
- * @author avinash
+ * The AffectiveGraphPanel class sets up the the graph plot for AffectivePanel
+ * UI.
+ * 
+ * @author Team06
+ * @version 1.0
  */
-
 class AffectiveGraphPanel extends JPanel {
 
 	AffectivePlot affectiveGraphPlot;
@@ -23,7 +24,7 @@ class AffectiveGraphPanel extends JPanel {
 	}
 
 	/**
-	 * This function constructs a JPanel at the center for graph plot.
+	 * buildPanel function constructs a JPanel at the center for graph plot.
 	 * 
 	 * @return
 	 */
@@ -35,7 +36,7 @@ class AffectiveGraphPanel extends JPanel {
 		add(graphPlotLabel, BorderLayout.NORTH);
 		setLayout(new BorderLayout());
 		affectiveGraphPlot = new AffectivePlot();
-		SingleTonData.getInstance().setAffectivePlot(affectiveGraphPlot);
+		ClientDataSingleton.getInstance().setAffectivePlot(affectiveGraphPlot);
 		affectiveGraphPlot.setBackground(Color.WHITE);
 		add(affectiveGraphPlot);
 		return this;

@@ -8,15 +8,16 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-
 import client.constants.ClientConstants;
 import client.controller.PlotController;
-import client.helper.ClientDataSingleton;
+import client.model.ClientDataSingleton;
 
 /**
- * ExpressionPlots class plots the graph of expressions received from server.
- *
- * @author Abhishek
+ * The ExpressionPlots class plots the graph of expressions received from
+ * server.
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class ExpressionPlots extends JPanel {
 
@@ -59,8 +60,8 @@ public class ExpressionPlots extends JPanel {
 	private GraphPlot smileGraphPlot;
 	private GraphPlot smirkLeftGraphPlot;
 	private GraphPlot smirkRightGraphPlot;
-	private GraphPlot graphPlot11;
-	private GraphPlot graphPlot12;
+	private GraphPlot winkLeftGraphPlot;
+	private GraphPlot winkRightGraphPlot;
 
 	public ExpressionPlots() {
 		this.setPreferredSize(new Dimension(500, 500));
@@ -148,13 +149,20 @@ public class ExpressionPlots extends JPanel {
 			addGraphsToPanel(smirkLeftPanel, smirkLeftSplitPane, smirkLeftGraphPlot, ClientConstants.SMIRK_LEFT);
 			smirkRightGraphPlot = plotGraphForFeature(plotData.get(9));
 			addGraphsToPanel(smirkRightPanel, smirkRightSplitPane, smirkRightGraphPlot, ClientConstants.SMIRK_RIGHT);
-			graphPlot11 = plotGraphForFeature(plotData.get(10));
-			addGraphsToPanel(winkLeftPanel, winkLeftSplitPane, graphPlot11, ClientConstants.WINK_LEFT);
-			graphPlot12 = plotGraphForFeature(plotData.get(11));
-			addGraphsToPanel(winkRightPanel, winkRightSplitPane, graphPlot12, ClientConstants.WINK_RIGHT);
+			winkLeftGraphPlot = plotGraphForFeature(plotData.get(10));
+			addGraphsToPanel(winkLeftPanel, winkLeftSplitPane, winkLeftGraphPlot, ClientConstants.WINK_LEFT);
+			winkRightGraphPlot = plotGraphForFeature(plotData.get(11));
+			addGraphsToPanel(winkRightPanel, winkRightSplitPane, winkRightGraphPlot, ClientConstants.WINK_RIGHT);
 		}
 	}
 
+	/**
+	 * 
+	 * @param expression
+	 * @param splitPane
+	 * @param graphPlotCurr
+	 * @param feature
+	 */
 	private void addGraphsToPanel(JPanel expression, JSplitPane splitPane, GraphPlot graphPlotCurr, String feature) {
 		expression.removeAll();
 		splitPane.removeAll();

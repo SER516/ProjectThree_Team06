@@ -5,7 +5,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 /**
- *
+ * The ClientConstants class contains all the constants used in the client.
+ * 
+ * @author Team 06
+ * @version 1.0
  */
 public class ClientConstants {
 	public static final String CLOSING_CONNECTION_EXCEPTION_MESSAGE = "Exception during close Connection ";
@@ -72,4 +75,5 @@ public class ClientConstants {
 	public static final String PORT_NUMBER = "8080";
 	public static final String IP_STRING = "IP";
 	public static final String PORT_STRING = "Port";
+	public static final String MENU = "Menu";
 }

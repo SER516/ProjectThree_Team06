@@ -1,24 +1,29 @@
 package client.model;
 
+import java.util.ArrayList;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-import java.util.ArrayList;
-import java.util.Arrays;
+
+import client.constants.ClientConstants;
 
 /**
- *
+ * The AffectivePlotData class
+ * 
+ * @author Team06
+ * @version 1.0
  */
+
 public class AffectivePlotData {
 	private static volatile AffectivePlotData affectivePlotData;
 	private static Object mutex = new Object();
 	ArrayList<FaceData> faceDataArrayList = new ArrayList<>();
 	XYSeriesCollection dataset;
-	XYSeries interestSeries = new XYSeries("interest");
-	XYSeries engagementSeries = new XYSeries("engagementSeries");
-	XYSeries relaxSeries = new XYSeries("relaxSeries");
-	XYSeries stressSeries = new XYSeries("stressSeries");
-	XYSeries excitmentSeries = new XYSeries("excitmentSeries");
-	XYSeries focusSeries = new XYSeries("focusSeries");
+	XYSeries interestSeries = new XYSeries(ClientConstants.INTEREST);
+	XYSeries engagementSeries = new XYSeries(ClientConstants.ENGAGEMENT);
+	XYSeries relaxSeries = new XYSeries(ClientConstants.RELAXATION);
+	XYSeries stressSeries = new XYSeries(ClientConstants.STRESS);
+	XYSeries excitmentSeries = new XYSeries(ClientConstants.EXCITEMENT);
+	XYSeries focusSeries = new XYSeries(ClientConstants.FOCUS);
 	private int graphLength = 50;
 
 	public int getGraphLength() {
@@ -50,9 +55,10 @@ public class AffectivePlotData {
 		return dataset;
 	}
 
-
 	/**
+	 * 
 	 * @param affectivedata
+	 * 
 	 * @param faceData
 	 */
 	public void setDataToList(AffectiveData affectivedata, FaceData faceData) {
@@ -60,7 +66,7 @@ public class AffectivePlotData {
 		double faceDataCounter = faceData.getCounter();
 		dataset = new XYSeriesCollection();
 		interestSeries.add(graphLength - faceDataCounter, affectivedata.getInterest());
-		engagementSeries.add( graphLength - faceDataCounter, affectivedata.getEngagement());
+		engagementSeries.add(graphLength - faceDataCounter, affectivedata.getEngagement());
 		relaxSeries.add(graphLength - faceDataCounter, affectivedata.getRelaxation());
 		stressSeries.add(graphLength - faceDataCounter, affectivedata.getStress());
 		excitmentSeries.add(graphLength - faceDataCounter, affectivedata.getExcitement());
@@ -73,16 +79,18 @@ public class AffectivePlotData {
 		dataset.addSeries(excitmentSeries);
 	}
 
+	/**
+	 * 
+	 */
 	public XYSeriesCollection regenerateDataSet() {
-		XYSeries interestSeries = new XYSeries("interest");
-		XYSeries engagementSeries = new XYSeries("engagementSeries");
-		XYSeries relaxSeries = new XYSeries("relaxSeries");
-		XYSeries stressSeries = new XYSeries("stressSeries");
-		XYSeries excitmentSeries = new XYSeries("excitmentSeries");
-		XYSeries focusSeries = new XYSeries("focusSeries");
+		XYSeries interestSeries = new XYSeries(ClientConstants.INTEREST);
+		XYSeries engagementSeries = new XYSeries(ClientConstants.ENGAGEMENT);
+		XYSeries relaxSeries = new XYSeries(ClientConstants.RELAXATION);
+		XYSeries stressSeries = new XYSeries(ClientConstants.STRESS);
+		XYSeries excitmentSeries = new XYSeries(ClientConstants.EXCITEMENT);
+		XYSeries focusSeries = new XYSeries(ClientConstants.FOCUS);
 		XYSeriesCollection dataset = new XYSeriesCollection();
-		for(int i=0; i < faceDataArrayList.size();i++){
-
+		for (int i = 0; i < faceDataArrayList.size(); i++) {
 			AffectiveData affectiveData = faceDataArrayList.get(i).getAffectiveData();
 			double counter = faceDataArrayList.get(i).getCounter();
 			interestSeries.add(graphLength - counter, affectiveData.getInterest());
@@ -98,14 +106,13 @@ public class AffectivePlotData {
 		dataset.addSeries(engagementSeries);
 		dataset.addSeries(relaxSeries);
 		dataset.addSeries(excitmentSeries);
-
 		this.interestSeries = interestSeries;
 		this.engagementSeries = engagementSeries;
 		this.relaxSeries = relaxSeries;
 		this.stressSeries = stressSeries;
 		this.excitmentSeries = excitmentSeries;
 		this.focusSeries = focusSeries;
-		this.dataset =dataset;
+		this.dataset = dataset;
 		return dataset;
 	}
 }

@@ -1,7 +1,10 @@
 package client.model;
 
 /**
- *
+ * The ClientConfigurationSingleton class
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class ClientConfigurationSingleton {
 	private static volatile ClientConfigurationSingleton clientConfiguration;
@@ -9,6 +12,9 @@ public class ClientConfigurationSingleton {
 	public String ip;
 	public String port;
 
+	/**
+	 * 
+	 */
 	public static ClientConfigurationSingleton getInstance() {
 		ClientConfigurationSingleton result = clientConfiguration;
 		if (result == null) {

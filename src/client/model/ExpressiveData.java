@@ -1,7 +1,10 @@
 package client.model;
 
 /**
- *
+ * The ExpressiveData class
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class ExpressiveData {
 	private float raiseBrow = 0;
