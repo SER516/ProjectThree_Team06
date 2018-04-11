@@ -1,9 +1,10 @@
 package server.listener;
 
 /**
+ * DetectionListenerInterface interface
  * 
- * @author garv
- * Interface for detection panel
+ * @author Team 06
+ * @version 1.0
  */
 public interface DetectionListenerInterface {
 
@@ -51,27 +52,27 @@ public interface DetectionListenerInterface {
 	 */
 	public void resetEye();
 
-	/*
+	/**
 	 * Implement to Reset upper face values
 	 */
 	public void resetUpperface();
 
-	/*
+	/**
 	 * Implement to reset lower face values
 	 */
 	public void resetLowerface();
 
-	/*
+	/**
 	 * Implement to reset performance metrics
 	 */
 	public void resetPerformanceMetrics();
 
-	/*
+	/**
 	 * Implement to disable active values
 	 */
 	public void disableActive();
 
-	/*
+	/**
 	 * Implement to set Eye auto reset checkbox
 	 */
 	void setEyeAutoResetCheckBox(boolean b);

@@ -89,8 +89,7 @@ public class ServerSocketService implements ServerListenerInterface {
 			ServerModelSingleton.getInstance().setStateInterval(ServerConstants.STATE_INTERVAL);
 			ServerSocketEndpoint.queue = new ConcurrentLinkedQueue<Session>();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "An Exception has occurred"
-					+ " while stopping server");
+			JOptionPane.showMessageDialog(null, ServerConstants.STOP_SERVER_EXCEPTION_MESSAGE);
 		}
 	}
 }

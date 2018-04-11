@@ -3,10 +3,10 @@ package server.model;
 import server.constants.ServerConstants;
 
 /**
- * Server Model Pojo which keeps Server Configurations
+ * ServerModelSingleton classkeeps Server Configurations
  * 
- * @author garv
- * @version 1
+ * @author Team 06
+ * @version 1.0
  */
 public class ServerModelSingleton {
 	private static volatile ServerModelSingleton serverDataSingleton;

@@ -5,28 +5,22 @@ import server.constants.ServerConstants;
 /**
  * Expressive Data Model
  * 
- * @author garv
- * @version 1
+ * @author Team 06
+ * @version 1.0
  */
 public class ExpressiveData {
-	// Eyebrow (Upper Face)
 	private float raiseBrow = ServerConstants.ZERO_VALUE;
 	private float furrowBrow = ServerConstants.ZERO_VALUE;
-
-	// Smile (Lower face)
 	private float smile = ServerConstants.ZERO_VALUE;
 	private float clench = ServerConstants.ZERO_VALUE;
 	private float smirkLeft = ServerConstants.ZERO_VALUE;
 	private float smirkRight = ServerConstants.ZERO_VALUE;
 	private float laugh = ServerConstants.ZERO_VALUE;
-
-	// Eye
 	private boolean winkLeft = ServerConstants.FALSYVALUE;
 	private boolean winkRight = ServerConstants.FALSYVALUE;
 	private boolean lookLeft = ServerConstants.FALSYVALUE;
 	private boolean lookRight = ServerConstants.FALSYVALUE;
 	private boolean blink = ServerConstants.FALSYVALUE;
-
 	private boolean autoReset;
 
 	public boolean isAutoReset() {
@@ -133,17 +127,14 @@ public class ExpressiveData {
 		this.lookRight = lookRight;
 	}
 
-	/*
+	/**
 	 * Reset wink look and blink values
 	 */
 	public void resetValues() {
-
 		winkLeft = false;
 		winkRight = false;
 		lookLeft = false;
 		lookRight = false;
 		blink = false;
-
 	}
-
 }

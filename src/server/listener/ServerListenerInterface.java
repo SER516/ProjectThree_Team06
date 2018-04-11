@@ -1,11 +1,12 @@
 package server.listener;
 
 /**
+ * The ServerListenerInterface
  * 
- * @author garv
- * Interface for Server Stop
+ * @author Team 06
+ * @version 1.0
  */
 public interface ServerListenerInterface {
 
-    public void stopServer();
+	public void stopServer();
 }
