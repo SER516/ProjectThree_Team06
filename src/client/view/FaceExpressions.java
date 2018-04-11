@@ -20,7 +20,7 @@ public class FaceExpressions extends JPanel {
 
 	public FaceExpressions() {
 		String fileName = "000000000000.png";
-		setBackground(new Color(175, 175, 175));
+		setBackground(ClientConstants.GREY);
 		try {
 			StringBuilder finalFileName = new StringBuilder(
 					new java.io.File(ClientConstants.CURRENT_DIR).getCanonicalPath());
@@ -42,11 +42,11 @@ public class FaceExpressions extends JPanel {
 	}
 
 	/**
-	 * 
+	 * @param g
 	 */
 	@Override
 	protected void paintComponent(Graphics g) {
-		setBackground(new Color(175, 175, 175));
+		setBackground(ClientConstants.GREY);
 		super.paintComponent(g);
 		g.drawImage(image, 0, 0, 250, 350, this);
 	}

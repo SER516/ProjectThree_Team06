@@ -106,7 +106,24 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 		performanceMetricBody.add(affectivePanelComponents(excitementColorDisplay,
 				ClientConstants.EXCITEMENT_COLOR_DEFAULT, btnExcitement));
 		JPanel displayLengthPanel = new JPanel(new GridBagLayout());
-		displayLengthPanel.setBackground(new Color(220, 220, 220));
+		displayLength = new JTextField(10);
+		displayLength.setText(String.valueOf(50));
+		displayLength.getDocument().addDocumentListener(this);
+		displayLengthPanel.add(displayLength, setConstraints(displayLengthPanel));
+		performanceMetricBody.add(displayLengthPanel);
+		performanceMetricBody.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		performanceMetricBody.setBorder(BorderFactory.createEtchedBorder());
+		add(performanceMetricBody, BorderLayout.CENTER);
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param displayLengthPanel
+	 * @return
+	 */
+	private GridBagConstraints setConstraints(JPanel displayLengthPanel) {
+		displayLengthPanel.setBackground(ClientConstants.LIGHT_GREY);
 		GridBagConstraints displayLengthDimensions = new GridBagConstraints();
 		displayLengthDimensions.gridx = 0;
 		displayLengthDimensions.gridy = 0;
@@ -115,15 +132,7 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 		displayLengthPanel.add(displayLengthLabel, displayLengthDimensions);
 		displayLengthDimensions.gridx = 1;
 		displayLengthDimensions.gridy = 0;
-		displayLength = new JTextField(10);
-		displayLength.setText(String.valueOf(50));
-		displayLength.getDocument().addDocumentListener(this);
-		displayLengthPanel.add(displayLength, displayLengthDimensions);
-		performanceMetricBody.add(displayLengthPanel);
-		performanceMetricBody.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		performanceMetricBody.setBorder(BorderFactory.createEtchedBorder());
-		add(performanceMetricBody, BorderLayout.CENTER);
-		return this;
+		return displayLengthDimensions;
 	}
 
 	/**
