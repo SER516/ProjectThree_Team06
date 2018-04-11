@@ -5,7 +5,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 /**
- *
+ * The ClientConstants class contains all the constants used in the client.
+ * 
+ * @author Team 06
+ * @version 1.0
  */
 public class ClientConstants {
 	public static final String CLOSING_CONNECTION_EXCEPTION_MESSAGE = "Exception during close Connection ";
@@ -34,6 +37,7 @@ public class ClientConstants {
 	public static final Color ENGAGEMENT_COLOR_DEFAULT = new Color(77, 255, 166);
 	public static final Color RELAXATION_COLOR_DEFAULT = new Color(184, 102, 20);
 	public static final Color EXCITEMENT_COLOR_DEFAULT = new Color(255, 255, 102);
+	public static final Color GREY = new Color(175, 175, 175);
 	public static final Color LIGHT_BLUE = new Color(169, 204, 227);
 	public static final Dimension BUTTON_DIMENSION = new Dimension(110, 50);
 	public static final String DISPLAY_LENGTH = "Display Length  ";
@@ -72,4 +76,6 @@ public class ClientConstants {
 	public static final String PORT_NUMBER = "8080";
 	public static final String IP_STRING = "IP";
 	public static final String PORT_STRING = "Port";
+	public static final String MENU = "Menu";
+	public static final String EMPTY = "";
 }

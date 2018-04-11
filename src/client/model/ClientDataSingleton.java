@@ -6,33 +6,52 @@ import client.view.ExpressionPlots;
 import client.view.FaceExpressions;
 
 /**
- * Class that sets up all the required singleton objects on client side.
+ * The ClientDataSingleton class
+ * 
+ * @author Team06
+ * @version 1.0
  */
-public class SingleTonData {
-	private static volatile SingleTonData singletondata;
+public class ClientDataSingleton {
+	private static volatile ClientDataSingleton clientDataSingleton;
 	private static Object mutex = new Object();
+	boolean sessionMaintained = false;
+	private FaceData faceData;
 	private ExpressionPlots expressplot;
 	private AffectivePlot affectivePlot;
 	private ClientFaceController faceExpressionController;
 	private FaceExpressions faceExpressions;
 
 	/**
-	 *
-	 * @return
+	 * 
 	 */
-	public static SingleTonData getInstance() {
-		SingleTonData result = singletondata;
+	public static ClientDataSingleton getInstance() {
+		ClientDataSingleton result = clientDataSingleton;
 		if (result == null) {
 			synchronized (mutex) {
-				result = singletondata;
+				result = clientDataSingleton;
 				if (result == null) {
-					result = new SingleTonData();
-
+					result = new ClientDataSingleton();
 				}
-				singletondata = result;
+				clientDataSingleton = result;
 			}
 		}
 		return result;
+	}
+
+	public boolean isSessionMaintained() {
+		return sessionMaintained;
+	}
+
+	public void setSessionMaintained(boolean sessionMaintained) {
+		this.sessionMaintained = sessionMaintained;
+	}
+
+	public FaceData getFaceData() {
+		return faceData;
+	}
+
+	public void setFaceData(FaceData faceData) {
+		this.faceData = faceData;
 	}
 
 	public FaceExpressions getFaceExpressions() {

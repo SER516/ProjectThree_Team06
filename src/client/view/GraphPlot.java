@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * GraphPlot class plots the data stream received from server on Graph
  * component.
  *
- * @author Team 6
+ * @author Team 06
  */
 public class GraphPlot extends JPanel {
 	public static final int PAD = 1;

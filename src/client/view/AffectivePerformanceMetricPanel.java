@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
@@ -18,15 +19,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
 import client.constants.ClientConstants;
 import client.services.AffectiveColorService;
 
 /**
- * This is part of AffectivePanel UI. This panel has performance metrics.
- *
- * @author Team 06
+ * The AffectivePerformanceMetricPanel class sets up the performance metrics for
+ * the AffectivePanel UI
+ * 
+ * @author Team06
+ * @version 1.0
  */
-
 class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, DocumentListener {
 
 	AffectiveColorService affectiveColorService;
@@ -50,6 +53,9 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 		buildPanel();
 	}
 
+	/**
+	 * 
+	 */
 	private Component affectivePanelComponents(JPanel panelComponent, Color colorComponent, JButton buttonComponent) {
 		Color defaultColorFocus = colorComponent;
 		colors.add(defaultColorFocus);
@@ -100,7 +106,24 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 		performanceMetricBody.add(affectivePanelComponents(excitementColorDisplay,
 				ClientConstants.EXCITEMENT_COLOR_DEFAULT, btnExcitement));
 		JPanel displayLengthPanel = new JPanel(new GridBagLayout());
-		displayLengthPanel.setBackground(new Color(220, 220, 220));
+		displayLength = new JTextField(10);
+		displayLength.setText(String.valueOf(50));
+		displayLength.getDocument().addDocumentListener(this);
+		displayLengthPanel.add(displayLength, setConstraints(displayLengthPanel));
+		performanceMetricBody.add(displayLengthPanel);
+		performanceMetricBody.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		performanceMetricBody.setBorder(BorderFactory.createEtchedBorder());
+		add(performanceMetricBody, BorderLayout.CENTER);
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param displayLengthPanel
+	 * @return
+	 */
+	private GridBagConstraints setConstraints(JPanel displayLengthPanel) {
+		displayLengthPanel.setBackground(ClientConstants.LIGHT_GREY);
 		GridBagConstraints displayLengthDimensions = new GridBagConstraints();
 		displayLengthDimensions.gridx = 0;
 		displayLengthDimensions.gridy = 0;
@@ -109,21 +132,20 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 		displayLengthPanel.add(displayLengthLabel, displayLengthDimensions);
 		displayLengthDimensions.gridx = 1;
 		displayLengthDimensions.gridy = 0;
-		displayLength = new JTextField(10);
-		displayLength.setText(String.valueOf(50));
-		displayLength.getDocument().addDocumentListener(this);
-		displayLengthPanel.add(displayLength, displayLengthDimensions);
-		performanceMetricBody.add(displayLengthPanel);
-		performanceMetricBody.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		performanceMetricBody.setBorder(BorderFactory.createEtchedBorder());
-		add(performanceMetricBody, BorderLayout.CENTER);
-		return this;
+		return displayLengthDimensions;
 	}
 
+	/**
+	 * 
+	 * @param affectiveColorService
+	 */
 	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
 		this.affectiveColorService = affectiveColorService;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnFocus) {
@@ -149,6 +171,11 @@ class AffectivePerformanceMetricPanel extends JPanel implements ActionListener, 
 		this.colors = colors;
 	}
 
+	/**
+	 * 
+	 * @param panel
+	 * @param index
+	 */
 	private void setColor(JPanel panel, int index) {
 		Color newColor = JColorChooser.showDialog(null, ClientConstants.CHOOSE_COLOR, null);
 		if (newColor == null) {

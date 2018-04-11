@@ -7,14 +7,14 @@ import javax.swing.border.EmptyBorder;
 import client.constants.ClientConstants;
 import client.services.AffectiveColorService;
 import client.services.ClientServerConnectionService;
-
 import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * ClientFrame creates client main window.
- *
- * @author Abhishek
+ * The ClientFrame class creates the client main window.
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class ClientFrame extends JFrame {
 
@@ -95,13 +95,13 @@ public class ClientFrame extends JFrame {
 	/**
 	 * changedisplayLengthLabel method updates length of affective panel
 	 *
-     */
+	 */
 	public void changedisplayLengthLabel() {
 		affectivePanel.changedisplayLengthLabel();
 	}
 
 	/**
-	 * Set  connection button
+	 * Set connection button
 	 */
 	public void setConnectionLabel(boolean flag) {
 		menuBar.setConnectionLabel(flag);

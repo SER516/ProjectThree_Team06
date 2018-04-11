@@ -19,7 +19,9 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
 import server.services.InteractiveListenerService;
+import server.services.ServerSocketService;
 
 /**
  * @author mspranav
@@ -31,6 +33,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
     JSpinner emoStateSpinner;
     JButton sendButton;
     InteractiveListenerService interactiveListenerService;
+    ServerSocketService serverSocketService;
 
     /**
      * Creates new form InteractivePanel.
@@ -54,6 +57,7 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
         autoResetCheckBox.setFont(new Font("Tahoma", Font.BOLD, 12));
         autoResetCheckBox.setBounds(175, 61, 101, 25);
         this.add(autoResetCheckBox);
+        autoResetCheckBox.addActionListener(this);
 
         sendButton = new JButton("Send");
         sendButton.setBackground(Color.LIGHT_GRAY);
@@ -79,18 +83,27 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == sendButton && e.getActionCommand() == "Send") {
+
+
+        if (e.getSource() == autoResetCheckBox && sendButton.getActionCommand() == "Stop") {
+
+            if (!autoResetCheckBox.isSelected()) {
+                interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
+                sendButton.setActionCommand("Send");
+            }
+        }
+        if (e.getSource() == sendButton && autoResetCheckBox.isSelected()) {
             interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
-            sendButton.setText("Stop");
             sendButton.setActionCommand("Stop");
+
         }
 
-
-        if (e.getSource() == sendButton && e.getActionCommand() == "Stop") {
+        if (e.getSource() == sendButton && !autoResetCheckBox.isSelected()) {
             interactiveListenerService.stateSpinnerChange(autoResetCheckBox.isSelected());
-            sendButton.setText("Send");
-            sendButton.setActionCommand("Send");
+
         }
+
+
     }
 
     @Override
@@ -99,6 +112,8 @@ public class InteractivePanel extends JPanel implements ActionListener, ChangeLi
             String stateValue = emoStateSpinner.getValue().toString();
             interactiveListenerService.autoResetChange(stateValue);
         }
+
+
     }
 
     public void setInteractiveListener(InteractiveListenerService interactiveListenerService) {

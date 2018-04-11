@@ -7,12 +7,16 @@ import client.model.ExpressiveData;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class ClientFaceController {
+
 	/**
-	 *
+	 * 
 	 * @param expressivedata
+	 * 
 	 * @return
 	 */
 	public String getFaceFileName(ExpressiveData expressivedata) {

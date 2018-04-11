@@ -15,13 +15,16 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYSeriesCollection;
+import client.constants.ClientConstants;
 import client.model.AffectivePlotData;
 import client.services.AffectiveColorService;
 
 /**
- *
+ * The AffectivePlot class sets up the the graph plot for AffectivePanel UI.
+ * 
+ * @author Team06
+ * @version 1.0
  */
-
 public class AffectivePlot extends JPanel {
 
 	JPanel affectivePanel = new JPanel();
@@ -37,9 +40,6 @@ public class AffectivePlot extends JPanel {
 		this.add(affectivePanel);
 	}
 
-
-
-
 	public void setAffectiveListener(AffectiveColorService affectiveColorService) {
 		this.affectiveColorService = affectiveColorService;
 	}
@@ -50,10 +50,13 @@ public class AffectivePlot extends JPanel {
 
 	}
 
+	/**
+	 * 
+	 * @param dataset
+	 */
 	public void plotAffectiveGraph1(XYSeriesCollection dataset) {
-		JFreeChart chart = ChartFactory.createXYLineChart("", "", "", dataset,
-				PlotOrientation.VERTICAL, false, true,
-				false);
+		JFreeChart chart = ChartFactory.createXYLineChart(ClientConstants.EMPTY, ClientConstants.EMPTY,
+				ClientConstants.EMPTY, dataset, PlotOrientation.VERTICAL, false, true, false);
 		XYPlot plot = chart.getXYPlot();
 		XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
 		ValueAxis range = plot.getRangeAxis();

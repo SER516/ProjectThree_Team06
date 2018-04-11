@@ -2,21 +2,24 @@ package client.controller;
 
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.websocket.ClientEndpoint;
+import javax.websocket.OnClose;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
 import com.google.gson.Gson;
-
-import javax.websocket.*;
-
 import client.constants.ClientConstants;
-import client.helper.ClientDataSingleton;
 import client.listener.MenuBarListener;
 import client.model.AffectivePlotData;
+import client.model.ClientDataSingleton;
 import client.model.ExpressivePlotData;
 import client.model.FaceData;
-import client.model.SingleTonData;
-import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 
 /**
- *
+ * The ClientSocketEndpoint class
+ * 
+ * @author Team06
+ * @version 1.0
  */
 @ClientEndpoint
 public class ClientSocketEndpoint {
@@ -34,12 +37,10 @@ public class ClientSocketEndpoint {
 		clockListener = clockListenerObj;
 	}
 
-
 	@OnOpen
 	public void open(Session session) {
 		clockListener.setConnectionLabel(true);
 	}
-
 
 	/**
 	 *
@@ -48,16 +49,17 @@ public class ClientSocketEndpoint {
 	@OnMessage
 	public void onMessage(String message) {
 		faceData = gson.fromJson(message, FaceData.class);
+		faceData = gson.fromJson(message, FaceData.class);
 		ClientDataSingleton.getInstance().setFaceData(faceData);
 		ExpressivePlotData.getInstance().setDataToList(faceData.getExpressiveData());
-		SingleTonData.getInstance().getExpressplot().plotExpressionGraph();
+		ClientDataSingleton.getInstance().getExpressplot().plotExpressionGraph();
 		AffectivePlotData.getInstance().setDataToList(faceData.getAffectiveData(), faceData);
-		SingleTonData.getInstance().getAffectivePlot()
+		ClientDataSingleton.getInstance().getAffectivePlot()
 				.plotAffectiveGraph1(AffectivePlotData.getInstance().getDataset());
-		SingleTonData.getInstance().setFaceExpressionController(new ClientFaceController());
-		String fileName = SingleTonData.getInstance().getFaceExpressionController()
+		ClientDataSingleton.getInstance().setFaceExpressionController(new ClientFaceController());
+		String fileName = ClientDataSingleton.getInstance().getFaceExpressionController()
 				.getFaceFileName(faceData.getExpressiveData());
-		SingleTonData.getInstance().getFaceExpressions().drawImage(fileName);
+		ClientDataSingleton.getInstance().getFaceExpressions().drawImage(fileName);
 		clockListener.updateTime(faceData.getCounter());
 	}
 
@@ -68,6 +70,7 @@ public class ClientSocketEndpoint {
 	@OnClose
 	public void closedConnection(Session session) {
 		ClientDataSingleton.getInstance().setSessionMaintained(false);
+		clockListener.setConnectionLabel(false);
 		clockListener.setConnectionLabel(false);
 		try {
 			session.close();

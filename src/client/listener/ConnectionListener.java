@@ -1,7 +1,10 @@
 package client.listener;
 
 /**
- *
+ * The ConnectionListener interface.
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public interface ConnectionListener {
 

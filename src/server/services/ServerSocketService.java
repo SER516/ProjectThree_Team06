@@ -13,12 +13,13 @@ import org.eclipse.jetty.websocket.jsr356.server.ServerContainer;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import server.controller.ServerSocketEndpoint;
 import server.listener.LogListenerInterface;
+import server.listener.ServerListenerInterface;
 import server.view.ServerView;
 
 /**
  *Server Socket class that sets up server side socket connection with client.
  */
-public class ServerSocketService {
+public class ServerSocketService implements ServerListenerInterface{
     Thread serverThread;
     LogListenerInterface logListener;
     Server server;
@@ -61,7 +62,7 @@ public class ServerSocketService {
         serverThread = new Thread(serverTask);
         serverThread.start();
     }
-
+    @Override
     public void stopServer() {
         try {
             context.stop();
@@ -70,7 +71,7 @@ public class ServerSocketService {
             serverThread.join();
             ServerSocketEndpoint.queue = new ConcurrentLinkedQueue<Session>();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "An Exception has occurred");
+            JOptionPane.showMessageDialog(null, "An Exception has occurred while stopping server");
         }
     }
 }

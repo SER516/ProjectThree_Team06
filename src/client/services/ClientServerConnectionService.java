@@ -1,16 +1,18 @@
 package client.services;
 
 import javax.swing.JOptionPane;
-
 import client.constants.ClientConstants;
 import client.controller.WebSocketClientMain;
-import client.helper.ClientDataSingleton;
 import client.listener.ConnectionListener;
 import client.model.ClientConfigurationSingleton;
+import client.model.ClientDataSingleton;
 import server.controller.ServerApplicationController;
 
 /**
- *
+ * The ClientServerConnectionService class
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class ClientServerConnectionService implements ConnectionListener {
 	WebSocketClientMain webSocketClientMain = new WebSocketClientMain();
@@ -36,19 +38,20 @@ public class ClientServerConnectionService implements ConnectionListener {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void initializeServer() {
 		new ServerApplicationController();
-
 	}
 
 	/**
-	 *
+	 * 
 	 * @param ip
 	 * @param port
 	 */
 	private void establishServerClientConnection(String ip, String port) {
-
 		if (!ClientDataSingleton.getInstance().isSessionMaintained()) {
 			ClientConfigurationSingleton.getInstance().setIp(ip);
 			ClientConfigurationSingleton.getInstance().setPort(port);
@@ -56,7 +59,5 @@ public class ClientServerConnectionService implements ConnectionListener {
 		} else {
 			JOptionPane.showMessageDialog(null, ClientConstants.CLIENT_ALREADY_CONNECTED);
 		}
-
 	}
-
 }
