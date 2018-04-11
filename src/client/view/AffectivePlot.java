@@ -15,6 +15,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYSeriesCollection;
+import client.constants.ClientConstants;
 import client.model.AffectivePlotData;
 import client.services.AffectiveColorService;
 
@@ -54,8 +55,8 @@ public class AffectivePlot extends JPanel {
 	 * @param dataset
 	 */
 	public void plotAffectiveGraph1(XYSeriesCollection dataset) {
-		JFreeChart chart = ChartFactory.createXYLineChart("", "", "", dataset, PlotOrientation.VERTICAL, false, true,
-				false);
+		JFreeChart chart = ChartFactory.createXYLineChart(ClientConstants.EMPTY, ClientConstants.EMPTY,
+				ClientConstants.EMPTY, dataset, PlotOrientation.VERTICAL, false, true, false);
 		XYPlot plot = chart.getXYPlot();
 		XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
 		ValueAxis range = plot.getRangeAxis();

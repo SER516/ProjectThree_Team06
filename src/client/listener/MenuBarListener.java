@@ -1,7 +1,7 @@
 package client.listener;
 
 /**
- * The AffectiveColorListener interface.
+ * The MenuBarListener interface.
  * 
  * @author Team06
  * @version 1.0
