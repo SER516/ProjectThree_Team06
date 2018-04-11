@@ -11,7 +11,7 @@ import java.awt.Font;
 public class ServerConstants {
 	public static final boolean ONE_TIME_SEND = false;
 	public static final boolean AUTO_RESET = false;
-	public static final double STATE_INTERVAL = 0.25;
+	public static final double STATE_INTERVAL = 1;
 	public static final String AQUA = "Aqua";
 	public static final String SEND_EXCEPTION_MESSAGE = "An Exception has occurred while sending messages";
 	public static final String RECEIVE_EXCEPTION_MESSAGE = "An Exception has occurred while receiving messages";
