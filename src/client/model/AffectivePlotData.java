@@ -1,13 +1,15 @@
 package client.model;
 
+import java.util.ArrayList;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
- *
+ * 
+ * @author Team06
+ * @version 1.0
  */
+
 public class AffectivePlotData {
 	private static volatile AffectivePlotData affectivePlotData;
 	private static Object mutex = new Object();
@@ -50,7 +52,6 @@ public class AffectivePlotData {
 		return dataset;
 	}
 
-
 	/**
 	 * @param affectivedata
 	 * @param faceData
@@ -60,7 +61,7 @@ public class AffectivePlotData {
 		double faceDataCounter = faceData.getCounter();
 		dataset = new XYSeriesCollection();
 		interestSeries.add(graphLength - faceDataCounter, affectivedata.getInterest());
-		engagementSeries.add( graphLength - faceDataCounter, affectivedata.getEngagement());
+		engagementSeries.add(graphLength - faceDataCounter, affectivedata.getEngagement());
 		relaxSeries.add(graphLength - faceDataCounter, affectivedata.getRelaxation());
 		stressSeries.add(graphLength - faceDataCounter, affectivedata.getStress());
 		excitmentSeries.add(graphLength - faceDataCounter, affectivedata.getExcitement());
@@ -81,7 +82,7 @@ public class AffectivePlotData {
 		XYSeries excitmentSeries = new XYSeries("excitmentSeries");
 		XYSeries focusSeries = new XYSeries("focusSeries");
 		XYSeriesCollection dataset = new XYSeriesCollection();
-		for(int i=0; i < faceDataArrayList.size();i++){
+		for (int i = 0; i < faceDataArrayList.size(); i++) {
 
 			AffectiveData affectiveData = faceDataArrayList.get(i).getAffectiveData();
 			double counter = faceDataArrayList.get(i).getCounter();
@@ -98,14 +99,13 @@ public class AffectivePlotData {
 		dataset.addSeries(engagementSeries);
 		dataset.addSeries(relaxSeries);
 		dataset.addSeries(excitmentSeries);
-
 		this.interestSeries = interestSeries;
 		this.engagementSeries = engagementSeries;
 		this.relaxSeries = relaxSeries;
 		this.stressSeries = stressSeries;
 		this.excitmentSeries = excitmentSeries;
 		this.focusSeries = focusSeries;
-		this.dataset =dataset;
+		this.dataset = dataset;
 		return dataset;
 	}
 }
