@@ -5,19 +5,19 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Random;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-
 import client.constants.ClientConstants;
 import client.controller.PlotController;
 import client.model.ClientDataSingleton;
 
 /**
- * ExpressionPlots class plots the graph of expressions received from server.
- *
- * @author Abhishek
+ * The ExpressionPlots class plots the graph of expressions received from
+ * server.
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class ExpressionPlots extends JPanel {
 
@@ -156,6 +156,13 @@ public class ExpressionPlots extends JPanel {
 		}
 	}
 
+	/**
+	 * 
+	 * @param expression
+	 * @param splitPane
+	 * @param graphPlotCurr
+	 * @param feature
+	 */
 	private void addGraphsToPanel(JPanel expression, JSplitPane splitPane, GraphPlot graphPlotCurr, String feature) {
 		expression.removeAll();
 		splitPane.removeAll();

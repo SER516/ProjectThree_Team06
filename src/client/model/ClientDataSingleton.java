@@ -6,11 +6,11 @@ import client.view.ExpressionPlots;
 import client.view.FaceExpressions;
 
 /**
- * Class that sets up all the required singleton objects on client side.
+ * The ClientDataSingleton class
+ * 
+ * @author Team06
+ * @version 1.0
  */
-/**
-*
-*/
 public class ClientDataSingleton {
 	private static volatile ClientDataSingleton clientDataSingleton;
 	private static Object mutex = new Object();
@@ -21,6 +21,9 @@ public class ClientDataSingleton {
 	private ClientFaceController faceExpressionController;
 	private FaceExpressions faceExpressions;
 
+	/**
+	 * 
+	 */
 	public static ClientDataSingleton getInstance() {
 		ClientDataSingleton result = clientDataSingleton;
 		if (result == null) {

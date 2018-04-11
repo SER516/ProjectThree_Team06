@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class ClientFaceController {
 
-	/*
+	/**
 	 * 
 	 * @param expressivedata
 	 * 

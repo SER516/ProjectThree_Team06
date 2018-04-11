@@ -2,20 +2,24 @@ package client.controller;
 
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.websocket.ClientEndpoint;
+import javax.websocket.OnClose;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
 import com.google.gson.Gson;
-
-import javax.websocket.*;
-
 import client.constants.ClientConstants;
-import client.model.ClientDataSingleton;
 import client.listener.MenuBarListener;
 import client.model.AffectivePlotData;
+import client.model.ClientDataSingleton;
 import client.model.ExpressivePlotData;
 import client.model.FaceData;
-import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 
 /**
- *
+ * The ClientSocketEndpoint class
+ * 
+ * @author Team06
+ * @version 1.0
  */
 @ClientEndpoint
 public class ClientSocketEndpoint {
@@ -33,12 +37,10 @@ public class ClientSocketEndpoint {
 		clockListener = clockListenerObj;
 	}
 
-
 	@OnOpen
 	public void open(Session session) {
 		clockListener.setConnectionLabel(true);
 	}
-
 
 	/**
 	 *

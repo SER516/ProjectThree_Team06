@@ -5,9 +5,10 @@ import client.model.ClientDataSingleton;
 import java.awt.*;
 
 /**
- * EmotivePanel class is a emotive tab on the GUI.
- *
- * @author Abhishek
+ * The EmotivePanel class is a emotive tab on the GUI.
+ * 
+ * @author Team06
+ * @version 1.0
  */
 public class EmotivePanel extends JPanel {
 	public static final String TABNAME = "Expressive";
