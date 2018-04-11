@@ -1,7 +1,7 @@
 package client.controller;
 
 import client.helper.ClientDataSingleton;
-import client.listener.ClockListener;
+import client.listener.MenuBarListener;
 import client.services.AffectiveColorService;
 import client.services.ClientServerConnectionService;
 import client.view.ClientFrame;
@@ -30,11 +30,18 @@ public class ClientMainController {
 	}
 
 	private static void setClockListener(ClientFrame clientWindow) {
-		ClientSocketEndpoint.setClockListener(new ClockListener() {
+		ClientSocketEndpoint.setClockListener(new MenuBarListener() {
 			@Override
 			public void updateTime(double time) {
 				clientWindow.updateTime(time);
 			}
+
+			@Override
+			public void setConnectionLabel(boolean flag) {
+				clientWindow.setConnectionLabel(flag);
+			}
+
+
 		});
 	}
 

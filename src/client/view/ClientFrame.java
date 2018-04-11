@@ -100,4 +100,11 @@ public class ClientFrame extends JFrame {
 	public void changedisplayLengthLabel() {
 		affectivePanel.changedisplayLengthLabel();
 	}
+
+	/**
+	 * Set  connection button
+	 */
+	public void setConnectionLabel(boolean flag) {
+		menuBar.setConnectionLabel(flag);
+	}
 }
