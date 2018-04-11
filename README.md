@@ -1,5 +1,8 @@
+
 # ProjectThree_Team06
 
 Steps to run:
 
-java -jar client.jar
+mvn package
+
+java -jar ProjectThree_Team06-client.jar
